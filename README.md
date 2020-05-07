@@ -88,6 +88,8 @@ These are the requirements for KDE in the order they've been given on the KDE ['
 [ ] frameworkintegration
 [ ] kdelibs4support
 [ ] khtml
+
+4. Plasma and friends
 [ ] kactivities
 [ ] pasma-framework
 [ ] kde-workspace
