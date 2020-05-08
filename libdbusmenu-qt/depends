@@ -1,0 +1,7 @@
+cmake make
+extra-cmake-modules make
+qt5 
+
+# The REAL fun: 
+dbus
+qt5dbus # What provides libqt5dbus.so.*? >> qt-serialbus seems promising.
