@@ -1,0 +1,3 @@
+extra-cmake-modules make
+qt5-tools make
+qt5
