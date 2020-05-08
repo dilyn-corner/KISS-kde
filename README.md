@@ -32,62 +32,64 @@ These are the requirements for KDE in the order they've been given on the KDE ['
 [ ] polkit-qt-1
 
 3. Framework
-[x] kitemmodels   
-[x] kitemviews  
-[x] kplotting  
-[x] threadweaver  
-[ ] kcodecs  
-[ ] kguiaddons  
-[ ] kidletime  
-[ ] kwidgetsaddons  
-[ ] sonnet  
-[ ] kconfig  
-[ ] kwindowsystem  
-[ ] solid  
-[ ] kglobalaccel  
-[ ] karchive  
-[ ] kdbusaddons  
-[ ] kcoreaddons  
-[ ] kjs  
-[ ] kimageformats  
-[ ] kauth  
-[ ] kcrash  
-[ ] kjobwidgets  
-[ ] kcompletion  
-[ ] ki18n  
-[ ] kdoctools  
-[ ] kdnssd  
-[ ] kconfigwidgets  
-[ ] kservice  
-[ ] kiconthemes  
-[ ] knotifications  
-[ ] kwallet  
-[ ] kpty  
-[ ] kemoticons  
-[ ] kdesu  
-[ ] ktextwidgets  
-[ ] kxmlgui  
-[ ] kbookmarks  
-[ ] kio  
-[ ] kdesignerplugin  
-[ ] knewstuff  
-[ ] kparts  
-[ ] kpackage  
-[ ] kdeclarative  
-[ ] kcmutils  
-[ ] kinit  
-[ ] kded  
-[ ] knotifyconfig  
-[ ] kunitconversion  
-[ ] kjsembed  
-[ ] kross  
-[ ] kmediaplayer  
-[ ] kdewebkit  
-[ ] ktexteditor  
-[ ] kapidox  
-[ ] frameworkintegration  
-[ ] kdelibs4support  
-[ ] khtml  
-[ ] kactivities  
-[ ] pasma-framework  
-[ ] kde-workspace  
+[x] kitemmodels 
+[x] kitemviews
+[x] kplotting
+[x] threadweaver
+[ ] kcodecs
+[ ] kguiaddons
+[ ] kidletime
+[ ] kwidgetsaddons
+[ ] sonnet
+[ ] kconfig
+[ ] kwindowsystem
+[ ] solid
+[ ] kglobalaccel
+[ ] karchive
+[ ] kdbusaddons
+[ ] kcoreaddons
+[ ] kjs
+[ ] kimageformats
+[ ] kauth
+[ ] kcrash
+[ ] kjobwidgets
+[ ] kcompletion
+[ ] ki18n
+[ ] kdoctools
+[ ] kdnssd
+[ ] kconfigwidgets
+[ ] kservice
+[ ] kiconthemes
+[ ] knotifications
+[ ] kwallet
+[ ] kpty
+[ ] kemoticons
+[ ] kdesu
+[ ] ktextwidgets
+[ ] kxmlgui
+[ ] kbookmarks
+[ ] kio
+[ ] kdesignerplugin
+[ ] knewstuff
+[ ] kparts
+[ ] kpackage
+[ ] kdeclarative
+[ ] kcmutils
+[ ] kinit
+[ ] kded
+[ ] knotifyconfig
+[ ] kunitconversion
+[ ] kjsembed
+[ ] kross
+[ ] kmediaplayer
+[ ] kdewebkit
+[ ] ktexteditor
+[ ] kapidox
+[ ] frameworkintegration
+[ ] kdelibs4support
+[ ] khtml
+
+4. Plasma and friends
+[ ] kactivities
+[ ] pasma-framework
+[ ] kde-workspace
