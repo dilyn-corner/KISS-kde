@@ -1,0 +1,4 @@
+cmake make 
+extra-cmake-modules make
+gperf make
+qt5

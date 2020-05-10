@@ -1,0 +1,4 @@
+cmake make 
+extra-cmake-modules make
+#libdbusmenu-qt
+qt5
