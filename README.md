@@ -36,8 +36,8 @@ These are the requirements for KDE in the order they've been given on the KDE ['
 - [x] kitemviews
 - [x] kplotting
 - [x] threadweaver
-- [ ] kcodecs
-- [ ] kguiaddons
+- [x] kcodecs
+- [x] kguiaddons
 - [ ] kidletime
 - [ ] kwidgetsaddons
 - [ ] sonnet
