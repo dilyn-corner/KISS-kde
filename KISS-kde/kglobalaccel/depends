@@ -1,0 +1,6 @@
+cmake make
+extra-cmake-modules make
+kcoreaddons
+kdbusaddons
+kcrash
+qt5

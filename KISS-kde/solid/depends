@@ -1,0 +1,4 @@
+cmake make
+eudev
+extra-cmake-modules make
+qt5
