@@ -23,19 +23,19 @@ When it's finally ready and been tested (that means I launched it once and it di
 
 These are the requirements for the KDE framework as given by the ['from source' guide](https://community.kde.org/Guidelines_and_HOWTOs/Build_from_source/Details).  
 
-##1. Dependencies for (?)everything.
+## 1. Dependencies for (?)everything.
 - [x] cmake
 - [x] extra-cmake-modules
 - [x] qt5
 
-##2. Qt-5 based dependencies
+## 2. Qt-5 based dependencies
 - [x] phonon
 - [ ] attica
 - [ ] strigi
 - [ ] libdbusmenu-qt
 - [ ] polkit-qt-1
 
-##3. Framework
+## 3. Framework
 - [x] kitemmodels 
 - [x] kitemviews
 - [x] kplotting
@@ -86,13 +86,13 @@ These are the requirements for the KDE framework as given by the ['from source' 
 - [ ] kapidox
 - [ ] frameworkintegration
 
-##4. Plasma and friends
+## 4. Plasma and friends
 - [ ] kactivities
 - [ ] plasma-framework
 - [ ] kde-workspace
 
 
-##5. Exclusions
+## 5. Exclusions
 
 kjs - It's required by two framework items (following) and two applications. The applications are simple things which do not need to be applications (a batch file renamer and a document viewer).
 
