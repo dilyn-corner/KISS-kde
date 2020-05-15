@@ -9,7 +9,7 @@ There are many, __many__ packages for a Plasma Desktop (because I guess fragment
 
 The qt dependency includes packages which overlap with community, like `qt5`. Additionally, `qt5` requires packages from community at build time. If a package in community has been changed, it will be forked into this repository. As a result, you should place this repository in your `$KISS_PATH` __before__ community.
 
-__DBUS__: The dreaded(?) question. `kdbusaddons` is required by `kglobalaccel`. This in turn is required solely by `kxmlgui`. This, unforunately, is required for `kbookmarks` (every other requirement is a KDE app), which is, for some reason, required by `kio`. `kio` is basically a fundamnetal program from my vantage point. It's *possible* that this dependency chain could be broken, but I only say that it's possible because I have not seen anything saying otherwise. It's probably a hard dependency we can't wriggle out of. I'll look into it for this project, but I make no promises. 
+__DBUS__: The dreaded(?) question. `kdbusaddons` is required by `kglobalaccel`. This in turn is required solely by `kxmlgui`. This, unforunately, is required for `kbookmarks` (every other requirement is a KDE app), which is, for some reason, required by `kio`. `kio` is basically a fundamental program from my vantage point. It's *possible* that this dependency chain could be broken, but I only say that it's possible because I have not seen anything saying otherwise. It's probably a hard dependency we can't wriggle out of. I'll look into it for this project, but I make no promises. 
 
 As it stands, KDE requires `dbus`. I have no real problems with this. If you're going to use KDE and you take umbridge with this, perhaps you should reevaluate why you need KDE?
 
@@ -34,7 +34,25 @@ These rebuilds are obviously not required if you already had the relevant progra
 
 ## What is left
 
-1. kauth
+1. plasma-framework
+
+the framework requires:
+
+`kauth` < `polkit-qt-1`
+
+`kconfigwidgets` < `ktextwidgets`
+
+`ki18n` < `kservice` & `kiconthemes` & `kio` & `kdeclarative` & `kpackage`
+
+`kdoctools`
+
+`kirigami`
+
+`kxmlgui`
+
+So This is basically our "bare-minimum". 
+
+2. kauth
 
 A lot of the core bits install with very few problems. However, `kauth` seems pretty integral to a working KDE environment, as this whole stack directly requires it:
 
@@ -44,7 +62,7 @@ A lot of the core bits install with very few problems. However, `kauth` seems pr
 
 `kde4libssupport`
 
-2. ki18n
+3. ki18n
 
 This internationalization framework has its hands in *everything*. 
 
@@ -81,26 +99,8 @@ This internationalization framework has its hands in *everything*.
 `khtml`
 
 The only applications here on this list I think are worth keeping are `kservice`, `kiconthemes`, `kwallet`, `kpty`, `kdesu`, `kio`. The rest are just sort of... extra? And (so far) don't seem to be required by anything (at least nothing which I have successfully built. It could end up being that these emoticons are super important). 
-Taking a look at how we get around a `k18n` dependency in `falkon`, it seems simple enough; delete the `po` folder. Unforunately, this doesn't really do the trick. We'd have to mangle up at least a couple files in (each?) package we want to keep. I'm not sure whether `ki18n` is inextricable or not. But if it's possible, getting it out of any of the aforementioned apps is basically mandatory. 
+Taking a look at how we get around a `ki18n` dependency in `falkon`, it seems simple enough; delete the `po` folder. Unforunately, this doesn't really do the trick. We'd have to mangle up at least a couple files in (each?) package we want to keep. I'm not sure whether `ki18n` is inextricable or not. But if it's possible, getting it out of any of the aforementioned apps is basically mandatory. 
 Otherwise, we install `gettext`. Which is fine by me. 
-
-3. plasma-framework
-
-the framework requires:
-
-`kauth` < `polkit-qt-1`
-
-`kconfigwidgets` < `ktextwidgets`
-
-`ki18n` < `kservice` & `kiconthemes` & `kio` & `kdeclarative` & `kpackage`
-
-`kdoctools`
-
-`kirigami`
-
-`kxmlgui`
-
-So This is basically our "bare-minimum". 
 
 4. Others
 
