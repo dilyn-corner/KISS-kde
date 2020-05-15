@@ -17,9 +17,98 @@ As it stands, KDE requires `dbus`. I have no real problems with this. If you're 
 
 When it's finally ready and been tested (that means I launched it once and it didn't immediately crash), a metapackage will be made that merely installs all the required packages. 
 
+
+#### Prerequisites
+
+1. This all assumes a *working* `xorg-server`. Many xorg-related dependencies are left out. The minimum should be enough.
+
+2. You will need `dbus`. Because of this, you'll have to rebuild `qt5*`.
+
+3. You will need `eudev`. Because of this, you'll need to rebuild `xorg-server`, any input packages (`libinput`, `xf86-input-libinput`, etc), `dhcpcd`, perhaps others.
+
+These rebuilds are obviously not required if you already had the relevant programs built against `dbus`, `eudev`, etc.
+
 ---
 
 # Roadmap
+
+## What is left
+
+1. kauth
+
+A lot of the core bits install with very few problems. However, `kauth` seems pretty integral to a working KDE environment, as this whole stack directly requires it:
+
+`kconfigwidgets` < `ktextwidgets` < `kcmutils`
+
+`frameworkintegration`
+
+`kde4libssupport`
+
+2. ki18n
+
+This internationalization framework has its hands in *everything*. 
+
+`kservice` < `kemoticons` < `kinit` < `kded`
+
+`kiconthemes`
+
+`kwallet`
+
+`kpty`
+
+`kdesu`
+
+`kio`
+
+`knewstuff`
+
+`kparts`
+
+`kpackage`
+
+`kdeclarative`
+
+`knotifyconfig`
+
+`kunitconversion`
+
+`kjsembed`
+
+`kross`
+
+`ktexteditor`
+
+`khtml`
+
+The only applications here on this list I think are worth keeping are `kservice`, `kiconthemes`, `kwallet`, `kpty`, `kdesu`, `kio`. The rest are just sort of... extra? And (so far) don't seem to be required by anything (at least nothing which I have successfully built. It could end up being that these emoticons are super important). 
+Taking a look at how we get around a `k18n` dependency in `falkon`, it seems simple enough; delete the `po` folder. Unforunately, this doesn't really do the trick. We'd have to mangle up at least a couple files in (each?) package we want to keep. I'm not sure whether `ki18n` is inextricable or not. But if it's possible, getting it out of any of the aforementioned apps is basically mandatory. 
+Otherwise, we install `gettext`. Which is fine by me. 
+
+3. plasma-framework
+
+the framework requires:
+
+`kauth` < `polkit-qt-1`
+
+`kconfigwidgets` < `ktextwidgets`
+
+`ki18n` < `kservice` & `kiconthemes` & `kio` & `kdeclarative` & `kpackage`
+
+`kdoctools`
+
+`kirigami`
+
+`kxmlgui`
+
+So This is basically our "bare-minimum". 
+
+4. Others
+
+`kdoctools` requires a perl module that is easy to package. `kdoctools` is probably required by many other things I haven't had the option of building yet, so we might need this. Easy fix. 
+
+`kdewebkit` requires `qt-webkit`. This wouldn't be so terrible if `qt-webkit` didn't require `ruby`. I'm not sure how important this Qt webkit implenentation is, but it certainly doesn't bring joy to me.
+
+---
 
 These are the requirements for the KDE framework as given by the ['from source' guide](https://community.kde.org/Guidelines_and_HOWTOs/Build_from_source/Details).  
 
@@ -54,23 +143,23 @@ These are the requirements for the KDE framework as given by the ['from source' 
 - [x] kglobalaccel
 - [x] karchive
 - [x] kimageformats
-- [x] kauth - requires (optionally) polkitqt-1
+- [x] kauth - requires (optionally) polkitqt-1 <- We're going to need this.
 - [x] kjobwidgets
-- [ ] kcompletion
+- [x] kcompletion
 - [ ] kdnssd
 - [ ] kconfigwidgets -> Will need to remove `ki18n`
 - [ ] kservice -> Will need to remove `ki18n`
 - [ ] kiconthemes
-- [ ] knotifications
+- [x] knotifications
 - [ ] kwallet
 - [ ] kpty -> Will need to remove `ki18n`
 - [ ] kemoticons
 - [ ] kdesu
 - [ ] ktextwidgets
 - [ ] kxmlgui
-- [ ] kbookmarks
+- [x] kbookmarks
 - [ ] kio
-- [ ] kdesignerplugin
+- [x] kdesignerplugin
 - [ ] knewstuff
 - [ ] kparts
 - [ ] kpackage -> Will need to remove `ki18n`
@@ -83,11 +172,11 @@ These are the requirements for the KDE framework as given by the ['from source' 
 - [ ] kmediaplayer
 - [ ] kdewebkit
 - [ ] ktexteditor
-- [ ] kapidox
+- [x] kapidox
 - [ ] frameworkintegration
 
 ## 4. Plasma and friends
-- [ ] kactivities
+- [x] kactivities
 - [ ] plasma-framework
 - [ ] kde-workspace
 
