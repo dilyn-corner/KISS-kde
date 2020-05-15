@@ -1,0 +1,4 @@
+cmake make
+extra-cmake-modules make
+kconfigwidgets
+qt5

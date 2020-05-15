@@ -1,0 +1,23 @@
+cmake make
+extra-cmake-modules make
+kactivities
+karchive
+kconfig
+kconfigwidgets
+kcoreaddons
+kdbusaddons
+kdeclarative
+kdoctools
+kglobalaccel
+kguiaddons
+ki18n
+kiconthemes
+kio
+kirigami
+knotifications
+kpackage
+kservice
+kwindowsystem
+kxmlgui
+qt5
+qt5-quickcontrols

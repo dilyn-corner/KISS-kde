@@ -1,3 +1,7 @@
 cmake make
+dbus
 extra-cmake-modules make
+kcoreaddons
+pcre2
+polkit-qt-1
 qt5

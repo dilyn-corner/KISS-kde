@@ -1,0 +1,11 @@
+cmake make
+dbus
+extra-cmake-modules make
+kconfig
+kcoreaddons
+kwindowsystem
+pcre2
+phonon
+qt5
+qt5-x11extras
+xcb-util-keysyms

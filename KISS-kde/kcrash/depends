@@ -1,0 +1,7 @@
+cmake make
+extra-cmake-modules make
+kcoreaddons
+kwindowsystem
+qt5
+qt5-x11extras
+xcb-util-keysyms

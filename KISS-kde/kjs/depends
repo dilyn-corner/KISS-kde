@@ -1,0 +1,4 @@
+cmake make
+extra-cmake-modules make
+pcre2
+qt5

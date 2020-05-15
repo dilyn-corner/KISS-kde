@@ -1,0 +1,9 @@
+boost
+cmake make
+dbus
+extra-cmake-modules make
+kconfig
+kcoreaddons
+pcre2
+qt5
+qt5-declarative
