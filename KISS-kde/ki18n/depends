@@ -1,0 +1,4 @@
+cmake make
+extra-cmake-modules make
+qt5
+qt5-declarative

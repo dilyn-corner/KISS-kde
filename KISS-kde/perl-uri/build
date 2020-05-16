@@ -1,0 +1,8 @@
+#!/bin/sh -e
+
+export CFLAGS=$(perl -Mconfig -E 'say $Config{ccflags}')
+PERL_MM_USE_DEFAULT=1 perl -I. Makefile.PL INSTALLDIRS=vendor
+make
+
+make DESTDIR="$1" install
+find "$1" \( -name perllocal.pod -o -name .packlist \) -exec rm -rf {} +

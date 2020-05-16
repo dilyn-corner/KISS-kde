@@ -16,7 +16,7 @@ mtdev
 perl  make
 sqlite
 xcb-util
-xcb-uitl-image
+xcb-util-image
 xcb-util-keysyms
 xcb-util-renderutil
 xcb-util-wm

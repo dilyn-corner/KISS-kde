@@ -1,1 +1,2 @@
 https://download.kde.org/stable/frameworks/5.70/ki18n-5.70.0.tar.xz
+patches/remove-gettext.patch

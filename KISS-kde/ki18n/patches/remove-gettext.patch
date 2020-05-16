@@ -1,0 +1,21 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -55,7 +55,6 @@
+ find_package(PythonInterp REQUIRED)
+ configure_file(cmake/KF5I18nMacros.cmake.in ${KI18n_BINARY_DIR}/cmake/KF5I18nMacros.cmake @ONLY)
+ # Needed to build the ki18n translations and run the autotests
+-file(COPY ${KI18n_SOURCE_DIR}/cmake/build-pofiles.cmake DESTINATION ${KI18n_BINARY_DIR}/cmake)
+ file(COPY ${KI18n_SOURCE_DIR}/cmake/build-tsfiles.cmake DESTINATION ${KI18n_BINARY_DIR}/cmake)
+ file(COPY ${KI18n_SOURCE_DIR}/cmake/ts-pmap-compile.py DESTINATION ${KI18n_BINARY_DIR}/cmake)
+ file(COPY ${KI18n_SOURCE_DIR}/cmake/kf5i18nuic.cmake DESTINATION ${KI18n_BINARY_DIR}/cmake)
+--- a/cmake/KF5I18nMacros.cmake.in
++++ b/cmake/KF5I18nMacros.cmake.in
+@@ -2,7 +2,7 @@
+ #
+ # SPDX-License-Identifier: BSD-3-Clause
+ 
+-find_package(Gettext REQUIRED)
++find_package(Gettext)
+ 
+ # The Python executable used for building ki18n will be used as a fallback
+ # solution if it cannot be found in $PATH when building applications.

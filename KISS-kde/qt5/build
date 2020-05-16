@@ -1,5 +1,9 @@
 #!/bin/sh -e
 
+for patch in *.patch; do 
+    patch -p1 < $patch
+done
+
 # Don't link against execinfo.h.
 sed -i 's/define QLOG/define N/g' \
     ./src/corelib/global/qlogging.cpp
@@ -17,7 +21,6 @@ sed -i 's/define QLOG/define N/g' \
     -nomake examples \
     -nomake tests \
     -optimized-qmake \
-    -no-openssl \
     -no-libudev \
     -no-separate-debug-info \
     -no-pch \
