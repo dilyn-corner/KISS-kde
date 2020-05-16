@@ -1,4 +1,15 @@
 cmake make
+dbus
 extra-cmake-modules make
+kauth
+kcodecs
+kcompletion
+kconfig
 kconfigwidgets
+kcoreaddons
+kguiaddons
+ki18n
+kwidgetsaddons
+pcre2
 qt5
+sonnet

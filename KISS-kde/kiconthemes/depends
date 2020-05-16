@@ -1,4 +1,16 @@
 cmake make
+dbus
 extra-cmake-modules make
+karchive
+kauth
+kcodecs
+kconfig
+kconfigwidgets
+kcoreaddons
+kguiaddons
 ki18n
+kitemviews
+kwidgetsaddons
+pcre2
 qt5
+qt5-svg

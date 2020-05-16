@@ -8,4 +8,4 @@ kdbusaddons
 kwindowsystem
 qt5
 qt5-x11extras
-xcb-util-keysysms
+xcb-util-keysyms

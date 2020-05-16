@@ -1,5 +1,5 @@
 cmake make
 extra-cmake-modules make
-libical
+kxmlgui
 pcre2
 qt5

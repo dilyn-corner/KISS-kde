@@ -9,6 +9,8 @@ There are many, __many__ packages for a Plasma Desktop (because I guess fragment
 
 The qt dependency includes packages which overlap with community, like `qt5`. Additionally, `qt5` requires packages from community at build time. If a package in community has been changed, it will be forked into this repository. As a result, you should place this repository in your `$KISS_PATH` __before__ community.
 
+Little did I know `kxmlgui` would require exactly one tiny library to build. This one tiny library requires an entire Qt rebuild; with OpenSSL support (because upstream "will not support LibreSSL). Luckily, the BSDs have our back. They've been maintaining patches for `qt5` to add `libressl` support for quite some time. So we're adding it in here. It might make its way up to Community as well, if the need arises. It's building as I write this, hopefully all goes well. 
+
 __DBUS__: The dreaded(?) question. `kdbusaddons` is required by `kglobalaccel`. This in turn is required solely by `kxmlgui`. This, unforunately, is required for `kbookmarks` (every other requirement is a KDE app), which is, for some reason, required by `kio`. `kio` is basically a fundamental program from my vantage point. It's *possible* that this dependency chain could be broken, but I only say that it's possible because I have not seen anything saying otherwise. It's probably a hard dependency we can't wriggle out of. I'll look into it for this project, but I make no promises. 
 
 As it stands, KDE requires `dbus`. I have no real problems with this. If you're going to use KDE and you take umbridge with this, perhaps you should reevaluate why you need KDE?
@@ -119,7 +121,7 @@ These are the requirements for the KDE framework as given by the ['from source' 
 
 ## 2. Qt-5 based dependencies
 - [x] phonon
-- [ ] attica
+- [x] attica
 - [ ] strigi
 - [ ] libdbusmenu-qt
 - [ ] polkit-qt-1
@@ -146,18 +148,18 @@ These are the requirements for the KDE framework as given by the ['from source' 
 - [x] kauth - requires (optionally) polkitqt-1 <- We're going to need this.
 - [x] kjobwidgets
 - [x] kcompletion
-- [ ] kdnssd
-- [ ] kconfigwidgets -> Will need to remove `ki18n`
-- [ ] kservice -> Will need to remove `ki18n`
-- [ ] kiconthemes
+- [x] kdnssd
+- [x] kconfigwidgets
+- [x] kservice -> does not build with (standalone) llvm?
+- [x] kiconthemes
 - [x] knotifications
-- [ ] kwallet
-- [ ] kpty -> Will need to remove `ki18n`
-- [ ] kemoticons
-- [ ] kdesu
-- [ ] ktextwidgets
+- [x] kwallet -> requires libgcrypt
+- [x] kpty
+- [x] kemoticons
+- [x] kdesu
+- [x] ktextwidgets
 - [ ] kxmlgui
-- [x] kbookmarks
+- [ ] kbookmarks
 - [ ] kio
 - [x] kdesignerplugin
 - [ ] knewstuff

@@ -1,4 +1,12 @@
 cmake make
+dbus
 extra-cmake-modules make
+karchive
+kconfig
+kcoreaddons
+kdbusaddons
+ki18n
 kservice
+pcre2
 qt5
+qt5-x11extras
