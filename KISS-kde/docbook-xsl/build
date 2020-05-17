@@ -1,0 +1,25 @@
+#!/bin/sh -e
+
+patch -p1 < nonrecursive-string-subst.patch
+
+_dest="$1/usr/share/xml/docbook/xsl-stylesheets-1.79.2"
+
+install -dm755 "$_dest"
+install -m644 VERSION VERSION.xsl "$_dest"/ || return 1
+
+for dir in assembly common eclipse epub epub3 fo highlighting html \
+	htmlhelp javahelp lib manpages params profiling roundtrip \
+	template website xhtml xhtml-1_1 xhtml5; do
+
+	install -dm755 $_dest/$dir
+	for f in $dir/*.xml $dir/*.xsl $dir/*.dtd $dir/*.ent; do
+		[ -e "$f" ] || continue
+		install -m644 $f $_dest/$dir || return 1
+	done
+done
+
+install -dm755 "$1/etc/xml" || return 1
+
+install -m644 -D COPYING \
+	"$1/usr/share/licenses/$docbook-xsl/COPYING"
+

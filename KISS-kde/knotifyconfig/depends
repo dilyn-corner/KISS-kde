@@ -1,4 +1,27 @@
+#canberra for event sounds; seems relevant
 cmake make
+dbus
 extra-cmake-modules make
+karchive
+kauth
+kcodecs
+kcompletion
+kconfig
+kconfigwidgets
+kcoreaddons
+kcrash
+kdbusaddons
+kguiaddons
 ki18n
+kiconthemes
+kio
+kitemviews
+kjobwidgets
+kservice
+kwidgetsaddons
+kwindowsystem
+phonon
 qt5
+qt5-svg
+qt5-x11extras
+xcb-util-keysyms

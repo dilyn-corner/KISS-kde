@@ -1,0 +1,9 @@
+#!/bin/sh -e
+
+qmake
+
+make
+make INSTALL_ROOT="$1" install
+
+find "$1/usr/lib" -type f -name '*.prl' \
+    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;

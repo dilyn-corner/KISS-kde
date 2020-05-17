@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+cd libraries/liblmdb
+make CFLAGS="$CFLAGS -fPIC"
+make install prefix=/usr DESTDIR="$1"

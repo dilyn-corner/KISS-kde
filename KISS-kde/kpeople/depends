@@ -1,0 +1,9 @@
+cmake make
+dbus
+extra-cmake-modules make
+kcoreaddons
+ki18n
+kitemviews
+kwidgetsaddons
+qt5
+qt5-declarative

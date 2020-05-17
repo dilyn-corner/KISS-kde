@@ -1,0 +1,7 @@
+cmake make
+dbus
+extra-cmake-modules make
+qt5
+qt5-declarative
+qt5-graphicaleffects
+qt5-quickcontrols2

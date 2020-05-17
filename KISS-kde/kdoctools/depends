@@ -1,4 +1,6 @@
 cmake make
+docbook-xml
+docbook-xsl
 extra-cmake-modules make
 karchive
 ki18n

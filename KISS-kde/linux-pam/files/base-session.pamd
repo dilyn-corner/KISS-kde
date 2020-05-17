@@ -1,0 +1,3 @@
+session		include		base-session-noninteractive
+session		required	pam_motd.so
+-session	optional	pam_elogind.so

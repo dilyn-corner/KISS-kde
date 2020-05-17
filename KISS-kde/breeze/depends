@@ -1,0 +1,36 @@
+attica
+cmake make
+dbus
+extra-cmake-modules make
+frameworkintegration
+karchive
+kauth
+kcmutils
+kcodecs
+kcompletion
+kconfig
+kconfigwidgets
+kcoreaddons
+kcrash
+kdbusaddons
+kdeclarative
+kdecoration
+kglobalaccel
+kguiaddons
+ki18n
+kiconthemes
+kio
+kitemviews
+kjobwidgets
+kpackage
+kservice
+kwayland
+kwidgetsaddons
+kwindowsystem
+kxmlgui
+qt5
+qt5-declarative
+qt5-svg
+qt5-x11extras
+wayland
+xcb-util-keysyms

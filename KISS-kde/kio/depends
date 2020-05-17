@@ -1,4 +1,34 @@
+attica
 cmake make
+dbus
+eudev
 extra-cmake-modules make
+karchive
+kauth
+kbookmarks
+kcodecs
+kcompletion
+kconfig
+kconfigwidgets
+kcoreaddons
+kcrash
+kdbusaddons
 ki18n
+kiconthemes
+kitemviews
+kjobwidgets
+knotifications
+kservice
+ktextwidgets
+kwallet
+kwidgetsaddons
+kwindowsystem
+kxmlgui
+phonon
 qt5
+qt5-declarative
+qt5-svg
+qt5-x11extras
+solid
+sonnet
+xcb-util-keysyms

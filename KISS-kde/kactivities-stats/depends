@@ -1,0 +1,6 @@
+cmake make
+dbus
+extra-cmake-modules make
+kactivities
+kconfig
+qt5

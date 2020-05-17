@@ -1,4 +1,13 @@
 cmake make
+dbus
 extra-cmake-modules make
+kconfig
+kcoreaddons
+kcrash
+kdbusaddons
+ki18n
 kservice
+kwindowsystem
 qt5
+qt5-x11extras
+xcb-util-keysyms

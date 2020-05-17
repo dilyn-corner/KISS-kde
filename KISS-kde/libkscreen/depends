@@ -1,0 +1,7 @@
+cmake make
+dbus
+extra-cmake-modules make
+kwayland
+qt5
+qt5-x11extras
+wayland

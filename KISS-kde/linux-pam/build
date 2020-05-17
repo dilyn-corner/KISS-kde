@@ -1,0 +1,41 @@
+#!/bin/sh -e
+
+for patch in *.patch; do
+    patch -p1 < $patch
+done
+
+sed -e 's/pam_rhosts//g' -i modules/Makefile.am
+export ac_cv_search_crypt=no
+
+# Because we altered Makefile.am, we need automake. 
+# Of course, ac.local was generated with automake 1.13.4.
+# So we install that version here for a successful build.
+
+(
+    cd automake-1.13.4
+    ./configure \
+        --prefix="$PWD/../garbo" 
+    
+    make
+    make install
+)
+
+export PATH="$PWD/../garbo/bin:$PATH"
+
+./configure \
+    --prefix=/usr \
+    --disable-nls \
+    --disable-db
+
+make
+make DESTDIR="$1" install
+
+install -Dm644 base-auth.pamd                   "$1/etc/pam.d/base-auth"
+install -Dm644 base-account.pamd                "$1/etc/pam.d/base-account"
+install -Dm644 base-password.pamd               "$1/etc/pam.d/base-password"
+install -Dm644 base-session.pamd                "$1/etc/pam.d/base-session"
+install -Dm644 base-session-noninteractive.pamd "$1/etc/pam.d/base-session-noninteractive"
+install -Dm644 other.pamd                       "$1/etc/pam.d/other"
+install -Dm644 system-local-login.pamd          "$1/etc/pam.d/system-local-login"
+install -Dm644 system-login.pamd                "$1/etc/pam.d/system-login"
+install -Dm644 su.pamd                          "$1/etc/pam.d/su"

@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+OPTIMIZER="$CFLAGS" \
+DEBUG=-DNDEBUG \
+INSTALL_USER=root \
+INSTALL_GROUP=root \
+./configure \
+    --prefix=/usr \
+    --disable-nls \
+    --disable-static
+
+make
+make DESTDIR="$1" install
