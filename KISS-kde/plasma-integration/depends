@@ -1,42 +1,18 @@
-attica
+breeze make
 cmake make
-dbus
 extra-cmake-modules make
-eudev
-frameworkintegration
-karchive
-kauth
-kbookmarks
-kcmutils
-kcodecs
-kcompletion
-kconfig
-kconfigwidgets
-kcoreaddons
-kcrash
-kdbusaddons
-kdeclarative
-kdecoration
-kglobalaccel
-kguiaddons
-ki18n
-kiconthemes
-kio
-kitemviews
-kjobwidgets
-knotifications
-kpackage
-kservice
-kwayland
-kwidgetsaddons
-kwindowsystem
-kxmlgui
-phonon
-qt5
-qt5-declarative
-qt5-quickcontrols2
-qt5-svg
-qt5-x11extras
-solid
-wayland
-xcb-util-keysyms
+hack
+kconfig make
+kconfigwidgets make
+ki18n make
+kiconthemes make
+kio make
+knotifications make
+kwayland make
+kwidgetsaddons make
+kwindowsystem make
+libXcursor make
+qt5 make
+qt5-quickcontrols2 make
+qt5-x11extras make
+ttf-noto

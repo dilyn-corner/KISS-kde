@@ -1,8 +1,6 @@
 cmake make
-dbus
 extra-cmake-modules make 
 kcoreaddons
 kwidgetsaddons
-pcre2
-qt5
+qt5-tools make
 qt5-x11extras

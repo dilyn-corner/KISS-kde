@@ -1,7 +1,6 @@
 cmake make
-dbus
 extra-cmake-modules make
 kcoreaddons
-pcre2
-#polkit-qt-1 it won't function until we build this but hey, it's a start
+polkit-qt-1
 qt5
+qt5-tools make

@@ -1,11 +1,10 @@
 cmake make
-dbus
 extra-cmake-modules make
 kconfig
 kcoreaddons
 kwindowsystem
-pcre2
+libcanberra
 phonon
 qt5
+qt5-tools make
 qt5-x11extras
-xcb-util-keysyms

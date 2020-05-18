@@ -1,7 +1,16 @@
-cmake make 
-dbus
+cmake make
 extra-cmake-modules make
+kcompletion
 kconfig
+kconfigwidgets
 kcoreaddons
-pcre2
-qt5
+kdoctools make
+kiconthemes
+kio
+kitemviews
+kplotting
+ktextwidgets
+kwidgetsaddons
+kxmlgui
+qt5-tools make
+sonnet

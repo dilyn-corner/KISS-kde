@@ -5,8 +5,8 @@ kauth
 kcodecs
 kconfig
 kcoreaddons
+kdoctools make
 kguiaddons
 ki18n
 kwidgetsaddons
-pcre2
-qt5
+qt5-tools make

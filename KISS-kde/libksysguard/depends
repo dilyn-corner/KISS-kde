@@ -1,36 +1,16 @@
-attica
 cmake make
-dbus
 extra-cmake-modules make
-karchive
 kauth
-kcodecs
 kcompletion
 kconfig
 kconfigwidgets
 kcoreaddons
-kcrash
-kdbusaddons
-kdeclarative
 kglobalaccel
-kguiaddons
 ki18n
 kiconthemes
 kio
-kitemviews
-kjobwidgets
-knotifications
-kpackage
 kservice
 kwidgetsaddons
 kwindowsystem
-kxmlgui
-phonon
 plasma-framework
-qt5
-qt5-declarative
-qt5-svg
 qt5-webchannel
-qt5-webengine
-qt5-x11extras
-xcb-util-keysyms

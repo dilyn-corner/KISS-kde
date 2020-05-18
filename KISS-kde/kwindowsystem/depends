@@ -1,5 +1,7 @@
 cmake make
 extra-cmake-modules make
-qt5
+libXrender make
+qt5-tools make
 qt5-x11extras
-xcb-util-keysyms
+xcb-util-keysyms make
+xcb-util-wm make

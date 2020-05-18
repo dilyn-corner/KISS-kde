@@ -1,11 +1,10 @@
 cmake make
-dbus
 extra-cmake-modules make
 kconfig
 kcoreaddons
 kcrash
 kdbusaddons
 kwindowsystem
-qt5
 qt5-x11extras
-xcb-util-keysyms
+qt5-tools make
+xcb-util-keysyms make

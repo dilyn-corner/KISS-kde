@@ -1,7 +1,11 @@
 attr
 cmake make
 extra-cmake-modules make
+ffmpeg
 karchive
+kconfig
 kcoreaddons
 ki18n
 qt5
+qt5-tools make
+taglib

@@ -1,21 +1,14 @@
 cmake make
-dbus
 extra-cmake-modules make
-kauth
-kcodecs
 kconfig
 kconfigwidgets
 kcoreaddons
 kdbusaddons
-kguiaddons
+kdoctools make
 ki18n
+kiconthemes
 knotifications
 kservice
-kwidgetsaddons
 kwindowsystem
 libgcrypt
-libgpg-error
-phonon
-qt5
-qt5-x11extras
-xcb-util-keysyms
+qt5-tools make

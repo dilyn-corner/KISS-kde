@@ -1,4 +1,6 @@
 cmake make
 extra-cmake-modules make
+kdoctools make
 pcre2
+perl
 qt5

@@ -6,7 +6,6 @@ karchive
 ki18n
 libXslt
 libxml2
-perl make
 perl-uri make
 qt5
 qt5-tools make

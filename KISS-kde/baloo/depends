@@ -1,7 +1,7 @@
-cmake make
-dbus
+cmake make 
 extra-cmake-modules make
-kauth
+kbookmarks
+kcompletion
 kconfig
 kcoreaddons
 kcrash
@@ -10,11 +10,9 @@ kfilemetadata
 ki18n
 kidletime
 kio
+kjobwidgets
 kservice
-kwindowsystem
 lmdb
-qt5
+qt5 make
 qt5-declarative
-qt5-x11extras
 solid
-xcb-util-keysyms

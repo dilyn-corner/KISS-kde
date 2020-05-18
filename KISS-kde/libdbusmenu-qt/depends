@@ -1,6 +1,4 @@
 cmake make
+dbus
 extra-cmake-modules make
 qt5 
-
-# The REAL fun: 
-dbus # will require a fork of qt5 that enables dbus support!

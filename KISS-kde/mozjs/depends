@@ -1,0 +1,5 @@
+icu
+libffi
+python2 make
+readline
+zlib

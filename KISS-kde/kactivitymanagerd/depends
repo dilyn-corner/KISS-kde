@@ -1,0 +1,12 @@
+boost make
+cmake make
+extra-cmake-modules make
+kconfig make
+kcoreaddons make
+kdbusaddons make
+kglobalaccel make
+ki18n make
+kio make
+kxmlgui make
+kwindowsystem make
+qt5

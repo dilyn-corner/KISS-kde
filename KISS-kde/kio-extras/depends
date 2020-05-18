@@ -1,0 +1,24 @@
+cmake make
+dbus
+extra-cmake-modules make
+gperf make
+kactivities make
+karchive make
+kbookmarks make
+kconfig make
+kconfigwidgets make
+kcoreaddons make
+kdbusaddons make
+kdsoap make
+kdoctools make
+kdnssd make
+kguiaddons make
+kiconthemes make
+ki18n make
+kio make
+kpty make
+phonon make
+qt5 make
+qt5-svg make
+solid make
+syntax-highlighting make

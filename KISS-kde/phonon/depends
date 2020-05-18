@@ -1,5 +1,6 @@
 cmake make
 extra-cmake-modules make
-pcre2
-qt5
-qt5-tools
+glib
+qt5 make
+qt5-declarative
+qt5-tools make

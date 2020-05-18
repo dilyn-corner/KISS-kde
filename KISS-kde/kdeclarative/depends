@@ -1,28 +1,14 @@
 cmake make
-dbus
 extra-cmake-modules make
-karchive
-kauth
-kcodecs
-kcompletion
 kconfig
-kconfigwidgets
-kcoreaddons
-kcrash
-kdbusaddons
 kglobalaccel
 kguiaddons
 ki18n
 kiconthemes
 kio
-kitemviews
-kjobwidgets
 kpackage
-kservice
 kwidgetsaddons
 kwindowsystem
-qt5
+libepoxy
 qt5-declarative
-qt5-svg
-qt5-x11extras
-xcb-util-keysyms
+qt5-tools make

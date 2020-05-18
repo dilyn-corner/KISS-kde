@@ -1,35 +1,26 @@
-attica
 cmake make
-dbus
 extra-cmake-modules make
 kactivities
 karchive
-kauth
-kcodecs
-kcompletion
 kconfig
 kconfigwidgets
 kcoreaddons
-kcrash
 kdbusaddons
 kdeclarative
+kdoctools make
 kglobalaccel
 kguiaddons
 ki18n
 kiconthemes
 kio
 kirigami2
-kitemviews
-kjobwidgets
 knotifications
 kpackage
 kservice
-kwidgetsaddons
+kwayland
 kwindowsystem
 kxmlgui
-phonon
 qt5
 qt5-declarative
 qt5-quickcontrols2
-qt5-svg
-xcb-util-keysyms
+qt5-tools make
