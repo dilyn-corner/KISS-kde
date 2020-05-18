@@ -1,17 +1,11 @@
 #!/bin/sh -e
 
+export MAKEFLAGS="-j2 -l2"
+export NINJAFLAGS="-j2 -l2"
+
 for patch in *.patch; do
     patch -p1 < "$patch"
 done
-
-# Remove udev dependency.
-{
-sed -i '/use_udev/s/=.*/=false/' \
-    src/3rdparty/chromium/build/config/features.gni
-
-sed -i 's/\(use_udev=\)true/\1false/' \
-    src/buildtools/config/linux.pri
-}
 
 # Fix nasm hardcoded glibcism
 sed -i '/CANONICALIZE_FILE_NAME/d' \
