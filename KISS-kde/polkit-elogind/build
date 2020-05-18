@@ -1,19 +1,33 @@
 #!/bin/sh -e
 
+for patch in *.patch; do
+    patch -p1 < $patch
+done
+
+# Who needs intltool anyways?
+sed -i '/INTLTOOL_APPLIED_VERSION=/s:=.*:=0.40.0:' configure
+sed -i -e '/XML::Parser perl module is required for intltool/s|^|:|' configure
+
+export INTLTOOL_EXTRACT=/usr/bin/true
+export INTLTOOL_MERGE=/usr/bin/true
+export INTLTOOL_UPDATE=/usr/bin/true
+export MSGFMT=/usr/bin/true
+export MSGMERGE=/usr/bin/true
+export XGETTEXT=/usr/bin/true
+
 ./configure \
-    --prefix =/usr \
+    --prefix=/usr \
+    --sysconfdir=/etc \
     --with-authfw=pam \
+    --with-os-type=KISS \
+    --disable-static \
     --disable-gtk-doc-html \
-    --disable-libelogind \
     --disable-systemd \
-    --enable-libsystemd-login
+    --disable-man-pages \
+    --disable-nls \
+    --enable-libsystemd-login=no
 
 make
 make DESTDIR="$1" install
-
-chown -R polkitd:polkitd "$1/etc/polkit-1/rules.d" "$1/usr/share/polkit-1/rules.d"
-chmod -R 700 "1/etc/polkit-1/rules.d" "$1/usr/share/polkit-1/rules.d"
-chmod 4755 "$1/usr/lib/polkit-1/polkit-agent-helper-1"
-chmod 4755 "$1/usr/bin/pkexec"
 
 install -Dm755 polkit.initd "$1/etc/init.d/polkit"

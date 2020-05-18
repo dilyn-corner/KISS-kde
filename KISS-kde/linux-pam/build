@@ -24,6 +24,8 @@ export PATH="$PWD/garbo/bin:$PATH"
 
 ./configure \
     --prefix=/usr \
+    --libdir=/usr/lib \
+    --sbindir=/usr/bin \
     --disable-nls \
     --disable-db
 

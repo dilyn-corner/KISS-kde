@@ -2,6 +2,6 @@ coreutils make
 dbus
 eudev
 gperf make
-libcap make
+libcap
 linux-pam
 meson make

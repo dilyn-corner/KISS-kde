@@ -1,2 +1,4 @@
 https://freedesktop.org/software/polkit/releases/polkit-0.116.tar.gz
 files/polkit.initd
+patches/make-innetgr-optional.patch
+patches/remove-intltool.patch
