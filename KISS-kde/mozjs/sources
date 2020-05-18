@@ -1,0 +1,6 @@
+https://ftp.mozilla.org/pub/firefox/releases/60.9.0esr/source/firefox-60.9.0esr.source.tar.xz
+https://ftp.gnu.org/gnu/autoconf/autoconf-2.13.tar.gz autoconf2.13
+patches/silence-sandbox-violations.patch
+patches/big-endian.patch
+patches/fix-musl-build.patch
+patches/fix-soname-lib.patch

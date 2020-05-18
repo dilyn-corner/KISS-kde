@@ -1,0 +1,22 @@
+#!/bin/sh -e
+
+meson \
+    --buildtype=plain \
+    -Dprefix=/usr \
+    -Dcgroup-controller=elogind \
+    -Drootlibexecdir=/usr/libexec/elogind \
+    -Dreboot-path=/usr/bin/reboot \
+    -Ddefault-kill-user-processes=false \
+    -Dpolkit=true \
+    build
+
+ninja -C build
+DESTDIR="$1" ninja -C build install
+
+ln -s libelogind.pc            "$1/usr/lib/pkgconfig/libsystemd.pc"
+ln -s libelogind.pc            "$1/usr/lib/pkgconfig/libsystemd-logind.pc"
+ln -s "$1/usr/include/elogind" "$1/usr/include/systemd"
+
+install -Dm644 src/systemd/sd-id128.h   "$1/usr/include/sd-id128.h"
+install -Dm644 src/systemd/_sd-common.h "$1usr/include/_sd-common.h"
+install -Dm755 elogind.initd            "$1/etc/init.d/elogind"

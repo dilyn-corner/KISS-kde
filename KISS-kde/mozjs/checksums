@@ -1,0 +1,6 @@
+9f453c8cc5669e46e38f977764d49a36295bf0d023619d9aac782e6bb3e8c53f  firefox-60.9.0esr.source.tar.xz
+f0611136bee505811e9ca11ca7ac188ef5323a8e2ef19cffd3edb3cf08fd791e  autoconf-2.13.tar.gz
+6b10dca37bbf33f6265accef65573d6970697955b8411afa7a9935338f2d3c08  silence-sandbox-violations.patch
+ef5022ebeeae2c10bb009634cf0075b87fd2e883480d0d55adb545704c26491f  big-endian.patch
+2346aae69b41752dc672a54550d8d7c7b7dda2eec84449c004f2a892358b46ad  fix-musl-build.patch
+3b034f722b49e116e049f8717bddfaf2686ea5eee5f2643f87344ae4f96b2e1c  fix-soname-lib.patch
