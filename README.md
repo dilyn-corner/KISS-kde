@@ -4,6 +4,8 @@ I have no interest in using KDE; I just want to see if it can be done on KISS. I
 
 This is currently a work in progress. Feel free to help out!
 
+#It looks like every package for a minimal plasma desktop is here. I am currently building it and will know soon whether or not it works. 
+
 ---
 
 ## Where we stand
