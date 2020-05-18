@@ -1,5 +1,7 @@
 #!/bin/sh -e
 
+export MAKEFLAGS="-j2 -l2"
+
 for patch in *.patch; do 
     patch -p1 < $patch
 done
