@@ -105,7 +105,8 @@ Wait ten hours.
 `kiss i plasma-desktop`
 
 5. Enjoy!
+`pkill x`
 
-`echo "exec startplasma-x11" >> ~/.xinitrc"` # Ensure you don't have anything else execing before this
+`echo "exec dbus-launch --exit-with-session statplasma-x11" >> ~/.xinitrc"` # Ensure you don't have anything else execing before this
 
-...Reboot?
+`startx`
