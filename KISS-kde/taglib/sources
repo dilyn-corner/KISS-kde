@@ -1,0 +1,3 @@
+https://taglib.github.io/releases/taglib-1.11.1.tar.gz
+patches/CVE-2017-12678.patch
+patches/CVE-2018-11439.patch

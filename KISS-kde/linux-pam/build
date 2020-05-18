@@ -20,7 +20,7 @@ export ac_cv_search_crypt=no
     make install
 )
 
-export PATH="$PWD/../garbo/bin:$PATH"
+export PATH="$PWD/garbo/bin:$PATH"
 
 ./configure \
     --prefix=/usr \

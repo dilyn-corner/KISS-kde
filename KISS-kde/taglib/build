@@ -2,15 +2,16 @@
 
 export DESTDIR="$1"
 
-patch -p1 < remove-with-5.19.patch
-
-rm -rf po 
+for patch in *.patch; do
+    patch -p1 < $patch
+done
 
 cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_TESTING=NO
+    -DWITH_ASF=ON \
+    -DWITH_MP4=ON \
+    -DBUILD_SHARED_LIBS=ON
 
 cmake --build build
 cmake --install build

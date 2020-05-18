@@ -1,5 +1,25 @@
 #!/bin/sh -e
 
+for patch in *.patch; do
+    patch -p1 < $patch
+done
+
 cd libraries/liblmdb
+
 make CFLAGS="$CFLAGS -fPIC"
 make install prefix=/usr DESTDIR="$1"
+
+mkdir -p "$1/usr/lib/pkgconfig"
+cat > "$1/usr/lib/pkgconfig/lmdb.pc" << EOF
+prefix=/usr
+exec_prefix=/usr
+libdir=/usr/lib
+includedir=/usr/include
+
+Name liblmdb
+Description: Lightning Memory-mapped key-value database
+URL: http://symas.com/mdb/
+Version: 0.9.24
+Libs: -L/usr/lib -llmdb
+Cflags: -I/usr/include
+EOF

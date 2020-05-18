@@ -1,8 +1,7 @@
-cmake make
-extra-cmake-modules make
 kcompletion
 kconfig
 ki18n
 kio
-libcanberra
+cmake make
+extra-cmake-modules make
 qt5-tools make

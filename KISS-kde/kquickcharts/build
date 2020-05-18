@@ -8,8 +8,6 @@ cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_DISABLE_FIND_PACKAGE_FontNotoSans=true \
-    -DCMAKE_DISABLE_FIND_PACKAGE_FontHack=true \
     -DBUILD_TESTING=NO
 
 cmake --build build

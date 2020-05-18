@@ -1,31 +1,30 @@
 cmake make
 extra-cmake-modules make
-kactivitymanagerd
-kcmutils
-kcrash
-kdeclarative
-kded
-kdelibs4support
-kdesu
-kdoctools make
-kglobalaccel
-kholidays
-ki18n
-kidletime
-kinit
-kio-extras
-kirigami2
-kjsembed
-knewstuff
-knotifyconfig
-kquickcharts
-krunner
-ktextwidgets
-kwallet
-kwin
-libXtst make
-milou
-plasma-framework
-plasma-integration
 qt5-quickcontrols2
+kirigami2
+kinit
 qt5-tools
+kwin
+#kactivitymanagerd
+milou
+plasma-integration
+kded
+kquickcharts
+kio-extras
+plasma-framework
+krunner
+kjsembed
+knotifyconfig
+kdesu
+knewstuff
+kwallet
+kidletime
+kdeclarative
+ki18n
+lcmutils
+ktextwidgets
+kdelibs4support
+kcrash
+kglobalaccel
+kdoctools make
+libXtst make
