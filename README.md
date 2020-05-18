@@ -1,17 +1,32 @@
 # KISS-kde
 
-This is currently a work in progress. Feel free to help out!
-
 I have no interest in using KDE; I just want to see if it can be done on KISS. I plan on maintaining this __indefinitely__, but low use might lead to my missing multiple bugs. Please feel free to submit a pull request or make an issue to fix anything you find, or to include something I have excluded.
 
+This is currently a work in progress. Feel free to help out!
 
-There are many, __many__ packages for a Plasma Desktop (because I guess fragmentation is cool?). Ostensibly, anybody who wants a KDE environment wants a KDE environment, so I don't plan on nixing features or removing any packages. That being said, I don't intend to accomodate *every* KDE application. To my mind, there are few reasons to use them. As a result, I will drop a few framework items which aren't required by other framework items and are solely there to make KDE applications work. They can always be readded assuming I ever decide to package KDE applications. I've also opted to drop internationalization support. We can add this again later, if we want - I assume nothing about KISS' userbase, but the lack of support for nonenglish languages by the BDFL makes me inclined to follow suit.
+---
+
+## Where we stand
+
+As of right [now](https://github.com/dilyn-corner/KISS-kde/commit/8847aa1f15dbbe72eb7465730323b2c91d8bb768), we have successfully built the entire framework and the required plasma bits, bobs, and dodads to have what one might call and recognize as a KDE desktop. 
+
+Currently, no KDE applications have been packaged. This is always a possibility to be added. I plan on adding a few, like `falkon` (becuase it is known working). Maybe `calligra`, so KISS can have a (sane?) `libre office`. `krita` also looks nice. 
+
+There is no internationalization support built-in. If you would like to have it, it's quite easy to add. This will be explained in the 'geting started' section. 
 
 The qt dependency includes packages which overlap with community, like `qt5`. Additionally, `qt5` requires packages from community at build time. If a package in community has been changed, it will be forked into this repository. As a result, you should place this repository in your `$KISS_PATH` __before__ community.
 
 Little did I know `kxmlgui` would require exactly one tiny library to build. This one tiny library requires an entire Qt rebuild; with OpenSSL support (because upstream "will not support LibreSSL). Luckily, the BSDs have our back. They've been maintaining patches for `qt5` to add `libressl` support for quite some time. So we're adding it in here. It might make its way up to Community as well, if the need arises. It's building as I write this, hopefully all goes well. (narrator: it did). 
 
-__DBUS__: The dreaded(?) question.
+__gettext__: I have opted not to include internationalization. This was done in two parts:
+
+1) Hobble `ki18n` by removing the gettext dependency
+
+2) Delete all translation files from packages which 'require' them. 
+
+If you would like to have languages besides english available, it should be quite easy. First, package `gettext`. Second, remove the patch in the `ki18n` package. Finally, simple remove `rm -rf po` from each build script in which it appears. This is probably trivial (cough sed cough). 
+
+__dbus__: The dreaded(?) question.
 
 `kdbusaddons` < `kglobalaccel` < `kxmlgui` < `kbookmarks` < `kio`
 
@@ -23,132 +38,74 @@ It's probably a hard dependency we can't wriggle out of. I'll look into it for t
 
 As it stands, KDE requires `dbus`. I have no real problems with this. If you're going to use KDE and you take umbridge with this, perhaps you should reevaluate why you need KDE?
 
-**Again, this is _not_ ready for use. By any stretch of the imagination.**
-
-When it's finally ready and been tested (that means I launched it once and it didn't immediately crash), a metapackage will be made that merely installs all the required packages. 
-
-
 #### Prerequisites
 
-1. This all assumes a *working* `xorg-server`. Many xorg-related dependencies are left out. The minimum should be enough. "But Dilyn", you may exclaim. "If this requires Xorg, why oh why must we install that darned `wayland`?" Because, my sweet summer child:
+1. This all assumes a *working* `xorg-server`. Many xorg-related dependencies are left out. The minimum should be enough. Yes, I know `wayland` is a dependency. It is also an option to use `wayland`, if you so choose. `xorg` is merely the 'default'.
 
-KDE devs are dicks.
+2. cgroups may be required for `elogind`. I leave it up to you to test your own kernel configs.
 
-Basically they build all their stuff off Xorg for years and years. And then they saw `wayland` and thought: oh, yes. New. Please.
+3. You will require exactly one program from `coreutils` to build a single package. 
 
-So now we have a half-implemented wayland support and the entire business *still* heavily relies on X libraries to function. You're welcome.
+4. You will need `dbus`. Because of this, you'll have to rebuild `qt5*`.
 
-2. You will need `dbus`. Because of this, you'll have to rebuild `qt5*`.
-
-3. You will need `eudev`. Because of this, you'll need to rebuild `xorg-server`, any input packages (`libinput`, `xf86-input-libinput`, etc), `dhcpcd`, perhaps others.
+5. You will need `eudev`. Because of this, you'll need to rebuild `xorg-server`, any input packages (`libinput`, `xf86-input-libinput`, etc), `dhcpcd`, perhaps others.
 
 These rebuilds are obviously not required if you already had the relevant programs built against `dbus`, `eudev`, etc.
 
 ---
 
-# Roadmap
+### Getting Started
 
-This section will eventually go away. 
+Now that we have all of that nonsense out of the way, let's get to it!
 
-## 1. Dependencies for (?)everything.
-- [x] cmake
-- [x] extra-cmake-modules
-- [x] qt5\*
+I will assume you have just installed KISS and have a working Xorg. Maybe you played around with `sowm` or `xfce`. Either way, ensure you don't have any `qt5*` packages installed.
 
-## 2. Qt-5 based dependencies
-- [x] phonon
-- [x] attica
-- [x] kirigami2
-- [ ] strigi
-- [ ] libdbusmenu-qt
-- [ ] polkit-qt-1
+To get a 'minimal' KDE, simply install `plasma-desktop`. How convenient. Unless your system is perfect, you will have to follow the following. It doesn't matter where you keep any of these repos. Assume I kept them in `$HOME`. 
 
-## 3. Framework
-- [x] kitemmodels 
-- [x] kitemviews
-- [x] kplotting
-- [x] threadweaver
-- [x] kcodecs
-- [x] kguiaddons
-- [x] kidletime
-- [x] kwidgetsaddons
-- [x] sonnet
-- [x] kconfig
-- [x] kwindowsystem
-- [x] solid
-- [x] kcoreaddons
-- [x] kcrash
-- [x] kdbusaddons
-- [x] kglobalaccel
-- [x] karchive
-- [x] kimageformats
-- [x] kauth - requires (optionally) polkitqt-1 <- We're going to need this. Probably.
-- [x] kjobwidgets
-- [x] kcompletion
-- [x] ki18n -> hobbled to remove `gettext`
-- [x] kdoctools
-- [x] kdnssd
-- [x] kconfigwidgets
-- [x] kservice -> does not build with (standalone) llvm?
-- [x] kiconthemes
-- [x] knotifications
-- [x] kwallet
-- [x] kpty
-- [x] kemoticons
-- [x] kdesu
-- [x] ktextwidgets
-- [x] kxmlgui
-- [x] kbookmarks
-- [x] kio
-- [x] kdesignerplugin
-- [x] knewstuff
-- [x] kparts
-- [x] kpackage
-- [x] kdeclarative
-- [x] kcmutils
-- [x] kinit
-- [x] kded
-- [x] knotifyconfig
-- [x] kunitconversion
-- [x] kross
-- [x] kmediaplayer
-- [ ] kdewebkit -> requires qt5-webkit && ruby
-- [x] ktexteditor
-- [x] kapidox
-- [x] frameworkintegration
-- [x] kdelibs4support
+1. Clone the relevant repos, build a sane `$KISS_PATH`.
+`git clone https://github.com/kisslinux/community` 
 
-## 4. Plasma and friends
-- [x] kactivities
-- [x] plasma-framework
-- [x] krunner
-- [x] kpeople
-- [x] kactivities-stats
-- [x] libksysguard
-- [x] ksysguard
-- [x] kfilemetadata
-- [x] baloo
-- [x] kdecoration
-- [x] kwayland -> Requires wayland{-protocols} (make), qt5-wayland
+`git clone https://github.com/periish/kiss-dbus`
 
-    For those keeping score, we now require three other KISS repositories.
+`git clone https://github.com/sdsddsd1/mywayland`
 
-- [x] breeze{-icons}
-- [x] kscreenlocker
-- [x] kwin
-- [ ] qqc2-desktop-style
-- [x] plasma-integration
-- [x] libkscreen
-- [x] plasma-workspace
-- [x] khotkeys
-- [ ] kinfocenter
-- [x] kmenuedit
-- [x] oxygen
-- [x] systemsettings
-- [x] plasma-desktop
+`git clone https://github.com/dilyn-corner/KISS-kde`
 
+`. /etc/profile.d/kiss_path.sh`
 
+`export KISS_PATH="$HOME/KISS-kde/KISS-kde:$HOME/kiss-dbus/kiss-dbus:$HOME/mywaland/wayland:$KISS_PATH:$HOME/community/community"`
 
-Please don't look at the dependencies files for these packages. Most of them are inaccurate.
+2. Install relevant prerequisites.
 
-The `alpine-version` branch has a more accurate representation of what the actual dependencies are. 
+`kiss b dbus eudev`
+
+`kiss i dbus eudev`
+
+`kiss b xorg-server libinput xf86-input-libinput` # Add others as necessary
+
+Thanks to the alternatives system, we can just pluck out the one binary we need from `coreutils`.
+
+`kiss b coreutils`
+
+`kiss i coreutils`
+
+`kiss a coreutils /usr/bin/realpath`
+
+3. `elogind` requires `getent`. core's `musl` does not (yet) include this, so we build our own. 
+
+`kiss b musl`
+
+`kiss i musl`
+
+4. That should be basically everything.
+`kiss b plasma-desktop`
+
+Wait ten hours.
+
+`kiss i plasma-desktop`
+
+5. Enjoy!
+
+`echo "exec startplasma-x11" >> ~/.xinitrc"` # Ensure you don't have anything else execing before this
+
+...Reboot?
