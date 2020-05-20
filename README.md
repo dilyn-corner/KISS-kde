@@ -22,7 +22,7 @@ success, kids.
 
 The qt dependency includes packages which overlap with community, like `qt5`.
 Additionally, `qt5` requires packages from community at build time. If a package
-in community has been changed, it willb e forked into this repository. As a
+in community has been changed, it will be forked into this repository. As a
 result, you should place this repository in your `$KISS_PATH` __before__
 community.
 
