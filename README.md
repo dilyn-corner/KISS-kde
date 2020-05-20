@@ -1,24 +1,15 @@
 # KISS-kde
 
-I have no interest in using KDE; I just want to see if it can be done on KISS. I plan on maintaining this __indefinitely__, but low use might lead to my missing multiple bugs. Please feel free to submit a pull request or make an issue to fix anything you find, or to include something I have excluded.
-
 This is currently a work in progress. Feel free to help out!
 
-It looks like every package for a minimal plasma desktop is here. I am currently building it and will know soon whether or not it works. Please note that I do not condone using this yet, but you are more than welcome to try!
+Every package required to build `plasma-desktop` builds and
+install just fine! But does it work, that's the question...
 
 ---
 
 ## Where we stand
 
-As of right [now](https://github.com/dilyn-corner/KISS-kde/commit/8847aa1f15dbbe72eb7465730323b2c91d8bb768), we have successfully built the entire framework and the required plasma bits, bobs, and dodads to have what one might call and recognize as a KDE desktop. 
-
-Currently, no KDE applications have been packaged. This is always a possibility to be added. I plan on adding a few, like `falkon` (becuase it is known working). Maybe `calligra`, so KISS can have a (sane?) `libre office`. `krita` also looks nice. 
-
-There is no internationalization support built-in. If you would like to have it, it's quite easy to add. This will be explained in the 'geting started' section. 
-
 The qt dependency includes packages which overlap with community, like `qt5`. Additionally, `qt5` requires packages from community at build time. If a package in community has been changed, it will be forked into this repository. As a result, you should place this repository in your `$KISS_PATH` __before__ community.
-
-Little did I know `kxmlgui` would require exactly one tiny library to build. This one tiny library requires an entire Qt rebuild; with OpenSSL support (because upstream "will not support LibreSSL). Luckily, the BSDs have our back. They've been maintaining patches for `qt5` to add `libressl` support for quite some time. So we're adding it in here. It might make its way up to Community as well, if the need arises. It's building as I write this, hopefully all goes well. (narrator: it did). 
 
 __gettext__: I have opted not to include internationalization. This was done in two parts:
 
@@ -30,29 +21,57 @@ If you would like to have languages besides english available, it should be quit
 
 __dbus__: The dreaded(?) question.
 
-`kdbusaddons` < `kglobalaccel` < `kxmlgui` < `kbookmarks` < `kio`
+Based on my current knowledge of KDE, `dbus` is required by
+a litany of programs. Many which don't explicitly require
+`dbus` will nontheless build against it if it is available.
+The hard part, however, is not the framework. Instead, it is
+for launching KDE itself. 
 
-`kio` is basically a fundamental program from my vantage point. 
+If you attempt to `startx startplasma-x11`, you will
+probably be met with an error message about `dbus`. You see,
+KDE requires something like `polkit`, `elogind`, etc. to
+start. Indeed even with `wayland` this is the case.
 
-Also note that many other programs will link against dbus if it is present. Presumably, more than just kio relies on dbus. We can check the CMakeFiles.txt for each package to see which ones ask for it (that is to say, we can `grep` the logs kiss generates to see which ones mention dbus. I'm not a lunatic; there's no way I'm reading hundreds of lines from over a hundred packages).
+Which would seem to make `dbus` a hard dependency for KDE.
 
-It's probably a hard dependency we can't wriggle out of. I'll look into it for this project, but I make no promises. 
-
-As it stands, KDE requires `dbus`. I have no real problems with this. If you're going to use KDE and you take umbridge with this, perhaps you should reevaluate why you need KDE?
+Unless we can find a way around this (and I am certainly not
+the one to do it!), `dbus` is required. I have no real
+problems with this. If you take umbridge with this hard
+fact, perhaps reflect on why you want KDE in the first
+place?
 
 #### Prerequisites
 
-1. This all assumes a *working* `xorg-server`. Many xorg-related dependencies are left out. The minimum should be enough. Yes, I know `wayland` is a dependency. It is also an option to use `wayland`, if you so choose. `xorg` is merely the 'default'.
+1. This all assumes a *working* `xorg-server`. Many
+   xorg-related dependencies are left out as explicit deps.
+   The minimum xorg requires should be enough - all others
+   should be handled by `kiss`. Yes, I know `wayland` is a
+   dependency. It is also an option to use `wayland` as a
+   result, if you so choose. `xorg` is merely the 'default'.
 
-2. cgroups may be required for `elogind`. I leave it up to you to test your own kernel configs.
+2. cgroups may be required for `elogind`. I leave it up to
+   you to test your own kernel configs. 
 
-3. You will require exactly one program from `coreutils` to build a single package. 
+3. You will require exactly one program from `coreutils` to
+   build a single package. 
 
-4. You will need `dbus`. Because of this, you'll have to rebuild `qt5*`.
+4. You will require a `musl` rebuild to include `getent`. 
 
-5. You will need `eudev`. Because of this, you'll need to rebuild `xorg-server`, any input packages (`libinput`, `xf86-input-libinput`, etc), `dhcpcd`, perhaps others.
+ 5. You will need `dbus`. Because of this, you'll have to
+    rebuild `qt5\*`. __Note__ that I do not recomend
+    building community's `qt5\*`. `qt5` requires some
+    `libressl` patches to get working and we might as well
+    link `qt5-webengine` to `dbus`. The reason for these
+    patches to `qt5` is because of, at least, kbugreport.h
+    in `kxmlgui`. 
 
-These rebuilds are obviously not required if you already had the relevant programs built against `dbus`, `eudev`, etc.
+6. You will need `eudev`. Because of this, you'll need to
+   rebuild `xorg-server`, any input packages (`libinput`,
+   `xf86-input-libinput`, etc.), `dhcpcd`, perhaps others. 
+
+These rebuild are obviously not required if you already had
+the relevant programs built against `dbus`, `eudev`, etc. 
+
 
 ---
 
@@ -60,55 +79,78 @@ These rebuilds are obviously not required if you already had the relevant progra
 
 Now that we have all of that nonsense out of the way, let's get to it!
 
-I will assume you have just installed KISS and have a working Xorg. Maybe you played around with `sowm` or `xfce`. Either way, ensure you don't have any `qt5*` packages installed.
+Now that we have all of that nonsense out of the way, let's
+get to it!
 
-To get a 'minimal' KDE, simply install `plasma-desktop`. How convenient. Unless your system is perfect, you will have to follow the following. It doesn't matter where you keep any of these repos. Assume I kept them in `$HOME`. 
+We start with the assumption that you just installed KISS,
+following the [installation guide](https://k1ss.org/install)
+exactly, which means you have `eudev`, a working `xorg` that
+knows about `eudev`, some input drivers, and fonts. Although
+this repo does include some nice fonts, so either way you're
+covered. 
 
-1. Clone the relevant repos, build a sane `$KISS_PATH`.
-`git clone https://github.com/kisslinux/community` 
+You might have a few extra programs, like `pcre2` and some
+`xcb` already installed. Great! It might save you time. Not
+really. You shouldn't have too many conflicts to deal with,
+with any. Just make sure you've uninstalled `qt5` and
+friends.
 
-`git clone https://github.com/periish/kiss-dbus`
+To get a 'minimal' KDE (it's over a hundred packages),
+simply install `plasma-desktop`. How convenient! Here's how
+you do it:
 
-`git clone https://github.com/sdsddsd1/mywayland`
+__NOTE__: It doesn't matter where you keep these repos (or
+any KISS repos, for that matter). I keep mine in
+`$HOME/git`. For now, assume I've done `git clone` in $HOME.
 
-`git clone https://github.com/dilyn-corner/KISS-kde`
+```
+$ git clone https://github.com/kisslinux/community   # Clone
 
-`. /etc/profile.d/kiss_path.sh`
+$ git clone https://github.com/periish/kiss-dbus     # The 
 
-`export KISS_PATH="$HOME/KISS-kde/KISS-kde:$HOME/kiss-dbus/kiss-dbus:$HOME/mywaland/wayland:$KISS_PATH:$HOME/community/community"`
+$ git clone https://github.com/sdsddsd1/mywayland    # Repos
 
-2. Install relevant prerequisites.
+$ git clone https://github.com/dilyn-corner/KISS-kde # pls
 
-`kiss b dbus eudev`
+# Start with a clean path, get a new one.
 
-`kiss i dbus eudev`
+$ . /etc/profile.d/kiss_path.sh
 
-`kiss b xorg-server libinput xf86-input-libinput` # Add others as necessary
+$ export KISS_PATH="$HOME/KISS-kde/KISS-kde:$HOME/kiss-dbus/kiss-dbus:$HOME/mywaland/wayland:$KISS_PATH:$HOME/community/community"
 
-Thanks to the alternatives system, we can just pluck out the one binary we need from `coreutils`.
+# If you don't already have it,
 
-`kiss b coreutils`
+$ kiss b dbus eudev && kiss i dbus eudev
 
-`kiss i coreutils`
+# If you just did the previous,
 
-`kiss a coreutils /usr/bin/realpath`
+$ kiss b xorg-server libinput xf86-input-libinput # Add
+others as necessary
 
-3. `elogind` requires `getent`. core's `musl` does not (yet) include this, so we build our own. 
+# Thanks to the alternatives system, we can just pluck out
+the one binary we need form `coreutils`
 
-`kiss b musl`
+$ kiss b coreutils && kiss i coreutils
 
-`kiss i musl`
+$ kiss a coreutils /usr/bin/realpath
 
-4. That should be basically everything.
-`kiss b plasma-desktop`
+# elogind requires getent. This repro provides a version of
+musl that includes it. 
 
-Wait ten hours.
+$ kiss b musl && kiss i musl
 
-`kiss i plasma-desktop`
+# We're finally ready!
 
-5. Enjoy!
-`pkill x`
+$ kiss b plasma-desktop
 
-`echo "exec dbus-launch --exit-with-session statplasma-x11" >> ~/.xinitrc"` # Ensure you don't have anything else execing before this
+~~~ WAIT TWELVE HOURS ~~~
 
-`startx`
+$ kiss i plasma-desktop
+
+# Enjoy! 
+
+$ pkill x
+
+$ echo "exec dbus-launch --exit-with-session statplasma-x11" >> ~/.xinitrc" # Ensure you don't have anything else execing before this
+
+$ startx
