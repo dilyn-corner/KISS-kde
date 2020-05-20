@@ -5,6 +5,17 @@ This is currently a work in progress. Feel free to help out!
 Every package required to build `plasma-desktop` builds and
 install just fine! But does it work, that's the question...
 
+The answer is no, by the way. I mean, it'll certainly
+*launch*. But if you're looking for something that's more
+than just a pretty background, you're a bit SOL atm...
+
+It seems to launch well enough. You can add panels, menus
+popup, etc. But you can't launch `krunner`, or
+`kactivities`. You can't do much of anything really. 
+
+But hey, it builds! And installs! And launches! That's a
+success, kids. 
+
 ---
 
 ## Where we stand
