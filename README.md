@@ -20,15 +20,23 @@ success, kids.
 
 ## Where we stand
 
-The qt dependency includes packages which overlap with community, like `qt5`. Additionally, `qt5` requires packages from community at build time. If a package in community has been changed, it will be forked into this repository. As a result, you should place this repository in your `$KISS_PATH` __before__ community.
+The qt dependency includes packages which overlap with community, like `qt5`.
+Additionally, `qt5` requires packages from community at build time. If a package
+in community has been changed, it willb e forked into this repository. As a
+result, you should place this repository in your `$KISS_PATH` __before__
+community.
 
-__gettext__: I have opted not to include internationalization. This was done in two parts:
+__gettext__: I have opted not to include internationalization. This was done in
+two parts:
 
 1) Hobble `ki18n` by removing the gettext dependency
 
 2) Delete all translation files from packages which 'require' them. 
 
-If you would like to have languages besides english available, it should be quite easy. First, package `gettext`. Second, remove the patch in the `ki18n` package. Finally, simple remove `rm -rf po` from each build script in which it appears. This is probably trivial (cough sed cough). 
+If you would like to have languages besides english available, it should be
+quite easy. First, package `gettext`. Second, remove the patch in the `ki18n`
+package. Finally, simply remove `rm -rf po` from each build script in which it
+appears. This is probably trivial (cough `sed` cough). 
 
 __dbus__: The dreaded(?) question.
 
@@ -66,9 +74,8 @@ place?
 3. You will require exactly one program from `coreutils` to
    build a single package. 
 
-4. You will require a `musl` rebuild to include `getent`. 
 
- 5. You will need `dbus`. Because of this, you'll have to
+4. You will need `dbus`. Because of this, you'll have to
     rebuild `qt5*`. __Note__ that I do not recomend
     building community's `qt5*`. `qt5` requires some
     `libressl` patches to get working and we might as well
@@ -76,7 +83,7 @@ place?
     patches to `qt5` is because of, at least, kbugreport.h
     in `kxmlgui`. 
 
-6. You will need `eudev`. Because of this, you'll need to
+5. You will need `eudev`. Because of this, you'll need to
    rebuild `xorg-server`, any input packages (`libinput`,
    `xf86-input-libinput`, etc.), `dhcpcd`, perhaps others. 
 
@@ -101,7 +108,7 @@ covered.
 You might have a few extra programs, like `pcre2` and some
 `xcb` already installed. Great! It might save you time. Not
 really. You shouldn't have too many conflicts to deal with,
-with any. Just make sure you've uninstalled `qt5` and
+if any. Just make sure you've uninstalled `qt5` and
 friends.
 
 To get a 'minimal' KDE (it's over a hundred packages),
@@ -110,7 +117,7 @@ you do it:
 
 __NOTE__: It doesn't matter where you keep these repos (or
 any KISS repos, for that matter). I keep mine in
-`$HOME/git`. For now, assume I've done `git clone` in $HOME.
+`$HOME/git`. For now, assume I've done `git clone` in `$HOME`.
 
 ```
 $ git clone https://github.com/kisslinux/community   # Clone
@@ -140,11 +147,6 @@ $ kiss b xorg-server libinput xf86-input-libinput
 
 $ kiss b coreutils && kiss i coreutils
 $ kiss a coreutils /usr/bin/realpath
-
-# elogind requires getent. This repro provides a version of
-musl that includes it. 
-
-$ kiss b musl && kiss i musl
 
 # We're finally ready!
 
