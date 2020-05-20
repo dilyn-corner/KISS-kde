@@ -1,6 +1,6 @@
 icu
 libffi
-nspr
+nss
 python2 make
 readline
 zlib

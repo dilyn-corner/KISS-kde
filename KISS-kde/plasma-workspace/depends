@@ -12,17 +12,18 @@ kglobalaccel
 ki18n
 kidletime
 kinit
-kio-extras
 kirigami2
 kjsembed
 knewstuff
 knotifyconfig
-kquickcharts
 krunner
+kscreenlocker
+ksysguard
 ktextwidgets
 kwallet
 kwin
 libXtst make
+libkscreen
 milou
 plasma-framework
 plasma-integration

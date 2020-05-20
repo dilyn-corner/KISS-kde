@@ -3,7 +3,6 @@ dbus
 flex  make
 freetype-harfbuzz
 gperf make
-libxkbcommon
 libICE
 libSM
 libX11
@@ -11,6 +10,7 @@ libXext
 libinput
 libjpeg-turbo
 libpng
+libxkbcommon
 mesa
 mtdev
 perl  make

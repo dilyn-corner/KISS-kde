@@ -33,6 +33,7 @@ plasma-framework
 qt5
 qt5-declarative
 qt5-script
+qt5-sensors
 qt5-wayland
 qt5-x11extras
 wayland

@@ -1,7 +1,5 @@
 #!/bin/sh -e
 
-export MAKEFLAGS="-j2 -l2"
-
 for patch in *.patch; do 
     patch -p1 < $patch
 done
@@ -23,6 +21,7 @@ sed -i 's/define QLOG/define N/g' \
     -nomake examples \
     -nomake tests \
     -optimized-qmake \
+    -dbus-linked \
     -no-libudev \
     -no-separate-debug-info \
     -no-pch \
@@ -35,7 +34,9 @@ sed -i 's/define QLOG/define N/g' \
     -system-zlib \
     -system-freetype \
     -system-harfbuzz \
-    -system-xcb
+    -system-xcb \
+    -silent \
+    -ccache
 
 make
 make INSTALL_ROOT="$1" install
