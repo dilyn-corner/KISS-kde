@@ -1,0 +1,9 @@
+cmake make
+dbus
+elogind
+extra-cmake-modules make
+libxcb make
+linux-pam make
+qt5-declarative make
+qt5-tools make
+xorg-server

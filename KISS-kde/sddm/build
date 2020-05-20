@@ -1,0 +1,20 @@
+#!/bin/sh -e
+
+patch -p1 < pam-fix.patch
+
+export DESTDIR="$1"
+
+cmake -B build \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DENABLE_JOURNALD=OFF \
+    -DNO_SYSTEMD=ON \
+    -DUSE_ELOGIND=ON \
+    -DUID_MIN=500 \
+    -DUID_MAX=65000
+
+cmake --build build
+cmake --install build
+
+install -Dm755 sddm.initd "$1/etc/init.d/sddm"
