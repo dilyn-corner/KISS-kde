@@ -125,7 +125,7 @@ $ kiss b xorg-server libinput xf86-input-libinput
 # Add others as necessary
 
 # Thanks to the alternatives system, we can just pluck out
-# the one binary we need form `coreutils`
+# the one binary we need from `coreutils`
 
 $ kiss b coreutils && kiss i coreutils
 $ kiss a coreutils /usr/bin/realpath
@@ -146,7 +146,7 @@ $ kiss i plasma-desktop
 # Enjoy! 
 
 $ pkill x
-$ echo "exec dbus-launch --exit-with-session statplasma-x11" >> ~/.xinitrc" 
+$ echo "exec dbus-launch --exit-with-session startplasma-x11" >> ~/.xinitrc" 
 # Ensure you don't have anything else execing before this
 
 $ startx
