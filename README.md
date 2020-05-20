@@ -58,8 +58,8 @@ place?
 4. You will require a `musl` rebuild to include `getent`. 
 
  5. You will need `dbus`. Because of this, you'll have to
-    rebuild `qt5\*`. __Note__ that I do not recomend
-    building community's `qt5\*`. `qt5` requires some
+    rebuild `qt5*`. __Note__ that I do not recomend
+    building community's `qt5*`. `qt5` requires some
     `libressl` patches to get working and we might as well
     link `qt5-webengine` to `dbus`. The reason for these
     patches to `qt5` is because of, at least, kbugreport.h
@@ -69,15 +69,13 @@ place?
    rebuild `xorg-server`, any input packages (`libinput`,
    `xf86-input-libinput`, etc.), `dhcpcd`, perhaps others. 
 
-These rebuild are obviously not required if you already had
+These rebuilds are obviously not required if you already had
 the relevant programs built against `dbus`, `eudev`, etc. 
 
 
 ---
 
 ### Getting Started
-
-Now that we have all of that nonsense out of the way, let's get to it!
 
 Now that we have all of that nonsense out of the way, let's
 get to it!
@@ -105,18 +103,17 @@ any KISS repos, for that matter). I keep mine in
 
 ```
 $ git clone https://github.com/kisslinux/community   # Clone
-
 $ git clone https://github.com/periish/kiss-dbus     # The 
-
 $ git clone https://github.com/sdsddsd1/mywayland    # Repos
-
 $ git clone https://github.com/dilyn-corner/KISS-kde # pls
 
 # Start with a clean path, get a new one.
 
 $ . /etc/profile.d/kiss_path.sh
-
-$ export KISS_PATH="$HOME/KISS-kde/KISS-kde:$HOME/kiss-dbus/kiss-dbus:$HOME/mywaland/wayland:$KISS_PATH:$HOME/community/community"
+$ export KISS_PATH="$HOME/KISS-kde/KISS-kde:$KISS_PATH"
+$ export KISS_PATH="$HOME/kiss-dbus/kiss-dbus:$KISS_PATH"
+$ export KISS_PATH="$HOME/mywaland/wayland:$KISS_PATH"
+$ exprot KISS_PATH="$KISS_PATH":$HOME/community/community"
 
 # If you don't already have it,
 
@@ -124,14 +121,13 @@ $ kiss b dbus eudev && kiss i dbus eudev
 
 # If you just did the previous,
 
-$ kiss b xorg-server libinput xf86-input-libinput # Add
-others as necessary
+$ kiss b xorg-server libinput xf86-input-libinput 
+# Add others as necessary
 
 # Thanks to the alternatives system, we can just pluck out
-the one binary we need form `coreutils`
+# the one binary we need form `coreutils`
 
 $ kiss b coreutils && kiss i coreutils
-
 $ kiss a coreutils /usr/bin/realpath
 
 # elogind requires getent. This repro provides a version of
@@ -150,7 +146,8 @@ $ kiss i plasma-desktop
 # Enjoy! 
 
 $ pkill x
-
-$ echo "exec dbus-launch --exit-with-session statplasma-x11" >> ~/.xinitrc" # Ensure you don't have anything else execing before this
+$ echo "exec dbus-launch --exit-with-session statplasma-x11" >> ~/.xinitrc" 
+# Ensure you don't have anything else execing before this
 
 $ startx
+```
