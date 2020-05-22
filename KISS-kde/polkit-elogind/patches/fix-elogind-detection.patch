@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -221,7 +221,7 @@ AS_IF([test "x$cross_compiling" != "xyes
+ 
+ AC_SUBST(LIBSYSTEMD_CFLAGS)
+ AC_SUBST(LIBSYSTEMD_LIBS)
+-AM_CONDITIONAL(HAVE_LIBSYSTEMD, [test "$have_libsystemd" = "yes"], [Using libsystemd])
++AM_CONDITIONAL(HAVE_LIBSYSTEMD, [test "$have_libsystemd" = "yes" || test "$have_libelogind" = "yes"], [Using libsystemd])
+ 
+ dnl ---------------------------------------------------------------------------
+ dnl - systemd unit / service files
