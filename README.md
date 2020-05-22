@@ -73,7 +73,7 @@ place?
    dependency. It is also an option to use `wayland` as a
    result, if you so choose. `xorg` is merely the 'default'.
 
-2. (cgroups)[http://www.linuxfromscratch.org/blfs/view/svn/general/elogind.html] may be required for `elogind`. I leave it up to
+2. [Cgroups](http://www.linuxfromscratch.org/blfs/view/svn/general/elogind.html) may be required for `elogind`. I leave it up to
    you to test your own kernel configs. 
 
 3. You will require exactly one program from `coreutils` to
@@ -160,7 +160,6 @@ $ kiss b plasma-desktop
 $ kiss i plasma-desktop
 
 # There are some circular dependencies we should work around
-# Namely, with dbus
 
 $ kiss b elogind && kiss i elogind
 
