@@ -16,6 +16,7 @@ sed -i '/#include <QtCore\/QHash>/a #include <libudev.h>' \
     -confirm-license \
     -opensource \
     -prefix /usr \
+    -libdir /usr/lib \
     -docdir /usr/share/doc/qt \
     -headerdir /usr/include/qt \
     -archdatadir /usr/lib/qt \
@@ -25,21 +26,20 @@ sed -i '/#include <QtCore\/QHash>/a #include <libudev.h>' \
     -nomake examples \
     -nomake tests \
     -optimized-qmake \
-    -dbus \
+    -dbus-linked \
+    -no-rpath \
     -no-separate-debug-info \
     -no-pch \
     -no-accessibility \
     -no-gtk \
+    -no-glib \
     -system-libjpeg \
     -system-libpng \
     -system-sqlite \
     -system-zlib \
     -system-freetype \
     -system-harfbuzz \
-    -xcb \
     -system-xcb \
-    -qpa xcb \
-    -reduce-relocations \
     -silent
 
 make
