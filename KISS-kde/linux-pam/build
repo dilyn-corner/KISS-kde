@@ -32,7 +32,6 @@ export PATH="$PWD/garbo/bin:$PATH"
 make
 make DESTDIR="$1" install
 
-
 # So we don't get locked out of our system
 install -Dm644 other           "$1/etc/pam.d/other"
 install -Dm644 system-auth     "$1/etc/pam.d/system-auth"
@@ -43,7 +42,13 @@ install -Dm644 system-password "$1/etc/pam.d/system-password"
 # To make sure we properly integrate with our 'security' packages
 install -Dm644 polkit-1        "$1/etc/pam.d/polkit-1"
 install -Dm644 elogind-user    "$1/etc/pam.d/elogind-user"
+
 # For the KDE nonsense we're about to pile on 
 install -Dm644 kde             "$1/etc/pam.d/kde"
 install -Dm644 kde-np          "$1/etc/pam.d/kde-np"
 install -Dm644 kscreensaver    "$1/etc/pam.d/kscreensaver"
+
+# For sddm to function
+install -Dm644 sddm            "$1/etc/pam.d/sddm"
+install -Dm644 sddm-greeter    "$1/etc/pam.d/sddm-greeter"
+install -Dm644 sddm-autologin  "$1/etc/pam.d/sddm-autologin"

@@ -10,6 +10,9 @@ files/polkit-1
 files/kde
 files/kde-np
 files/kscreensaver
+files/sddm
+files/sddm-greeter
+files/sddm-autologin
 patches/fix-compat.patch
 patches/libpam-fix-build-with-eglibc-2.16.patch
 patches/musl-fix_uint.patch
