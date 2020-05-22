@@ -16,6 +16,11 @@ popup, etc. But you can't launch `krunner`, or
 But hey, it builds! And installs! And launches! That's a
 success, kids. 
 
+If you want a more 'full-featured' KDE environment, you can install `plasma`.
+This 'package' will come with 20 additional packages, and it fleshes out our
+fledgling project with features one might expect to exist.
+It isn't that much more, so there's no real reason not to use it.
+
 ---
 
 ## Where we stand
@@ -121,7 +126,6 @@ any KISS repos, for that matter). I keep mine in
 
 ```
 $ git clone https://github.com/kisslinux/community   # Clone
-$ git clone https://github.com/periish/kiss-dbus     # The 
 $ git clone https://github.com/sdsddsd1/mywayland    # Repos
 $ git clone https://github.com/dilyn-corner/KISS-kde # pls
 
@@ -129,7 +133,6 @@ $ git clone https://github.com/dilyn-corner/KISS-kde # pls
 
 $ . /etc/profile.d/kiss_path.sh
 $ export KISS_PATH="$HOME/KISS-kde/KISS-kde:$KISS_PATH"
-$ export KISS_PATH="$HOME/kiss-dbus/kiss-dbus:$KISS_PATH"
 $ export KISS_PATH="$HOME/mywaland/wayland:$KISS_PATH"
 $ exprot KISS_PATH="$KISS_PATH":$HOME/community/community"
 
