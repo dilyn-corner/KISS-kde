@@ -1,0 +1,8 @@
+https://kernel.org/pub/linux/bluetooth/bluez-5.54.tar.xz
+patches/001-bcm43xx-add-bcm43xx-3wire-variant.patch
+patches/002-bcm43xx-reset-uart-speed.patch
+patches/003-increase-firmware-load-time.patch
+patches/004-move-the-43xx-firmware.patch
+patches/disable-lock-test.patch
+patches/fix-endianness.patch
+patches/musl.patch

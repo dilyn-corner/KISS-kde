@@ -1,0 +1,5 @@
+dbus
+eudev
+libical
+readline
+linux-headers make

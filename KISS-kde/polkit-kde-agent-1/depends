@@ -1,0 +1,11 @@
+cmake make
+extra-cmake-modules make
+kcoreaddons
+kcrash
+kdbusaddons
+ki18n
+kiconthemes
+kwidgetsaddons
+kwindowsystem
+polkit-qt-1
+qt5

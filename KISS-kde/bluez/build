@@ -1,0 +1,15 @@
+#!/bin/sh -e
+
+for patch in *.patch; do 
+    patch -p1 < $patch
+done
+
+./cofigure \
+    --prefix=/usr \
+    --disable-systemd \
+    --enable-library
+
+make
+make DESTDIR="$1" install
+
+install -Dm644 src/main.conf "$1/etc/bluetooth/main.conf"

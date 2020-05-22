@@ -1,0 +1,17 @@
+attica
+cmake make
+extra-cmake-modules make
+karchive
+kconfig
+kcrash
+kcoreaddons
+kdbusaddons
+kdeclarative
+ki18n
+kitemmodels
+kio
+knewstuff
+kxmlgui
+plasma-framework
+qt5
+qt5-declarative

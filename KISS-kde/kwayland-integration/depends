@@ -1,0 +1,8 @@
+cmake make
+extra-cmake-modules make
+kglobalaccel
+kguiaddons
+kidletime
+kwayland
+kwindowsystem
+qt5

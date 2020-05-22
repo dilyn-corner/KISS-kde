@@ -1,0 +1,23 @@
+cmake make
+extra-cmake-modules make
+karchive
+kcmutils
+kconfig
+kcoreaddons
+kdeclarative
+kholidays
+ki18n
+kiconthemes
+kio
+knewstuff
+knotifications
+kross
+krunner
+kservice
+kunitconversion
+kwindowsystem
+plasma-framework
+qt5
+qt5-declarative
+qt5-webengine
+sonnet

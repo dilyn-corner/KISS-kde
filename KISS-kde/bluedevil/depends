@@ -1,0 +1,15 @@
+bluez-qt
+cmake make
+extra-cmake-modules make
+kcoreaddons
+kdbusaddons
+kded
+ki18n
+kiconthemes
+kio
+knotifications
+kwidgetsaddons
+kwindowsystem
+plasma-framework
+qt5
+qt5-declarative

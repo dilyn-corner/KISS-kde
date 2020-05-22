@@ -1,0 +1,15 @@
+cmake make
+extra-cmake-modules make
+qt5
+qt5-x11extras
+qt5-declarative
+kcoreaddons
+ki18n
+kxmlgui
+kauth
+kconfigwidgets
+kio
+karchive
+knewstuff
+xcb-util-image
+libXcursor

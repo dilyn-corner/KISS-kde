@@ -1,0 +1,22 @@
+bluez
+cmake make
+eudev
+extra-cmake-modules make
+kactivities
+kauth
+kconfig
+kcrash
+kdbusaddons
+kdoctools
+kglobalaccel
+ki18n
+kidletime
+kio
+knotifications
+knotifyconfig
+kwayland
+libkscreen
+plasma-workspace
+qt5
+qt5-x11extras
+solid

@@ -1,0 +1,9 @@
+cmake make
+extra-cmake-modules make
+kconfig
+kcoreaddons
+ki18n
+kio
+kirigami2
+qt5
+qt5-declarative
