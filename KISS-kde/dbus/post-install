@@ -1,0 +1,8 @@
+#!/bin/sh -e
+
+# Make a group just for our bus
+echo 'messagebus:x:1999:' >> /etc/group
+
+# Give a binary a different group
+chown root:messagebus /usr/libexec/dbus-daemon-launch-helper
+chmod 4750            /usr/libexec/dbus-daemon-launch-helper

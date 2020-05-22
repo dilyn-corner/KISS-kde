@@ -1,0 +1,21 @@
+#!/bin/sh
+
+./configure \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --enable-user-session \
+    --disable-asserts \
+    --prefix=/usr \
+    --with-system-socket=/run/dbus/system_bus_socket \
+    --disable-doxygen-docs \
+    --with-system-pid-file=/run/dbus/pid \
+    --with-console-auth-dir=/run/console
+
+make
+make DESTDIR="$1" install
+
+# Install service.
+install -Dm755 dbus.run "$1/etc/sv/dbus/run"
+ln -s /run/runit/supervise.dbus "$1/etc/sv/dbus/supervise"
+
+ln -s /var/lib/dbus/machine-id "$1/etc"
