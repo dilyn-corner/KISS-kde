@@ -8,10 +8,6 @@ done
 sed -i 's/define QLOG/define N/g' \
     src/corelib/global/qlogging.cpp
 
-# Fix a build error?
-sed -i '/#include <QtCore\/QHash>/a #include <libudev.h>' \
-    src/platformsupport/input/libinput/qlibinputtouch_p.h
-
 ./configure \
     -confirm-license \
     -opensource \
@@ -25,7 +21,6 @@ sed -i '/#include <QtCore\/QHash>/a #include <libudev.h>' \
     -nomake examples \
     -nomake tests \
     -optimized-qmake \
-    -dbus \
     -no-separate-debug-info \
     -no-pch \
     -no-accessibility \
@@ -36,16 +31,13 @@ sed -i '/#include <QtCore\/QHash>/a #include <libudev.h>' \
     -system-zlib \
     -system-freetype \
     -system-harfbuzz \
-    -xcb \
+    -system-pcre \
     -system-xcb \
-    -qpa xcb \
-    -reduce-relocations \
     -silent
 
 make
 make INSTALL_ROOT="$1" install
 
-# We can try this if adding -no-rpath doesn't work?
+# Delete references to builddir
  find "$1" -name \*.prl \
      -exec sed -i '/^QMAKE_PRL_BUILD_DIR/d' {} \;
-# But, somehow, I doubt this will help?
