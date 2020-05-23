@@ -6,5 +6,5 @@
  #include <string.h>
 +#include <endian.h>
  
- #if __BYTE_ORDER == __LITTLE_ENDIAN
- #define le16_to_cpu(val) (val)
+ #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
+
