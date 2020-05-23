@@ -29,5 +29,3 @@ export XGETTEXT=/usr/bin/true
 
 make
 make DESTDIR="$1" install
-
-install -Dm755 polkit.initd "$1/etc/init.d/polkit"

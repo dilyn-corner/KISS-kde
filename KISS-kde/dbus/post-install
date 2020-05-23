@@ -1,8 +1,10 @@
 #!/bin/sh -e
 
-# Make a group just for our bus
+cat << EOF
+You might want to make a group just for our bus
 echo 'messagebus:x:1999:' >> /etc/group
 
-# Give a binary a different group
+and give a binary group access
 chown root:messagebus /usr/libexec/dbus-daemon-launch-helper
 chmod 4750            /usr/libexec/dbus-daemon-launch-helper
+EOF
