@@ -1,12 +1,12 @@
 #!/bin/sh -e
 
-for patch in *.patch; do 
+for patch in *.patch; do
     patch -p1 < $patch
 done
 
 # Don't link against execinfo.h.
 sed -i 's/define QLOG/define N/g' \
-    src/corelib/global/qlogging.cpp
+    ./src/corelib/global/qlogging.cpp
 
 ./configure \
     -confirm-license \
@@ -21,23 +21,20 @@ sed -i 's/define QLOG/define N/g' \
     -nomake examples \
     -nomake tests \
     -optimized-qmake \
+    -no-libudev \
     -no-separate-debug-info \
     -no-pch \
     -no-accessibility \
     -no-gtk \
+    -no-glib \
     -system-libjpeg \
     -system-libpng \
     -system-sqlite \
     -system-zlib \
     -system-freetype \
-    -system-harfbuzz \
-    -system-pcre \
-    -system-xcb \
-    -silent
+    -system-harfbuzz
 
 make
 make INSTALL_ROOT="$1" install
 
-# Delete references to builddir
- find "$1" -name \*.prl \
-     -exec sed -i '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+install -Dm755 qt.conf "$1/usr/bin/qt.conf"
