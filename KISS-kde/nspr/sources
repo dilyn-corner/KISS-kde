@@ -1,0 +1,3 @@
+https://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v4.25/src/nspr-4.25.tar.gz
+patches/fix-getproto.patch
+patches/fix-sgidefs-usage.patch
