@@ -1,0 +1,27 @@
+--- a/src/quicktemplates2/qquickcombobox.cpp
++++ b/src/quicktemplates2/qquickcombobox.cpp
+@@ -787,6 +787,10 @@
+ 
+     popup->setVisible(false);
+     popup->setParentItem(nullptr);
++    // Remove the item from the accessibility tree.
++    QQuickAccessibleAttached *accessible = accessibleAttached(popup);
++    if (accessible)
++        accessible->setIgnored(true);
+ }
+ 
+ QQuickComboBox::QQuickComboBox(QQuickItem *parent)
+--- a/src/quicktemplates2/qquickcontrol.cpp
++++ b/src/quicktemplates2/qquickcontrol.cpp
+@@ -857,6 +857,11 @@
+ 
+     item->setVisible(false);
+     item->setParentItem(nullptr);
++
++    // Remove the item from the accessibility tree.
++    QQuickAccessibleAttached *accessible = accessibleAttached(item);
++    if (accessible)
++        accessible->setIgnored(true);
+ }
+ 
+ void QQuickControlPrivate::updateBaselineOffset()
