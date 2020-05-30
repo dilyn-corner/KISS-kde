@@ -16,16 +16,11 @@ export CFLAGS="$CFLAGS -D_PR_POLL_AVAILABLE -D_PR_HAVE_OFF64_T -D_PR_INET6 -D_PR
 make CC="${CC:-gcc}" CXX="${CXX:-g++}"
 make DESTDIR="$1" install
 
-(
-    cd ../usr/lib
-    rm -f *.a
-)
+rm -f "$1/usr/lib/*.a"
 
-(
-    cd config
-    install -Dm755 nspr-config "$1/usr/bin/nspr-config"
-    install -Dm644 nspr.pc     "$1/usr/lib/pkgconfig/nspr.pc"
-)
+cd config
+install -Dm755 nspr-config "$1/usr/bin/nspr-config"
+install -Dm644 nspr.pc     "$1/usr/lib/pkgconfig/nspr.pc"
 
 rm -rf "$1/usr/bin/prerr.properties"
 rm -rf "$1/usr/bin/compile-et.pl"
