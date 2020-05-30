@@ -79,8 +79,9 @@ place?
 3. You will require exactly one program from `coreutils` to
    build a single package. 
 
+4. You will need `gnugrep` to build at least one package.
 
-4. You will need `dbus`. Because of this, you'll have to
+5. You will need `dbus`. Because of this, you'll have to
     rebuild `qt5*`. __Note__ that I do not recomend
     building community's `qt5*`. `qt5` requires some
     `libressl` patches to get working and we might as well
@@ -88,7 +89,7 @@ place?
     patches to `qt5` is because of, at least, kbugreport.h
     in `kxmlgui`. 
 
-5. You will need `eudev`. Because of this, you'll need to
+6. You will need `eudev`. Because of this, you'll need to
    rebuild `xorg-server`, any input packages (`libinput`,
    `xf86-input-libinput`, etc.), `dhcpcd`, perhaps others. 
 
@@ -146,10 +147,11 @@ $ kiss b xorg-server libinput xf86-input-libinput
 # Add others as necessary
 
 # Thanks to the alternatives system, we can just pluck out
-# the one binary we need from `coreutils`
+# the one binary we need from `coreutils`, along with the grep utility.
 
-$ kiss b coreutils && kiss i coreutils
+$ kiss b coreutils gnugrep && kiss i coreutils gnugrep
 $ kiss a coreutils /usr/bin/realpath
+$ kiss a | grep ^gnugrep | kiss a -
 
 # We're finally ready!
 
