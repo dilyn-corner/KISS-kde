@@ -26,6 +26,7 @@ krunner
 kwallet
 kwin
 libXcursor
+libXft
 libXi
 libxkbfile
 plasma-framework
