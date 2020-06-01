@@ -1,5 +1,6 @@
 cmake make
 extra-cmake-modules make
+kactivities-stats
 kactivitymanagerd
 kcmutils
 kcrash
@@ -16,6 +17,7 @@ kirigami2
 kjsembed
 knewstuff
 knotifyconfig
+kpeople
 krunner
 kscreenlocker
 ksysguard
