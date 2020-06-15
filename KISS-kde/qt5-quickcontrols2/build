@@ -2,8 +2,6 @@
 
 qmake
 
-patch -p1 < accessibility.patch
-
 make
 make INSTALL_ROOT="$1" install
 
