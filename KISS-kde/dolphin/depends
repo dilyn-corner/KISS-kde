@@ -1,0 +1,26 @@
+baloo
+baloo-widgets
+cmake make
+extra-cmake-modules make
+kactivities
+kbookmarks
+kcmutils
+kcompletion
+kconfig
+kcoreaddons
+kcrash
+kdbusaddons
+kdoctools
+kfilemetadata
+ki18n
+kiconthemes
+kinit
+kio
+knewstuff
+knotifications
+kparts
+ktextwidgets
+kwindowsystem
+phonon
+qt5
+solid
