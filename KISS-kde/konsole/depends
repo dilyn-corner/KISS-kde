@@ -1,0 +1,28 @@
+cmake make
+extra-cmake-modules make
+kbookmarks
+kcompletion
+kconfig
+kconfigwidgets
+kcoreaddons
+kcrash
+kdbusaddons
+kdoctools
+kglobalaccel
+kguiaddons
+ki18n
+kiconthemes
+kinit
+kio
+knewstuff
+knotifications
+knotifyconfig
+kparts
+kpty
+kservice
+ktextwidgets
+kwidgetsaddons
+kwindowsystem
+kxmlgui
+ncurses
+qt5
