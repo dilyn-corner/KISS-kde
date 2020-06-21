@@ -25,6 +25,7 @@ kscreenlocker
 kservice
 ktextwidgets
 kwayland
+kwayland-server
 kwidgetsaddons
 kwindowsystem
 kxmlgui
