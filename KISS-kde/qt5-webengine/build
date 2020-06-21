@@ -18,8 +18,7 @@ find . -name '*.pr[fio]' | while read -r file; do
     sed -i "s#INCLUDEPATH += #&\$\$QTWEBENGINE_ROOT/include #" "$file"
 done
 
-qmake \
-    -feature-webengine-system-ninja \
+qmake QMAKE_CXXFLAGS=-feature-webengine-system-ninja -- \
     -feature-webengine-system-zlib \
     -feature-webengine-system-harfbuzz \
     -feature-webengine-system-png \
