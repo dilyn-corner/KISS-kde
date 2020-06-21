@@ -24,7 +24,6 @@ sed -i 's/define QLOG/define N/g' \
     -no-libudev \
     -no-separate-debug-info \
     -no-pch \
-    -no-accessibility \
     -no-gtk \
     -no-glib \
     -system-libjpeg \
@@ -32,7 +31,8 @@ sed -i 's/define QLOG/define N/g' \
     -system-sqlite \
     -system-zlib \
     -system-freetype \
-    -system-harfbuzz
+    -system-harfbuzz \
+    -silent
 
 make
 make INSTALL_ROOT="$1" install
