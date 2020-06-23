@@ -39,7 +39,7 @@ If you want a more 'full-featured' KDE environment, you can install `plasma`.
 This 'package' will come with 20 additional packages, and it fleshes out our
 fledgling project with features one might expect to exist.
 It isn't that much more, so there's no real reason not to use it.
-This expanded list includes things like `bluez`. It might be worht it for you.
+This expanded list includes things like `bluez`. It might be worth it for you.
 
 ---
 
@@ -149,7 +149,7 @@ $ git clone https://github.com/dilyn-corner/KISS-kde # pls
 $ . /etc/profile.d/kiss_path.sh
 $ export KISS_PATH="$HOME/KISS-kde/KISS-kde:$KISS_PATH"
 $ export KISS_PATH="$HOME/mywaland/wayland:$KISS_PATH"
-$ exprot KISS_PATH="$KISS_PATH":$HOME/community/community"
+$ exprot KISS_PATH="$KISS_PATH:$HOME/community/community"
 
 # If you don't already have it,
 
