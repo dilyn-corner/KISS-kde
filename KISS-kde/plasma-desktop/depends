@@ -25,7 +25,8 @@ kpeople
 krunner
 kscreen
 kwallet
-kwin
+#kwin
+kwinft
 libXcursor
 libXft
 libXi

@@ -23,7 +23,8 @@ kscreenlocker
 ksysguard
 ktextwidgets
 kwallet
-kwin
+#kwin
+kwinft
 libXtst make
 libkscreen
 milou
