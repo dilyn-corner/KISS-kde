@@ -16,10 +16,30 @@ popup, etc. But you can't launch `krunner`, or
 But hey, it builds! And installs! And launches! That's a
 success, kids. 
 
+
+__NOTE__: If you are interested in using this 'environment' without any of your
+usual features, there is a way! No menus will open in the normal interactive
+way (there might be a way to launch them via commandline; I haven't looked at
+`/usr/bin` out of fear), but you should be able to launch applications by merely
+doing the following to `.xinitrc`:
+
+```
+cat >> $HOME/.xinitrc << EOF
+konsole &
+dolphin & 
+falkon & 
+exec dbus-launch --exit-with-session start-plasmax11
+EOF
+```
+
+This will launch your plasma session along with `konsole`, `dolphin`, and
+`falkon`. Replace with your relevant applications as necessary.
+
 If you want a more 'full-featured' KDE environment, you can install `plasma`.
 This 'package' will come with 20 additional packages, and it fleshes out our
 fledgling project with features one might expect to exist.
 It isn't that much more, so there's no real reason not to use it.
+This expanded list includes things like `bluez`. It might be worht it for you.
 
 ---
 
@@ -81,13 +101,7 @@ place?
 
 4. You will need `gnugrep` to build at least one package.
 
-5. You will need `dbus`. Because of this, you'll have to
-    rebuild `qt5*`. __Note__ that I do not recomend
-    building community's `qt5*`. `qt5` requires some
-    `libressl` patches to get working and we might as well
-    link `qt5-webengine` to `dbus`. The reason for these
-    patches to `qt5` is because of, at least, kbugreport.h
-    in `kxmlgui`. 
+5. You will need `dbus`. Because of this, you'll have to rebuild `qt5`.
 
 6. You will need `eudev`. Because of this, you'll need to
    rebuild `xorg-server`, any input packages (`libinput`,
@@ -176,3 +190,47 @@ $ echo "exec dbus-launch --exit-with-session startplasma-x11" >> ~/.xinitrc"
 
 $ startx
 ```
+
+---
+
+# Things to be aware of
+
+1. Currently, no menus operate the way you might like them to. Right-clicking on
+   the desktop or the panel open menus, certainly. But they don't actually do
+   anything. Windows like `krunner` for instance are just empty. I'm not sure if
+   they aren't rendering properly or if we're missing some sort of dependency,
+   or maybe `gettext` is actually NOT an optional requirement in order to get
+   these things working, but that is currently the #1 bug to solve. 
+
+2. I have not opted to start `sddm` by default. Turning this repository into a
+   full-fledged desktop is second on my list of things to do, right after I get
+   menus working. I also plan on packaging launcher-alternatives, like
+   `lightdm`. User choice, and all. 
+
+3. This is very much in alpha. I will keep this repository up-to-date as best I
+   can, testing and building things as frequently as possible - it's a big
+   project that requires a fair amount of maintenance. Luckily, I have the hard
+   drive space and the free time. But I'm only one person; if you have a
+   contribution, feel free to share it. If you package some KDE apps, feel free
+   to submit a pull request for inclusion. Requests like this should follow the
+   KISS [style guide[(https://k1ss.org/wiki/kiss/style-guide) as closely as 
+   possible, but I'm not too much of a stickler.
+
+
+# My goals
+
+1. Fix menus
+
+2. Package convenient default applications
+
+3. Ensure `bluez` etc. work properly 
+
+4. Look into distributing this as an alternative to the 'default' KISS tar. 
+
+4a. This may include a live USB? Who knows.
+
+
+## Enjoy!
+
+![alt
+text](https://github.com/dilyn-corner/KISS-kde/blob/master/06-23%4001:45:16.jpg)
