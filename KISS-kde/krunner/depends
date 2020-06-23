@@ -7,5 +7,6 @@ kio
 kservice
 plasma-framework
 qt5
+qt5-quickcontrols
 qt5-tools make
 threadweaver
