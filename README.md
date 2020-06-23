@@ -117,6 +117,11 @@ really. You shouldn't have too many conflicts to deal with,
 if any. Just make sure you've uninstalled `qt5` and
 friends.
 
+_NOTE_: I have taken the liberty of uploading a KISS package for `qt5`,
+`qt5-webengine`, and `qt5-declarative`. Assuming your system is roughly similar
+to mine, and you've installed all of their dependencies, you can simply install
+these xz archives instead of wasting ten hours building them. Trust me.
+
 To get a 'minimal' KDE (it's over a hundred packages),
 simply install `plasma-desktop`. How convenient! Here's how
 you do it:
