@@ -1,5 +1,10 @@
 # KISS-kde
 
+
+![alt
+text](https://github.com/dilyn-corner/KISS-kde/blob/master/06-23%4021:48:21.jpg)
+
+
 This is currently a work in progress. Feel free to help out!
 
 Every package required to build `plasma-desktop` builds and
@@ -241,3 +246,4 @@ importantly...
 
 ![alt
 text](https://github.com/dilyn-corner/KISS-kde/blob/master/06-23%4001:45:16.jpg)
+
