@@ -1,0 +1,11 @@
+cmake make
+extra-cmake-modules make
+qt5-tools
+xcb-util-cursor
+plasma-framework
+kcmutils
+breeze 
+kinit
+qt5-sensors
+qt5-script
+wrapland
