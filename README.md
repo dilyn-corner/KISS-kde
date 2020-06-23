@@ -5,35 +5,18 @@ This is currently a work in progress. Feel free to help out!
 Every package required to build `plasma-desktop` builds and
 install just fine! But does it work, that's the question...
 
-The answer is no, by the way. I mean, it'll certainly
-*launch*. But if you're looking for something that's more
-than just a pretty background, you're a bit SOL atm...
+It builds! It installs! It launches! That's a _success_, kids. 
 
-It seems to launch well enough. You can add panels, menus
-popup, etc. But you can't launch `krunner`, or
-`kactivities`. You can't do much of anything really. 
+It works. We need to get a working application launcher, but `krunner` can get
+you basically everything you might need.
 
-But hey, it builds! And installs! And launches! That's a
-success, kids. 
+You have two primary choices on what to install to get a working desktop. 
+Either you can install `plasma-desktop`, or you can install `plasma`. 
 
-
-__NOTE__: If you are interested in using this 'environment' without any of your
-usual features, there is a way! No menus will open in the normal interactive
-way (there might be a way to launch them via commandline; I haven't looked at
-`/usr/bin` out of fear), but you should be able to launch applications by merely
-doing the following to `.xinitrc`:
-
-```
-cat >> $HOME/.xinitrc << EOF
-konsole &
-dolphin & 
-falkon & 
-exec dbus-launch --exit-with-session start-plasmax11
-EOF
-```
-
-This will launch your plasma session along with `konsole`, `dolphin`, and
-`falkon`. Replace with your relevant applications as necessary.
+`plasma-desktop` includes basically every single item in the framework you would
+need in order to have a recognizable KDE experience. It has icons, fonts, some
+default things like an application launcher, a system monitor, a settings
+manager.
 
 If you want a more 'full-featured' KDE environment, you can install `plasma`.
 This 'package' will come with 20 additional packages, and it fleshes out our
@@ -43,13 +26,7 @@ This expanded list includes things like `bluez`. It might be worth it for you.
 
 ---
 
-## Where we stand
-
-The qt dependency includes packages which overlap with community, like `qt5`.
-Additionally, `qt5` requires packages from community at build time. If a package
-in community has been changed, it will be forked into this repository. As a
-result, you should place this repository in your `$KISS_PATH` __before__
-community.
+## KISS-kde with respect to KISS
 
 __gettext__: I have opted not to include internationalization. This was done in
 two parts:
@@ -62,6 +39,7 @@ If you would like to have languages besides english available, it should be
 quite easy. First, package `gettext`. Second, remove the patch in the `ki18n`
 package. Finally, simply remove `rm -rf po` from each build script in which it
 appears. This is probably trivial (cough `sed` cough). 
+
 
 __dbus__: The dreaded(?) question.
 
@@ -83,6 +61,13 @@ the one to do it!), `dbus` is required. I have no real
 problems with this. If you take umbridge with this hard
 fact, perhaps reflect on why you want KDE in the first
 place?
+
+The qt dependency includes packages which overlap with community, like `qt5`.
+Additionally, `qt5` requires packages from community at build time. If a package
+in community has been changed, it will be forked into this repository. As a
+result, you should place this repository in your `$KISS_PATH` __before__
+community.
+
 
 #### Prerequisites
 
@@ -112,6 +97,7 @@ the relevant programs built against `dbus`, `eudev`, etc.
 
 
 ---
+
 
 ### Getting Started
 
@@ -180,9 +166,11 @@ $ kiss i plasma-desktop
 $ kiss b elogind && kiss i elogind
 
 # Perhaps we start the dbus, elogind, polkit, and eudev services?
-# Unclear if that's all necessary! We'll see.
+# At least the dbus service seems necessary, so we might as well...
+$ ln -sv /etc/sv/dbus  /var/service
+$ ln -sv /etc/sv/udevd /var/service
 
-# Enjoy! 
+# Enjoy!
 
 $ pkill x
 $ echo "exec dbus-launch --exit-with-session startplasma-x11" >> ~/.xinitrc" 
@@ -195,19 +183,11 @@ $ startx
 
 # Things to be aware of
 
-1. Currently, no menus operate the way you might like them to. Right-clicking on
-   the desktop or the panel open menus, certainly. But they don't actually do
-   anything. Windows like `krunner` for instance are just empty. I'm not sure if
-   they aren't rendering properly or if we're missing some sort of dependency,
-   or maybe `gettext` is actually NOT an optional requirement in order to get
-   these things working, but that is currently the #1 bug to solve. 
+1. I have not opted to start `sddm` by default. Turning this repository into a
+   full-fledged desktop is second on my list of things to do, I also plan on 
+   packaging launcher-alternatives, like `lightdm`. User choice, and all. 
 
-2. I have not opted to start `sddm` by default. Turning this repository into a
-   full-fledged desktop is second on my list of things to do, right after I get
-   menus working. I also plan on packaging launcher-alternatives, like
-   `lightdm`. User choice, and all. 
-
-3. This is very much in alpha. I will keep this repository up-to-date as best I
+2. This is very much in alpha. I will keep this repository up-to-date as best I
    can, testing and building things as frequently as possible - it's a big
    project that requires a fair amount of maintenance. Luckily, I have the hard
    drive space and the free time. But I'm only one person; if you have a
@@ -219,20 +199,37 @@ $ startx
 4. You have two window manager options: `kwin` or `kwinft`. `kwin` was recently
    forked! It's all very exciting. `kwinft` is a promising, development-heavy
    branch. As a a result, there are bound to be bugs that crop up. Presumably,
-   it is strictly better than `kwin`, because something something bleeding edge. It's your choice which you choose! If you opt to simply install `plasma-desktop` or `plasma` (the simplest way to install KDE), you merely need to uncomment kwin from `plasma-desktop/depends` and `plasma-workspace/depends`, and comment out kwinft from the same files. If you run into bugs, please make sure they're not `kwinft` related - burn down the [developer's door](https://gitlab.com/kwinft/kwinft) for those. 
+   `kwinft` is strictly better than `kwin`, because something something bleeding
+   edge. It's your choice which you choose! If you opt to use `kwinft`, 
+   simply install `plasma-desktop` or `plasma` and simply uncomment `kwinft`
+   from `plasma-desktop/depends` and `plasma-workspace/depends`, and comment out
+   `kwin` from the same files. If you run into bugs, please make sure they're
+   not `kwinft` related - burn down the [developer's
+   door](https://gitlab.com/kwinft/kwinft) for those. 
 
 
 # My goals
 
-1. Fix menus
 
-2. Package convenient default applications
+1. Package convenient default applications
 
-3. Ensure `bluez` etc. work properly 
+2. Ensure `bluez` etc. work properly 
 
-4. Look into distributing this as an alternative to the 'default' KISS tar. 
+3. Look into distributing this as an alternative to the 'default' KISS tar. 
 
-4a. This may include a live USB? Who knows.
+3a. This may include a live USB? Who knows.
+
+
+## How you can help
+
+I need testers! People who just use the desktop to navigate through digital
+space and time. Does an application segfault? Does something simply fail to
+launch? I need to know! Do you run into build-time errors? Run-time? What are
+they! I have already run into a few, I've identified fixes for many and am
+working on solutions to others. But in the end, I am a simple person with simple
+needs. I cannot guarantee that everything works because I don't plan on using
+everything available. So jump in! Make a package! Fix bugs! Be my fren! But most
+importantly...
 
 
 ## Enjoy!
