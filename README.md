@@ -213,8 +213,13 @@ $ startx
    drive space and the free time. But I'm only one person; if you have a
    contribution, feel free to share it. If you package some KDE apps, feel free
    to submit a pull request for inclusion. Requests like this should follow the
-   KISS [style guide[(https://k1ss.org/wiki/kiss/style-guide) as closely as 
+   KISS [style guide](https://k1ss.org/wiki/kiss/style-guide) as closely as 
    possible, but I'm not too much of a stickler.
+
+4. You have two window manager options: `kwin` or `kwinft`. `kwin` was recently
+   forked! It's all very exciting. `kwinft` is a promising, development-heavy
+   branch. As a a result, there are bound to be bugs that crop up. Presumably,
+   it is strictly better than `kwin`, because something something bleeding edge. It's you're choice which you choose! If you opt to simply install `plasma-desktop` or `plasma` (the simplest way to install KDE), you merely need to uncomment kwin from `plasma-desktop/depends` and `plasma-workspace/depends`, and comment out kwinft from the same files. If you run into bugs, please make sure they're not `kwinft` related - burn down the [developer's door](https://gitlab.com/kwinft/kwinft) for those. 
 
 
 # My goals
