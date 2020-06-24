@@ -1,7 +1,8 @@
 #!/bin/sh -e
 
 ./configure \
-    --prefix="$1"
+    --prefix="$1" \
+    --disable-umockdev
 
 make
 make DESTDIR="$1" install
