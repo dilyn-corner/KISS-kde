@@ -1,4 +1,4 @@
-autoconf make
+automake make
 eudev
 json-c make
 keyutils make
