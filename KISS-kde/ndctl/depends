@@ -1,4 +1,5 @@
 autoconf make
 eudev
 json-c make
+keyutils make
 kmod make
