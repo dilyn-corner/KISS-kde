@@ -15,7 +15,3 @@ done
 # So this build system doesn't shit the bed
 make -j1
 make DESTDIR="$1" install
-
-# It's all bad the whole way down
-chmod 644 "$1/usr/include/dmraid/*"
-chmod 644 "$1/usr/lib/libdrmraid.a"
