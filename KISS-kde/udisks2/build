@@ -1,7 +1,11 @@
 #!/bin/sh -e
 
 ./configure \
-    --prefix=/usr
+    --prefix=/usr \
+    --disable-gtk-doc-html \
+    --enable-lvm2 \
+    --enable-lvmcache \
+    --enable-zram
 
 make
 make DESTDIR="$1" install
