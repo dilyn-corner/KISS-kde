@@ -1,4 +1,4 @@
-coreutils
+coreutils make
 cryptsetup
 dmraid
 eudev

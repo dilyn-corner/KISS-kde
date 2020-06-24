@@ -1,4 +1,5 @@
 acl
+coreutils make
 glib
 libatasmart
 libblockdev
