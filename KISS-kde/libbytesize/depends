@@ -1,4 +1,4 @@
-gmp make
-mpfr make
-pcre2 make
+gmp
+mpfr
+pcre2
 python make
