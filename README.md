@@ -12,9 +12,6 @@ install just fine! But does it work, that's the question...
 
 It builds! It installs! It launches! That's a _success_, kids. 
 
-It works. We need to get a working application launcher, but `krunner` can get
-you basically everything you might need.
-
 You have two primary choices on what to install to get a working desktop. 
 Either you can install `plasma-desktop`, or you can install `plasma`. 
 
@@ -67,11 +64,23 @@ problems with this. If you take umbridge with this hard
 fact, perhaps reflect on why you want KDE in the first
 place?
 
+__qt__: The engine that make it go!
+
 The qt dependency includes packages which overlap with community, like `qt5`.
 Additionally, `qt5` requires packages from community at build time. If a package
 in community has been changed, it will be forked into this repository. As a
 result, you should place this repository in your `$KISS_PATH` __before__
-community.
+community. 
+
+`qt5*`, specifically `qt5-webengine`, take a very long time to build (thanks,
+chromium). As a result, I have included along with this repository a KISS
+tarball of the fully built packages for the three parts of the `qt5` suite that
+take more than twenty minutes to build. These are compiled assuming you've
+satisfied the dependencies of *this* repository. Built with everyone's favorite
+GNU C compiler, with `CFLAGS=-march=x86-64 -mtune=generic -Os -pipe`. If you
+want a 'seamless' build, merely plop these archives in
+`${XDG_CACHE_DIR:-$HOME/.cache}/kiss/bin`, and make sure you change the . before
+the 5 to a # so `kiss` doesn't complain.
 
 
 #### Prerequisites
@@ -206,7 +215,7 @@ $ startx
    KISS [style guide](https://k1ss.org/wiki/kiss/style-guide) as closely as 
    possible, but I'm not too much of a stickler.
 
-4. You have two window manager options: `kwin` or `kwinft`. `kwin` was recently
+3. You have two window manager options: `kwin` or `kwinft`. `kwin` was recently
    forked! It's all very exciting. `kwinft` is a promising, development-heavy
    branch. As a a result, there are bound to be bugs that crop up. Presumably,
    `kwinft` is strictly better than `kwin`, because something something bleeding
@@ -217,6 +226,12 @@ $ startx
    not `kwinft` related - burn down the [developer's
    door](https://gitlab.com/kwinft/kwinft) for those. 
 
+4. `kscreenlocker` works, but it seems you cannot log in! This probably has
+   something to do with `linux-pam` not being setup properly. To be frank, the
+   entire `sddm` stack will take a bit of learning on my part to understand and
+   get working. If you happen to know how to ensure things like pam are running
+   so that users don't get locked out of their systems, I would love assistance
+   on this.
 
 # My goals
 
