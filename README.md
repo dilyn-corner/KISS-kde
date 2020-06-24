@@ -12,19 +12,65 @@ install just fine! But does it work, that's the question...
 
 It builds! It installs! It launches! That's a _success_, kids. 
 
-You have two primary choices on what to install to get a working desktop. 
-Either you can install `plasma-desktop`, or you can install `plasma`. 
 
-`plasma-desktop` includes basically every single item in the framework you would
-need in order to have a recognizable KDE experience. It has icons, fonts, some
-default things like an application launcher, a system monitor, a settings
-manager.
+## Current Milestones
 
-If you want a more 'full-featured' KDE environment, you can install `plasma`.
-This 'package' will come with 20 additional packages, and it fleshes out our
-fledgling project with features one might expect to exist.
-It isn't that much more, so there's no real reason not to use it.
-This expanded list includes things like `bluez`. It might be worth it for you.
+Here are all of the things that can be worked on. 
+
+-[ ] Enable `linux-pam` in a meaningful way
+    * This would allow things like *logging back in from the lockscreen*
+    * This might fix the `udisks2` problem I have (very poorly) worked around.
+
+-[ ] Enable a login-manager
+
+-[ ] Ensure everythingn works!
+
+-[ ] Make patches to remove coreutils dependency
+    * Currently, we need `coreutils` for:
+    -[ ] `elogind - /usr/bin/realpath --relative-to`
+    -[ ] `libblockdev - /usr/bin/mktemp --tmpdir`
+    -[ ] `udisks2 - /usr/bin/ln -r`
+
+-[ ] Properly configure docbook generation
+    * Currently, `docbook-xsl` doesn't actually do anything, I don't think.
+    * You can see this in `udisks2`: all docs are disabled!
+
+
+-[ ] Package some KDE apps
+    -[ ] `krita`
+    -[ ] `okular`
+    -[ ] ???
+
+-[ ] Cleanup repository structure
+    * This one is on me. There seems to be a 'natural' grouping for these.
+
+-[x] Generate build files!
+
+-[x] Satisfy dependencies
+
+-[x] Make sure the core builds
+
+-[x] Does KDE launch?
+
+-[x] Fix menus not working
+
+-[x] Find a *sane* default collection
+
+-[ ] Expand the default for a 'comprehensive' alternative
+    -[x] `udisks2`
+    -[ ] `vaultcrypt`
+    -[ ] `networkmanager`
+    -[ ] `bluez`
+    -[ ] `pulseaudio` - will probably remain optional
+    -[ ] ???
+
+
+-[ ] Create an installation tarball similar to how KISS is distributed
+    -[ ] Live USB (?)
+
+
+This list will be expanded, contracted, and refined as necessary. Feel free to
+assist. 
 
 ---
 
@@ -149,6 +195,20 @@ __NOTE__: I have taken the liberty of uploading a KISS package for `qt5`,
 to mine, and you've installed all of their dependencies, you can simply install
 these xz archives instead of wasting ten hours building them. Trust me.
 
+You have two primary choices on what to install to get a working desktop. 
+Either you can install `plasma-desktop`, or you can install `plasma`. 
+
+`plasma-desktop` includes basically every single item in the framework you would
+need in order to have a recognizable KDE experience. It has icons, fonts, some
+default things like an application launcher, a system monitor, a settings
+manager.
+
+If you want a more 'full-featured' KDE environment, you can install `plasma`.
+This 'package' will come with 20 additional packages, and it fleshes out our
+fledgling project with features one might expect to exist.
+It isn't that much more, so there's no real reason not to use it.
+This expanded list includes things like `bluez`. It might be worth it for you.
+
 To get a 'minimal' KDE (it's over a hundred packages),
 simply install `plasma-desktop`. How convenient! Here's how
 you do it:
@@ -249,17 +309,6 @@ $ startx
    get working. If you happen to know how to ensure things like pam are running
    so that users don't get locked out of their systems, I would love assistance
    on this.
-
-# My goals
-
-
-1. Package convenient default applications
-
-2. Ensure `bluez` etc. work properly 
-
-3. Look into distributing this as an alternative to the 'default' KISS tar. 
-
-3a. This may include a live USB? Who knows.
 
 
 ## How you can help
