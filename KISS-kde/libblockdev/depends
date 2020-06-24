@@ -2,6 +2,7 @@ cryptsetup
 dmraid
 eudev
 glib
+gobject-introspection
 libbytesize
 lvm2
 ndctl
