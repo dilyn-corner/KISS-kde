@@ -1,6 +1,7 @@
 #!/bin/sh -e
 
 export MSGFMT=/usr/bin/true
+export MSGCAT=/usr/bin/true
 export MSGMERGE=/usr/bin/true
 export XGETTEXT=/usr/bin/true
 
