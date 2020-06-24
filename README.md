@@ -23,9 +23,9 @@ Here are all of the things that can be worked on.
 
 - [ ] Enable a login-manager
 
-- [ ] Ensure everythingn works!
+- [ ] Ensure everything works!
 
-- [ ] Make patches to remove coreutils dependency
+- [ ] Make patches to remove `coreutils` dependency
     - [ ] `elogind - /usr/bin/realpath --relative-to`
     - [ ] `libblockdev - /usr/bin/mktemp --tmpdir`
     - [ ] `udisks2 - /usr/bin/ln -r`
@@ -42,6 +42,7 @@ Here are all of the things that can be worked on.
 
 - [ ] Cleanup repository structure
     * This one is on me. There seems to be a 'natural' grouping for these.
+    * It'll resemble the 'default' KISS repositories. You know, for consistency.
 
 - [x] Generate build files!
 
