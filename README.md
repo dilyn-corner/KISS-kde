@@ -26,7 +26,6 @@ Here are all of the things that can be worked on.
 - [ ] Ensure everythingn works!
 
 - [ ] Make patches to remove coreutils dependency
-    * Currently, we need `coreutils` for:
     - [ ] `elogind - /usr/bin/realpath --relative-to`
     - [ ] `libblockdev - /usr/bin/mktemp --tmpdir`
     - [ ] `udisks2 - /usr/bin/ln -r`
