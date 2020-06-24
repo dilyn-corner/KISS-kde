@@ -1,0 +1,7 @@
+acl
+glib
+libatasmart
+libgudev
+polkit
+linux-headers make
+util-linux
