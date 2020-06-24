@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-autoreconf -sfi
+./autogen.sh
 
 ./configure \
     --prefix=/usr \
