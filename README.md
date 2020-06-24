@@ -33,14 +33,19 @@ This expanded list includes things like `bluez`. It might be worth it for you.
 __gettext__: I have opted not to include internationalization. This was done in
 two parts:
 
-1) Hobble `ki18n` by removing the gettext dependency
+1) Hobble `ki18n` by removing the `gettext` dependency
 
-2) Delete all translation files from packages which 'require' them. 
+2) Delete all translation files located in `po` from packages which 'require' them. 
 
 If you would like to have languages besides english available, it should be
 quite easy. First, package `gettext`. Second, remove the patch in the `ki18n`
 package. Finally, simply remove `rm -rf po` from each build script in which it
 appears. This is probably trivial (cough `sed` cough). 
+
+Additionally, there are packages which I had to go further to remove `gettext`
+and `intltool` from. It shouldn't be too hard to find them on your own (the
+patches are sanely named, `remove-gettext.patch` and `remove-intltool.patch`).
+Fix up the build files as required!
 
 
 __dbus__: The dreaded(?) question.
@@ -54,7 +59,9 @@ for launching KDE itself.
 If you attempt to `startx startplasma-x11`, you will
 probably be met with an error message about `dbus`. You see,
 KDE requires something like `polkit`, `elogind`, etc. to
-start. Indeed even with `wayland` this is the case.
+start. Indeed even with `wayland` this is the case. Additionally, `dbus` is used
+by integral parts of the system to do... Most things. Which is why KDE tries so
+hard to ensure it is running before it is launched.
 
 Which would seem to make `dbus` a hard dependency for KDE.
 
@@ -90,7 +97,11 @@ the 5 to a # so `kiss` doesn't complain.
    The minimum xorg requires should be enough - all others
    should be handled by `kiss`. Yes, I know `wayland` is a
    dependency. It is also an option to use `wayland` as a
-   result, if you so choose. `xorg` is merely the 'default'.
+   result, if you so choose. `xorg` is merely the 'default'. Note that `wayland`
+   support is still not fully implemented in KDE. You might have better mileage
+   using `kwinft` instead of `kwin`, for instance. This option is also included
+   in this repository. FWIW, I am using `kwinft` with `xorg` and these windows
+   wobble just fine.
 
 2. [cgroups](http://www.linuxfromscratch.org/blfs/view/svn/general/elogind.html) may be required for `elogind`. I leave it up to
    you to test your own kernel configs. 
@@ -107,7 +118,9 @@ the 5 to a # so `kiss` doesn't complain.
    `xf86-input-libinput`, etc.), `dhcpcd`, perhaps others. 
 
 These rebuilds are obviously not required if you already had
-the relevant programs built against `dbus`, `eudev`, etc. 
+the relevant programs built against `dbus`, `eudev`, etc. To determine which
+packages are built against `dbus` or `eudev` merely run `kiss-revdepends eudev`.
+If you see `xorg-server`, you're probably fine.
 
 
 ---
@@ -131,7 +144,7 @@ really. You shouldn't have too many conflicts to deal with,
 if any. Just make sure you've uninstalled `qt5` and
 friends.
 
-_NOTE_: I have taken the liberty of uploading a KISS package for `qt5`,
+__NOTE__: I have taken the liberty of uploading a KISS package for `qt5`,
 `qt5-webengine`, and `qt5-declarative`. Assuming your system is roughly similar
 to mine, and you've installed all of their dependencies, you can simply install
 these xz archives instead of wasting ten hours building them. Trust me.
@@ -203,7 +216,8 @@ $ startx
 # Things to be aware of
 
 1. I have not opted to start `sddm` by default. Turning this repository into a
-   full-fledged desktop is second on my list of things to do, I also plan on 
+   full-fledged desktop is first on my list of things to do. I will be looking
+   into this after I get a few more packages built to flesh out KDE. I also plan on 
    packaging launcher-alternatives, like `lightdm`. User choice, and all. 
 
 2. This is very much in alpha. I will keep this repository up-to-date as best I
@@ -220,15 +234,18 @@ $ startx
    branch. As a a result, there are bound to be bugs that crop up. Presumably,
    `kwinft` is strictly better than `kwin`, because something something bleeding
    edge. It's your choice which you choose! If you opt to use `kwinft`, 
-   simply install `plasma-desktop` or `plasma` and simply uncomment `kwinft`
-   from `plasma-desktop/depends` and `plasma-workspace/depends`, and comment out
-   `kwin` from the same files. If you run into bugs, please make sure they're
-   not `kwinft` related - burn down the [developer's
-   door](https://gitlab.com/kwinft/kwinft) for those. 
+   simply comment `kwin` from `plasma-desktop/depends` and
+   `plasma-workspace/depends` and uncomment `kwinft`, and then simply
+   install `plasma-desktop` or `plasma`. If you have already installed `kwin`
+   fear not! Do the comment switcheroo as before, reinstall _those_packages
+   (which should pull-in everything required for `kwinft`), and then simply kill
+   your KDE session if you're in one, uninstall `kwin`, and restart the session!
+   If you run into bugs, please make sure they're not `kwinft` related - burn down
+   the [developer's door](https://gitlab.com/kwinft/kwinft) for those. 
 
 4. `kscreenlocker` works, but it seems you cannot log in! This probably has
    something to do with `linux-pam` not being setup properly. To be frank, the
-   entire `sddm` stack will take a bit of learning on my part to understand and
+   entire `elogind` stack will take a bit of learning on my part to understand and
    get working. If you happen to know how to ensure things like pam are running
    so that users don't get locked out of their systems, I would love assistance
    on this.
