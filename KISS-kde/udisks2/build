@@ -1,7 +1,5 @@
 #!/bin/sh -e
 
-sed -i '|<sys/stat.h>|a #define __USE_GNU' src/udiskslinuxblock.c
-
 ./configure \
     --prefix=/usr
 

@@ -1,6 +1,7 @@
 acl
 glib
 libatasmart
+libblockdev
 libgudev
 linux-headers make
 util-linux
