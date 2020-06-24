@@ -4,6 +4,8 @@ export MSGFMT=/usr/bin/true
 export MSGMERGE=/usr/bin/true
 export XGETTEXT=/usr/bin/true
 
+patch -p1 < remove-gettext.patch
+
 ./configure \
     --prefix=/usr
 
