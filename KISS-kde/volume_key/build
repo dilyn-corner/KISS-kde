@@ -7,5 +7,3 @@
 
 make
 make DESTDIR="$1" install
-
-sed -i '/#include <config.h>/d' "$1/usr/include/volume_key/libvolume_key.h"
