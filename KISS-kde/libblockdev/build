@@ -3,7 +3,9 @@
 patch -p1 < fix-glibc-glob-onlydir.patch
 
 ./configure \
-    --prefix=/usr
+    --prefix=/usr \
+    --disable-tests \
+    --without-gtk-doc
 
 make
 make DESTDIR="$1" install
