@@ -1,0 +1,8 @@
+https://people.redhat.com/~heinzm/sw/dmraid/src/dmraid-1.0.0.rc16-3.tar.bz2
+patches/001-do-not-use-p-for-partition.patch
+patches/002-support-virtio-devices.patch
+patches/003-isw-probe-hpa.patch
+patches/004-activate-multiple-raid-sets.patch
+patches/005-fix-isw-sectors-calculation.patch
+patches/006-musl-libc.patch
+patches/007-fix-loff-t-musl.patch

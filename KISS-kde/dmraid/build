@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+for patch in *.patch; do 
+    patch -p1 < "$patch"
+done
+
+./configure \
+    --prefix=/usr \
+    --enable-shared_lib
+
+# So this build system doesn't shit the bed
+make -j1
+make DESTDIR="$1" install

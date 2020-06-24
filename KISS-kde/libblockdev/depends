@@ -1,7 +1,11 @@
+cryptsetup
+dmraid
 eudev
 glib
 libbytesize
+lvm2
 ndctl
 parted
 util-linux
+volume-key
 yaml

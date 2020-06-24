@@ -1,0 +1,8 @@
+#!/bin/sh -e
+
+./configure \
+    --prefix=/usr \
+    --enable-languages="cl cpp python qt"
+
+make
+make DESTDIR="$1" install
