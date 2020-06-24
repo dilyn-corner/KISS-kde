@@ -1,9 +1,10 @@
 #!/bin/sh -e
 
-patch -p1 < fix-glibc-glob-onlydir.patch
+autoreconf -sfi
 
 ./configure \
-    --prefix=/usr
+    --prefix=/usr \
+    --without-systemd
 
 make
 make DESTDIR="$1" install
