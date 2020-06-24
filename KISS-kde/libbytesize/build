@@ -1,5 +1,9 @@
 #!/bin/sh -e
 
+export MSGFMT=/usr/bin/true
+export MSGMERGE=/usr/bin/true
+export XGETTEXT=/usr/bin/true
+
 ./configure \
     --prefix=/usr
 
