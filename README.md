@@ -17,56 +17,56 @@ It builds! It installs! It launches! That's a _success_, kids.
 
 Here are all of the things that can be worked on. 
 
--[ ] Enable `linux-pam` in a meaningful way
+- [ ] Enable `linux-pam` in a meaningful way
     * This would allow things like *logging back in from the lockscreen*
     * This might fix the `udisks2` problem I have (very poorly) worked around.
 
--[ ] Enable a login-manager
+- [ ] Enable a login-manager
 
--[ ] Ensure everythingn works!
+- [ ] Ensure everythingn works!
 
--[ ] Make patches to remove coreutils dependency
+- [ ] Make patches to remove coreutils dependency
     * Currently, we need `coreutils` for:
-    -[ ] `elogind - /usr/bin/realpath --relative-to`
-    -[ ] `libblockdev - /usr/bin/mktemp --tmpdir`
-    -[ ] `udisks2 - /usr/bin/ln -r`
+    - [ ] `elogind - /usr/bin/realpath --relative-to`
+    - [ ] `libblockdev - /usr/bin/mktemp --tmpdir`
+    - [ ] `udisks2 - /usr/bin/ln -r`
 
--[ ] Properly configure docbook generation
+- [ ] Properly configure docbook generation
     * Currently, `docbook-xsl` doesn't actually do anything, I don't think.
     * You can see this in `udisks2`: all docs are disabled!
 
 
--[ ] Package some KDE apps
-    -[ ] `krita`
-    -[ ] `okular`
-    -[ ] ???
+- [ ] Package some KDE apps
+    - [ ] `krita`
+    - [ ] `okular`
+    - [ ] ???
 
--[ ] Cleanup repository structure
+- [ ] Cleanup repository structure
     * This one is on me. There seems to be a 'natural' grouping for these.
 
--[x] Generate build files!
+- [x] Generate build files!
 
--[x] Satisfy dependencies
+- [x] Satisfy dependencies
 
--[x] Make sure the core builds
+- [x] Make sure the core builds
 
--[x] Does KDE launch?
+- [x] Does KDE launch?
 
--[x] Fix menus not working
+- [x] Fix menus not working
 
--[x] Find a *sane* default collection
+- [x] Find a *sane* default collection
 
--[ ] Expand the default for a 'comprehensive' alternative
-    -[x] `udisks2`
-    -[ ] `vaultcrypt`
-    -[ ] `networkmanager`
-    -[ ] `bluez`
-    -[ ] `pulseaudio` - will probably remain optional
-    -[ ] ???
+- [ ] Expand the default for a 'comprehensive' alternative
+    - [x] `udisks2`
+    - [ ] `vaultcrypt`
+    - [ ] `networkmanager`
+    - [ ] `bluez`
+    - [ ] `pulseaudio` - will probably remain optional
+    - [ ] ???
 
 
--[ ] Create an installation tarball similar to how KISS is distributed
-    -[ ] Live USB (?)
+- [ ] Create an installation tarball similar to how KISS is distributed
+    - [ ] Live USB (?)
 
 
 This list will be expanded, contracted, and refined as necessary. Feel free to
@@ -297,7 +297,7 @@ $ startx
    simply comment `kwin` from `plasma-desktop/depends` and
    `plasma-workspace/depends` and uncomment `kwinft`, and then simply
    install `plasma-desktop` or `plasma`. If you have already installed `kwin`
-   fear not! Do the comment switcheroo as before, reinstall _those_packages
+   fear not! Do the comment switcheroo as before, reinstall *those* packages
    (which should pull-in everything required for `kwinft`), and then simply kill
    your KDE session if you're in one, uninstall `kwin`, and restart the session!
    If you run into bugs, please make sure they're not `kwinft` related - burn down
