@@ -1,8 +1,0 @@
-bison make
-cairo
-flex make
-glib make
-libffi
-libtool
-meson make
-python3 

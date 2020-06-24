@@ -40,10 +40,6 @@ Here are all of the things that can be worked on.
     - [ ] `okular`
     - [ ] ???
 
-- [ ] Cleanup repository structure
-    * This one is on me. There seems to be a 'natural' grouping for these.
-    * It'll resemble the 'default' KISS repositories. You know, for consistency.
-
 - [x] Generate build files!
 
 - [x] Satisfy dependencies
@@ -67,6 +63,10 @@ Here are all of the things that can be worked on.
 
 - [ ] Create an installation tarball similar to how KISS is distributed
     - [ ] Live USB (?)
+
+- [x] Cleanup repository structure
+    * This one is on me. There seems to be a 'natural' grouping for these.
+    * It'll resemble the 'default' KISS repositories. You know, for consistency.
 
 
 This list will be expanded, contracted, and refined as necessary. Feel free to
@@ -225,9 +225,11 @@ $ git clone https://github.com/dilyn-corner/KISS-kde # pls
 # Start with a clean path, get a new one.
 
 $ . /etc/profile.d/kiss_path.sh
-$ export KISS_PATH="$HOME/KISS-kde/KISS-kde:$KISS_PATH"
-$ export KISS_PATH="$HOME/mywaland/wayland:$KISS_PATH"
 $ exprot KISS_PATH="$KISS_PATH:$HOME/community/community"
+$ export KISS_PATH="$HOME/mywaland/wayland:$KISS_PATH"
+$ export KISS_PATH="$HOME/KISS-kde/extra:$KISS_PATH"
+$ export KISS_PATH="$HOME/KISS-kde/plasma:$KISS_PATH"
+$ export KISS_PATH="$HOME/KISS-kde/frameworks:$KISS_PATH"
 
 # If you don't already have it,
 
