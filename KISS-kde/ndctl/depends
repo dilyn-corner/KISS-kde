@@ -1,2 +1,3 @@
 autoconf make
 eudev
+kmod make
