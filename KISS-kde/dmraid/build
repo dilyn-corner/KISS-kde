@@ -1,5 +1,7 @@
 #!/bin/sh -e
 
+mv *.patch "$2/dmraid"
+cd "$2/dmraid"
 for patch in *.patch; do 
     patch -p1 < "$patch"
 done
