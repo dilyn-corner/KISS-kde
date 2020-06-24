@@ -5,6 +5,7 @@
 ./configure \
     --prefix=/usr \
     --disable-docs \
+    --disable-bash \
     --without-systemd
 
 make
