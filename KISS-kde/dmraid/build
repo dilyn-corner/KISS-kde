@@ -8,6 +8,7 @@ done
 
 ./configure \
     --prefix=/usr \
+    --sbindir=/usr/bin \
     --enable-shared_lib
 
 # So this build system doesn't shit the bed
