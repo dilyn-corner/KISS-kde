@@ -7,5 +7,5 @@ lvm2
 ndctl
 parted
 util-linux
-volume-key
+volume_key
 yaml
