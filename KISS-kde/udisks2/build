@@ -1,8 +1,16 @@
 #!/bin/sh -e
 
+# A workaround appears! 
+# polkit doesn't seem to work?
+touch data/org.freedesktop.UDisks2.policy
+touch modules/lvm2/data/org.freedesktop.UDisks2.lvm2.policy
+touch modules/zram/data/org.freedesktop.UDisks2.zram.policy
+
+# We can reenable man-pages when docbook is fixed
 ./configure \
     --prefix=/usr \
     --disable-gtk-doc-html \
+    --disable-man \
     --enable-lvm2 \
     --enable-lvmcache \
     --enable-zram
