@@ -1,17 +1,10 @@
 #!/bin/sh -e
 
-cat << EOF
-
-We probably want to do these things. 
-
 Ensure we have a machine ID.
 exec dbus-uuidgen --ensure=/etc/machine-id
 
-We probably want to generate a dbus user and a messagebus group.
 addgroup -S messagebus 2>/dev/null
 adduser -S -D -H -h /dev/null -s /usr/bin/nologin -G messagebus -g messagebus messagebus 2>/dev/null
 
-And give that group something useful.
 chown root:messagebus /usr/libexec/dbus-daemon-launch-helper
 chmod 4750            /usr/libexec/dbus-daemon-launch-helper
-EOF
