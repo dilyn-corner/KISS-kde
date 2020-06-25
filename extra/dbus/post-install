@@ -9,7 +9,7 @@ exec dbus-uuidgen --ensure=/etc/machine-id
 
 We probably want to generate a dbus user and a messagebus group.
 addgroup -S messagebus 2>/dev/null
-adduser -S -D -H -h /dev/null -s /usr/bin/bin/nologin -G messagebus -g messagebus messagebus 2>/dev/null
+adduser -S -D -H -h /dev/null -s /usr/bin/nologin -G messagebus -g messagebus messagebus 2>/dev/null
 
 And give that group something useful.
 chown root:messagebus /usr/libexec/dbus-daemon-launch-helper
