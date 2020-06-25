@@ -6,6 +6,7 @@ plasma-framework
 kcmutils
 breeze 
 kinit
+kscreenlocker
 qt5-sensors
 qt5-script
 wrapland
