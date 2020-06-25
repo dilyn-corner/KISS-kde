@@ -1,8 +1,14 @@
 #!/bin/sh -e
 
 cat << EOF
+
+###
+It is UNCLEAR if this is necessary. 
+It is probably required for polkit.
+###
+
 You might want to make a group just for our bus
-echo 'messagebus:x:1999:' >> /etc/group
+echo 'messagebus:x:NNNN:' >> /etc/group
 
 and give a binary group access
 chown root:messagebus /usr/libexec/dbus-daemon-launch-helper

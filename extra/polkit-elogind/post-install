@@ -1,7 +1,18 @@
 #!/bin/sh -e
 
-echo "polkitd:x:1998:" >> /etc/group
-chown -R polkitd:polkitd "$1/etc/polkit-1/rules.d" "$1/usr/share/polkit-1/rules.d"
-chmod -R 700 "1/etc/polkit-1/rules.d" "$1/usr/share/polkit-1/rules.d"
-chmod 4755 "$1/usr/lib/polkit-1/polkit-agent-helper-1"
-chmod 4755 "$1/usr/bin/pkexec"
+cat >> << EOF
+
+###
+It is UNCLEAR if this is necessary.
+It is probably related to polkit.
+###
+
+You might need to give polkitd a group.
+echo "polkitd:x:NNNN:" >> /etc/group
+
+And then let it access its rules.
+chown -R polkitd:polkitd /etc/polkit-1/rules.d"
+chmod -R 700 /etc/polkit-1/rules.d
+chmod 4755 /usr/lib/polkit-1/polkit-agent-helper-1
+chmod 4755 /usr/bin/pkexec
+EOF

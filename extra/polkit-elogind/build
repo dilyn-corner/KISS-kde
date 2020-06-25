@@ -25,7 +25,8 @@ export XGETTEXT=/usr/bin/true
     --disable-systemd \
     --disable-man-pages \
     --disable-nls \
-    --enable-libsystemd-login=no
+    --enable-libsystemd-login=no \
+    --enable-libelogind=yes
 
 make
 make DESTDIR="$1" install
