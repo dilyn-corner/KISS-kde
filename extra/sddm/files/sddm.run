@@ -1,5 +1,3 @@
 #!/bin/sh
 
-# There probably has to be something more here. 
-# For instance, this has to start after elogind.
-sddm
+exec sddm
