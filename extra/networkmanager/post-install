@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-cat >> << EOF
+cat << EOF
 To use iwd instead of wpa_supplicant (default), add the following to
 /etc/NetworkManager/NetworkManager.conf:
 

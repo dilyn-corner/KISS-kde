@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-cat >> << EOF
+cat << EOF
 
 We may want to give polkitd a group and a user.
 addgroup -S polkitd 2>/dev/null

@@ -1,6 +1,6 @@
 #!/bin/sh 
 
-cat >> << EOF
+cat << EOF
 
 We probably want to create an sddm group and user. Because reasons.
 
