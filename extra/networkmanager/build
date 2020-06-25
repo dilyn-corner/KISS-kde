@@ -1,0 +1,30 @@
+#!/bin/sh -e
+
+# Remove. Gettext.
+export GMSGFMT=/usr/bin/true
+export MSGFMT=/usr/bin/true
+export MSGMERGE=/usr/bin/true
+export XGETTEXT=/usr/bin/true
+export INTLTOOL_PERL=/usr/bin/true
+
+for patch in *.patch; do
+    patch -p1 < "$patch"
+done
+
+./configure \
+    --prefix=/usr \
+    --disable-nls \
+    --disable-gtk-doc-html \
+    --enable-modify-system \
+    --with-nmcli=yes \
+    --with-systemdsystemunitdir=no \
+    --with-systemd-journal=no \
+    --with-iptables=yes \
+    --with-dhcpcd=/usr/bin/dhcpcd \
+    --with-iwd=yes \
+    --with-resolvconf=yes
+
+make
+make DESTDIR="$1" install
+
+install -Dm644 networkmanager.conf "$1/etc/NetworkManager/NetworkManager.conf"

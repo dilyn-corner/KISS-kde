@@ -1,0 +1,10 @@
+https://download.gnome.org/sources/NetworkManager/1.24/NetworkManager-1.24.2.tar.xz
+patches/musl-basic.patch
+patches/musl-compar.patch
+patches/musl-fix-includes.patch
+patches/musl-network-support.patch
+patches/musl-no-drand.patch
+patches/musl-process-util.patch
+patches/py3.patch
+patches/remove-intltool.patch
+files/networkmanager.conf

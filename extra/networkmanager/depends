@@ -1,0 +1,10 @@
+curl
+dbus
+eudev
+iptables
+jansson
+libgudev
+linux-headers make
+ppp
+readline
+util-linux
