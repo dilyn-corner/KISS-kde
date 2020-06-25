@@ -17,11 +17,10 @@ It builds! It installs! It launches! That's a _success_, kids.
 
 Here are all of the things that can be worked on. 
 
-- [ ] Enable `linux-pam` in a meaningful way
-    * This would allow things like *logging back in from the lockscreen*
+- [x] Enable `linux-pam` in a meaningful way
     * This might fix the `udisks2` problem I have (very poorly) worked around.
 
-- [ ] Enable a login-manager
+- [x] Enable a login-manager
 
 - [ ] Ensure everything works!
 
@@ -309,13 +308,6 @@ $ startx
    your KDE session if you're in one, uninstall `kwin`, and restart the session!
    If you run into bugs, please make sure they're not `kwinft` related - burn down
    the [developer's door](https://gitlab.com/kwinft/kwinft) for those. 
-
-4. `kscreenlocker` works, but it seems you cannot log in! This probably has
-   something to do with `linux-pam` not being setup properly. To be frank, the
-   entire `elogind` stack will take a bit of learning on my part to understand and
-   get working. If you happen to know how to ensure things like pam are running
-   so that users don't get locked out of their systems, I would love assistance
-   on this.
 
 
 ## How you can help
