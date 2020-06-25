@@ -136,24 +136,27 @@ want a 'seamless' build, merely plop these archives in
 the 5 to a # so `kiss` doesn't complain.
 
 
+__xorg vs wayland__: the eternal debate
+
+You can use either `xorg` or `wayland` as your backend. I have only ever used
+`xorg`; as such, I'm not certain what `wayland` may or may not require. It's
+certainly an option you can explore though! It's quite simple. If you opt for
+`xorg`, you get `wayland` for free. And you don't have a choice in the matter. 
+`wayland` support has 'a long way to go' in KDE yet. But `kwin` was forked, so
+we will presumably see better `wayland` support in the future. This fork,
+`kwinft`, is included in this repository and *is* an option you can take! I'm
+using `kwinft` with `xorg` and these windows wobble just fine.
+
+
 #### Prerequisites
 
-1. This all assumes a *working* `xorg-server`. Many
-   xorg-related dependencies are left out as explicit deps.
-   The minimum xorg requires should be enough - all others
-   should be handled by `kiss`. Yes, I know `wayland` is a
-   dependency. It is also an option to use `wayland` as a
-   result, if you so choose. `xorg` is merely the 'default'. Note that `wayland`
-   support is still not fully implemented in KDE. You might have better mileage
-   using `kwinft` instead of `kwin`, for instance. This option is also included
-   in this repository. FWIW, I am using `kwinft` with `xorg` and these windows
-   wobble just fine.
+1. This all assumes a *working* `xorg-server`.
 
 2. [cgroups](http://www.linuxfromscratch.org/blfs/view/svn/general/elogind.html) may be required for `elogind`. I leave it up to
-   you to test your own kernel configs. 
+   you to test your own kernel configs.
 
-3. You will require exactly one program from `coreutils` to
-   build a single package. 
+3. You will require exactly `realpath` from `coreutils` to
+   build a single package. The others are for extras in `plasma`.
 
 4. You will need `gnugrep` to build at least one package.
 
@@ -161,7 +164,7 @@ the 5 to a # so `kiss` doesn't complain.
 
 6. You will need `eudev`. Because of this, you'll need to
    rebuild `xorg-server`, any input packages (`libinput`,
-   `xf86-input-libinput`, etc.), `dhcpcd`, perhaps others. 
+   `xf86-input-libinput`, etc.), `dhcpcd`, perhaps others.
 
 These rebuilds are obviously not required if you already had
 the relevant programs built against `dbus`, `eudev`, etc. To determine which
@@ -241,11 +244,13 @@ $ kiss b xorg-server libinput xf86-input-libinput
 # Add others as necessary
 
 # Thanks to the alternatives system, we can just pluck out
-# the one binary we need from `coreutils`, along with the grep utility.
+# the few binaries we need from `coreutils`, along with the grep utility.
 
 $ kiss b coreutils gnugrep && kiss i coreutils gnugrep
 $ kiss a coreutils /usr/bin/realpath
-$ kiss a | grep ^gnugrep | kiss a -
+$ kiss a coreutils /usr/bin/mktemp
+$ kiss a coreutils /usr/bin/ln
+$ kiss a gnugrep   /usr/bin/grep
 
 # We're finally ready!
 
