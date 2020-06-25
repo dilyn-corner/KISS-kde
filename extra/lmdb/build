@@ -19,7 +19,7 @@ includedir=/usr/include
 Name liblmdb
 Description: Lightning Memory-mapped key-value database
 URL: http://symas.com/mdb/
-Version: 0.9.24
+Version: 0.9.25
 Libs: -L/usr/lib -llmdb
 Cflags: -I/usr/include
 EOF
