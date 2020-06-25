@@ -30,3 +30,12 @@ export XGETTEXT=/usr/bin/true
 
 make
 make DESTDIR="$1" install
+
+install -Dm755 polkit.run "$1/etc/sv/polkitd/run"
+
+chown -R polkitd:polkitd "$1/etc/polkit-1/rules.d"
+chown -R polkitd:polkitd "$1/usr/share/polkit-1/rules.d"
+chmod -R 700 "$1/etc/polkit-1/rules.d"
+chmod -R 700 "$1/usr/share/polkit-1/rules.d"
+chmod 4755 "$1/usr/bin/pkexec"
+chmod 4755 "$1/usr/lib/polkit-1/polkit-agent-helper-1"

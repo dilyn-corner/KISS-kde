@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# We probably need this service file to enable elogind at boot time.
+# This requires dbus. We should check if it's running. Or does sv handle this?
+
+exec elogind

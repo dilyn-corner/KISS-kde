@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# We probably need more. 
+# For instance, we need dbus before polkit.
+
+/usr/lib/polkit-1/polkitd

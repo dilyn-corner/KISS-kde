@@ -2,15 +2,16 @@
 
 cat << EOF
 
-###
-It is UNCLEAR if this is necessary. 
-It is probably required for polkit.
-###
+We probably want to do these things. 
 
-You might want to make a group just for our bus
-echo 'messagebus:x:NNNN:' >> /etc/group
+Ensure we have a machine ID.
+exec dbus-uuidgen --ensure=/etc/machine-id
 
-and give a binary group access
+We probably want to generate a dbus user and a messagebus group.
+addgroup -S messagebus 2>/dev/null
+adduser -S -D -H -h /dev/null -s /usr/bin/bin/nologin -G messagebus -g messagebus messagebus 2>/dev/null
+
+And give that group something useful.
 chown root:messagebus /usr/libexec/dbus-daemon-launch-helper
 chmod 4750            /usr/libexec/dbus-daemon-launch-helper
 EOF

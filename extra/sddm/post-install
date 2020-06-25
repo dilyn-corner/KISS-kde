@@ -1,0 +1,9 @@
+#!/bin/sh 
+
+cat >> << EOF
+
+We probably want to create an sddm group and user. Because reasons.
+
+addgroup -S sddm 2>/dev/null
+adduser -G video -h /var/lib/sddm -S -s /usr/bin/nologin sddm 2>/dev/null
+EOF

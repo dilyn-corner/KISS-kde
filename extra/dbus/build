@@ -1,15 +1,17 @@
 #!/bin/sh
 
 ./configure \
+    --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --enable-user-session \
-    --disable-asserts \
-    --prefix=/usr \
     --with-system-socket=/run/dbus/system_bus_socket \
-    --disable-doxygen-docs \
     --with-system-pid-file=/run/dbus/pid \
-    --with-console-auth-dir=/run/console
+    --with-console-auth-dir=/run/console \
+    --disable-asserts \
+    --disable-doxygen-docs \
+    --enable-inotify \
+    --enable-user-session \
+    --with-x
 
 make
 make DESTDIR="$1" install

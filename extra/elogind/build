@@ -17,3 +17,5 @@ DESTDIR="$1" ninja -C build install
 ln -s libelogind.pc            "$1/usr/lib/pkgconfig/libsystemd.pc"
 ln -s libelogind.pc            "$1/usr/lib/pkgconfig/libsystemd-logind.pc"
 ln -s "$1/usr/include/elogind" "$1/usr/include/systemd"
+
+install -Dm755 elogind.run "$1/etc/sv/elogind/run"
