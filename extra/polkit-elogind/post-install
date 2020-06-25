@@ -5,4 +5,13 @@ cat >> << EOF
 We may want to give polkitd a group and a user.
 addgroup -S polkitd 2>/dev/null
 adduser -S -D -H -h /var/empty -s /sbin/nologin -G polkitd -g polkitd polkitd 2>/dev/null
+
+We should ensure that our permissions are right at build time, but we don't have
+a group at build time.
+chown -R polkitd:polkitd /etc/polkit-1/rules.d
+chown -R polkitd:polkitd /usr/share/polkit-1/rules.d
+chmod -R 700 /etc/polkit-1/rules.d
+chmod -R 700 /usr/share/polkit-1/rules.d
+chmod 4755 /usr/bin/pkexec
+chmod 4755 /usr/lib/polkit-1/polkit-agent-helper-1
 EOF
