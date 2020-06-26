@@ -7,22 +7,24 @@ text](https://github.com/dilyn-corner/KISS-kde/blob/master/06-23%4021:48:21.jpg)
 
 This is currently a work in progress. Feel free to help out!
 
-Every package required to build `plasma-desktop` builds and
-install just fine! But does it work, that's the question...
+KDE is a full-featured desktop environment for Linux! It includes a framework
+to allow for integration with the system, utilizing `dbus` and `pam`, along with
+`plasma`, a beautiful and modern desktop.
 
-It builds! It installs! It launches! That's a _success_, kids. 
-
+This is very much in alpha. I will keep this repository up-to-date as best I
+can, testing and building things as frequently as possible - it's a big
+project that requires a fair amount of maintenance. Luckily, I have the hard
+drive space and the free time. But I'm only one person; if you have a
+contribution, feel free to share it. If you package some KDE apps, feel free
+to submit a pull request for inclusion. Requests like this should follow the
+KISS [style guide](https://k1ss.org/wiki/kiss/style-guide) as closely as 
+possible, but I'm not too much of a stickler.
 
 ## Current Milestones
 
 Here are all of the things that can be worked on. 
 
-- [x] Enable `linux-pam` in a meaningful way
-    * This might fix the `udisks2` problem I have (very poorly) worked around.
-
-- [x] Enable a login-manager
-
-- [ ] Ensure everything works!
+- [x] Cleanup repository structure
 
 - [ ] Make patches to remove `coreutils` dependency
     - [ ] `elogind - /usr/bin/realpath --relative-to`
@@ -31,41 +33,74 @@ Here are all of the things that can be worked on.
 
 - [ ] Properly configure docbook generation
     * Currently, `docbook-xsl` doesn't actually do anything, I don't think.
-    * You can see this in `udisks2`: all docs are disabled!
 
+- [x] Get the core working
+    - [x] Generate build files
+    - [x] Make sure the core builds
+    - [x] Ensure KDE launches
 
-- [ ] Package some KDE apps
-    - [ ] `krita`
-    - [ ] `okular`
-    - [ ] ???
+- [x] Find a *sane* default collection, `plasma-desktop`
+    - [x] KDE Framework
+    - [x] Plasma
+    - [x] `systemsettings`
+    - [x] `breeze`
+    - [x] `breeze-icons`
 
-- [x] Generate build files!
+- [x] Configure `linux-pam` in a meaningful way
 
-- [x] Satisfy dependencies
+- [x] Enable a login-manager
+    - [x] Bundle a default theme (breeze)
+    - [ ] Package an alternative
 
-- [x] Make sure the core builds
-
-- [x] Does KDE launch?
-
-- [x] Fix menus not working
-
-- [x] Find a *sane* default collection
-
-- [ ] Expand the default for a 'comprehensive' alternative
+- [ ] Expand `plasma-desktop` for a 'comprehensive' alternative, `plasma`
+    - [x] `sddm`
     - [x] `udisks2`
     - [ ] `vaultcrypt`
     - [ ] `networkmanager`
     - [ ] `bluez`
-    - [ ] `pulseaudio` - will probably remain optional
-    - [ ] ???
+    - [ ] `pulseaudio`
 
+- [ ] Package some KDE apps
+    - [ ] `krita`
+    - [ ] `kdenlive`
+    - [ ] `kwave`
+    - [ ] `dragon-player`
+    - [ ] `kaffeine`
+    - [ ] `elisa`
+    - [ ] `calligra`
+    - [ ] `kdevelop`
+    - [x] `konsole`
+    - [ ] `yakuake`
+    - [ ] `okular`
+    - [ ] `gwenview`
+    - [ ] `spectacle`
+    - [ ] `kate`
+    - [x] `dolphin`
+    - [ ] `filelight`
+    - [ ] `ark`
+    - [x] `falkon`
+    - [ ] `konqueror`
+    - [ ] `kget`
+    - [ ] `kmail`
+    - [ ] `kwalletmanager`
+    - [ ] `kgpg`
+    - [ ] `ktorrent`
+    - [ ] `latte`
+
+- [ ] Ensure everything works!
+    - [x] Sessions can start from `startx`
+    - [x] Sessions can start from `sddm`
+    - [x] Applications launch
+    - [x] Menus work
+    - [x] Themes work
+    - [x] Settings work
+    - [ ] Users can log back in from a *lock* (super+l)
+    - [ ] Bluetooth
+    - [ ] Power management
+    - [ ] Disk/hardware management 
 
 - [ ] Create an installation tarball similar to how KISS is distributed
     - [ ] Live USB (?)
-
-- [x] Cleanup repository structure
-    * This one is on me. There seems to be a 'natural' grouping for these.
-    * It'll resemble the 'default' KISS repositories. You know, for consistency.
 
 
 This list will be expanded, contracted, and refined as necessary. Feel free to
@@ -75,7 +110,9 @@ assist.
 
 ## KISS-kde with respect to KISS
 
-__gettext__: I have opted not to include internationalization. This was done in
+### gettext
+
+I have opted not to include internationalization. This was done in
 two parts:
 
 1) Hobble `ki18n` by removing the `gettext` dependency
@@ -93,7 +130,9 @@ patches are sanely named, `remove-gettext.patch` and `remove-intltool.patch`).
 Fix up the build files as required!
 
 
-__dbus__: The dreaded(?) question.
+### dbus
+
+The dreaded(?) question.
 
 Based on my current knowledge of KDE, `dbus` is required by
 a litany of programs. Many which don't explicitly require
@@ -116,7 +155,9 @@ problems with this. If you take umbridge with this hard
 fact, perhaps reflect on why you want KDE in the first
 place?
 
-__qt__: The engine that make it go!
+### qt
+
+The engine that make it go!
 
 The qt dependency includes packages which overlap with community, like `qt5`.
 Additionally, `qt5` requires packages from community at build time. If a package
@@ -135,7 +176,9 @@ want a 'seamless' build, merely plop these archives in
 the 5 to a # so `kiss` doesn't complain.
 
 
-__xorg vs wayland__: the eternal debate
+### xorg vs wayland 
+
+The eternal debate.
 
 You can use either `xorg` or `wayland` as your backend. I have only ever used
 `xorg`; as such, I'm not certain what `wayland` may or may not require. It's
@@ -146,8 +189,20 @@ we will presumably see better `wayland` support in the future. This fork,
 `kwinft`, is included in this repository and *is* an option you can take! I'm
 using `kwinft` with `xorg` and these windows wobble just fine.
 
+`kwinft` is a promising, development-heavy project. As a result, there are 
+bound to be bugs that crop up. Presumably, `kwinft` is strictly better than `kwin`, 
+because something something bleeding edge. It's your choice which you choose! If 
+you opt to use `kwinft`, simply comment `kwin` from `plasma-desktop/depends` and
+`plasma-workspace/depends` and uncomment `kwinft`, and then simply
+install `plasma-desktop` or `plasma`. If you have already installed `kwin`
+fear not! Do the comment switcheroo as before, reinstall *those* packages
+(which should pull-in everything required for `kwinft`), and then simply kill
+your KDE session if you're in one, uninstall `kwin`, and restart the session!
+If you run into bugs, please make sure they're not `kwinft` related - burn down
+the [developer's door](https://gitlab.com/kwinft/kwinft) for those. 
 
-#### Prerequisites
+
+## Prerequisites
 
 1. This all assumes a *working* `xorg-server`.
 
@@ -171,10 +226,7 @@ packages are built against `dbus` or `eudev` merely run `kiss-revdepends eudev`.
 If you see `xorg-server`, you're probably fine.
 
 
----
-
-
-### Getting Started
+## Getting Started
 
 Now that we have all of that nonsense out of the way, let's
 get to it!
@@ -253,62 +305,48 @@ $ kiss a gnugrep   /usr/bin/grep
 
 # We're finally ready!
 
-$ kiss b plasma-desktop
+$ kiss b plasma-desktop # or plasma
 
 ~~~ WAIT TWELVE HOURS ~~~
 
-$ kiss i plasma-desktop
+$ kiss i plasma-desktop # or plasma
 
 # There are some circular dependencies we should work around
 
 $ kiss b elogind && kiss i elogind
 
-# Perhaps we start the dbus, elogind, polkit, and eudev services?
-# At least the dbus service seems necessary, so we might as well...
+# Perhaps we start the dbus, elogind, polkit, etc. services?
 $ ln -sv /etc/sv/dbus  /var/service
 $ ln -sv /etc/sv/udevd /var/service
 
-# Enjoy!
+$ sv up dbus
+$ sv up udevd
+
+# Two options: 
+# 1. Use 'startx' to launch KDE
+# 2. Use a login manager
+
+# For startx:
 
 $ pkill x
 $ echo "exec dbus-launch --exit-with-session startplasma-x11" >> ~/.xinitrc" 
 # Ensure you don't have anything else execing before this
 
 $ startx
+
+# For a login manager:
+
+$ kiss b sddm && kiss i sddm
+$ ln -sv /etc/sv/polkitd /var/service
+$ ln -sv /etc/sv/elogind /var/service
+$ ln -sv /etc/sv/sddm    /ver/service
+
+$ sv up polkitd
+$ sv up elogind
+$ sv up sddm # should launch sddm
 ```
 
----
-
-# Things to be aware of
-
-1. I have not opted to start `sddm` by default. Turning this repository into a
-   full-fledged desktop is first on my list of things to do. I will be looking
-   into this after I get a few more packages built to flesh out KDE. I also plan on 
-   packaging launcher-alternatives, like `lightdm`. User choice, and all. 
-
-2. This is very much in alpha. I will keep this repository up-to-date as best I
-   can, testing and building things as frequently as possible - it's a big
-   project that requires a fair amount of maintenance. Luckily, I have the hard
-   drive space and the free time. But I'm only one person; if you have a
-   contribution, feel free to share it. If you package some KDE apps, feel free
-   to submit a pull request for inclusion. Requests like this should follow the
-   KISS [style guide](https://k1ss.org/wiki/kiss/style-guide) as closely as 
-   possible, but I'm not too much of a stickler.
-
-3. You have two window manager options: `kwin` or `kwinft`. `kwin` was recently
-   forked! It's all very exciting. `kwinft` is a promising, development-heavy
-   branch. As a a result, there are bound to be bugs that crop up. Presumably,
-   `kwinft` is strictly better than `kwin`, because something something bleeding
-   edge. It's your choice which you choose! If you opt to use `kwinft`, 
-   simply comment `kwin` from `plasma-desktop/depends` and
-   `plasma-workspace/depends` and uncomment `kwinft`, and then simply
-   install `plasma-desktop` or `plasma`. If you have already installed `kwin`
-   fear not! Do the comment switcheroo as before, reinstall *those* packages
-   (which should pull-in everything required for `kwinft`), and then simply kill
-   your KDE session if you're in one, uninstall `kwin`, and restart the session!
-   If you run into bugs, please make sure they're not `kwinft` related - burn down
-   the [developer's door](https://gitlab.com/kwinft/kwinft) for those. 
-
+--- 
 
 ## How you can help
 
