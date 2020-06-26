@@ -9,3 +9,5 @@ cmake -B build \
 
 cmake --build build
 cmake --install build
+
+install -Dm644 polkit-1 "$1/etc/pam.d/polkit-1"

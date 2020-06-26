@@ -1,2 +1,3 @@
 https://github.com/elogind/elogind/archive/v243.4.tar.gz
 files/elogind.run
+files/elogind-user
