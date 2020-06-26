@@ -210,7 +210,7 @@ the [developer's door](https://gitlab.com/kwinft/kwinft) for those.
    you to test your own kernel configs.
 
 3. You will require exactly `realpath` from `coreutils` to
-   build a single package. The others are for extras in `plasma`.
+   build a single package. The others are for extras in KISS-kde/extra.
 
 4. You will need `gnugrep` to build at least one package.
 
