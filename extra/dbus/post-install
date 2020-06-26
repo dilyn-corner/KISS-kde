@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-exec dbus-uuidgen --ensure=/etc/machine-id
+dbus-uuidgen --ensure=/etc/machine-id
 
 addgroup -S messagebus 2>/dev/null
 adduser -S -D -H -h /dev/null -s /usr/bin/nologin -G messagebus -g messagebus messagebus 2>/dev/null
