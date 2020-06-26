@@ -26,10 +26,11 @@ Here are all of the things that can be worked on.
 
 - [x] Cleanup repository structure
 
-- [ ] Make patches to remove `coreutils` dependency
+- [ ] Make patches to remove extraneous dependencies
     - [ ] `elogind - /usr/bin/realpath --relative-to`
     - [ ] `libblockdev - /usr/bin/mktemp --tmpdir`
     - [ ] `udisks2 - /usr/bin/ln -r`
+    - [ ] `gnugrep - /usr/bin/grep --quiet`
 
 - [ ] Properly configure docbook generation
     * Currently, `docbook-xsl` doesn't actually do anything, I don't think.
@@ -210,9 +211,9 @@ the [developer's door](https://gitlab.com/kwinft/kwinft) for those.
    you to test your own kernel configs.
 
 3. You will require exactly `realpath` from `coreutils` to
-   build a single package. The others are for extras in KISS-kde/extra.
+   build `elogind`. The others are for extras in KISS-kde/extra.
 
-4. You will need `gnugrep` to build at least one package.
+4. You will need `gnugrep` to build `breeze-icons`.
 
 5. You will need `dbus`. Because of this, you'll have to rebuild `qt5`.
 
