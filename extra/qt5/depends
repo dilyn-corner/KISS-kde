@@ -18,6 +18,7 @@ libxkbcommon
 linux-headers make
 mesa
 mtdev
+pcre2
 perl  make
 sqlite
 xcb-util
