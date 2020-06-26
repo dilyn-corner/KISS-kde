@@ -316,7 +316,7 @@ $ kiss i plasma-desktop # or plasma
 
 $ kiss b elogind && kiss i elogind
 
-# Perhaps we start the dbus, elogind, polkit, etc. services?
+# Perhaps we start the dbus and udev services?
 $ ln -sv /etc/sv/dbus  /var/service
 $ ln -sv /etc/sv/udevd /var/service
 
@@ -330,7 +330,7 @@ $ sv up udevd
 # For startx:
 
 $ pkill x
-$ echo "exec dbus-launch --exit-with-session startplasma-x11" >> ~/.xinitrc" 
+$ echo "exec dbus-launch --exit-with-session startplasma-x11" >> ~/.xinitrc
 # Ensure you don't have anything else execing before this
 
 $ startx
@@ -338,13 +338,16 @@ $ startx
 # For a login manager:
 
 $ kiss b sddm && kiss i sddm
+
+# Enable the required services. FoR sEcUrItY
+
 $ ln -sv /etc/sv/polkitd /var/service
 $ ln -sv /etc/sv/elogind /var/service
 $ ln -sv /etc/sv/sddm    /ver/service
 
 $ sv up polkitd
 $ sv up elogind
-$ sv up sddm # should launch sddm
+$ sv up sddm    # should launch sddm
 ```
 
 --- 
