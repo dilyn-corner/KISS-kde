@@ -1,6 +1,5 @@
 #!/bin/sh -e
 
-Ensure we have a machine ID.
 exec dbus-uuidgen --ensure=/etc/machine-id
 
 addgroup -S messagebus 2>/dev/null
