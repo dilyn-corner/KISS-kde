@@ -6,11 +6,13 @@ icu
 libICE
 libSM
 libX11
+libXcomposite
 libXext
 libXi
 libXrandr
 libXrender
 libXslt
+libevent
 libinput
 libjpeg-turbo
 libpng
