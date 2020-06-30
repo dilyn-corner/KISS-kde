@@ -100,7 +100,7 @@ Here are all of the things that can be worked on.
     - [ ] Power management
     - [ ] Disk/hardware management 
 
-- [ ] Create an installation tarball similar to how KISS is distributed
+- [x] Create tarball - needs testing
     - [ ] Live USB (?)
 
 
@@ -348,6 +348,43 @@ $ ln -sv /etc/sv/sddm    /ver/service
 $ sv up polkitd
 $ sv up elogind
 $ sv up sddm    # should launch sddm
+```
+
+__ALTERNATIVELY__ you can install KISS with KDE already built and ready to go!
+It's basically just a KISS tarball but twenty times the size (because KDE).
+Installing works almost identically to the [usual
+instructions](https://k1ss.org/install). Just download the `kiss-kde.tar.xz`
+from the releases tab, get a copy of the `kiss-chroot` script, and:
+
+```
+$ tar xf kiss-kde.tar.xz -C /mnt
+$ ./kiss-chroot /mnt
+
+$ wget KERNEL_SOURCE
+$ tar xf KERNEL.tar.xyz
+$ cd KERNEL
+$ make defconfig
+$ make menuconfig
+$ make -j "$(nproc)"
+$ make INSTALL_MOD_STRIP=1 modules_install
+$ make install
+
+# Configure a bootloader. The tarball includes 
+# dosfstools and e2fsprogs.
+
+# For extras, follow the KISS install guide. 
+# Specifically:
+# 5.3, 8.0-2, 10.0, 12.1. 
+
+$ exit
+$ reboot
+
+# Boot into your freshly installed KISS
+# Login (user: root; pass: none)
+
+$ startx
+
+# You should be greeted with KDE. This is the plasma-desktop build.
 ```
 
 --- 
