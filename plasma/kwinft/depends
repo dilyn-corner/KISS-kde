@@ -31,15 +31,14 @@ libX11
 libXcomposite
 libXcursor
 libXdamage
-libXevent
 libXfixes
 libXrandr
 libXrender
 libepoxy
+libevent
 libinput
-libxkb
+libxkbcommon
 libxshmfence
-lixkbcommon
 plasma-framework
 qt5-script
 qt5-sensors
@@ -51,5 +50,5 @@ xcb-util
 xcb-util-cursor
 xcb-util-image
 xcb-util-keysyms
-xcb-util-renderutils
+xcb-util-renderutil
 xcb-util-wm
