@@ -1,0 +1,23 @@
+cmake make
+extra-cmake-modules make
+kactivities
+karchive
+kcoreaddons
+kcrash
+kdbusaddons
+kdeclarative
+kglobalaccel
+kguiaddons
+ki18n
+kiconthemes
+knewstuff
+knotifications
+kwayland
+kwindowsystem
+kxmlgui
+libksysguard
+plasma-desktop
+plasma-framework
+qt5
+qt5-declarative
+xcb-util
