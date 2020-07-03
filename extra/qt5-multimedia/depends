@@ -1,0 +1,6 @@
+alsa-lib
+cmake make
+gst-plugins-base
+gstreamer
+qt5
+qt5-declarative
