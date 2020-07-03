@@ -1,0 +1,19 @@
+cmake make
+extra-cmake-modules make
+kconfig
+kconfigwidgets
+kcoreaddons
+kcrash
+kdbusaddons
+kdoctools
+ki18n
+kio
+kjobwidgets
+knotifications
+kparts
+kwidgetsaddons
+kwindowsystem
+kxmlgui
+phonon
+qt5
+solid

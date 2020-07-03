@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cat << EOF
+Note that you will require some type of phonon backend, such as
+phonon-backend-gstreamer.
+EOF
