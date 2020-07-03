@@ -1,0 +1,24 @@
+cmake make
+extra-cmake-modules make
+frei0r-plugins
+karchive
+kcoreaddons
+kdbusaddons
+kdeclarative
+kguiaddons
+kiconthemes
+kio
+knewstuff
+knotifications
+knotifyconfig
+ktextwidgets
+kxmlgui
+mlt
+qt5
+qt5-multimedia
+qt5-quickcontrols2
+qt5-svg
+rttr
+shared-mime-info
+solid
+v4l-utils
