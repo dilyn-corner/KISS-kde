@@ -1,0 +1,15 @@
+#!/bin/sh -e
+
+for patch in *.patch; do 
+    patch -p1 < $patch
+done
+
+export CFLAGS="$CFLAGS -fPIC"
+
+./configure \
+    --prefix=/usr 
+
+make
+
+install -Dm644 argp.h    "$1/usr/include/argp.h"
+install -Dm755 libargp.a "$1/usr/lib/libargp.a"
