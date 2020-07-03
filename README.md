@@ -63,11 +63,11 @@ Here are all of the things that can be worked on.
 
 - [ ] Package some KDE apps
     - [ ] `krita`
-    - [ ] `kdenlive`
+    - [ ] `kdenlive` - halts at splash
     - [ ] `kwave`
-    - [ ] `dragon-player`
+    - [ ] `dragon-player` - doesn't play tracks
     - [ ] `kaffeine`
-    - [ ] `elisa`
+    - [ ] `elisa` - immediately crashes
     - [ ] `calligra`
     - [ ] `kdevelop`
     - [x] `konsole`
@@ -86,14 +86,14 @@ Here are all of the things that can be worked on.
     - [ ] `kwalletmanager`
     - [ ] `kgpg`
     - [ ] `ktorrent`
-    - [ ] `latte`
+    - [x] `latte-dock`
 
 - [ ] Ensure everything works!
     - [x] Sessions can start from `startx`
     - [x] Sessions can start from `sddm`
     - [x] Applications launch
     - [x] Menus work
-    - [x] Themes work
+    - [x] Themes work - bugged in 5.19.2?
     - [x] Settings work
     - [ ] Users can log back in from a *lock* (super+l)
     - [ ] Bluetooth
