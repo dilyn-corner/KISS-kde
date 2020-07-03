@@ -1,0 +1,23 @@
+#vlc
+baloo
+cmake make
+extra-cmake-modules make
+kcmutils
+kconfig
+kconfigwidgets
+kcoreaddons
+kcrash
+kdbusaddons
+kdeclarative
+kdoctools
+kfilemetadata
+ki18n
+kio
+kirigami2
+kpackage
+kxmlgui
+qt5
+qt5-declarative
+qt5-multimedia
+qt5-quickcontrols2
+qt5-svg
