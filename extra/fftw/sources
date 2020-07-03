@@ -1,0 +1,5 @@
+http://fftw.org/fftw-3.3.8.tar.gz
+http://fftw.org/fftw-3.3.8.tar.gz fftw-3.3.8-quad
+http://fftw.org/fftw-3.3.8.tar.gz fftw-3.3.8-double
+http://fftw.org/fftw-3.3.8.tar.gz fftw-3.3.8-long-double
+patches/cycle.h.patch
