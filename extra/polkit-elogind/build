@@ -25,7 +25,7 @@ export XGETTEXT=/usr/bin/true
     --disable-systemd \
     --disable-man-pages \
     --disable-nls \
-    --enable-libsystemd-login \
+    --enable-libsystemd-login=no \
     --enable-libelogind=yes
 
 make
