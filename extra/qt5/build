@@ -21,11 +21,10 @@ sed -i 's/define QLOG/define N/g' \
     -nomake examples \
     -nomake tests \
     -optimized-qmake \
-    -no-libudev \
     -no-separate-debug-info \
     -no-pch \
     -no-gtk \
-    -no-glib \
+    -no-libudev \
     -system-libjpeg \
     -system-libpng \
     -system-sqlite \
