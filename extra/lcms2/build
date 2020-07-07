@@ -1,0 +1,9 @@
+#!/bin/sh -e
+
+./configure \
+    --prefix=/usr \
+    --with-jpeg \
+    --with-tiff
+
+make
+make DESTDIR="$1" install
