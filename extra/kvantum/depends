@@ -1,0 +1,9 @@
+cmake make
+kwindowsystem
+libX11
+libXext
+qt5
+qt5-svg
+qt5-tools
+qt5-x11extras
+samurai make
