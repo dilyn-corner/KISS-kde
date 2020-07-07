@@ -16,6 +16,7 @@ sed -i '/#include <QString>/a #include <QPainterPath>' \
     --prefix=/usr \
     --enable-gpl \
     --enable-gpl3 \
+    --enable-opengl \
     --enable-opencv \
     --disable-rtaudio
 

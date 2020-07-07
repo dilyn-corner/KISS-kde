@@ -1,5 +1,6 @@
 ffmpeg
 fftw
+frei0r-plugins
 libsamplerate
 libxml2
 sdl
