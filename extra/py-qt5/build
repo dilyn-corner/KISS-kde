@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+sed -i '/target_config.dbus_inc_dirs = \[\]/d' configure.py
+
+python configure.py \
+    --confirm-license
+
+find . -name 'Makefile' -exec echo {} + | xargs sed -i \
+    's|-Wl,-rpath,/usr/lib||g;s|-Wl,-rpath,.* ||g'
+
+# We build race-conditions into our projects for fun!
+make
+make -j1 INSTALL_ROOT="$1" install
