@@ -6,5 +6,5 @@ cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
 
- cmake --build   build
+cmake --build   build
 cmake --install build

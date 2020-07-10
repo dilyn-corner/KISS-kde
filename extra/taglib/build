@@ -13,5 +13,5 @@ cmake -B build \
     -DWITH_MP4=ON \
     -DBUILD_SHARED_LIBS=ON
 
- cmake --build   build
+cmake --build   build
 cmake --install build

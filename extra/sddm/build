@@ -14,7 +14,7 @@ cmake -B build \
     -DUID_MIN=500 \
     -DUID_MAX=65000
 
- cmake --build   build
+cmake --build   build
 cmake --install build
 
 install -Dm755 sddm.run "$1/etc/sv/sddm/run"

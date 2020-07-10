@@ -13,5 +13,5 @@ cmake -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_TESTING=NO
 
- cmake --build   build
+cmake --build   build
 cmake --install build
