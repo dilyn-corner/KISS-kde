@@ -26,8 +26,8 @@ kquickcharts
 krunner
 kscreen
 kwallet
-#kwin
-kwinft
+kwin
+#kwinft
 libXcursor
 libXft
 libXi
