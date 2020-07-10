@@ -9,5 +9,5 @@ cmake -B build \
     -DKJS_FORCE_DISABLE_PCRE=true \
     -DBUILD_TESTING=NO
 
-cmake --build build
+ cmake --build   build
 cmake --install build
