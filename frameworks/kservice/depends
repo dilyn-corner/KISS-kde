@@ -1,3 +1,4 @@
+bison make
 cmake make
 extra-cmake-modules make
 kconfig
