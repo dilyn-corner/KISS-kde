@@ -4,16 +4,16 @@ patch -p1 < build-fix.patch
 
 export DESTDIR="$1"
 
-CFLAGS= make -C xdgmime
-
 find . -type f -name meson.build -exec \
     sed -i "/subdir('tests')/d" {} +
 
 meson \
     --prefix=/usr \
     -Dupdate-mimedb=false \
-    -Dxdgmime-path="$PWD/xdgmime" \
     . build
+
+sed -i 's|/usr/bin/xmlto -o|/usr/bin/xmlto --skip-validation -o|' \
+    build/build.ninja
 
 ninja -C build
 ninja -C build install
