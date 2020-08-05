@@ -225,11 +225,16 @@ the [developer's door](https://gitlab.com/kwinft/kwinft) for those.
 6. You will need `eudev`. Because of this, you'll need to
    rebuild `xorg-server`, any input packages (`libinput`,
    `xf86-input-libinput`, etc.), `dhcpcd`, perhaps others.
+    * Note that `libudev-zero` may or may not be an alternative to this. I have
+not tested it, so feel free to reach out if it works! *
 
 These rebuilds are obviously not required if you already had
 the relevant programs built against `dbus`, `eudev`, etc. To determine which
 packages are built against `dbus` or `eudev` merely run `kiss-revdepends eudev`.
 If you see `xorg-server`, you're probably fine.
+
+`coreutils` and `gnugrep` are build time requirements, so you are free to remove
+them with no ill-effects afterwards.
 
 
 ## Getting Started
@@ -279,14 +284,12 @@ any KISS repos, for that matter). I keep mine in
 
 ```
 $ git clone https://github.com/kisslinux/community   # Clone
-$ git clone https://github.com/sdsddsd1/mywayland    # Repos
 $ git clone https://github.com/dilyn-corner/KISS-kde # pls
 
 # Start with a clean path, get a new one.
 
 $ . /etc/profile.d/kiss_path.sh
 $ exprot KISS_PATH="$KISS_PATH:$HOME/community/community"
-$ export KISS_PATH="$HOME/mywaland/wayland:$KISS_PATH"
 $ export KISS_PATH="$HOME/KISS-kde/extra:$KISS_PATH"
 $ export KISS_PATH="$HOME/KISS-kde/plasma:$KISS_PATH"
 $ export KISS_PATH="$HOME/KISS-kde/frameworks:$KISS_PATH"
@@ -362,6 +365,7 @@ instructions](https://k1ss.org/install). Just download the `kiss-kde.tar.xz`
 from the releases tab, get a copy of the `kiss-chroot` script, and:
 
 ```
+# Mount your relevant root partition to wherever. In this case, I choose /mnt
 $ tar xf kiss-kde.tar.xz -C /mnt
 $ ./kiss-chroot /mnt
 
@@ -370,6 +374,7 @@ $ tar xf KERNEL.tar.xyz
 $ cd KERNEL
 $ make defconfig
 $ make menuconfig
+# labor of love
 $ make -j "$(nproc)"
 $ make INSTALL_MOD_STRIP=1 modules_install
 $ make install
@@ -377,9 +382,9 @@ $ make install
 # Configure a bootloader. The tarball includes 
 # dosfstools and e2fsprogs.
 
-# For extras, follow the KISS install guide. 
+# For extras, follow the KISS install guide.
 # Specifically:
-# 5.3, 8.0-2, 10.0, 12.1. 
+# 5.3, 8.0-2, 10.0, 12.1.
 
 $ exit
 $ reboot
