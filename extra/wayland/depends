@@ -1,0 +1,6 @@
+expat
+flex make
+libffi
+libxml2
+meson make
+samurai make
