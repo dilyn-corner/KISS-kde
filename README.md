@@ -100,9 +100,14 @@ Here are all of the things that can be worked on.
     - [ ] Power management
     - [ ] Disk/hardware management 
 
-- [x] Create tarball - needs testing
-    - [ ] Live USB (?)
+- [x] Create tarball
 
+- [ ] Live USB
+    - [ ] initramfs
+        - [ ] `tinyramfs`
+        - [ ] `dracut`
+        - [ ] `allyesconfig` kernel
+    - [ ] `ncurses`-style installer?
 
 This list will be expanded, contracted, and refined as necessary. Feel free to
 assist. 
