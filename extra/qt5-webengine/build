@@ -4,6 +4,10 @@ for patch in *.patch; do
     patch -p1 < "$patch"
 done
 
+# Fix a build error introduced with bison 3.7
+sed -i '/os.unlink(outputHTmp)/d' \
+    src/3rdparty/chromium/third_party/blink/renderer/build/scripts/rule_bison.py
+
 # Fix nasm hardcoded glibcism
 sed -i '/CANONICALIZE_FILE_NAME/d' \
     src/3rdparty/chromium/third_party/nasm/config/config-linux.h

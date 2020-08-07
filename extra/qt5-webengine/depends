@@ -14,6 +14,7 @@ libevent
 libxml2
 linux-headers make
 nss
+perl make
 python2 make
 qt5
 qt5-declarative
