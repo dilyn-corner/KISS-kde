@@ -1,4 +1,3 @@
-
 |/
 |\ISS                                                           https://k1ss.org
 ________________________________________________________________________________
@@ -328,10 +327,6 @@ $ kiss b plasma-desktop # or plasma
 ~~~ WAIT TWELVE HOURS ~~~
 
 $ kiss i plasma-desktop # or plasma
-
-# There are some circular dependencies we should work around
-
-$ kiss b elogind && kiss i elogind
 
 # Perhaps we start the dbus and udev services?
 $ ln -sv /etc/sv/dbus  /var/service
