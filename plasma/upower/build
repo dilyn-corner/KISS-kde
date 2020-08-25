@@ -1,7 +1,27 @@
 #!/bin/sh -e
 
+export DATADIRNAME=share
+
+for patch in *.patch; do
+    patch -Np1 -i "$patch"
+done
+
+autoreconf -vif
+
+sed -i -e '/DISABLE_DEPRECATED/d' configure
+
 ./configure \
-    --prefix=/usr 
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libexecdir=/usr/lib/upower \
+    --disable-static \
+    --disable-man-pages \
+    --disable-tests \
+    --without-idevice \
+    --with-udevrulesdir=/usr/lib/udev/rules.d
+
+printf 'all:\n\ttrue\ninstall:\n\ttrue\nclean:\n\ttrue\n' > po/Makefile
 
 make
 make DESTDIR="$1" install

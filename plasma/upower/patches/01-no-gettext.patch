@@ -1,0 +1,158 @@
+--- old/Makefile.am
++++ new/Makefile.am
+@@ -35,12 +35,6 @@
+ 	ChangeLog		\
+ 	config.h.in		\
+ 	gtk-doc.make		\
+-	po/Makefile.in.in~	\
+-	po/Makevars.template	\
+-	po/Rules-quot		\
+-	po/e*.header		\
+-	po/*.sin		\
+-	po/*.sed		\
+ 	*.tar.xz		\
+ 	INSTALL
+ 
+--- old/configure.ac
++++ new/configure.ac
+@@ -226,14 +226,6 @@
+   LDFLAGS="-Wl,--as-needed $LDFLAGS"
+ fi
+ 
+-# i18n support
+-AM_GNU_GETTEXT_VERSION([0.19.8])
+-AM_GNU_GETTEXT([external])
+-
+-AC_SUBST([GETTEXT_PACKAGE],[${PACKAGE_TARNAME}])
+-AC_DEFINE([GETTEXT_PACKAGE],[PACKAGE_TARNAME],[Define to the gettext package name])
+-
+-
+ AC_CONFIG_FILES([
+ Makefile
+ upower-glib.pc
+@@ -252,7 +244,6 @@
+ rules/Makefile
+ libupower-glib/Makefile
+ libupower-glib/up-version.h
+-po/Makefile.in
+ ])
+ AC_OUTPUT
+ 
+--- old/src/linux/up-device-csr.c
++++ new/src/linux/up-device-csr.c
+@@ -29,7 +29,6 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ #include <glib/gprintf.h>
+-#include <glib/gi18n-lib.h>
+ #include <glib-object.h>
+ #include <gudev/gudev.h>
+ #include <libusb.h>
+--- old/src/linux/up-device-hid.c
++++ new/src/linux/up-device-hid.c
+@@ -31,7 +31,6 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ #include <glib/gprintf.h>
+-#include <glib/gi18n-lib.h>
+ #include <glib-object.h>
+ #include <gudev/gudev.h>
+ 
+--- old/src/linux/up-device-supply.c
++++ new/src/linux/up-device-supply.c
+@@ -29,7 +29,6 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ #include <glib/gprintf.h>
+-#include <glib/gi18n-lib.h>
+ #include <glib-object.h>
+ #include <gudev/gudev.h>
+ 
+--- old/src/linux/up-input.c
++++ new/src/linux/up-input.c
+@@ -35,7 +35,6 @@
+ 
+ #include <glib.h>
+ #include <glib/gstdio.h>
+-#include <glib/gi18n-lib.h>
+ #include <glib-object.h>
+ #include <gudev/gudev.h>
+ 
+--- old/src/up-daemon.c
++++ new/src/up-daemon.c
+@@ -27,7 +27,6 @@
+ #include <stdlib.h>
+ 
+ #include <glib.h>
+-#include <glib/gi18n-lib.h>
+ #include <glib-object.h>
+ 
+ #include "up-config.h"
+--- old/src/up-device.c
++++ new/src/up-device.c
+@@ -27,7 +27,6 @@
+ 
+ #include <glib.h>
+ #include <glib/gstdio.h>
+-#include <glib/gi18n-lib.h>
+ #include <glib-object.h>
+ 
+ #include "up-native.h"
+--- old/src/up-main.c
++++ new/src/up-main.c
+@@ -32,7 +32,6 @@
+ #include <gio/gio.h>
+ #include <glib.h>
+ #include <glib-unix.h>
+-#include <glib/gi18n-lib.h>
+ #include <glib-object.h>
+ #include <locale.h>
+ 
+@@ -184,14 +183,14 @@
+ 	const GOptionEntry options[] = {
+ 		{ "timed-exit", '\0', 0, G_OPTION_ARG_NONE, &timed_exit,
+ 		  /* TRANSLATORS: exit after we've started up, used for user profiling */
+-		  _("Exit after a small delay"), NULL },
++		  ("Exit after a small delay"), NULL },
+ 		{ "immediate-exit", '\0', 0, G_OPTION_ARG_NONE, &immediate_exit,
+ 		  /* TRANSLATORS: exit straight away, used for automatic profiling */
+-		  _("Exit after the engine has loaded"), NULL },
++		  ("Exit after the engine has loaded"), NULL },
+ 		{ "replace", 'r', 0, G_OPTION_ARG_NONE, &replace,
+-		  _("Replace the old daemon"), NULL},
++		  ("Replace the old daemon"), NULL},
+ 		{ "verbose", 'v', 0, G_OPTION_ARG_NONE, &verbose,
+-		  _("Show extra debugging information"), NULL },
++		  ("Show extra debugging information"), NULL },
+ 		{ NULL}
+ 	};
+ 
+--- old/tools/up-tool.c
++++ new/tools/up-tool.c
+@@ -29,7 +29,6 @@
+ #include <signal.h>
+ #include <sys/time.h>
+ #include <glib.h>
+-#include <glib/gi18n-lib.h>
+ #include <locale.h>
+ 
+ #include "up-client.h"
+@@ -264,12 +263,12 @@
+ 	UpDevice *device;
+ 
+ 	const GOptionEntry entries[] = {
+-		{ "enumerate", 'e', 0, G_OPTION_ARG_NONE, &opt_enumerate, _("Enumerate objects paths for devices"), NULL },
+-		{ "dump", 'd', 0, G_OPTION_ARG_NONE, &opt_dump, _("Dump all parameters for all objects"), NULL },
+-		{ "wakeups", 'w', 0, G_OPTION_ARG_NONE, &opt_wakeups, _("Get the wakeup data"), NULL },
+-		{ "monitor", 'm', 0, G_OPTION_ARG_NONE, &opt_monitor, _("Monitor activity from the power daemon"), NULL },
+-		{ "monitor-detail", 0, 0, G_OPTION_ARG_NONE, &opt_monitor_detail, _("Monitor with detail"), NULL },
+-		{ "show-info", 'i', 0, G_OPTION_ARG_STRING, &opt_show_info, _("Show information about object path"), NULL },
++		{ "enumerate", 'e', 0, G_OPTION_ARG_NONE, &opt_enumerate, ("Enumerate objects paths for devices"), NULL },
++		{ "dump", 'd', 0, G_OPTION_ARG_NONE, &opt_dump, ("Dump all parameters for all objects"), NULL },
++		{ "wakeups", 'w', 0, G_OPTION_ARG_NONE, &opt_wakeups, ("Get the wakeup data"), NULL },
++		{ "monitor", 'm', 0, G_OPTION_ARG_NONE, &opt_monitor, ("Monitor activity from the power daemon"), NULL },
++		{ "monitor-detail", 0, 0, G_OPTION_ARG_NONE, &opt_monitor_detail, ("Monitor with detail"), NULL },
++		{ "show-info", 'i', 0, G_OPTION_ARG_STRING, &opt_show_info, ("Show information about object path"), NULL },
+ 		{ "version", 'v', 0, G_OPTION_ARG_NONE, &opt_version, "Print version of client and daemon", NULL },
+ 		{ NULL }
+ 	};
