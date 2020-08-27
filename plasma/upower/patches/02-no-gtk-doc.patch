@@ -1,0 +1,68 @@
+--- old/Makefile.am
++++ new/Makefile.am
+@@ -35,7 +35,6 @@
+ 	build-aux		\
+ 	ChangeLog		\
+ 	config.h.in		\
+-	gtk-doc.make		\
+ 	*.tar.xz		\
+ 	INSTALL
+ 
+--- old/configure.ac
++++ new/configure.ac
+@@ -80,8 +80,6 @@
+ fi
+ AM_CONDITIONAL(MAN_PAGES_ENABLED, test x$enable_man_pages = xyes)
+ 
+-GTK_DOC_CHECK([1.11],[--flavour no-tmpl])
+-
+ AC_ARG_WITH([udevrulesdir],
+             AS_HELP_STRING([--with-udevrulesdir=DIR], [Directory for udev rules]),
+             [],
+--- old/doc/Makefile.am
++++ new/doc/Makefile.am
+@@ -50,25 +50,17 @@
+ # Extra options to supply to gtkdoc-mktmpl
+ MKTMPL_OPTIONS=
+ 
+-org.freedesktop.UPower.ref.xml : $(top_srcdir)/dbus/org.freedesktop.UPower.xml $(top_srcdir)/doc/spec-to-docbook.xsl
+-	if $(AM_V_P); then set -x; else echo " GEN   $@"; fi
+-	echo "<?xml version=\"1.0\"?>""<!DOCTYPE refentry PUBLIC \"-//OASIS//DTD DocBook XML V4.1.2//EN\" \"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd\">" > $@
+-	$(XSLTPROC) $(top_srcdir)/doc/spec-to-docbook.xsl $< | tail -n +2 >> $@
++org.freedesktop.UPower.ref.xml : $(top_srcdir)/dbus/org.freedesktop.UPower.xml
++	cp $< $@
+ 
+-org.freedesktop.UPower.Device.ref.xml : $(top_srcdir)/dbus/org.freedesktop.UPower.Device.xml $(top_srcdir)/doc/spec-to-docbook.xsl
+-	if $(AM_V_P); then set -x; else echo " GEN   $@"; fi
+-	echo "<?xml version=\"1.0\"?>""<!DOCTYPE refentry PUBLIC \"-//OASIS//DTD DocBook XML V4.1.2//EN\" \"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd\">" > $@
+-	$(XSLTPROC) $(top_srcdir)/doc/spec-to-docbook.xsl $< | tail -n +2 >> $@
++org.freedesktop.UPower.Device.ref.xml : $(top_srcdir)/dbus/org.freedesktop.UPower.Device.xml
++	cp $< $@
+ 
+-org.freedesktop.UPower.KbdBacklight.ref.xml : $(top_srcdir)/dbus/org.freedesktop.UPower.KbdBacklight.xml $(top_srcdir)/doc/spec-to-docbook.xsl
+-	if $(AM_V_P); then set -x; else echo " GEN   $@"; fi
+-	echo "<?xml version=\"1.0\"?>""<!DOCTYPE refentry PUBLIC \"-//OASIS//DTD DocBook XML V4.1.2//EN\" \"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd\">" > $@
+-	$(XSLTPROC) $(top_srcdir)/doc/spec-to-docbook.xsl $< | tail -n +2 >> $@
++org.freedesktop.UPower.KbdBacklight.ref.xml : $(top_srcdir)/dbus/org.freedesktop.UPower.KbdBacklight.xml
++	cp $< $@
+ 
+-org.freedesktop.UPower.Wakeups.ref.xml : $(top_srcdir)/dbus/org.freedesktop.UPower.Wakeups.xml $(top_srcdir)/doc/spec-to-docbook.xsl
+-	if $(AM_V_P); then set -x; else echo " GEN   $@"; fi
+-	echo "<?xml version=\"1.0\"?>""<!DOCTYPE refentry PUBLIC \"-//OASIS//DTD DocBook XML V4.1.2//EN\" \"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd\">" > $@
+-	$(XSLTPROC) $(top_srcdir)/doc/spec-to-docbook.xsl $< | tail -n +2 >> $@
++org.freedesktop.UPower.Wakeups.ref.xml : $(top_srcdir)/dbus/org.freedesktop.UPower.Wakeups.xml
++	cp $< $@
+ 
+ EXTRA_DIST = spec-to-docbook.xsl dbus-introspect-docs.dtd
+ 
+@@ -106,10 +98,6 @@
+ 	upowerd.xml					\
+ 	upower.xml					\
+ 	UPower.xml
+-
+-if ENABLE_GTK_DOC
+-include $(top_srcdir)/gtk-doc.make
+-endif
+ 
+ # Version information for marking the documentation
+ EXTRA_DIST += version.xml.in
