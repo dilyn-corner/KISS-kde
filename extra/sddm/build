@@ -12,7 +12,8 @@ cmake -B build \
     -DNO_SYSTEMD=ON \
     -DUSE_ELOGIND=ON \
     -DUID_MIN=500 \
-    -DUID_MAX=65000
+    -DUID_MAX=65000 \
+    -Wno-dev
 
 cmake --build   build
 cmake --install build

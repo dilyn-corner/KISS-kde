@@ -6,7 +6,8 @@ cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
-    -DWITH_DOC=OFF
+    -DWITH_DOC=OFF \
+    -Wno-dev
 
 cmake --build   build
 cmake --install build

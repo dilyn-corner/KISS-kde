@@ -9,7 +9,8 @@ cmake -B build \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_UNIT_TESTS=False \
-    -DBUILD_EXAMPLES=OFF
+    -DBUILD_EXAMPLES=OFF \
+    -Wno-dev
 
 cmake --build   build
 cmake --install build

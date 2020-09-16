@@ -11,7 +11,8 @@ cmake -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DWITH_ASF=ON \
     -DWITH_MP4=ON \
-    -DBUILD_SHARED_LIBS=ON
+    -DBUILD_SHARED_LIBS=ON \
+    -Wno-dev
 
 cmake --build   build
 cmake --install build

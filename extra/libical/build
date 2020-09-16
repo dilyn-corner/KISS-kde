@@ -7,7 +7,8 @@ cmake -B build \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
     -DENABLE_GTK_DOC=false \
-    -DSHARED_ONLY=true
+    -DSHARED_ONLY=true \
+    -Wno-dev
 
 cmake --build   build
 cmake --install build
