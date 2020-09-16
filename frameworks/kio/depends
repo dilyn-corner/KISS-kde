@@ -22,4 +22,5 @@ libXslt make
 libxml2 make
 qt5-script
 qt5-tools make
+samurai make
 solid

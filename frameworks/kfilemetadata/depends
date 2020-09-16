@@ -8,4 +8,5 @@ kcoreaddons
 ki18n
 qt5
 qt5-tools make
+samurai make
 taglib

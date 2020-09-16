@@ -10,4 +10,5 @@ kservice
 kwindowsystem
 qt5
 qt5-x11extras
+samurai make
 xcb-util-keysyms

@@ -4,5 +4,6 @@ plasma-wayland-protocols make
 qt5
 qt5-tools make
 qt5-wayland
+samurai make
 wayland
 wayland-protocols make

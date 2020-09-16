@@ -6,5 +6,6 @@ libxcb make
 linux-pam make
 qt5-declarative make
 qt5-tools make
+samurai make
 xauth
 xorg-server

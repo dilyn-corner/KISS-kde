@@ -12,7 +12,7 @@ cmake -B build \
     -DWITH_ASF=ON \
     -DWITH_MP4=ON \
     -DBUILD_SHARED_LIBS=ON \
-    -Wno-dev
+    -Wno-dev -G Ninja
 
-cmake --build   build
-cmake --install build
+ninja -C build
+ninja -C build install

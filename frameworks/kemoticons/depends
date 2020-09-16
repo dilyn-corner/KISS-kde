@@ -5,3 +5,4 @@ kconfig
 kcoreaddons
 kservice
 qt5-tools make
+samurai make

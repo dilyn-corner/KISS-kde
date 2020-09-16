@@ -10,10 +10,10 @@ cmake -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_UNIT_TESTS=False \
     -DBUILD_EXAMPLES=OFF \
-    -Wno-dev
+    -Wno-dev -G Ninja
 
-cmake --build   build
-cmake --install build
+ninja -C build
+ninja -C build install
 
 # Incorrect permissions set at build-time
 find "$1/usr/include/rttr" -type f -exec chmod 644 {} \;

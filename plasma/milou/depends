@@ -9,3 +9,4 @@ kservice make
 plasma-framework make
 qt5 make
 qt5-declarative make
+samurai make

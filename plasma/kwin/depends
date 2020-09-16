@@ -37,6 +37,7 @@ qt5-script
 qt5-sensors
 qt5-wayland
 qt5-x11extras
+samurai make
 wayland
 xcb-util-cursor
 xcb-util-image

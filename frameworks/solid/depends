@@ -4,3 +4,4 @@ eudev make
 extra-cmake-modules make
 qt5-declarative
 qt5-tools make
+samurai make

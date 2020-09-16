@@ -3,3 +3,4 @@ extra-cmake-modules make
 qt5-declarative
 qt5-script
 qt5-tools make
+samurai make

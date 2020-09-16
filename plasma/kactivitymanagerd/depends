@@ -7,6 +7,7 @@ kdbusaddons make
 kglobalaccel make
 ki18n make
 kio make
-kxmlgui make
 kwindowsystem make
+kxmlgui make
 qt5
+samurai make

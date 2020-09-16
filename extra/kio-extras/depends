@@ -9,17 +9,18 @@ kconfig
 kconfigwidgets
 kcoreaddons
 kdbusaddons
-kdsoap
-kdoctools
 kdnssd
+kdoctools
+kdsoap
 kguiaddons 
-kiconthemes
 ki18n
+kiconthemes
 kio
 kpty
 phonon
 qt5
 qt5-svg
+samurai make
 shared-mime-info
 solid
 syntax-highlighting

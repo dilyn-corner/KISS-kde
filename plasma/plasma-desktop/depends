@@ -1,3 +1,4 @@
+#kwinft
 attica
 baloo
 cmake make
@@ -27,7 +28,6 @@ krunner
 kscreen
 kwallet
 kwin
-#kwinft
 libXcursor
 libXft
 libXi
@@ -39,5 +39,6 @@ qt5
 qt5-declarative
 qt5-svg
 qt5-x11extras
+samurai make
 setxkbmap
 systemsettings

@@ -114,7 +114,7 @@ Here are all of the things that can be worked on.
     - [ ] initramfs
         - [ ] `tinyramfs`
         - [ ] `dracut`
-        - [ ] `allyesconfig` kernel
+        - [ ] `allyesconfig` kernel /s
     - [ ] `ncurses`-style installer?
 
 This list will be expanded, contracted, and refined as necessary. Feel free to
@@ -294,9 +294,8 @@ any KISS repos, for that matter). I keep mine in
 $ git clone https://github.com/kisslinux/community   # Clone
 $ git clone https://github.com/dilyn-corner/KISS-kde # pls
 
-# Start with a clean path, get a new one.
+# Add relevant repository paths
 
-$ . /etc/profile.d/kiss_path.sh
 $ exprot KISS_PATH="$KISS_PATH:$HOME/community/community"
 $ export KISS_PATH="$HOME/KISS-kde/extra:$KISS_PATH"
 $ export KISS_PATH="$HOME/KISS-kde/plasma:$KISS_PATH"
@@ -395,7 +394,6 @@ $ reboot
 
 # Boot into your freshly installed KISS
 # Login (user: root; pass: none)
-
 $ startx
 
 # You should be greeted with KDE. This is the plasma-desktop build.

@@ -1,15 +1,16 @@
 cmake make
 extra-cmake-modules make
-qt5
-qt5-x11extras
-qt5-declarative
-kcoreaddons
-ki18n
-kxmlgui
+karchive
 kauth
 kconfigwidgets
+kcoreaddons
+ki18n
 kio
-karchive
 knewstuff
-xcb-util-image
+kxmlgui
 libXcursor
+qt5
+qt5-declarative
+qt5-x11extras
+samurai make
+xcb-util-image

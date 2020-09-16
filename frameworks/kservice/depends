@@ -8,3 +8,4 @@ kdbusaddons
 kdoctools make
 ki18n
 qt5-tools make
+samurai make

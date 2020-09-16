@@ -3,15 +3,16 @@ cmake make
 extra-cmake-modules make
 karchive
 kconfig
-kcrash
 kcoreaddons
+kcrash
 kdbusaddons
 kdeclarative
 ki18n
-kitemmodels
 kio
+kitemmodels
 knewstuff
 kxmlgui
 plasma-framework
 qt5
 qt5-declarative
+samurai make

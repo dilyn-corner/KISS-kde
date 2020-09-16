@@ -6,7 +6,7 @@ cd Kvantum
 
 cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -Wno-dev -G Ninja
+    -Wno-dev -G Ninja -G Ninja
 
 ninja -C build
 ninja -C build install

@@ -6,7 +6,7 @@ cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_TESTING=NO \ 
-    -Wno-dev
+    -Wno-dev -G Ninja
 
-cmake --build   build
-cmake --install build
+ninja -C build
+ninja -C build install

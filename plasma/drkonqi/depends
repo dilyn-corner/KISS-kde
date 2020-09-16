@@ -10,8 +10,9 @@ kio
 kjobwidgets
 knotifications
 kservice
-kwidgetsaddons
 kwallet
+kwidgetsaddons
 qt5
 qt5-x11extras
+samurai make
 syntax-highlighting

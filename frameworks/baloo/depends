@@ -15,4 +15,5 @@ kservice
 lmdb
 qt5 make
 qt5-declarative
+samurai make
 solid

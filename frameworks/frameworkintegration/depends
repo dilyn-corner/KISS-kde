@@ -20,4 +20,5 @@ phonon
 qt5
 qt5-svg
 qt5-x11extras
+samurai make
 xcb-util-keysyms

@@ -20,4 +20,5 @@ plasma-desktop
 plasma-framework
 qt5
 qt5-declarative
+samurai make
 xcb-util

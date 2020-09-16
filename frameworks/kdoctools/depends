@@ -9,3 +9,4 @@ libxml2
 perl-uri make
 qt5
 qt5-tools make
+samurai make

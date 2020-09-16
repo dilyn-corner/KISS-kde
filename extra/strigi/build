@@ -5,7 +5,7 @@ export DESTDIR="$1"
 cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-    -Wno-dev
+    -Wno-dev -G Ninja
 
-cmake --build   build
-cmake --install build
+ninja -C build
+ninja -C build install

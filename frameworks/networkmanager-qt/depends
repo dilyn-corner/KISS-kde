@@ -2,3 +2,4 @@ cmake make
 extra-cmake-modules make
 networkmanager
 qt5-tools make
+samurai make

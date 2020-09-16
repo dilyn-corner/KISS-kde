@@ -7,3 +7,4 @@ kconfig
 qt5 make
 qt5-declarative
 qt5-tools
+samurai make

@@ -8,7 +8,7 @@ cmake -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DENABLE_GTK_DOC=false \
     -DSHARED_ONLY=true \
-    -Wno-dev
+    -Wno-dev -G Ninja
 
-cmake --build   build
-cmake --install build
+ninja -C build
+ninja -C build install

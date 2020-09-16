@@ -2,3 +2,4 @@ cmake make
 dbus
 extra-cmake-modules make
 qt5-tools make
+samurai make

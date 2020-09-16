@@ -5,6 +5,7 @@ kcoreaddons
 kcrash
 kdbusaddons
 kwindowsystem
-qt5-x11extras
 qt5-tools make
+qt5-x11extras
+samurai make
 xcb-util-keysyms make

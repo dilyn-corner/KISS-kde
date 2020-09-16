@@ -44,6 +44,7 @@ qt5-script
 qt5-sensors
 qt5-tools
 qt5-x11extras
+samurai make
 wayland
 wrapland
 xcb-util
