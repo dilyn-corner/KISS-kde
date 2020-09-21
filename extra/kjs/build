@@ -7,7 +7,7 @@ cmake -B build \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCMAKE_BUILD_TYPE=Release \
     -DKJS_FORCE_DISABLE_PCRE=true \
-    -DBUILD_TESTING=NO \ 
+    -DBUILD_TESTING=NO \
     -Wno-dev -G Ninja
 
 ninja -C build
