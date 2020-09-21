@@ -2,29 +2,9 @@ From 71d55292cdd72dcf1ed5eb4ba7299433a35a4bb0 Mon Sep 17 00:00:00 2001
 From: Khem Raj <raj.khem@gmail.com>
 Date: Tue, 12 Nov 2019 19:53:59 -0800
 Subject: [PATCH] mkspecs: Allow builds with libc != glibc
-
-Signed-off-by: Khem Raj <raj.khem@gmail.com>
----
- src/buildtools/config/support.pri | 5 -----
- 1 file changed, 5 deletions(-)
-
-diff --git a/src/buildtools/config/support.pri b/src/buildtools/config/support.pri
 --- a/src/buildtools/configure.json
 +++ b/src/buildtools/configure.json
-@@ -14,12 +14,6 @@
-         }
-     },
-     "libraries": {
--        "webengine-dbus": {
--            "label": "d-bus",
--            "sources": [
--                { "type": "pkgConfig", "args": "dbus-1" }
--            ]
--        },
-         "webengine-fontconfig": {
-             "label": "fontconfig",
-             "sources": [
-@@ -263,18 +257,6 @@
+@@ -263,18 +263,6 @@
              "label": "system gn",
              "type": "detectGn"
          },
@@ -43,30 +23,15 @@ diff --git a/src/buildtools/config/support.pri b/src/buildtools/config/support.p
          "webengine-gperf": {
              "label": "gperf",
              "type": "detectGperf"
-@@ -376,10 +358,8 @@
+@@ -376,7 +364,6 @@
                           && (!config.sanitizer || features.webengine-sanitizer)
                           && (!config.linux || features.pkg-config)
                           && (!config.linux || features.webengine-host-pkg-config)
 -                         && (!config.linux || features.webengine-system-glibc)
                           && (!config.linux || features.webengine-system-khr)
                           && (!config.linux || features.webengine-system-nss)
--                         && (!config.linux || features.webengine-system-dbus)
-                          && (!config.linux || features.webengine-system-fontconfig)
-                          && (!config.linux || !features.pkg-config || !features.xcb || features.webengine-ozone-x11)
-                          && (!config.win32 || features.webengine-win-compiler64)
-@@ -453,11 +433,6 @@
-             "condition": "libs.webengine-fontconfig",
-             "output": [ "privateFeature" ]
-         },
--        "webengine-system-dbus": {
--            "label": "dbus",
--            "condition": "libs.webengine-dbus",
--            "output": [ "privateFeature" ]
--        },
-         "webengine-system-libdrm": {
-             "label": "libdrm",
-             "condition": "libs.webengine-libdrm",
-@@ -499,11 +474,6 @@
+                          && (!config.linux || features.webengine-system-dbus)
+@@ -499,11 +486,6 @@
              "condition": "config.unix && !config.darwin && libs.webengine-nss",
              "output": [ "privateFeature" ]
          },
@@ -78,11 +43,9 @@ diff --git a/src/buildtools/config/support.pri b/src/buildtools/config/support.p
          "webengine-system-x11" : {
              "label": "x11",
              "condition": "config.unix && libs.webengine-x11",
-@@ -741,10 +711,8 @@
-                     "condition": "config.unix && !config.macos && !config.ios",
-                     "entries": [
+@@ -743,8 +725,7 @@
                          "webengine-system-fontconfig",
--                        "webengine-system-dbus",
+                         "webengine-system-dbus",
                          "webengine-system-nss",
 -                        "webengine-system-khr",
 -                        "webengine-system-glibc"
@@ -92,10 +55,11 @@ diff --git a/src/buildtools/config/support.pri b/src/buildtools/config/support.p
                  {
 --- a/src/buildtools/config/support.pri
 +++ b/src/buildtools/config/support.pri
-@@ -3,61 +3,6 @@
+@@ -2,62 +2,6 @@
+     skipBuildReason = $$1
      export(skipBuildReason)
  }
- 
+-
 -# this should match webengine-core-support
 -defineReplace(qtwebengine_checkWebEngineCoreError) {
 -    !linux:!win32:!macos {
@@ -154,7 +118,7 @@ diff --git a/src/buildtools/config/support.pri b/src/buildtools/config/support.p
  defineTest(qtwebengine_checkForGui) {
      module = $$1
      !qtHaveModule(gui) {
-@@ -174,15 +119,6 @@
+@@ -174,15 +118,6 @@
      module = $$1
      !qtConfig(webengine-host-pkg-config) {
          qtwebengine_skipBuild("Host pkg-config is required to build $${module}.")

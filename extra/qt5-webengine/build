@@ -4,10 +4,6 @@ for patch in *.patch; do
     patch -p1 < "$patch"
 done
 
-# Fix a build error introduced with bison 3.7
-sed -i '/os.unlink(outputHTmp)/d' \
-    src/3rdparty/chromium/third_party/blink/renderer/build/scripts/rule_bison.py
-
 # Fix nasm hardcoded glibcism
 sed -i '/CANONICALIZE_FILE_NAME/d' \
     src/3rdparty/chromium/third_party/nasm/config/config-linux.h
@@ -15,7 +11,6 @@ sed -i '/CANONICALIZE_FILE_NAME/d' \
 # Remove glibc header.
 sed -i '/execinfo.h/d' \
     src/3rdparty/chromium/base/debug/stack_trace_posix.cc
-
 
 # The build fails if qtwebengine is already installed.
 find . -name '*.pr[fio]' | while read -r file; do
