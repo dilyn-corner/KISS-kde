@@ -1,0 +1,16 @@
+#!/bin/sh -e
+
+export DESTDIR="$1"
+
+meson \
+    --prefix=/usr \
+    --buildtype=release \
+    -Dwerror=false \
+    -Dexamples=disabled \
+    -Dbuiltin=enabled \
+    . build
+
+ninja -C build
+ninja -C build install
+
+install -Dm755 seatd.run "$1/etc/sv/seatd/run"

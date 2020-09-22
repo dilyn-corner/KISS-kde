@@ -1,0 +1,12 @@
+#!/bin/sh -e
+
+export CARGO_HOME="$PWD"
+
+mkdir -p .cargo
+cargo build \
+    --release
+
+install -Dm755 greetd.run             "$1/etc/sv/greetd/run"
+install -Dm755 config.toml            "$1/etc/greetd/config.toml"
+install -Dm755 target/release/greetd  "$1/usr/bin/greetd"
+install -Dm755 target/release/agreety "$1/usr/bin/agreety"
