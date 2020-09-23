@@ -60,9 +60,14 @@ Here are all of the things that can be worked on.
 - [x] Enable a login-manager
     - [x] Bundle a default theme (breeze)
     - [ ] Package an alternative
+        - [ ] `seatd` to replace `elogind`
+        - [ ] `greetd` + greeter to replace `sddm`
+        This change would mean that:
+        1) `rust` is a build-time requirement
+        2) we can drop `mozjs` if it works the way I think
 
 - [ ] Expand `plasma-desktop` for a 'comprehensive' alternative, `plasma`
-    - [x] `sddm`
+    - [x] login manager - `sddm` for now!
     - [x] `udisks2`
     - [ ] `vaultcrypt`
     - [ ] `networkmanager`
@@ -97,7 +102,7 @@ Here are all of the things that can be worked on.
     - [x] `latte-dock`
 
 - [ ] Test `wayland` support
-    - [ ] `plasma 5.20.0` will feature this heavily. IT WILL BE THE DEFAULT.
+    - [ ] `plasma 5.20.0` - IT WILL BE THE DEFAULT.
 
 - [ ] Ensure everything works!
     - [x] Sessions can start from `startx`
