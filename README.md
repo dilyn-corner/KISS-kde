@@ -96,6 +96,9 @@ Here are all of the things that can be worked on.
     - [ ] `ktorrent`
     - [x] `latte-dock`
 
+- [ ] Test `wayland` support
+    - [ ] `plasma 5.20.0` will feature this heavily. IT WILL BE THE DEFAULT.
+
 - [ ] Ensure everything works!
     - [x] Sessions can start from `startx`
     - [x] Sessions can start from `sddm`
@@ -327,7 +330,8 @@ $ kiss b plasma-desktop # or plasma
 
 $ kiss i plasma-desktop # or plasma
 
-# Perhaps we start the dbus and udev services?
+# Start the eudev and dbus services for convenience
+# This is ultimately not necessary
 $ ln -sv /etc/sv/dbus  /var/service
 $ ln -sv /etc/sv/udevd /var/service
 
@@ -346,7 +350,7 @@ $ echo "exec dbus-launch --exit-with-session startplasma-x11" >> ~/.xinitrc
 
 $ startx
 
-# For a login manager:
+# For sddm:
 
 $ kiss b sddm && kiss i sddm
 
@@ -362,19 +366,24 @@ $ sv up sddm    # should launch sddm
 ```
 
 __ALTERNATIVELY__ you can install KISS with KDE already built and ready to go!
-It's basically just a KISS tarball but twenty times the size (because KDE).
+It's basically just a KISS tarball but twenty times the size (because KDE). It
+is a build of `plasma-desktop` with:
+CFLAGS="-march=x86-64 -mtune=generic -pipe -Os"
+CXXFLAGS=$CFLAGS
+The first release is built from a fresh KISS tarball. All future releases will
+merely be published after performing updates on this original tarball.
 Installing works almost identically to the [usual
-instructions](https://k1ss.org/install). Just download the `kiss-kde.tar.xz`
-from the releases tab, get a copy of the `kiss-chroot` script, and:
+instructions](https://k1ss.org/install). Just download the `kiss-kde-$VER.tar.xz`
+from the releases tab and:
 
 ```
 # Mount your relevant root partition to wherever. In this case, I choose /mnt
-$ tar xf kiss-kde.tar.xz -C /mnt
-$ ./kiss-chroot /mnt
+$ tar xf kiss-kde-$VER.tar.xz -C /mnt
+$ ./mnt/bin/kiss-chroot /mnt
 
-$ wget KERNEL_SOURCE
-$ tar xf KERNEL.tar.xyz
-$ cd KERNEL
+$ wget $KERNEL_SOURCE
+$ tar xf $KERNEL.tar.xyz
+$ cd $KERNEL
 $ make defconfig
 $ make menuconfig
 # labor of love
@@ -386,17 +395,15 @@ $ make install
 # dosfstools and e2fsprogs.
 
 # For extras, follow the KISS install guide.
-# Specifically:
-# 5.3, 8.0-2, 10.0, 12.1.
 
 $ exit
 $ reboot
 
 # Boot into your freshly installed KISS
-# Login (user: root; pass: none)
+# Login (user: root; pass: toor)
 $ startx
 
-# You should be greeted with KDE. This is the plasma-desktop build.
+# You should be greeted with KDE.
 ```
 
 --- 
