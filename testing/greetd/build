@@ -1,11 +1,41 @@
 #!/bin/sh -e
 
-export CARGO_HOME="$PWD"
+# This package may or may not actually factually require pam. We'll see. 
+# It might not even be technically necessary from a seatd-launching-plasma
+# perspective. Though I would like to get it working so we can use foogreet.
+
+export CARGO_HOME=$PWD
+
+(
+    cd vendor
+
+    for crate in *.crate; do
+        tar xf "$crate"
+
+        # Strip the filename from the sha256sum output.
+        sha256=$(sha256sum "$crate")
+        sha256=${sha256%% *}
+
+        printf '{"package":"%s","files":{}}\n' "$sha256" \
+            > "${crate%.crate}/.cargo-checksum.json"
+    done
+)
 
 mkdir -p .cargo
-cargo build \
-    --release
 
+cat > .cargo/config << EOF
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
+EOF
+
+cargo build \
+    --release \
+    --frozen
+
+install -Dm644 greetd.pam             "$1/etc/pam.d/greetd"
 install -Dm755 greetd.run             "$1/etc/sv/greetd/run"
 install -Dm755 config.toml            "$1/etc/greetd/config.toml"
 install -Dm755 target/release/greetd  "$1/usr/bin/greetd"

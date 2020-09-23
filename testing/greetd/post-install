@@ -3,4 +3,4 @@
 addgroup -S greetd 2>/dev/null
 adduser -G video -S -s /usr/bin/nologin greetd 2>/dev/null
 
-chown -R greeter:greeter /etc/greetd/
+chown -R greetd:greetd /etc/greetd/
