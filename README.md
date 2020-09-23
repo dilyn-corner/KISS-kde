@@ -57,14 +57,20 @@ Here are all of the things that can be worked on.
 
 - [x] Configure `linux-pam` in a meaningful way
 
+- [ ] Remove JS backend from polkit
+    * This project will rely on forward-porting the work done [here](https://dev.getsol.us/T4824)
+    *  The goal is that we can drop `mozjs` - it's the only package which
+       requires `mozjs` and it means we can also drop `nspr`, which I have been
+       to lazy to make coincide 'cleanly' with `community/nss`. 
+
 - [x] Enable a login-manager
     - [x] Bundle a default theme (breeze)
     - [ ] Package an alternative
         - [ ] `seatd` to replace `elogind`
         - [ ] `greetd` + greeter to replace `sddm`
-        This change would mean that:
-        1) `rust` is a build-time requirement
-        2) we can drop `mozjs` if it works the way I think
+        This change would mean that `rust` is a build-time requirement. Gross.
+        However, ideally this can be the default, and people can seek out the
+        `elogind` stack themselves. If they... want... that...
 
 - [ ] Expand `plasma-desktop` for a 'comprehensive' alternative, `plasma`
     - [x] login manager - `sddm` for now!
