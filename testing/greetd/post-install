@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
 addgroup -S greetd 2>/dev/null
-adduser -G video -S -s /usr/bin/nologin greetd 2>/dev/null
+adduser -G video -H -S -s /usr/bin/nologin greetd 2>/dev/null
 
 chown -R greetd:greetd /etc/greetd/

@@ -31,4 +31,5 @@ cargo build \
     --release \
     --frozen
 
-install -Dm755 -ogreetd -ggreetd target/release/tuigreet "$1/usr/bin/tuigreet"
+install -Dm755 tuigreet.run            "$1/etc/sv/tuigreet/run"
+install -Dm755 target/release/tuigreet "$1/usr/bin/tuigreet"

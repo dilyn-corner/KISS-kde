@@ -1,0 +1,3 @@
+#!/bin/sh -e 
+
+chown greetd:greetd /usr/bin/tuigreet
