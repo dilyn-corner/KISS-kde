@@ -52,4 +52,5 @@ https://static.crates.io/crates/winapi-build/winapi-build-0.1.1.crate vendor
 https://static.crates.io/crates/winapi-i686-pc-windows-gnu/winapi-i686-pc-windows-gnu-0.4.0.crate vendor
 https://static.crates.io/crates/winapi-x86_64-pc-windows-gnu/winapi-x86_64-pc-windows-gnu-0.4.0.crate vendor
 https://static.crates.io/crates/ws2_32-sys/ws2_32-sys-0.2.1.crate vendor
+files/greetd.pam
 files/greetd.run
