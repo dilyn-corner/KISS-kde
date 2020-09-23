@@ -1,5 +1,4 @@
 cmake make
 extra-cmake-modules make
-polkit-elogind
 qt5
 samurai make
