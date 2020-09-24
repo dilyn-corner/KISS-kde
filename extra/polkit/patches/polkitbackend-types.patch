@@ -18,7 +18,7 @@ Thanks for this patch is due to Ikey Doherty, https://github.com/ikeydoherty
  struct _PolkitBackendJsAuthority;
  typedef struct _PolkitBackendJsAuthority PolkitBackendJsAuthority;
 +#else
-+struct _PolkitBackendKeyfileAuthority
++struct _PolkitBackendKeyfileAuthority;
 +typedef struct _PolkitBackendKeyfileAuthority PolkitBackendKeyfileAuthority;
 +#endif
  
