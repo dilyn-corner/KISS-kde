@@ -1,4 +1,5 @@
 elogind
+expat
+glib
 linux-pam
 mozjs
-polkit-qt-1
