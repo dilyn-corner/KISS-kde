@@ -1,0 +1,42 @@
+#!/bin/sh -e
+
+for patch in *.patch; do
+    patch -p1 < $patch
+done
+
+export MSGFMT=/usr/bin/true
+export MSGMERGE=/usr/bin/true
+export XGETTEXT=/usr/bin/true
+export INTLTOOL_MERGE=/usr/bin/true
+export INTLTOOL_UPDATE=/usr/bin/true
+export INTLTOOL_EXTRACT=/usr/bin/true
+export INTLTOOL_APPLIED_VERSION=5000
+
+# Regenerate configure
+autoconf configure.ac > configure
+
+#oops
+patch -p1 < remove-intltool.oops
+
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --enable-libsystemd-login=no \
+    --enable-libelogind=no \
+    --disable-man-pages \
+    --disable-gtk-doc-html \
+    --disable-examples \
+    --disable-static \
+    --disable-systemd \
+    --disable-nls \
+    --with-backend=keyfile \
+    --with-authfw=shadow \
+    --with-os-type=KISS
+
+# We can try experimenting with not using pam and instead using shadow...
+    #--with-authfw=pam \
+
+make
+make DESTDIR="$1" install
+
+install -Dm755 polkit.run "$1/etc/sv/polkitd/run"

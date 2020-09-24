@@ -1,0 +1,13 @@
+https://freedesktop.org/software/polkit/releases/polkit-0.118.tar.gz
+files/polkit.run
+patches/configure-ac.patch
+patches/default-keyrules.patch
+patches/make-innetgr-optional.patch
+patches/polkitbackend-Makefile.patch
+patches/polkitbackend-authority-c.patch
+patches/polkitbackend-keyfile-c.patch
+patches/polkitbackend-keyfile-h.patch
+patches/polkitbackend-policyfile-c.patch
+patches/polkitbackend-policyfile-h.patch
+patches/polkitbackend-types.patch
+patches/remove-intltool.oops
