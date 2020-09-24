@@ -1,3 +1,4 @@
+Thanks for this patch is due to Ikey Doherty, https://github.com/ikeydoherty
 --- a/src/polkitbackend/polkitbackendauthority.c
 +++ b/src/polkitbackend/polkitbackendauthority.c
 @@ -30,7 +30,12 @@

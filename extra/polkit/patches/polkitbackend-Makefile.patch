@@ -1,3 +1,4 @@
+Thanks for this patch is due to Ikey Doherty, https://github.com/ikeydoherty
 --- a/src/polkitbackend/Makefile.am
 +++ b/src/polkitbackend/Makefile.am
 @@ -21,11 +21,14 @@
