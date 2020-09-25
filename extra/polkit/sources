@@ -1,7 +1,7 @@
 https://freedesktop.org/software/polkit/releases/polkit-0.118.tar.gz
-files/intltool.m4
-files/introspection.m4
-files/nls.m4
+files/intltool.m4 buildutil
+files/introspection.m4 buildutil
+files/nls.m4 buildutil
 files/polkit.run
 patches/configure-ac.patch
 patches/default-keyrules.patch

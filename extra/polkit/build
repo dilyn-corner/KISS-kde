@@ -1,9 +1,5 @@
 #!/bin/sh -e
 
-mv nls.m4 buildutil/nls.m4
-mv intltool.m4 buildutil/intltool.m4
-mv introspection.m4 buildutil/introspection.m4
-
 for patch in *.patch; do
     patch -p1 < $patch
 done
