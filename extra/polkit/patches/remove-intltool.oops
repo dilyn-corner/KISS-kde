@@ -1,37 +1,21 @@
 --- a/configure
 +++ b/configure
-@@ -21417,18 +21417,6 @@
-     ;;
- esac
- 
--INTLTOOL_REQUIRED_VERSION_AS_INT=`echo 0.40.0 | awk -F. '{ print $ 1 * 1000 + $ 2 * 100 + $ 3; }'`
--INTLTOOL_APPLIED_VERSION=`intltool-update --version | head -1 | cut -d" " -f3`
--INTLTOOL_APPLIED_VERSION_AS_INT=`echo $INTLTOOL_APPLIED_VERSION | awk -F. '{ print $ 1 * 1000 + $ 2 * 100 + $ 3; }'`
+@@ -21354,14 +21354,6 @@
+ INTLTOOL_REQUIRED_VERSION_AS_INT=`echo 0.40.0 | awk -F. '{ print $ 1 * 1000 + $ 2 * 100 + $ 3; }'`
+ INTLTOOL_APPLIED_VERSION=`intltool-update --version | head -1 | cut -d" " -f3`
+ INTLTOOL_APPLIED_VERSION_AS_INT=`echo $INTLTOOL_APPLIED_VERSION | awk -F. '{ print $ 1 * 1000 + $ 2 * 100 + $ 3; }'`
 -if test -n "0.40.0"; then
 -    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for intltool >= 0.40.0" >&5
 -$as_echo_n "checking for intltool >= 0.40.0... " >&6; }
 -    { $as_echo "$as_me:${as_lineno-$LINENO}: result: $INTLTOOL_APPLIED_VERSION found" >&5
 -$as_echo "$INTLTOOL_APPLIED_VERSION found" >&6; }
 -    test "$INTLTOOL_APPLIED_VERSION_AS_INT" -ge "$INTLTOOL_REQUIRED_VERSION_AS_INT" ||
--	as_fn_error $? "Your intltool is too old.  You need intltool 0.40.0 or later." "$LINENO" 5
+-        as_fn_error $? "Your intltool is too old.  You need intltool 0.40.0 or later." "$LINENO" 5
 -fi
--
+ 
  # Extract the first word of "intltool-update", so it can be a program name with args.
  set dummy intltool-update; ac_word=$2
- { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-@@ -21583,11 +21571,7 @@
- INTLTOOL_SOUNDLIST_RULE='%.soundlist: %.soundlist.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -d -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-        INTLTOOL_UI_RULE='%.ui:        %.ui.in        $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -x -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-       INTLTOOL_XML_RULE='%.xml:       %.xml.in       $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -x -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
--if test "$INTLTOOL_APPLIED_VERSION_AS_INT" -ge 5000; then
--      INTLTOOL_XML_NOMERGE_RULE='%.xml:       %.xml.in       $(INTLTOOL_MERGE) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -x -u --no-translations $< $@'
--else
-       INTLTOOL_XML_NOMERGE_RULE='%.xml:       %.xml.in       $(INTLTOOL_MERGE) ; $(INTLTOOL_V_MERGE)_it_tmp_dir=tmp.intltool.$$RANDOM && mkdir $$_it_tmp_dir && LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -x -u $$_it_tmp_dir $< $@ && rmdir $$_it_tmp_dir'
--fi
-       INTLTOOL_XAM_RULE='%.xam:       %.xml.in       $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -x -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-       INTLTOOL_KBD_RULE='%.kbd:       %.kbd.in       $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -x -u -m -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-     INTLTOOL_CAVES_RULE='%.caves:     %.caves.in     $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -d -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-@@ -21857,12 +21841,6 @@
+@@ -21791,12 +21783,6 @@
  if test -z "$XGETTEXT" -o -z "$MSGMERGE" -o -z "$MSGFMT"; then
      as_fn_error $? "GNU gettext tools not found; required for intltool" "$LINENO" 5
  fi
@@ -44,7 +28,7 @@
  
  # Extract the first word of "perl", so it can be a program name with args.
  set dummy perl; ac_word=$2
-@@ -21916,16 +21894,6 @@
+@@ -21850,16 +21836,6 @@
     IT_PERL_VERSION=`$INTLTOOL_PERL -e "printf '%vd', $^V"`
     { $as_echo "$as_me:${as_lineno-$LINENO}: result: $IT_PERL_VERSION" >&5
  $as_echo "$IT_PERL_VERSION" >&6; }
