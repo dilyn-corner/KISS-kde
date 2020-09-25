@@ -1,8 +1,14 @@
 #!/bin/sh -e
 
+mv nls.m4 buildutil/nls.m4
+mv intltool.m4 buildutil/intltool.m4
+mv introspection.m4 buildutil/introspection.m4
+
 for patch in *.patch; do
     patch -p1 < $patch
 done
+
+autoreconf -sfi
 
 export MSGFMT=/usr/bin/true
 export MSGMERGE=/usr/bin/true
@@ -10,25 +16,22 @@ export XGETTEXT=/usr/bin/true
 export INTLTOOL_MERGE=/usr/bin/true
 export INTLTOOL_UPDATE=/usr/bin/true
 export INTLTOOL_EXTRACT=/usr/bin/true
-export INTLTOOL_APPLIED_VERSION=5000
 
-# Regenerate configure
-autoconf configure.ac > configure
-
-#oops
 patch -p1 < remove-intltool.oops
 
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
-    --enable-libsystemd-login=no \
-    --enable-libelogind=no \
-    --disable-man-pages \
     --disable-gtk-doc-html \
+    --disable-man-pages \
     --disable-examples \
+    --disable-nls \
     --disable-static \
     --disable-systemd \
-    --disable-nls \
+    --enable-test=no \
+    --enable-introspection=no \
+    --enable-libsystemd-login=no \
+    --enable-libelogind=no \
     --with-backend=keyfile \
     --with-authfw=shadow \
     --with-os-type=KISS
