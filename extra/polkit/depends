@@ -1,5 +1,5 @@
 autoconf make
 expat
 glib
-#linux-pam
+linux-pam
 pkgconf  make

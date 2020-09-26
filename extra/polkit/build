@@ -4,8 +4,16 @@ for patch in *.patch; do
     patch -p1 < $patch
 done
 
+# The patches that we're using to add a keyfile backend to drop mozjs require
+# that we regenerate our build scripts! So we do that here. Because polkit
+# upstream believes that we already have gobject, intltool, etc. installed (even
+# though they're optional), we have to include their macros in buildutil/*.m4 so
+# that autotools do their job correctly. Otherwise, our configure script will
+# generate with syntax errors.
 autoreconf -sfi
 
+# We still have to pass these even if we disable nls. So why make it a
+# configure-time option? ¯\_(!_!)_/¯
 export MSGFMT=/usr/bin/true
 export MSGMERGE=/usr/bin/true
 export XGETTEXT=/usr/bin/true
@@ -13,6 +21,11 @@ export INTLTOOL_MERGE=/usr/bin/true
 export INTLTOOL_UPDATE=/usr/bin/true
 export INTLTOOL_EXTRACT=/usr/bin/true
 
+# Even WITH NLS disabled, AND skipping the aforementioned checks, configure
+# still will error if we do not have a perl XML::Parser & INTLTOOL > 0.40.0.
+# And because I find this very frustrating, I've decided to brutalize their
+# script instead of just using simple seds to change the checks. Maybe one day I
+# will no longer be so petty. Until then, oops.
 patch -p1 < remove-intltool.oops
 
 ./configure \
@@ -29,11 +42,8 @@ patch -p1 < remove-intltool.oops
     --enable-libsystemd-login=no \
     --enable-libelogind=no \
     --with-backend=keyfile \
-    --with-authfw=shadow \
+    --with-authfw=pam \
     --with-os-type=KISS
-
-# We can try experimenting with not using pam and instead using shadow...
-    #--with-authfw=pam \
 
 make
 make DESTDIR="$1" install
