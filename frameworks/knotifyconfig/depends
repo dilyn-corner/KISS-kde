@@ -1,8 +1,8 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kcompletion
 kconfig
 ki18n
 kio
-qt5-tools make
-samurai make
+qt5-tools           make
+samurai             make

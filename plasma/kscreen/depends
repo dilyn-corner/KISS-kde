@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 hicolor-icon-theme
 kcmutils
@@ -15,4 +15,4 @@ libkscreen
 plasma-framework
 qt5
 qt5-sensors
-samurai make
+samurai             make

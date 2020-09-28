@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
-gnugrep make
-samurai make
+gnugrep             make
+samurai             make

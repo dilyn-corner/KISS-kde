@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kconfigwidgets
 kcoreaddons
@@ -8,5 +8,5 @@ kiconthemes
 kitemviews
 kservice
 kxmlgui
-qt5-tools make
-samurai make
+qt5-tools           make
+samurai             make

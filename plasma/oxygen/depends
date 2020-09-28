@@ -1,4 +1,3 @@
-
-cmake make
+cmake               make
 extra-cmake-modules make
-samurai make
+samurai             make

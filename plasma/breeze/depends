@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kconfigwidgets
 kdecoration
@@ -6,4 +6,4 @@ kguiaddons
 ki18n
 kpackage
 kwindowsystem
-samurai make
+samurai             make

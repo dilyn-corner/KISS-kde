@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kauth
 kcompletion
@@ -14,4 +14,4 @@ kwidgetsaddons
 kwindowsystem
 plasma-framework
 qt5-webchannel
-samurai make
+samurai             make

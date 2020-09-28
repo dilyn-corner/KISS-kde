@@ -1,7 +1,7 @@
-cmake make
+cmake               make
 extra-cmake-modules make
-kdoctools make
+kdoctools           make
 pcre2
 perl
 qt5
-samurai make
+samurai             make

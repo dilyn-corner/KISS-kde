@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 karchive
 kcmutils
@@ -20,5 +20,5 @@ plasma-framework
 qt5
 qt5-declarative
 qt5-webengine
-samurai make
+samurai             make
 sonnet

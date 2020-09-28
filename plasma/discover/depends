@@ -1,5 +1,5 @@
 attica
-cmake make
+cmake               make
 extra-cmake-modules make
 karchive
 kconfig
@@ -15,4 +15,4 @@ kxmlgui
 plasma-framework
 qt5
 qt5-declarative
-samurai make
+samurai             make

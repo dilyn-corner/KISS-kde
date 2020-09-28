@@ -1,5 +1,5 @@
 boost
-cmake make
+cmake   make
 fftw
 gmp
 mpfr

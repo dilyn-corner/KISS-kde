@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kcompletion
 kconfigwidgets
@@ -17,5 +17,5 @@ networkmanager-qt
 plasma-framework
 qt5
 qt5-declarative
-samurai make
+samurai             make
 solid

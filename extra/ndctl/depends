@@ -1,5 +1,5 @@
 automake make
 eudev
-json-c make
+json-c   make
 keyutils make
-kmod make
+kmod     make

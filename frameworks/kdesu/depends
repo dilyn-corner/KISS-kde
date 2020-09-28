@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 dbus
 extra-cmake-modules make
 kconfig
@@ -10,4 +10,4 @@ kservice
 pcre2
 qt5
 qt5-x11extras
-samurai make
+samurai             make

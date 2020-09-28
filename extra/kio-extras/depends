@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 dbus
 extra-cmake-modules make
 gperf 
@@ -20,7 +20,7 @@ kpty
 phonon
 qt5
 qt5-svg
-samurai make
+samurai             make
 shared-mime-info
 solid
 syntax-highlighting

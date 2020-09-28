@@ -1,5 +1,5 @@
 bluez
-cmake make
+cmake               make
 eudev
 extra-cmake-modules make
 kactivities
@@ -19,5 +19,5 @@ libkscreen
 plasma-workspace
 qt5
 qt5-x11extras
-samurai make
+samurai             make
 solid

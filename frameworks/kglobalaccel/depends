@@ -1,11 +1,11 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kconfig
 kcoreaddons
 kcrash
 kdbusaddons
 kwindowsystem
-qt5-tools make
+qt5-tools           make
 qt5-x11extras
-samurai make
-xcb-util-keysyms make
+samurai             make
+xcb-util-keysyms    make

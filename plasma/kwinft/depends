@@ -1,5 +1,5 @@
-breeze 
-cmake make
+breeze
+cmake               make
 eudev
 extra-cmake-modules make
 fontconfig
@@ -44,7 +44,7 @@ qt5-script
 qt5-sensors
 qt5-tools
 qt5-x11extras
-samurai make
+samurai             make
 wayland
 wrapland
 xcb-util

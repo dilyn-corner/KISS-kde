@@ -1,9 +1,9 @@
 baloo
-cmake make
+cmake               make
 extra-cmake-modules make
 kconfig
 kfilemetadata
 ki18n
 kio
 qt5
-samurai make
+samurai             make

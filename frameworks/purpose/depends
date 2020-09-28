@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kconfig
 kcoreaddons
@@ -7,4 +7,4 @@ kio
 kirigami2
 qt5
 qt5-declarative
-samurai make
+samurai             make

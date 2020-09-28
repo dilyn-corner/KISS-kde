@@ -1,10 +1,10 @@
 boost
-cmake make
+cmake               make
 dbus
 extra-cmake-modules make
 kactivities
 kconfig
-qt5 make
+qt5                 make
 qt5-declarative
 qt5-tools
-samurai make
+samurai             make

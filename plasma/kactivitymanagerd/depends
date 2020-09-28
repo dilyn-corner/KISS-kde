@@ -1,13 +1,13 @@
-boost make
-cmake make
+boost               make
+cmake               make
 extra-cmake-modules make
-kconfig make
-kcoreaddons make
-kdbusaddons make
-kglobalaccel make
-ki18n make
-kio make
-kwindowsystem make
-kxmlgui make
+kconfig             make
+kcoreaddons         make
+kdbusaddons         make
+kglobalaccel        make
+ki18n               make
+kio                 make
+kwindowsystem       make
+kxmlgui             make
 qt5
-samurai make
+samurai             make

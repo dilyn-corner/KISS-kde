@@ -1,7 +1,7 @@
 attica
 breeze
 breeze-icons
-cmake make
+cmake               make
 dbus
 extra-cmake-modules make
 kactivities
@@ -38,4 +38,4 @@ qt5
 qt5-declarative
 qt5-svg
 qt5-x11extras
-samurai make
+samurai             make

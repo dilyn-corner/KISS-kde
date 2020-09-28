@@ -1,5 +1,5 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 qt5-tools
-samurai make
+samurai             make
 wayland-protocols

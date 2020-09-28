@@ -1,11 +1,11 @@
-bison make
-cmake make
+bison               make
+cmake               make
 extra-cmake-modules make
 kconfig
 kcoreaddons
 kcrash
 kdbusaddons
-kdoctools make
+kdoctools           make
 ki18n
-qt5-tools make
-samurai make
+qt5-tools           make
+samurai             make

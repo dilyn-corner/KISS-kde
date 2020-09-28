@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kactivities
 kconfig
@@ -10,4 +10,4 @@ knotifications
 krunner
 purpose
 qt5
-samurai make
+samurai             make

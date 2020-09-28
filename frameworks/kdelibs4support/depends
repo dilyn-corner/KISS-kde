@@ -1,14 +1,13 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kcompletion
 kconfig
 kconfigwidgets
 kcrash
 kdbusaddons
-kded
 kded make
 kdesignerplugin
-kdoctools make
+kdoctools           make
 kemoticons
 kglobalaccel
 kguiaddons
@@ -24,7 +23,7 @@ kunitconversion
 kwidgetsaddons
 kwindowsystem
 kxmlgui
-perl-uri
+perl-uri            make
 qt5
 qt5-tools
-samurai make
+samurai             make

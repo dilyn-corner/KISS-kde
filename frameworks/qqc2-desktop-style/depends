@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kconfigwidgets
 kiconthemes
@@ -7,4 +7,4 @@ qt5
 qt5-declarative
 qt5-graphicaleffects
 qt5-quickcontrols2
-samurai make
+samurai             make

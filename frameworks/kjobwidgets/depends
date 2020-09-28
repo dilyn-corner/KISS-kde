@@ -1,7 +1,7 @@
-cmake make
+cmake               make
 extra-cmake-modules make 
 kcoreaddons
 kwidgetsaddons
-qt5-tools make
+qt5-tools           make
 qt5-x11extras
-samurai make
+samurai             make

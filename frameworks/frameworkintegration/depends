@@ -1,5 +1,5 @@
 attica
-cmake make
+cmake               make
 dbus
 extra-cmake-modules make
 karchive
@@ -20,5 +20,5 @@ phonon
 qt5
 qt5-svg
 qt5-x11extras
-samurai make
+samurai             make
 xcb-util-keysyms

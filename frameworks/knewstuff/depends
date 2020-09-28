@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 karchive
 kcompletion
@@ -14,5 +14,5 @@ kwidgetsaddons
 kxmlgui
 qt5
 qt5-declarative
-qt5-tools make
-samurai make
+qt5-tools           make
+samurai             make

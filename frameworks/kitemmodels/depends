@@ -1,6 +1,6 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 qt5
-qt5-declarative make
-qt5-tools make
-samurai make
+qt5-declarative     make
+qt5-tools           make
+samurai             make

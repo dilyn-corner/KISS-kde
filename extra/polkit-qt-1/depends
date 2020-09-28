@@ -1,5 +1,5 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 polkit
 qt5
-samurai make
+samurai             make

@@ -1,6 +1,6 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 gst-plugins-base
 gstreamer
 phonon
-samurai make
+samurai             make

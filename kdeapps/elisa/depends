@@ -1,6 +1,6 @@
 #vlc
 baloo
-cmake make
+cmake               make
 extra-cmake-modules make
 kcmutils
 kconfig
@@ -21,4 +21,4 @@ qt5-declarative
 qt5-multimedia
 qt5-quickcontrols2
 qt5-svg
-samurai make
+samurai             make

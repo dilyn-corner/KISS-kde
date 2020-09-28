@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kbookmarks
 kcompletion
@@ -26,4 +26,4 @@ kwindowsystem
 kxmlgui
 ncurses
 qt5
-samurai make
+samurai             make

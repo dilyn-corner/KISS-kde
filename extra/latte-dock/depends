@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kactivities
 karchive
@@ -20,5 +20,5 @@ plasma-desktop
 plasma-framework
 qt5
 qt5-declarative
-samurai make
+samurai             make
 xcb-util

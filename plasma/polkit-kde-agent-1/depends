@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kcoreaddons
 kcrash
@@ -9,4 +9,4 @@ kwidgetsaddons
 kwindowsystem
 polkit-qt-1
 qt5
-samurai make
+samurai             make

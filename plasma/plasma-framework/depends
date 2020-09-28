@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kactivities
 karchive
@@ -7,7 +7,7 @@ kconfigwidgets
 kcoreaddons
 kdbusaddons
 kdeclarative
-kdoctools make
+kdoctools           make
 kglobalaccel
 kguiaddons
 ki18n
@@ -23,5 +23,5 @@ kxmlgui
 qt5
 qt5-declarative
 qt5-quickcontrols2
-qt5-tools make
-samurai make
+qt5-tools           make
+samurai             make

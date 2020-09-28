@@ -1,6 +1,6 @@
 baloo
 baloo-widgets
-cmake make
+cmake               make
 extra-cmake-modules make
 kactivities
 kbookmarks
@@ -23,5 +23,5 @@ ktextwidgets
 kwindowsystem
 phonon
 qt5
-samurai make
+samurai             make
 solid

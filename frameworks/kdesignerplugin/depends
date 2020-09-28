@@ -1,10 +1,10 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kcompletion
 kconfig
 kconfigwidgets
 kcoreaddons
-kdoctools make
+kdoctools           make
 kiconthemes
 kio
 kitemviews
@@ -12,6 +12,6 @@ kplotting
 ktextwidgets
 kwidgetsaddons
 kxmlgui
-qt5-tools make
-samurai make
+qt5-tools           make
+samurai             make
 sonnet

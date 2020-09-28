@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kcompletion
 kconfig
@@ -8,6 +8,6 @@ kiconthemes
 kservice
 kwidgetsaddons
 qt5
-qt5-tools make
-samurai make
+qt5-tools           make
+samurai             make
 sonnet

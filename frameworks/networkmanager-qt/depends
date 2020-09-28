@@ -1,5 +1,5 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 networkmanager
-qt5-tools make
-samurai make
+qt5-tools           make
+samurai             make

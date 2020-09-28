@@ -1,7 +1,7 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kcoreaddons
 polkit-qt-1
 qt5
-qt5-tools make
-samurai make
+qt5-tools           make
+samurai             make

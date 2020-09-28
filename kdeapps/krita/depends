@@ -1,5 +1,5 @@
 boost
-cmake make
+cmake               make
 eigen
 exiv2
 extra-cmake-modules make

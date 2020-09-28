@@ -1,5 +1,5 @@
 expat
-flex make
+flex    make
 libffi
 libxml2
 pkgconf make

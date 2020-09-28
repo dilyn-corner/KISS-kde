@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kconfig
 kcoreaddons
@@ -8,5 +8,5 @@ qt5-declarative
 qt5-graphicaleffects
 qt5-quickcontrols2
 qt5-svg
-qt5-tools make
-samurai make
+qt5-tools           make
+samurai             make

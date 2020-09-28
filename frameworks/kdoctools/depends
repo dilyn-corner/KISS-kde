@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 docbook-xml
 docbook-xsl
 extra-cmake-modules make
@@ -6,7 +6,7 @@ karchive
 ki18n
 libXslt
 libxml2
-perl-uri make
+perl-uri            make
 qt5
-qt5-tools make
-samurai make
+qt5-tools           make
+samurai             make

@@ -1,5 +1,5 @@
 bluez-qt
-cmake make
+cmake               make
 extra-cmake-modules make
 kcoreaddons
 kdbusaddons
@@ -13,4 +13,4 @@ kwindowsystem
 plasma-framework
 qt5
 qt5-declarative
-samurai make
+samurai             make

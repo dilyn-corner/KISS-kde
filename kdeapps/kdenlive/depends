@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 frei0r-plugins
 karchive
@@ -19,7 +19,7 @@ qt5-multimedia
 qt5-quickcontrols2
 qt5-svg
 rttr
-samurai make
+samurai             make
 shared-mime-info
 solid
 v4l-utils

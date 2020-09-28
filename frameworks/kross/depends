@@ -1,5 +1,5 @@
 attica
-cmake make
+cmake               make
 dbus
 eudev
 extra-cmake-modules make
@@ -30,7 +30,7 @@ qt5
 qt5-script
 qt5-svg
 qt5-x11extras
-samurai make
+samurai             make
 solid
 sonnet
 xcb-util-keysyms

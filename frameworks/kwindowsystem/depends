@@ -1,8 +1,8 @@
-cmake make
+cmake               make
 extra-cmake-modules make
-libXrender make
-qt5-tools make
+libXrender          make
+qt5-tools           make
 qt5-x11extras
-samurai make
-xcb-util-keysyms make
-xcb-util-wm make
+samurai             make
+xcb-util-keysyms    make
+xcb-util-wm         make

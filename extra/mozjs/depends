@@ -1,9 +1,9 @@
 autoconf make
 icu
 libffi
-m4 make
+m4       make
 nspr
-perl make
-python2 make
+perl     make
+python2  make
 readline
 zlib

@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 karchive
 kauth
@@ -12,5 +12,5 @@ libXcursor
 qt5
 qt5-declarative
 qt5-x11extras
-samurai make
+samurai             make
 xcb-util-image

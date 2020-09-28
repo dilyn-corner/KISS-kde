@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kactivities
 kcmutils
@@ -15,4 +15,4 @@ plasma-workspace
 qt5
 qt5-svg
 qt5-x11extras
-samurai make
+samurai             make

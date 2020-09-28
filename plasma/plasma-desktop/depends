@@ -1,9 +1,9 @@
 #kwinft
 attica
 baloo
-cmake make
+cmake               make
 eudev
-extra-cmake-modules 
+extra-cmake-modules make
 fontconfig
 kactivities
 kactivities-stats
@@ -13,7 +13,7 @@ kconfig
 kdbusaddons
 kdeclarative
 kdelibs4support
-kdoctools make
+kdoctools           make
 kemoticons
 kglobalaccel
 ki18n
@@ -39,6 +39,6 @@ qt5
 qt5-declarative
 qt5-svg
 qt5-x11extras
-samurai make
+samurai             make
 setxkbmap
 systemsettings

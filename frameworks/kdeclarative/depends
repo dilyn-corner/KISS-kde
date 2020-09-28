@@ -1,4 +1,4 @@
-cmake make
+cmake               make
 extra-cmake-modules make
 kconfig
 kglobalaccel
@@ -11,5 +11,5 @@ kwidgetsaddons
 kwindowsystem
 libepoxy
 qt5-declarative
-qt5-tools make
-samurai make
+qt5-tools           make
+samurai             make
