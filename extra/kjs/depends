@@ -2,6 +2,6 @@ cmake               make
 extra-cmake-modules make
 kdoctools           make
 pcre2
-perl
+perl                make
 qt5
 samurai             make
