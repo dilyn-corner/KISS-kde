@@ -1,4 +1,5 @@
 autoconf make
+automake make
 expat
 glib
 linux-pam
