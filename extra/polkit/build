@@ -49,3 +49,4 @@ make
 make DESTDIR="$1" install
 
 install -Dm755 polkit.run "$1/etc/sv/polkitd/run"
+install -Dm644 polkit.pam "$1/etc/pam.d/polkit-1"

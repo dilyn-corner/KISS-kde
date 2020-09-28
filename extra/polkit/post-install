@@ -5,7 +5,9 @@ adduser -S -D -H -h /var/empty -s /usr/bin/nologin -G polkitd -g polkitd polkitd
 
 chown -R polkitd:polkitd /etc/polkit-1/rules.d
 chown -R polkitd:polkitd /usr/share/polkit-1/rules.d
+
 chmod -R 700 /etc/polkit-1/rules.d
 chmod -R 700 /usr/share/polkit-1/rules.d
+
 chmod 4755 /usr/bin/pkexec
 chmod 4755 /usr/lib/polkit-1/polkit-agent-helper-1
