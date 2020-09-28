@@ -13,4 +13,5 @@ qt5
 qt5-declarative
 qt5-x11extras
 samurai             make
+sddm
 xcb-util-image
