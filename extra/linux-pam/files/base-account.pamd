@@ -1,0 +1,3 @@
+# basic PAM configuration
+
+account		required	pam_unix.so

@@ -1,2 +1,0 @@
-session  required    pam_loginuid.so
-session  optional    pam_elogind.so
