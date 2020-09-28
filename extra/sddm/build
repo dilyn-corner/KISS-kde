@@ -18,4 +18,4 @@ cmake -B build \
 ninja -C build
 ninja -C build install
 
-install -Dm755 sddm.run "$1/etc/sv/sddm/run"
+install -Dm755 sddm.run $1/etc/sv/sddm/run"
