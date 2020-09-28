@@ -504,11 +504,13 @@ Thanks for this patch is due to Ikey Doherty, https://github.com/ikeydoherty
 +      for (gsize i = 0; i < policy->n_net_groups; i++)
 +        {
 +          const gchar *netgroup = g_strstrip (policy->net_groups[i]);
++#if HAVE_INNETGR
 +          if (innetgr (netgroup, NULL, context->username, NULL))
 +            {
 +              local_test = conditions = TRUE;
 +              break;
 +            }
++#endif
 +        }
 +      if (!local_test)
 +        {

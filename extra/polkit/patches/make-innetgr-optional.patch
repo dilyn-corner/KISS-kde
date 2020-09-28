@@ -28,7 +28,7 @@ index 4ac2219..ca478df 100644
  AC_SUBST(EXPAT_LIBS)
  
 -AC_CHECK_FUNCS(clearenv fdatasync)
-+AC_CHECK_FUNCS(clearenv fdatasync setnetgrent)
++AC_CHECK_FUNCS(clearenv fdatasync setnetgrent innetgr)
  
  if test "x$GCC" = "xyes"; then
    LDFLAGS="-Wl,--as-needed $LDFLAGS"
