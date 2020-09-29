@@ -1,9 +1,0 @@
-autoconf make
-icu
-libffi
-m4       make
-nspr
-perl     make
-python2  make
-readline
-zlib
