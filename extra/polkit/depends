@@ -1,5 +1,6 @@
 autoconf make
 automake make
+#elogind is optional -> required for sddm
 expat
 glib
 linux-pam

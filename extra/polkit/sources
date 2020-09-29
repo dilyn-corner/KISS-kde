@@ -6,6 +6,7 @@ files/polkit.pam
 files/polkit.run
 patches/configure-ac.patch
 patches/default-keyrules.patch
+patches/fix-elogind-detection.patch
 patches/make-innetgr-optional.patch
 patches/polkitbackend-Makefile.patch
 patches/polkitbackend-authority-c.patch

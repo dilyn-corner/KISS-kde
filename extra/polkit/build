@@ -28,6 +28,12 @@ export INTLTOOL_EXTRACT=/usr/bin/true
 # will no longer be so petty. Until then, oops.
 patch -p1 < remove-intltool.oops
 
+# sddm requires elogind. Instead of maintaining a separate polkit like so many
+# other distrubtions, we will simply imsert a pkgconf check to determine whether
+# or not to include libelogind support.
+
+pkg-config --exists libelogind || libelogind=no
+
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -40,7 +46,7 @@ patch -p1 < remove-intltool.oops
     --enable-test=no \
     --enable-introspection=no \
     --enable-libsystemd-login=no \
-    --enable-libelogind=no \
+    --enable-libelogind="${libelogind:-yes}" \
     --with-backend=keyfile \
     --with-authfw=pam \
     --with-os-type=KISS
