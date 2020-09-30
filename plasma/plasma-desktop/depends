@@ -2,7 +2,6 @@
 attica
 baloo
 cmake               make
-eudev
 extra-cmake-modules make
 fontconfig
 kactivities

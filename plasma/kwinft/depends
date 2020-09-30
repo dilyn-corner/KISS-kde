@@ -1,6 +1,5 @@
 breeze
 cmake               make
-eudev
 extra-cmake-modules make
 fontconfig
 freetype-harfbuzz
