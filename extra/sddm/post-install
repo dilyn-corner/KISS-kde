@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/sh -e
 
-addgroup -S sddm 2>/dev/null
-adduser -G video -h /var/lib/sddm -S -s /usr/bin/nologin sddm 2>/dev/null
+addgroup -S sddm
+adduser -Sh /var/lib/sddm -s /usr/bin/nologin -G video sddm

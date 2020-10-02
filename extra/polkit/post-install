@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
-addgroup -S polkitd 2>/dev/null
-adduser -S -D -H -h /var/empty -s /usr/bin/nologin -G polkitd -g polkitd polkitd 2>/dev/null
+addgroup -S polkitd
+adduser -SDHh /var/empty -s /usr/bin/nologin -G polkitd -g polkitd polkitd
 
 chown -R polkitd:polkitd /etc/polkit-1/rules.d
 chown -R polkitd:polkitd /usr/share/polkit-1/rules.d
