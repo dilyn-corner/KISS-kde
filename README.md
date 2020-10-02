@@ -57,7 +57,7 @@ Here are all of the things that can be worked on.
 
 - [x] Configure `linux-pam` in a meaningful way
 
-- [ ] Remove JS backend from polkit
+- [x] Remove JS backend from polkit
     * This project will rely on forward-porting the work done [here](https://dev.getsol.us/T4824)
     *  The goal is that we can drop `mozjs` - it's the only package which
        requires `mozjs` and it means we can also drop `nspr`, which I have been
@@ -208,34 +208,33 @@ the 5 to a # so `kiss` doesn't complain.
 
 The eternal debate.
 
-You can use either `xorg` or `wayland` as your backend. I have only ever used
-`xorg`; as such, I'm not certain what `wayland` may or may not require. It's
-certainly an option you can explore though! It's quite simple. If you opt for
-`xorg`, you get `wayland` for free. And you don't have a choice in the matter. 
-`wayland` support has 'a long way to go' in KDE yet. But `kwin` was forked, so
-we will presumably see better `wayland` support in the future. This fork,
-`kwinft`, is included in this repository and *is* an option you can take! I'm
-using `kwinft` with `xorg` and these windows wobble just fine.
-
-`kwinft` is a promising, development-heavy project. As a result, there are 
+Starting with the release of `plasma 5.20.0`, `wayland` will be the presumptive
+default for KDE. I'm unsure to what extent they plan to leave `xorg` available,
+but as it stands many parts of KDE require xorg pieces to function. Wayland is
+an exciting project, and having been using it on my own personal KISS box, I can
+recommend it heartily over `xorg` in general - it seems to have matured as a
+protocol, there is still incredibly active development work (as opposed to
+critical-bug-fixing-only for `xorg`), and the performance is quite stellar.
+Additionally, `kwinft` is a fork of `kwin` which purports to better support
+wayland. It is a more bleading-edge, development focused 'branch' of `kwin`. 
 bound to be bugs that crop up. Presumably, `kwinft` is strictly better than `kwin`, 
-because something something bleeding edge. It's your choice which you choose! If 
-you opt to use `kwinft`, simply comment `kwin` from `plasma-desktop/depends` and
-`plasma-workspace/depends` and uncomment `kwinft`, and then simply
-install `plasma-desktop` or `plasma`. If you have already installed `kwin`
-fear not! Do the comment switcheroo as before, reinstall *those* packages
-(which should pull-in everything required for `kwinft`), and then simply kill
-your KDE session if you're in one, uninstall `kwin`, and restart the session!
-If you run into bugs, please make sure they're not `kwinft` related - burn down
-the [developer's door](https://gitlab.com/kwinft/kwinft) for those. 
+Currently, it's your choice which you choose! If you opt to use `kwinft`, simply 
+comment `kwin` from `plasma-desktop/depends` and `plasma-workspace/depends` 
+and uncomment `kwinft`, and then simply install `plasma-desktop` or `plasma`. 
+If you have already installed `kwin` fear not! Do the comment switcheroo as before,
+reinstall *those* packages (which should pull-in everything required for `kwinft`),
+and then simply kill your KDE session if you're in one, uninstall `kwin`, and 
+restart the session! If you run into bugs, please make sure they're not `kwinft` 
+related - burn down the [developer's door](https://gitlab.com/kwinft/kwinft) for those. 
 
 
 ## Prerequisites
 
-1. This all assumes a *working* `xorg-server`.
+1. This all (currently) assumes a *working* `xorg-server`.
 
 2. [cgroups](http://www.linuxfromscratch.org/blfs/view/svn/general/elogind.html) may be required for `elogind`. I leave it up to
    you to test your own kernel configs.
+    *NOTE* that `elogind` is no longer a hard-requirement for installing this!
 
 3. You will require exactly `realpath` from `coreutils` to
    build `elogind`. The others are for extras in KISS-kde/extra.
@@ -244,11 +243,9 @@ the [developer's door](https://gitlab.com/kwinft/kwinft) for those.
 
 5. You will need `dbus`. Because of this, you'll have to rebuild `qt5`.
 
-6. You will need `eudev`. Because of this, you'll need to
+6. You will need `eudev` or `libudev-zero`. Because of this, you'll need to
    rebuild `xorg-server`, any input packages (`libinput`,
    `xf86-input-libinput`, etc.), `dhcpcd`, perhaps others.
-    * Note that `libudev-zero` may or may not be an alternative to this. I have
-not tested it, so feel free to reach out if it works! *
 
 These rebuilds are obviously not required if you already had
 the relevant programs built against `dbus`, `eudev`, etc. To determine which
@@ -266,7 +263,7 @@ get to it!
 
 We start with the assumption that you just installed KISS,
 following the [installation guide](https://k1ss.org/install)
-exactly, which means you have `eudev`, a working `xorg` that
+exactly, which means you have `libudev-zero` or `eudev`, a working `xorg` that
 knows about `eudev`, some input drivers, and fonts. Although
 this repo does include some nice fonts, so either way you're
 covered. 
@@ -310,14 +307,14 @@ $ git clone https://github.com/dilyn-corner/KISS-kde # pls
 
 # Add relevant repository paths
 
-$ exprot KISS_PATH="$KISS_PATH:$HOME/community/community"
 $ export KISS_PATH="$HOME/KISS-kde/extra:$KISS_PATH"
 $ export KISS_PATH="$HOME/KISS-kde/plasma:$KISS_PATH"
 $ export KISS_PATH="$HOME/KISS-kde/frameworks:$KISS_PATH"
+$ export KISS_PATH="$KISS_PATH:$HOME/community/community"
 
 # If you don't already have it,
 
-$ kiss b dbus eudev && kiss i dbus eudev
+$ kiss b dbus libudev-zero && kiss i dbus libudev-zero
 
 # If you just did the previous,
 
@@ -328,7 +325,7 @@ $ kiss b xorg-server libinput xf86-input-libinput
 # the few binaries we need from `coreutils`, along with the grep utility.
 
 $ kiss b coreutils gnugrep && kiss i coreutils gnugrep
-$ kiss a coreutils /usr/bin/realpath
+$ kiss a coreutils /usr/bin/realpath # only required for elogind
 $ kiss a coreutils /usr/bin/mktemp
 $ kiss a coreutils /usr/bin/ln
 $ kiss a gnugrep   /usr/bin/grep
@@ -347,7 +344,7 @@ $ ln -sv /etc/sv/dbus  /var/service
 $ ln -sv /etc/sv/udevd /var/service
 
 $ sv up dbus
-$ sv up udevd
+$ sv up udevd # again, not required if you chose libudev-zero
 
 # Two options: 
 # 1. Use 'startx' to launch KDE
@@ -357,7 +354,7 @@ $ sv up udevd
 
 $ pkill x
 $ echo "exec dbus-launch --exit-with-session startplasma-x11" >> ~/.xinitrc
-# Ensure you don't have anything else execing before this
+# Replace 'x11' with 'wayland' in the previous command to launch a wayland session
 
 $ startx
 
@@ -379,8 +376,9 @@ $ sv up sddm    # should launch sddm
 __ALTERNATIVELY__ you can install KISS with KDE already built and ready to go!
 It's basically just a KISS tarball but twenty times the size (because KDE). It
 is a build of `plasma-desktop` with:
-CFLAGS="-march=x86-64 -mtune=generic -pipe -Os"
-CXXFLAGS=$CFLAGS
+
+`C(XX)FLAGS=-march=x86-64 -mtune=generic -pipe -Os`
+
 The first release is built from a fresh KISS tarball. All future releases will
 merely be published after performing updates on this original tarball.
 Installing works almost identically to the [usual
@@ -402,8 +400,7 @@ $ make -j "$(nproc)"
 $ make INSTALL_MOD_STRIP=1 modules_install
 $ make install
 
-# Configure a bootloader. The tarball includes 
-# dosfstools and e2fsprogs.
+# Configure a bootloader.
 
 # For extras, follow the KISS install guide.
 
