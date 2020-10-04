@@ -2,8 +2,8 @@
 
 dbus-uuidgen --ensure=/etc/machine-id
 
-addgroup -S messagebus
-adduser -SDHh /dev/null -s /usr/bin/nologin -G messagebus -g messagebus messagebus
+addgroup -S messagebus || true
+adduser -SDHh /dev/null -s /usr/bin/nologin -G messagebus -g messagebus messagebus || true
 
 chown root:messagebus /usr/libexec/dbus-daemon-launch-helper
 chmod 4750            /usr/libexec/dbus-daemon-launch-helper
