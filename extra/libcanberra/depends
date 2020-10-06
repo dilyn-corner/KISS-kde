@@ -1,5 +1,6 @@
 alsa-lib
 gstreamer
 libogg
-libtool make
+libtool
 libvorbis
+pkgconf make
