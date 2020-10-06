@@ -1,9 +1,0 @@
-#!/bin/sh -e
-
-./configure \
-    --prefix=/usr \
-    --with-threads \
-    --with-history
-
-make
-make DESTDIR="$1" install
