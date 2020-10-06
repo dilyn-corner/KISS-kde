@@ -2,4 +2,4 @@ cmake               make
 extra-cmake-modules make
 qt5-tools
 samurai             make
-wayland-protocols
+wayland-protocols   make
