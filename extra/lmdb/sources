@@ -1,3 +1,3 @@
-https://git.openldap.org/openldap/openldap/-/archive/LMDB_0.9.25/openldap-LMDB_0.9.25.tar.gz
+https://git.openldap.org/openldap/openldap/-/archive/LMDB_0.9.26/openldap-LMDB_0.9.26.tar.gz
 patches/cacheflush.patch
 patches/lmdb-make.patch
