@@ -1,4 +1,4 @@
-https://download.gnome.org/sources/NetworkManager/1.24/NetworkManager-1.24.2.tar.xz
+https://download.gnome.org/sources/NetworkManager/1.27/NetworkManager-1.27.90.tar.xz
 patches/musl-basic.patch
 patches/musl-compar.patch
 patches/musl-fix-includes.patch
