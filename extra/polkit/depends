@@ -5,3 +5,4 @@ expat
 glib
 linux-pam
 pkgconf  make
+python   make
