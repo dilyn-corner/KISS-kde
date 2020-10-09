@@ -23,8 +23,7 @@ This is very much in alpha. I will keep this repository up-to-date as best I
 can, testing and building things as frequently as possible - it's a big
 project that requires a fair amount of maintenance. Luckily, I have the hard
 drive space and the free time. But I'm only one person; if you have a
-contribution, feel free to share it. If you package some KDE apps, feel free
-to submit a pull request for inclusion. Requests like this should follow the
+contribution, feel free to share it. Requests like this should follow the
 KISS [style guide](https://k1ss.org/wiki/kiss/style-guide) as closely as 
 possible, but I'm not too much of a stickler.
 
@@ -62,6 +61,9 @@ Here are all of the things that can be worked on.
     *  The goal is that we can drop `mozjs` - it's the only package which
        requires `mozjs` and it means we can also drop `nspr`, which I have been
        to lazy to make coincide 'cleanly' with `community/nss`. 
+    *  The currently milestone is now to fix one of the patches we're using in
+       `polkit` to  drop `mozjs`; we basically need to get rid of innetgr from
+        the code so we drop our `musl` patch (which Rich Felker does not approve of).
 
 - [x] Enable a login-manager
     - [x] Bundle a default theme (breeze)
@@ -201,7 +203,7 @@ satisfied the dependencies of *this* repository. Built with everyone's favorite
 GNU C compiler, with `CFLAGS=-march=x86-64 -mtune=generic -Os -pipe`. If you
 want a 'seamless' build, merely plop these archives in
 `${XDG_CACHE_DIR:-$HOME/.cache}/kiss/bin`, and make sure you change the . before
-the 5 to a # so `kiss` doesn't complain.
+the 5 to a @ so `kiss` doesn't complain.
 
 
 ### xorg vs wayland 
@@ -217,7 +219,7 @@ protocol, there is still incredibly active development work (as opposed to
 critical-bug-fixing-only for `xorg`), and the performance is quite stellar.
 Additionally, `kwinft` is a fork of `kwin` which purports to better support
 wayland. It is a more bleading-edge, development focused 'branch' of `kwin`. 
-bound to be bugs that crop up. Presumably, `kwinft` is strictly better than `kwin`, 
+Bound to be bugs that crop up. Presumably, `kwinft` is strictly better than `kwin`. 
 Currently, it's your choice which you choose! If you opt to use `kwinft`, simply 
 comment `kwin` from `plasma-desktop/depends` and `plasma-workspace/depends` 
 and uncomment `kwinft`, and then simply install `plasma-desktop` or `plasma`. 
@@ -232,18 +234,9 @@ related - burn down the [developer's door](https://gitlab.com/kwinft/kwinft) for
 
 1. This all (currently) assumes a *working* `xorg-server`.
 
-2. [cgroups](http://www.linuxfromscratch.org/blfs/view/svn/general/elogind.html) may be required for `elogind`. I leave it up to
-   you to test your own kernel configs.
-    *NOTE* that `elogind` is no longer a hard-requirement for installing this!
+2. You will need `dbus`. Because of this, you'll have to rebuild `qt5`.
 
-3. You will require exactly `realpath` from `coreutils` to
-   build `elogind`. The others are for extras in KISS-kde/extra.
-
-4. You will need `gnugrep` to build `breeze-icons`.
-
-5. You will need `dbus`. Because of this, you'll have to rebuild `qt5`.
-
-6. You will need `eudev` or `libudev-zero`. Because of this, you'll need to
+3. You will need `eudev` or `libudev-zero`. Because of this, you'll need to
    rebuild `xorg-server`, any input packages (`libinput`,
    `xf86-input-libinput`, etc.), `dhcpcd`, perhaps others.
 
@@ -251,6 +244,16 @@ These rebuilds are obviously not required if you already had
 the relevant programs built against `dbus`, `eudev`, etc. To determine which
 packages are built against `dbus` or `eudev` merely run `kiss-revdepends eudev`.
 If you see `xorg-server`, you're probably fine.
+
+4. You will need `gnugrep` to build `breeze-icons`.
+
+If you opt to use `elogind` (required for `sddm`), you will need the following:
+
+5. [cgroups](http://www.linuxfromscratch.org/blfs/view/svn/general/elogind.html). I leave it up to
+   you to test your own kernel configs.
+
+6. You will require exactly `realpath` from `coreutils` to
+   build `elogind`.
 
 `coreutils` and `gnugrep` are build time requirements, so you are free to remove
 them with no ill-effects afterwards.
@@ -314,6 +317,8 @@ $ export KISS_PATH="$KISS_PATH:$HOME/community/community"
 
 # If you don't already have it,
 
+# replace `libudev-zero` with `eudev` if you prefer
+
 $ kiss b dbus libudev-zero && kiss i dbus libudev-zero
 
 # If you just did the previous,
@@ -323,12 +328,13 @@ $ kiss b xorg-server libinput xf86-input-libinput
 
 # Thanks to the alternatives system, we can just pluck out
 # the few binaries we need from `coreutils`, along with the grep utility.
+# You only require coreutils if you opt to use `elogind` or install `plasma`. 
 
-$ kiss b coreutils gnugrep && kiss i coreutils gnugrep
-$ kiss a coreutils /usr/bin/realpath # only required for elogind
+$ kiss b gnugrep coreutils && kiss i gnugrep coreutils
+$ kiss a gnugrep   /usr/bin/grep
+$ kiss a coreutils /usr/bin/realpath
 $ kiss a coreutils /usr/bin/mktemp
 $ kiss a coreutils /usr/bin/ln
-$ kiss a gnugrep   /usr/bin/grep
 
 # We're finally ready!
 
@@ -344,7 +350,7 @@ $ ln -sv /etc/sv/dbus  /var/service
 $ ln -sv /etc/sv/udevd /var/service
 
 $ sv up dbus
-$ sv up udevd # again, not required if you chose libudev-zero
+$ sv up udevd
 
 # Two options: 
 # 1. Use 'startx' to launch KDE
@@ -352,7 +358,7 @@ $ sv up udevd # again, not required if you chose libudev-zero
 
 # For startx:
 
-$ pkill x
+$ pkill X
 $ echo "exec dbus-launch --exit-with-session startplasma-x11" >> ~/.xinitrc
 # Replace 'x11' with 'wayland' in the previous command to launch a wayland session
 
@@ -390,19 +396,7 @@ from the releases tab and:
 $ tar xf kiss-kde-$VER.tar.xz -C /mnt
 $ ./mnt/bin/kiss-chroot /mnt
 
-$ wget $KERNEL_SOURCE
-$ tar xf $KERNEL.tar.xyz
-$ cd $KERNEL
-$ make defconfig
-$ make menuconfig
-# labor of love
-$ make -j "$(nproc)"
-$ make INSTALL_MOD_STRIP=1 modules_install
-$ make install
-
-# Configure a bootloader.
-
-# For extras, follow the KISS install guide.
+# Follow the KISS install guide - after the 'Rebuild KISS' section
 
 $ exit
 $ reboot
