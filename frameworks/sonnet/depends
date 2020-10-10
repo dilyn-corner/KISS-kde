@@ -1,6 +1,5 @@
 cmake               make
 extra-cmake-modules make
-hunspell
 qt5
 qt5-tools           make
 samurai             make
