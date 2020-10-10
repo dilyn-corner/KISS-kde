@@ -1,3 +1,5 @@
 #!/bin/sh -e
 
-install -Dm644 sddm.conf "$1/etc/sddm.conf"
+cat << EOF
+This is a dummy package which installs several useful ones.
+EOF
