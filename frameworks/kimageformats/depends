@@ -1,6 +1,6 @@
 cmake               make 
 extra-cmake-modules make 
 karchive
-pcre2
+pkgconf             make
 qt5
 samurai             make
