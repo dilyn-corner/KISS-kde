@@ -5,10 +5,12 @@ export MSGCAT=/usr/bin/true
 export MSGMERGE=/usr/bin/true
 export XGETTEXT=/usr/bin/true
 
-patch -p1 < remove-gettext.patch
+sed -i 's/po src/po/g' Makefile.in
+sed -i '/DENABLE_NLS/d' configure
 
 ./configure \
-    --prefix=/usr
+    --prefix=/usr \
+    --witk-gtk-doc=no
 
 make
 make DESTDIR="$1" install
