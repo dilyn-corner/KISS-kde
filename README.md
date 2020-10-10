@@ -37,7 +37,7 @@ Here are all of the things that can be worked on.
     - [ ] `elogind - /usr/bin/realpath --relative-to`
     - [ ] `libblockdev - /usr/bin/mktemp --tmpdir`
     - [ ] `udisks2 - /usr/bin/ln -r`
-    - [ ] `gnugrep - /usr/bin/grep --quiet`
+    - [x] `gnugrep - /usr/bin/grep --quiet`
 
 - [ ] Properly configure docbook generation
     * Currently, `docbook-xsl` doesn't actually do anything, I don't think.
@@ -245,18 +245,16 @@ the relevant programs built against `dbus`, `eudev`, etc. To determine which
 packages are built against `dbus` or `eudev` merely run `kiss-revdepends eudev`.
 If you see `xorg-server`, you're probably fine.
 
-4. You will need `gnugrep` to build `breeze-icons`.
-
 If you opt to use `elogind` (required for `sddm`), you will need the following:
 
-5. [cgroups](http://www.linuxfromscratch.org/blfs/view/svn/general/elogind.html). I leave it up to
+4. [cgroups](http://www.linuxfromscratch.org/blfs/view/svn/general/elogind.html). I leave it up to
    you to test your own kernel configs.
 
-6. You will require exactly `realpath` from `coreutils` to
+5. You will require exactly `realpath` from `coreutils` to
    build `elogind`.
 
-`coreutils` and `gnugrep` are build time requirements, so you are free to remove
-them with no ill-effects afterwards.
+`coreutils` is a build time requirement, so you are free to remove
+it with no ill-effects afterwards.
 
 
 ## Getting Started
@@ -330,8 +328,7 @@ $ kiss b xorg-server libinput xf86-input-libinput
 # the few binaries we need from `coreutils`, along with the grep utility.
 # You only require coreutils if you opt to use `elogind` or install `plasma`. 
 
-$ kiss b gnugrep coreutils && kiss i gnugrep coreutils
-$ kiss a gnugrep   /usr/bin/grep
+$ kiss b coreutils && kiss i coreutils
 $ kiss a coreutils /usr/bin/realpath
 $ kiss a coreutils /usr/bin/mktemp
 $ kiss a coreutils /usr/bin/ln
