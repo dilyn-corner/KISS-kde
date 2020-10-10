@@ -2,6 +2,9 @@
 
 export DESTDIR="$1"
 
+# Busybox grep supports quiet, just not the long option.
+sed -i 's/grep --quiet/grep -q/g' generate-24px-versions.sh
+
 cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
