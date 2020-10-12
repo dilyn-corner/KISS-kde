@@ -31,6 +31,7 @@ libXcursor
 libXft
 libXi
 libxkbfile
+pkgconf             make
 plasma-framework
 plasma-workspace
 qqc2-desktop-style
