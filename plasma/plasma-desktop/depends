@@ -41,3 +41,4 @@ qt5-x11extras
 samurai             make
 setxkbmap
 systemsettings
+xorg-server
