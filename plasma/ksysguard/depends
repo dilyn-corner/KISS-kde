@@ -19,6 +19,7 @@ kservice
 kwidgetsaddons
 kwindowsystem
 kxmlgui
+libksysguard
 qt5
 qt5-sensors
 samurai             make
