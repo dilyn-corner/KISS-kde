@@ -3,8 +3,8 @@
 ./configure \
 	--prefix=/usr \
 	--disable-static \
+    --disable-dtd-validation \
 	--disable-documentation
 
 make
-
 make DESTDIR="$1" install 
