@@ -1,9 +1,5 @@
 cmake               make
 extra-cmake-modules make
-kauth
-kcodecs
-kcompletion
-kconfigwidgets
 kcoreaddons
 kdbusaddons
 kdoctools
@@ -12,15 +8,9 @@ kiconthemes
 kinit
 kio
 kitemviews
-kjobwidgets
 knewstuff
 knotifications
-kservice
-kwidgetsaddons
 kwindowsystem
-kxmlgui
 libksysguard
 qt5
-qt5-sensors
 samurai             make
-solid

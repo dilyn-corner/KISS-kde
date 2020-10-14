@@ -1,8 +1,7 @@
 cmake               make
-dbus
 extra-cmake-modules make
 kwayland
+libxcb
 qt5
 qt5-x11extras
 samurai             make
-wayland

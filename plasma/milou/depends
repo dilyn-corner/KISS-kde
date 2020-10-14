@@ -1,12 +1,12 @@
 cmake               make
 extra-cmake-modules make
-kcoreaddons         make
-kdeclarative        make
-ki18n               make
-kitemmodels         make
-krunner             make
-kservice            make
-plasma-framework    make
-qt5                 make
-qt5-declarative     make
+kcoreaddons
+kdeclarative
+ki18n
+kitemmodels
+krunner
+kservice
+plasma-framework
+qt5
+qt5-quickcontrols2
 samurai             make

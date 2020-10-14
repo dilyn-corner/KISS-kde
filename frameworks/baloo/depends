@@ -1,8 +1,5 @@
 cmake               make 
 extra-cmake-modules make
-kbookmarks
-kcompletion
-kconfig
 kcoreaddons
 kcrash
 kdbusaddons
@@ -10,10 +7,8 @@ kfilemetadata
 ki18n
 kidletime
 kio
-kjobwidgets
-kservice
 lmdb
-qt5                 make
+qt5
 qt5-declarative
 samurai             make
 solid

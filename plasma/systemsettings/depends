@@ -1,41 +1,24 @@
-attica
-breeze
-breeze-icons
 cmake               make
-dbus
 extra-cmake-modules make
 kactivities
 kactivities-stats
-karchive
-kauth
 kcmutils
-kcodecs
-kcompletion
-kconfig
-kconfigwidgets
-kcoreaddons
 kcrash
 kdbusaddons
 kdeclarative
-kglobalaccel
+kdoctools
 kguiaddons
 ki18n
 kiconthemes
 kio
+kirigami2
 kitemmodels
 kitemviews
-kjobwidgets
-knotifications
 kpackage
 kservice
 kwidgetsaddons
 kwindowsystem
 kxmlgui
-phonon
-plasma-framework
 plasma-workspace
 qt5
-qt5-declarative
-qt5-svg
-qt5-x11extras
 samurai             make

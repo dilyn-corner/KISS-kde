@@ -2,16 +2,20 @@ cmake               make
 extra-cmake-modules make
 kauth
 kcompletion
-kconfig
 kconfigwidgets
 kcoreaddons
+kdeclarative
 kglobalaccel
 ki18n
 kiconthemes
 kio
+kjobwidgets
+knewstuff
+kpackage
 kservice
 kwidgetsaddons
 kwindowsystem
-plasma-framework
-qt5-webchannel
+qt5
+qt5-quickcontrols2
+qt5-x11extras
 samurai             make

@@ -9,6 +9,7 @@ cmake -B build \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_TESTING=NO \
+    -KDESU_USE_SUDO_DEFAULT=On \
     -Wno-dev -G Ninja
 
 ninja -C build

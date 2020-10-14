@@ -4,6 +4,11 @@ export DESTDIR="$1"
 
 rm -rf po
 
+pkg-config --exists libudev || {
+    printf 'udev (or libudev-zero) is required\n'
+    exit 1
+}
+
 sed -i '/#include <QVariant>/a #include <libudev.h>' \
     src/solid/devices/backends/shared/udevqtdevice.h
 

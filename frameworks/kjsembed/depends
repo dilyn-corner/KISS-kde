@@ -1,8 +1,7 @@
 cmake               make
 extra-cmake-modules make
-kdoctools           make
 ki18n
 kjs
+qt5
 qt5-svg
-qt5-tools           make
 samurai             make

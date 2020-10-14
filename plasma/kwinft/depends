@@ -1,22 +1,22 @@
-breeze
 cmake               make
 extra-cmake-modules make
 fontconfig
 freetype-harfbuzz
 kcmutils
 kcompletion
-kconfig
 kconfigwidgets
+kcoreaddons
 kcrash
 kdeclarative
-kdecoration
+kdecorations
 kglobalaccel
 ki18n
 kiconthemes
 kidletime
-kinit
+kidletime
 kio
 knewstuff
+knotifications
 knotifications
 kpackage
 kscreenlocker
@@ -27,28 +27,18 @@ kwidgetsaddons
 kwindowsystem
 kxmlgui
 libX11
-libXcomposite
-libXcursor
-libXdamage
-libXfixes
-libXrandr
-libXrender
 libepoxy
-libevent
 libinput
+libxcb
 libxkbcommon
-libxshmfence
+mesa
+pkgconfig           make
 plasma-framework
+qt5
+qt5-quickcontrols2
 qt5-script
 qt5-sensors
-qt5-tools
 qt5-x11extras
 samurai             make
 wayland
 wrapland
-xcb-util
-xcb-util-cursor
-xcb-util-image
-xcb-util-keysyms
-xcb-util-renderutil
-xcb-util-wm

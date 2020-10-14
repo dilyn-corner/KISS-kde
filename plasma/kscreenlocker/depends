@@ -1,39 +1,24 @@
 attica
 cmake               make
-dbus
 extra-cmake-modules make
-karchive
-kauth
-kcodecs
-kcompletion
-kconfig
-kconfigwidgets
-kcoreaddons
+kcmutils
 kcrash
-kdbusaddons
 kdeclarative
 kglobalaccel
-kguiaddons
 ki18n
-kiconthemes
 kidletime
-kio
-kitemviews
-kjobwidgets
 knotifications
-kpackage
-kservice
 ktextwidgets
 kwayland
-kwidgetsaddons
+kwindowsystem
 kxmlgui
+libX11
+libxcb
 linux-pam
-phonon
 qt5
-qt5-declarative
-qt5-svg
+qt5-quickcontrols2
+qt5-tools
 qt5-x11extras
 samurai             make
-sonnet
+solid
 wayland
-xcb-util-keysyms

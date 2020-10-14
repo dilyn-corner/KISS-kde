@@ -1,13 +1,11 @@
 cmake               make
-dbus
 extra-cmake-modules make
 kauth
 kcodecs
 kconfig
 kcoreaddons
-kdoctools           make
 kguiaddons
 ki18n
 kwidgetsaddons
-qt5-tools           make
+qt5
 samurai             make

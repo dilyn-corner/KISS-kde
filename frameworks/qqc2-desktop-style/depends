@@ -1,10 +1,6 @@
 cmake               make
 extra-cmake-modules make
-kconfigwidgets
-kiconthemes
 kirigami2
 qt5
-qt5-declarative
-qt5-graphicaleffects
 qt5-quickcontrols2
 samurai             make

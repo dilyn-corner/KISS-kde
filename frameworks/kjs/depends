@@ -1,6 +1,5 @@
 cmake               make
 extra-cmake-modules make
-kdoctools           make
 perl                make
 qt5
 samurai             make
