@@ -32,7 +32,7 @@ libinput
 libxcb
 libxkbcommon
 mesa
-pkgconfig           make
+pkgconf             make
 plasma-framework
 qt5
 qt5-quickcontrols2
