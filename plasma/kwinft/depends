@@ -42,3 +42,4 @@ qt5-x11extras
 samurai             make
 wayland
 wrapland
+xcb-util-cursor
