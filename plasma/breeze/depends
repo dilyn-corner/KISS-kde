@@ -3,7 +3,7 @@ extra-cmake-modules make
 kconfig
 kconfigwidgets
 kcoreaddons
-kdecorations
+kdecoration
 kguiaddons
 ki18n
 kiconthemes
