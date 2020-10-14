@@ -20,7 +20,7 @@ ktextwidgets
 kwidgetsaddons
 kwindowsystem
 kxmlgui
-libslt
+libXslt
 libxml2
 qt5
 qt5-tools
