@@ -3,6 +3,7 @@ automake make
 #elogind is optional -> required for sddm
 expat
 glib
-linux-pam
+#linux-pam - for things like a login manager
 pkgconf  make
 python   make
+shadow

@@ -48,9 +48,10 @@ pkg-config --exists libelogind || libelogind=no
     --enable-libsystemd-login=no \
     --enable-libelogind="${libelogind:-yes}" \
     --with-backend=keyfile \
-    --with-authfw=pam \
+    --with-authfw=shadow \
     --with-os-type=KISS
 
+    #--with-authfw=pam \
 make
 make DESTDIR="$1" install
 
