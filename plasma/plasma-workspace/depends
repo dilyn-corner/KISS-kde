@@ -1,6 +1,5 @@
-#kwinft
-cmake               make
-extra-cmake-modules make
+cmake                    make
+extra-cmake-modules      make
 kactivities-stats
 kactivitymanagerd
 kcmutils
@@ -26,12 +25,14 @@ ksysguard
 ktextwidgets
 kwallet
 kwin
+#kwinft
 libXtst make
 libkscreen
 milou
 plasma-framework
 plasma-integration
+plasma-wayland-protocols make
 qt5-quickcontrols
 qt5-quickcontrols2
 qt5-tools
-samurai             make
+samurai                  make
