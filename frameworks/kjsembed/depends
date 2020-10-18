@@ -1,7 +1,0 @@
-cmake               make
-extra-cmake-modules make
-ki18n
-kjs
-qt5
-qt5-svg
-samurai             make

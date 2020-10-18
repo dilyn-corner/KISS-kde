@@ -7,7 +7,7 @@ fftw
 gsl
 lcms2
 libjpeg-turbo
-py-qt5
+pyqt5
 qt5
 qt5-multimedia
 qt5-svg

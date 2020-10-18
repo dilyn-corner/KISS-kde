@@ -1,5 +1,0 @@
-cmake               make
-extra-cmake-modules make
-perl                make
-qt5
-samurai             make

@@ -11,10 +11,8 @@ kwidgetsaddons
 kwindowsystem
 libX11
 libxcb
+qqc2-desktop-style
 qt5
-qt5                 make
 qt5-quickcontrols2
-qt5-quickcontrols2  make
 qt5-x11extras
-qt5-x11extras       make
 samurai             make
