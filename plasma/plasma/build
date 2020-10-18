@@ -1,5 +1,0 @@
-#!/bin/sh -e
-
-cat << EOF
-This is a dummy package which installs several useful ones.
-EOF
