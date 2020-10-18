@@ -1,8 +1,8 @@
-cmake               make
-extra-cmake-modules make
+cmake                    make
+extra-cmake-modules      make
 kwayland
-plasma-wayland-protocols
+plasma-wayland-protocols make
 qt5
 qt5-tools
-samurai             make
-wayland-protocols 
+samurai                  make
+wayland-protocols        make

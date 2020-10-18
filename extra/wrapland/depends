@@ -1,5 +1,6 @@
 cmake               make
 extra-cmake-modules make
-qt5-tools
+mesa
 samurai             make
+wayland
 wayland-protocols   make

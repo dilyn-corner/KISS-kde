@@ -1,8 +1,5 @@
-baloo
-baloo-widgets
 cmake               make
 extra-cmake-modules make
-kactivities
 kbookmarks
 kcmutils
 kcompletion
@@ -11,7 +8,6 @@ kcoreaddons
 kcrash
 kdbusaddons
 kdoctools
-kfilemetadata
 ki18n
 kiconthemes
 kinit
@@ -23,5 +19,4 @@ ktextwidgets
 kwindowsystem
 phonon
 qt5
-samurai             make
 solid

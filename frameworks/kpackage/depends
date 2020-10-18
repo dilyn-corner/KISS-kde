@@ -2,8 +2,6 @@ cmake               make
 extra-cmake-modules make
 karchive
 kcoreaddons
-kdoctools           make
 ki18n
 qt5
-qt5-tools           make
 samurai             make

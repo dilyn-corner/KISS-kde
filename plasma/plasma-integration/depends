@@ -1,19 +1,18 @@
-breeze              make
+breeze
 cmake               make
 extra-cmake-modules make
-hack
-kconfig             make
-kconfigwidgets      make
-ki18n               make
-kiconthemes         make
-kio                 make
-knotifications      make
-kwayland            make
-kwidgetsaddons      make
-kwindowsystem       make
-libXcursor          make
-noto-fonts
-qt5                 make
-qt5-quickcontrols2  make
-qt5-x11extras       make
+kconfigwidgets
+ki18n
+kiconthemes
+kio
+knotifications
+kwayland
+kwidgetsaddons
+kwindowsystem
+libX11
+libxcb
+qqc2-desktop-style
+qt5
+qt5-quickcontrols2
+qt5-x11extras
 samurai             make

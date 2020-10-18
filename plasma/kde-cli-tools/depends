@@ -16,3 +16,18 @@ qt5
 qt5-svg
 qt5-x11extras
 samurai             make
+
+kconfig
+kdoctools
+kiconthemes
+ki18n
+kcmutils
+kio
+kservice
+kwindowsystem
+kactivities
+kdeclarative
+kdesu
+libxcb
+libX11
+qt5-x11extras

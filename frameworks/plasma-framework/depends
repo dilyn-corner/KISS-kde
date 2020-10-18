@@ -2,12 +2,10 @@ cmake               make
 extra-cmake-modules make
 kactivities
 karchive
-kconfig
 kconfigwidgets
 kcoreaddons
 kdbusaddons
 kdeclarative
-kdoctools           make
 kglobalaccel
 kguiaddons
 ki18n
@@ -17,11 +15,10 @@ kirigami2
 knotifications
 kpackage
 kservice
-kwayland
 kwindowsystem
 kxmlgui
 qt5
-qt5-declarative
 qt5-quickcontrols2
-qt5-tools           make
+qt5-svg
+qt5-x11extras
 samurai             make

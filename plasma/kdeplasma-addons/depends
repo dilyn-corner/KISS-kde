@@ -10,7 +10,7 @@ ki18n
 kiconthemes
 kio
 knewstuff
-knotifications
+knotificaitons
 kross
 krunner
 kservice
@@ -18,7 +18,5 @@ kunitconversion
 kwindowsystem
 plasma-framework
 qt5
-qt5-declarative
-qt5-webengine
 samurai             make
 sonnet

@@ -74,13 +74,13 @@ Here are all of the things that can be worked on.
         However, ideally this can be the default, and people can seek out the
         `elogind` stack themselves. If they... want... that...
 
-- [ ] Expand `plasma-desktop` for a 'comprehensive' alternative, `plasma`
+- [ ] Expand `plasma-desktop` for a 'comprehensive' extension
     - [x] login manager - `sddm` for now!
     - [x] `udisks2`
     - [ ] `vaultcrypt`
     - [ ] `networkmanager`
     - [ ] `bluez`
-    - [ ] `pulseaudio`
+    - [ ] `pulseaudio` - this exists external to this repo
 
 - [ ] Package some KDE apps
     - [ ] `krita`
@@ -119,7 +119,7 @@ Here are all of the things that can be worked on.
     - [x] Menus work
     - [x] Themes work - bugged in 5.19.2?
     - [x] Settings work
-    - [ ] Users can log back in from a *lock* (super+l)
+    - [ ] Users can log back in from a *lock* (super+l) (root can, but not users?)
     - [ ] Bluetooth
     - [ ] Power management
     - [ ] Disk/hardware management 
@@ -250,8 +250,7 @@ If you opt to use `elogind` (required for `sddm`), you will need the following:
 4. [cgroups](http://www.linuxfromscratch.org/blfs/view/svn/general/elogind.html). I leave it up to
    you to test your own kernel configs.
 
-5. You will require exactly `realpath` from `coreutils` to
-   build `elogind`.
+5. You will require exactly `realpath` from `coreutils`.
 
 `coreutils` is a build time requirement, so you are free to remove
 it with no ill-effects afterwards.
@@ -280,19 +279,19 @@ __NOTE__: I have taken the liberty of uploading a KISS package for `qt5`,
 to mine, and you've installed all of their dependencies, you can simply install
 these xz archives instead of wasting ten hours building them. Trust me.
 
-You have two primary choices on what to install to get a working desktop. 
-Either you can install `plasma-desktop`, or you can install `plasma`. 
-
 `plasma-desktop` includes basically every single item in the framework you would
-need in order to have a recognizable KDE experience. It has icons, fonts, some
+need in order to have a recognizable KDE experience. It has icons and some
 default things like an application launcher, a system monitor, a settings
 manager.
 
-If you want a more 'full-featured' KDE environment, you can install `plasma`.
-This 'package' will come with 20 additional packages, and it fleshes out our
-fledgling project with features one might expect to exist.
-It isn't that much more, so there's no real reason not to use it.
-This expanded list includes things like `bluez`. It might be worth it for you.
+If you want a more 'full-featured' KDE environment, you can install  useful
+extras. This list includes things such as `bluedevil` and `bluez`. `udisks2` is
+also here! You can also install `noto-fonts` for the more *default* looking KDE
+look. Additionally, `plasma-workspace-wallpapers` includes many additional
+wallpapers for your pleasure.
+
+__NOTE__: `bluez` and other things are more are less untested; ymmv. If you
+discover issues, please raise them! If you discover solutions, please PR them!
 
 To get a 'minimal' KDE (it's over a hundred packages),
 simply install `plasma-desktop`. How convenient! Here's how
@@ -319,14 +318,14 @@ $ export KISS_PATH="$KISS_PATH:$HOME/community/community"
 
 $ kiss b dbus libudev-zero && kiss i dbus libudev-zero
 
-# If you just did the previous,
+# If you just did the previous or don't have xorg,
 
 $ kiss b xorg-server libinput xf86-input-libinput 
 # Add others as necessary
 
 # Thanks to the alternatives system, we can just pluck out
 # the few binaries we need from `coreutils`, along with the grep utility.
-# You only require coreutils if you opt to use `elogind` or install `plasma`. 
+# You only require coreutils if you opt to use `elogind`
 
 $ kiss b coreutils && kiss i coreutils
 $ kiss a coreutils /usr/bin/realpath
@@ -335,11 +334,11 @@ $ kiss a coreutils /usr/bin/ln
 
 # We're finally ready!
 
-$ kiss b plasma-desktop # or plasma
+$ kiss b plasma-desktop
 
 ~~~ WAIT TWELVE HOURS ~~~
 
-$ kiss i plasma-desktop # or plasma
+$ kiss i plasma-desktop
 
 # Start the eudev and dbus services for convenience
 # This is ultimately not necessary
@@ -348,6 +347,11 @@ $ ln -sv /etc/sv/udevd /var/service
 
 $ sv up dbus
 $ sv up udevd
+
+# Install a font of your choosing.
+# noto-fonts is in KISS-kde/extra. It's massive. 
+# hack is in community. It's very small and good.
+# Any TTF font should work though.
 
 # Two options: 
 # 1. Use 'startx' to launch KDE
@@ -363,6 +367,13 @@ $ startx
 
 # For sddm:
 
+# Ensure elogind is built and installed
+
+$kiss b elogind && kiss i elogind
+
+# Build linux-pam:
+
+$ kiss b linux-pam && kiss i linux-pam
 $ kiss b sddm && kiss i sddm
 
 # Enable the required services. FoR sEcUrItY
@@ -377,8 +388,7 @@ $ sv up sddm    # should launch sddm
 ```
 
 __ALTERNATIVELY__ you can install KISS with KDE already built and ready to go!
-It's basically just a KISS tarball but twenty times the size (because KDE). It
-is a build of `plasma-desktop` with:
+It's basically just a KISS tarball. It is built with musl and GCC using:
 
 `C(XX)FLAGS=-march=x86-64 -mtune=generic -pipe -Os`
 

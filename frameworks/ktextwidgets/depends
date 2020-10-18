@@ -1,13 +1,12 @@
 cmake               make
 extra-cmake-modules make
+kauth
+kcodecs
 kcompletion
-kconfig
 kconfigwidgets
+kcoreaddons
 ki18n
-kiconthemes
-kservice
 kwidgetsaddons
 qt5
-qt5-tools           make
 samurai             make
 sonnet

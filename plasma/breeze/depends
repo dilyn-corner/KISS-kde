@@ -1,9 +1,14 @@
 cmake               make
 extra-cmake-modules make
+kconfig
 kconfigwidgets
+kcoreaddons
 kdecoration
 kguiaddons
 ki18n
+kiconthemes
 kpackage
 kwindowsystem
+qt5
+qt5-x11extras
 samurai             make

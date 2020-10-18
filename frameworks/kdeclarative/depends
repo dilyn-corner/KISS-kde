@@ -1,15 +1,21 @@
 cmake               make
 extra-cmake-modules make
-kconfig
+kauth
+kcodecs
+kcoreaddons
 kglobalaccel
 kguiaddons
 ki18n
 kiconthemes
 kio
+kjobwidgets
+knotifications
 kpackage
+kservice
 kwidgetsaddons
 kwindowsystem
-libepoxy
+qt5
 qt5-declarative
 qt5-tools           make
 samurai             make
+solid

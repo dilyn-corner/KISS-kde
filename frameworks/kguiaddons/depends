@@ -1,4 +1,4 @@
 cmake               make
 extra-cmake-modules make 
-qt5-tools           make
+qt5
 samurai             make

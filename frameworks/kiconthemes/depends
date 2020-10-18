@@ -1,12 +1,12 @@
 cmake               make
 extra-cmake-modules make
 karchive
+kauth
+kcodecs
 kconfigwidgets
 kcoreaddons
 ki18n
 kitemviews
-kwidgetsaddons
 qt5
 qt5-svg
-qt5-tools           make
 samurai             make

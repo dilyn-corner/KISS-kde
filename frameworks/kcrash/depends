@@ -1,6 +1,6 @@
-cmake               make
-extra-cmake-modules make
-kcoreaddons
+cmake               make 
+extra-cmake-modules make 
 kwindowsystem
+qt5
 qt5-tools           make
 samurai             make

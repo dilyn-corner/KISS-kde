@@ -3,8 +3,7 @@ extra-cmake-modules make
 kcoreaddons
 ki18n
 kitemviews
-kservice
 kwidgetsaddons
-qt5-declarative
-qt5-tools           make
+qt5
+qt5-tools
 samurai             make
