@@ -1,10 +1,14 @@
 curl
 dbus
-eudev
 iptables
 jansson
 libgudev
+libndp
+libpsl
 linux-headers make
+nss
+perl          make
+pkgconf       make
 ppp
 readline
 util-linux

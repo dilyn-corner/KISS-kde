@@ -1,30 +1,59 @@
 #!/bin/sh -e
 
-# Remove. Gettext.
-export GMSGFMT=/usr/bin/true
-export MSGFMT=/usr/bin/true
-export MSGMERGE=/usr/bin/true
-export XGETTEXT=/usr/bin/true
-export INTLTOOL_PERL=/usr/bin/true
+pkg-config --exists libudev || {
+    printf 'udev (or libudev-zero) is required\n'
+    exit 1
+}
 
-for patch in *.patch; do
-    patch -p1 < "$patch"
-done
+sed -i '/^intltool/d' \
+    meson.build
+sed -i 's/printf.h/stdio.h/' \
+    shared/systemd/src/basic/stdio-util.h
+sed -i 's/ether.h/if_ether.h/' \
+   clients/cli/connections.c 
+sed -i 's/ether.h/if_ether.h/' \
+    libnm-core/nm-utils.c
+sed -i 's/ether.h/if_ether.h/' \
+    src/systemd/src/libsystemd-network/network-internal.c
 
-./configure \
+sed -i 's/if_arp.h/if.h/' \
+    src/devices/nm-device.c
+sed -i '/#include <limits.h>/a #include <asm/types.h>' \
+    src/nm-manager.c
+sed -i '/#include "nm-linux-platform.h"/a #include "wpan/nm-wpan-utils.h"' \
+    src/platform/nm-linux-platform.c
+sed -i 's/if_arp.h/if.h/' \
+    src/platform/nm-linux-platform.c
+sed -i 's/if_arp.h/if.h/' \
+    src/systemd/src/libsystemd-network/sd-dhcp6-client.c
+sed -i '/#include "nm-core-internal.h"/a #include <linux/if_ether.h>' \
+    src/devices/nm-device-bridge.c
+sed -i '/#include <linux\/pkt_sched.h>/a #include <netinet\/if_ether.h>' \
+    src/NetworkManagerUtils.c
+sed -i '/RTLD_DEEPBIND/d' \
+    shared/nm-glib-aux/nm-json-aux.c
+
+meson \
     --prefix=/usr \
-    --disable-nls \
-    --disable-gtk-doc-html \
-    --enable-modify-system \
-    --with-nmcli=yes \
-    --with-systemdsystemunitdir=no \
-    --with-systemd-journal=no \
-    --with-iptables=yes \
-    --with-dhcpcd=/usr/bin/dhcpcd \
-    --with-iwd=yes \
-    --with-resolvconf=yes
+    --buildtype=release \
+    -Dhcpcd=true \
+    -Dintrospection=false \
+    -Diwd=true \
+    -Dmodify_system=true \
+    -Dresolvconf=true \
+    -Dsession_tracking=no \
+    -Dsession_tracking_consolekit=false \
+    -Dsystemdsystemunitdir=no \
+    -Dsystemd_journal=false \
+    -Dtests=no \
+    -Dselinux=false \
+    -Dlibaudit=no \
+    -Dmodem_manager=false \
+    -Dnmtui=false \
+    -Dqt=false \
+    . build
 
-make
-make DESTDIR="$1" install
+ninja -C build
+ninja -C build install
 
 install -Dm644 networkmanager.conf "$1/etc/NetworkManager/NetworkManager.conf"

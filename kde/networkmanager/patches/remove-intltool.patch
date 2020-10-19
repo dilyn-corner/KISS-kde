@@ -1,74 +1,17 @@
---- a/configure
-+++ b/configure
-@@ -18423,48 +18423,6 @@
-     ;;
- esac
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -58,14 +58,6 @@
+     configuration: data_conf,
+   )
  
--INTLTOOL_REQUIRED_VERSION_AS_INT=`echo 0.40.0 | awk -F. '{ print $ 1 * 1000 + $ 2 * 100 + $ 3; }'`
--INTLTOOL_APPLIED_VERSION=`intltool-update --version | head -1 | cut -d" " -f3`
--INTLTOOL_APPLIED_VERSION_AS_INT=`echo $INTLTOOL_APPLIED_VERSION | awk -F. '{ print $ 1 * 1000 + $ 2 * 100 + $ 3; }'`
--if test -n "0.40.0"; then
--    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for intltool >= 0.40.0" >&5
--$as_echo_n "checking for intltool >= 0.40.0... " >&6; }
--    { $as_echo "$as_me:${as_lineno-$LINENO}: result: $INTLTOOL_APPLIED_VERSION found" >&5
--$as_echo "$INTLTOOL_APPLIED_VERSION found" >&6; }
--    test "$INTLTOOL_APPLIED_VERSION_AS_INT" -ge "$INTLTOOL_REQUIRED_VERSION_AS_INT" ||
--	as_fn_error $? "Your intltool is too old.  You need intltool 0.40.0 or later." "$LINENO" 5
--fi
--
--# Extract the first word of "intltool-update", so it can be a program name with args.
--set dummy intltool-update; ac_word=$2
--{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
--$as_echo_n "checking for $ac_word... " >&6; }
--if ${ac_cv_path_INTLTOOL_UPDATE+:} false; then :
--  $as_echo_n "(cached) " >&6
--else
--  case $INTLTOOL_UPDATE in
--  [\\/]* | ?:[\\/]*)
--  ac_cv_path_INTLTOOL_UPDATE="$INTLTOOL_UPDATE" # Let the user override the test with a path.
--  ;;
--  *)
--  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
--for as_dir in $PATH
--do
--  IFS=$as_save_IFS
--  test -z "$as_dir" && as_dir=.
--    for ac_exec_ext in '' $ac_executable_extensions; do
--  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
--    ac_cv_path_INTLTOOL_UPDATE="$as_dir/$ac_word$ac_exec_ext"
--    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
--    break 2
--  fi
--done
--  done
--IFS=$as_save_IFS
--
--  ;;
--esac
--fi
- INTLTOOL_UPDATE=$ac_cv_path_INTLTOOL_UPDATE
- if test -n "$INTLTOOL_UPDATE"; then
-   { $as_echo "$as_me:${as_lineno-$LINENO}: result: $INTLTOOL_UPDATE" >&5
-@@ -18555,9 +18513,6 @@
- fi
+-  custom_target(
+-    policy,
+-    input: policy_in,
+-    output: '@BASENAME@',
+-    command: intltool_xml_cmd,
+-    install: true,
+-    install_dir: polkit_gobject_policydir,
+-  )
+ endif
  
- 
--if test -z "$INTLTOOL_UPDATE" -o -z "$INTLTOOL_MERGE" -o -z "$INTLTOOL_EXTRACT"; then
--    as_fn_error $? "The intltool scripts were not found. Please install intltool." "$LINENO" 5
--fi
- 
- if test -z "$AM_DEFAULT_VERBOSITY"; then
-   AM_DEFAULT_VERBOSITY=1
-@@ -18861,12 +18816,6 @@
- 
- 
- if test -z "$XGETTEXT" -o -z "$MSGMERGE" -o -z "$MSGFMT"; then
--    as_fn_error $? "GNU gettext tools not found; required for intltool" "$LINENO" 5
--fi
--xgversion="`$XGETTEXT --version|grep '(GNU ' 2> /dev/null`"
--mmversion="`$MSGMERGE --version|grep '(GNU ' 2> /dev/null`"
--mfversion="`$MSGFMT --version|grep '(GNU ' 2> /dev/null`"
--if test -z "$xgversion" -o -z "$mmversion" -o -z "$mfversion"; then
-     as_fn_error $? "GNU gettext tools not found; required for intltool" "$LINENO" 5
- fi
- 
+ if enable_firewalld_zone
