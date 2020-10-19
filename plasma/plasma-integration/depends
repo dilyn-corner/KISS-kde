@@ -10,6 +10,7 @@ kwayland
 kwidgetsaddons
 kwindowsystem
 libX11
+libXcursor
 libxcb
 qqc2-desktop-style
 qt5

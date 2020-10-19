@@ -28,6 +28,7 @@ kwallet
 kwayland
 kwin
 #kwinft
+libXtst
 libxcb
 phonon
 plasma-framework
