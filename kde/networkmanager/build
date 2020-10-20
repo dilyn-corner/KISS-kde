@@ -6,6 +6,7 @@ pkg-config --exists libudev || {
     printf 'udev (or libudev-zero) is required\n'
     exit 1
 }
+
 for patch in *.patch; do
     patch -p1 < "$patch"
 done
