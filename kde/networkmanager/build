@@ -33,6 +33,10 @@ sed -i '/#include <linux\/pkt_sched.h>/a #include <netinet\/if_ether.h>' \
 sed -i '/RTLD_DEEPBIND/d' \
     shared/nm-glib-aux/nm-json-aux.c
 
+for patch in *.patch; do
+    patch -p1 < "$patch"
+done
+
 meson \
     --prefix=/usr \
     --buildtype=release \
