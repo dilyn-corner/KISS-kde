@@ -4,7 +4,7 @@ export DESTDIR="$1"
 
 rm -rf po
 
-kiss l linux-pam || pam=ON
+kiss l linux-pam || pam=OFF
 
 cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
