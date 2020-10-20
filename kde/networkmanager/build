@@ -1,5 +1,7 @@
 #!/bin/sh -e
 
+export DESTDIR="$1"
+
 pkg-config --exists libudev || {
     printf 'udev (or libudev-zero) is required\n'
     exit 1
@@ -33,28 +35,29 @@ sed -i '/#include <linux\/pkt_sched.h>/a #include <netinet\/if_ether.h>' \
 sed -i '/RTLD_DEEPBIND/d' \
     shared/nm-glib-aux/nm-json-aux.c
 
-for patch in *.patch; do
-    patch -p1 < "$patch"
-done
+kiss l elogind || logind=no
+kiss l dhcpcd  || dhcpcd=false
+kiss l gnutls  || crypto=nss
+kiss l eiwd    || eiwd=false
 
 meson \
     --prefix=/usr \
     --buildtype=release \
-    -Dhcpcd=true \
-    -Dintrospection=false \
-    -Diwd=true \
-    -Dmodify_system=true \
-    -Dresolvconf=true \
-    -Dsession_tracking=no \
     -Dsession_tracking_consolekit=false \
     -Dsystemdsystemunitdir=no \
     -Dsystemd_journal=false \
-    -Dtests=no \
-    -Dselinux=false \
-    -Dlibaudit=no \
+    -Dintrospection=false \
+    -Dmodify_system=true \
     -Dmodem_manager=false \
+    -Dlibaudit=no \
+    -Dselinux=false \
     -Dnmtui=false \
+    -Dtests=no \
     -Dqt=false \
+    -Dhcpcd="${dhcpcd:-true}" \
+    -Diwd="${eiwd:-true}" \
+    -Dresolvconf="${eiwd:-true}" \
+    -Dsession_tracking="${logind:-yes}" \
     . build
 
 ninja -C build
