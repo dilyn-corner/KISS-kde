@@ -6,6 +6,9 @@ pkg-config --exists libudev || {
     printf 'udev (or libudev-zero) is required\n'
     exit 1
 }
+for patch in *.patch; do
+    patch -p1 < "$patch"
+done
 
 sed -i '/^intltool/d' \
     meson.build
@@ -57,7 +60,7 @@ meson \
     -Dhcpcd="${dhcpcd:-true}" \
     -Diwd="${eiwd:-true}" \
     -Dresolvconf="${eiwd:-true}" \
-    -Dsession_tracking="${logind:-yes}" \
+    -Dsession_tracking="${logind:-elogind}" \
     . build
 
 ninja -C build

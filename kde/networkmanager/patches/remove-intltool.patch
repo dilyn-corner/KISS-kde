@@ -1,17 +1,13 @@
 --- a/data/meson.build
 +++ b/data/meson.build
-@@ -58,14 +58,6 @@
-     configuration: data_conf,
-   )
- 
--  custom_target(
--    policy,
--    input: policy_in,
--    output: '@BASENAME@',
+@@ -62,7 +62,9 @@
+     policy,
+     input: policy_in,
+     output: '@BASENAME@',
 -    command: intltool_xml_cmd,
--    install: true,
--    install_dir: polkit_gobject_policydir,
--  )
- endif
- 
- if enable_firewalld_zone
++    command: [
++      'cp', '@INPUT@', '@OUTPUT@'
++    ],
+     install: true,
+     install_dir: polkit_gobject_policydir,
+   )
