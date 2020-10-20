@@ -33,6 +33,7 @@ patch -p1 < remove-intltool.oops
 # or not to include libelogind support.
 
 pkg-config --exists libelogind || libelogind=no
+kiss l linux-pam || auth=shadow
 
 ./configure \
     --prefix=/usr \
@@ -48,7 +49,11 @@ pkg-config --exists libelogind || libelogind=no
     --enable-libsystemd-login=no \
     --enable-libelogind="${libelogind:-yes}" \
     --with-backend=keyfile \
+<<<<<<< HEAD
     --with-authfw=shadow \
+=======
+    --with-authfw="${auth:-pam}" \
+>>>>>>> 4772499 (I'm not totally certain on how exactly I want to handle authentication.)
     --with-os-type=KISS
 
     #--with-authfw=pam \
@@ -56,4 +61,7 @@ make
 make DESTDIR="$1" install
 
 install -Dm755 polkit.run "$1/etc/sv/polkitd/run"
-install -Dm644 polkit.pam "$1/etc/pam.d/polkit-1"
+
+if "$auth"=pam; then
+    install -Dm644 polkit.pam "$1/etc/pam.d/polkit-1"
+fi

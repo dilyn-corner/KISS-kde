@@ -1,7 +1,7 @@
 cmake               make
 extra-cmake-modules make
 kcoreaddons
-polkit-qt-1
+#polkit-qt-1 -> allows authentication... probably?
 qt5
-qt5-tools           make
 samurai             make
+
