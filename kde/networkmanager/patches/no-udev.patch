@@ -1,0 +1,13 @@
+--- a/meson.build
++++ b/meson.build
+@@ -365,10 +365,6 @@
+ udev_udevdir = get_option('udev_dir')
+ install_udevdir = (udev_udevdir != 'no')
+ 
+-if install_udevdir and udev_udevdir == ''
+-  udev_udevdir = dependency('udev').get_pkgconfig_variable('udevdir')
+-endif
+-
+ systemd_systemdsystemunitdir = get_option('systemdsystemunitdir')
+ install_systemdunitdir = (systemd_systemdsystemunitdir != 'no')
+ 
