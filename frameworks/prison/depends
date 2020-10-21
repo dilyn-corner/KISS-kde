@@ -1,0 +1,5 @@
+cmake               make
+extra-cmake-modules make
+qt5
+qrencode
+samurai             make
