@@ -34,6 +34,7 @@ phonon
 plasma-framework
 plasma-integration
 plasma-wayland-protocols make
+prison
 qt5
 qt5-quickcontrols
 qt5-quickcontrols2
