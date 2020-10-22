@@ -11,6 +11,9 @@ for patch in *.patch; do
     patch -p1 < "$patch"
 done
 
+sed -i "s/intltool_xml_cmd/['cp', '@INPUT@', '@OUTPUT@']/g" \
+    data/meson.build
+
 sed -i '/^intltool/d' \
     meson.build
 sed -i 's/printf.h/stdio.h/' \

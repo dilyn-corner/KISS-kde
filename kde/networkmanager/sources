@@ -3,5 +3,4 @@ files/networkmanager.conf
 patches/musl-compar.patch
 patches/musl-network-support.patch
 patches/musl-process-util.patch
-patches/remove-intltool.patch
 patches/no-udev.patch
