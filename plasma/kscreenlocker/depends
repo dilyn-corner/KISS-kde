@@ -14,7 +14,7 @@ kwindowsystem
 kxmlgui
 libX11
 libxcb
-linux-pam
+#linux-pam -> not technically required
 qt5
 qt5-quickcontrols2
 qt5-tools
