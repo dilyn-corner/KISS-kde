@@ -3,9 +3,8 @@ extra-cmake-modules make
 kconfig
 kcoreaddons
 kwindowsystem
-libcanberra
 phonon
 qt5
-qt5-tools           make
+qt5-tools
 qt5-x11extras
 samurai             make

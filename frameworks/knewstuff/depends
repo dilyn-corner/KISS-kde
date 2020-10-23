@@ -1,18 +1,7 @@
 cmake               make
-extra-cmake-modules make
-karchive
-kcompletion
-kconfig
+extra-cmake-modules make 
 kcoreaddons
-ki18n
-kiconthemes
-kio
-kitemviews
-kservice
-ktextwidgets
 kwidgetsaddons
-kxmlgui
-qt5
-qt5-declarative
-qt5-tools           make
+qt5-tools
+qt5-x11extras
 samurai             make

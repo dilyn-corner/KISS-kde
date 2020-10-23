@@ -1,37 +1,42 @@
-#kwinft
-cmake               make
-extra-cmake-modules make
+cmake                    make
+extra-cmake-modules      make
 kactivities-stats
-kactivitymanagerd
 kcmutils
+kcoreaddons
 kcrash
+kdbusaddons
 kdeclarative
 kded
 kdelibs4support
 kdesu
-kdoctools make
+kdoctools
 kglobalaccel
 ki18n
+kiconthemes
 kidletime
-kinit
-kirigami2
-kjsembed
+kio
 knewstuff
 knotifyconfig
+kpackage
 kpeople
-kquickcharts
 krunner
+kscreen
 kscreenlocker
 ksysguard
 ktextwidgets
 kwallet
+kwayland
 kwin
-libXtst make
-libkscreen
-milou
+#kwinft
+libXtst
+libxcb
+phonon
 plasma-framework
 plasma-integration
+plasma-wayland-protocols make
+prison
+qt5
 qt5-quickcontrols
 qt5-quickcontrols2
-qt5-tools
-samurai             make
+qt5-x11extras
+samurai                  make

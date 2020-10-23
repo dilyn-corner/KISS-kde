@@ -1,17 +1,7 @@
 cmake               make
 extra-cmake-modules make
-kcompletion
 kconfig
-kconfigwidgets
 kcoreaddons
-kdoctools           make
-kiconthemes
-kio
-kitemviews
-kplotting
-ktextwidgets
-kwidgetsaddons
-kxmlgui
+qt5
 qt5-tools           make
 samurai             make
-sonnet

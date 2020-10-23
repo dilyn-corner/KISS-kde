@@ -1,12 +1,22 @@
 cmake               make
 extra-cmake-modules make
-kconfig
+kauth
+kcodecs
+kcompletion
+kconfigwidgets
 kcoreaddons
 ki18n
 kio
+kitemviews
+kjobwidgets
+kpackage
 kservice
+kwidgetsaddons
+kwindowsystem
+kxmlgui
 plasma-framework
 qt5
-qt5-tools           make
+qt5-quickcontrols2
 samurai             make
+solid
 threadweaver

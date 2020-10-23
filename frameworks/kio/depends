@@ -1,26 +1,30 @@
 cmake               make
 extra-cmake-modules make
 karchive
+kauth
 kbookmarks
+kcodecs
 kcompletion
 kconfig
 kconfigwidgets
 kcoreaddons
 kcrash
 kdbusaddons
-kdoctools           make
 ki18n
 kiconthemes
 kitemviews
 kjobwidgets
-knotifications
 kservice
-kwallet
+solid
+ktextwidgets
 kwidgetsaddons
 kwindowsystem
-libXslt             make
-libxml2             make
-qt5-script
+kxmlgui
+libXslt
+libxml2
+qt5
+qt5-tools
 qt5-tools           make
+qt5-x11extras
 samurai             make
-solid
+sonnet

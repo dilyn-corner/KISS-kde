@@ -1,15 +1,24 @@
 cmake               make
 extra-cmake-modules make
+kauth
+kbookmarks
+kcodecs
+kcompletion
 kconfig
+kconfigwidgets
 kcoreaddons
 ki18n
 kiconthemes
 kio
+kitemviews
 kjobwidgets
 kservice
 ktextwidgets
 kwidgetsaddons
+kwindowsystem
 kxmlgui
 qt5
-qt5-tools           make
+qt5-tools
 samurai             make
+solid
+sonnet

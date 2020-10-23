@@ -2,14 +2,11 @@ cmake               make
 extra-cmake-modules make
 hicolor-icon-theme
 kcmutils
-kconfig
-kconfigwidgets
 kdbusaddons
 kdeclarative
 kglobalaccel
 ki18n
 kiconthemes
-kwidgetsaddons
 kxmlgui
 libkscreen
 plasma-framework

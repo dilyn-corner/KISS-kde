@@ -1,5 +1,9 @@
 #!/bin/sh -e
 
+# This build script is entirely a meme and unecessary for the installation of 
+# WALLPAPERS, but I think it's so hilarious that somebody had to write a
+# CMakeLists.txt for this that I'll go ahead and continue. At least for now.
+
 export DESTDIR="$1"
 
 cmake -B build \

@@ -1,26 +1,27 @@
 #!/bin/sh -e
 
 for patch in *.patch; do
-    patch -p1 < $patch
+    patch -p1 < "$patch"
 done
 
-sed -e 's/pam_rhosts//g' -i modules/Makefile.am
+# Insecure module
+sed -i 's/pam_rhosts//g'   modules/Makefile.am
+
+# For some reason they are syntactically busted
+sed -i 's/pam_setquota//g' modules/Makefile.am
+sed -i 's/pam_usertype//g' modules/Makefile.am
+
+# Otherwise 'non required' enters our build system
 export ac_cv_search_crypt=no
 
-# Because we altered Makefile.am, we need automake. 
-# Of course, ac.local was generated with automake 1.13.4.
-# So we install that version here for a successful build.
+# Because we patch *.am, we have to regenerate stuff
+# autoreconf calls autopoint, which is a gettext thing.
+# So we just call the bits we need.
 
-(
-    cd automake-1.13.4
-    ./configure \
-        --prefix="$PWD/../garbo" 
-    
-    make
-    make install
-)
-
-export PATH="$PWD/garbo/bin:$PATH"
+aclocal --force -I m4
+autoconf -f
+autoheader -f
+automake -af
 
 ./configure \
     --prefix=/usr \

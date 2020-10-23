@@ -1,7 +1,6 @@
 cmake               make
 extra-cmake-modules make
 kcoreaddons
-#polkit-qt-1 -> Only if you have polkit
+#polkit-qt-1 -> only if you have polkit
 qt5
 samurai             make
-

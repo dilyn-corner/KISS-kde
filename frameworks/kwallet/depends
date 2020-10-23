@@ -1,15 +1,15 @@
 cmake               make
 extra-cmake-modules make
-kconfig
+kauth
+kcodecs
 kconfigwidgets
 kcoreaddons
 kdbusaddons
-kdoctools           make
 ki18n
-kiconthemes
 knotifications
 kservice
+kwidgetsaddons
 kwindowsystem
 libgcrypt
-qt5-tools           make
+qt5
 samurai             make

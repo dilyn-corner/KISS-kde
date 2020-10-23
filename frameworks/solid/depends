@@ -1,6 +1,5 @@
+bison               make
 cmake               make
-dbus
 extra-cmake-modules make
-qt5-declarative
-qt5-tools           make
+flex                make
 samurai             make

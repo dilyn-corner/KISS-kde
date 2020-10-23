@@ -1,12 +1,16 @@
 cmake               make
 extra-cmake-modules make
+kauth
+kcodecs
 kconfigwidgets
 kcoreaddons
 kdeclarative
+kguiaddons
 ki18n
-kiconthemes
 kitemviews
+kpackage
 kservice
+kwidgetsaddons
 kxmlgui
-qt5-tools           make
+qt5
 samurai             make
