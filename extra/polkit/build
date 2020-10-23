@@ -33,7 +33,10 @@ patch -p1 < remove-intltool.oops
 # or not to include libelogind support.
 
 pkg-config --exists libelogind || libelogind=no
-kiss l linux-pam || auth=shadow
+kiss l linux-pam || auth=shadow || {
+    printf 'linux-pam or shadow is required\n'
+    exit 1
+}
 
 ./configure \
     --prefix=/usr \
@@ -56,5 +59,6 @@ make DESTDIR="$1" install
 
 install -Dm755 polkit.run "$1/etc/sv/polkitd/run"
 
-kiss l linux-pam || true
-install -Dm644 polkit.pam "$1/etc/pam.d/polkit-1"
+if kiss l linux-pam; then
+    install -Dm644 polkit.pam "$1/etc/pam.d/polkit-1"
+fi
