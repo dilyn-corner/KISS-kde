@@ -12,5 +12,6 @@ knewstuff
 knotifications
 kwindowsystem
 libksysguard
+linux-headers       make
 qt5
 samurai             make
