@@ -1,5 +1,10 @@
 #!/bin/sh -e
 
+kiss l linux-pam || kiss l shadow || {
+    printf 'linux-pam or shadow is required\n'
+    exit 1
+}
+
 for patch in *.patch; do
     patch -p1 < $patch
 done
@@ -33,10 +38,7 @@ patch -p1 < remove-intltool.oops
 # or not to include libelogind support.
 
 pkg-config --exists libelogind || libelogind=no
-kiss l linux-pam || auth=shadow || {
-    printf 'linux-pam or shadow is required\n'
-    exit 1
-}
+kiss l linux-pam || auth=shadow
 
 ./configure \
     --prefix=/usr \
