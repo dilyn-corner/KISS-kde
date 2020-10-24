@@ -7,6 +7,13 @@ pkg-config --exists libudev || {
     exit 1
 }
 
+for patch in *.patch; do
+    patch -p1 < "$patch"
+done
+
+sed -i "s/intltool_xml_cmd/['cp', '@INPUT@', '@OUTPUT@']/g" \
+    data/meson.build
+
 sed -i '/^intltool/d' \
     meson.build
 sed -i 's/printf.h/stdio.h/' \
@@ -57,7 +64,7 @@ meson \
     -Dhcpcd="${dhcpcd:-true}" \
     -Diwd="${eiwd:-true}" \
     -Dresolvconf="${eiwd:-true}" \
-    -Dsession_tracking="${logind:-yes}" \
+    -Dsession_tracking="${logind:-elogind}" \
     . build
 
 ninja -C build
