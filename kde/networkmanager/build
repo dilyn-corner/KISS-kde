@@ -6,6 +6,11 @@ for patch in *.patch; do
     patch -p1 < "$patch"
 done
 
+pkg-config --exists nss || {
+    printf 'nss (or gnutls) is required\n'
+    exit 1
+}
+
 # Remove intltool
 sed -i "s/intltool_xml_cmd/['cp', '@INPUT@', '@OUTPUT@']/g" \
     data/meson.build
@@ -59,6 +64,7 @@ meson \
     -Dnmtui=false \
     -Dtests=no \
     -Dqt=false \
+    -Dcrypot="${$crypto:-gnutls}" \
     -Diwd="${eiwd:-true}" \
     -Dhcpcd="${dhcpcd:-true}" \
     -Dresolvconf="${eiwd:-true}" \
