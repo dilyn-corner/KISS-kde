@@ -74,4 +74,5 @@ meson \
 ninja -C build
 ninja -C build install
 
+install -Dm755 networkmanager.run  "$1/etc/sv/networkmanager/run"
 install -Dm644 networkmanager.conf "$1/etc/NetworkManager/NetworkManager.conf"
