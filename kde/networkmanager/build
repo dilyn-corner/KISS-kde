@@ -6,11 +6,13 @@ for patch in *.patch; do
     patch -p1 < "$patch"
 done
 
+# Remove intltool
 sed -i "s/intltool_xml_cmd/['cp', '@INPUT@', '@OUTPUT@']/g" \
     data/meson.build
-
 sed -i '/^intltool/d' \
     meson.build
+
+# Fix includes
 sed -i 's/printf.h/stdio.h/' \
     shared/systemd/src/basic/stdio-util.h
 sed -i 's/ether.h/if_ether.h/' \
@@ -19,7 +21,6 @@ sed -i 's/ether.h/if_ether.h/' \
     libnm-core/nm-utils.c
 sed -i 's/ether.h/if_ether.h/' \
     src/systemd/src/libsystemd-network/network-internal.c
-
 sed -i 's/if_arp.h/if.h/' \
     src/devices/nm-device.c
 sed -i '/#include <limits.h>/a #include <asm/types.h>' \
@@ -34,6 +35,8 @@ sed -i '/#include "nm-core-internal.h"/a #include <linux/if_ether.h>' \
     src/devices/nm-device-bridge.c
 sed -i '/#include <linux\/pkt_sched.h>/a #include <netinet\/if_ether.h>' \
     src/NetworkManagerUtils.c
+
+# musl doesn't support RTLD_DEEPBIND
 sed -i '/RTLD_DEEPBIND/d' \
     shared/nm-glib-aux/nm-json-aux.c
 
@@ -56,8 +59,8 @@ meson \
     -Dnmtui=false \
     -Dtests=no \
     -Dqt=false \
-    -Dhcpcd="${dhcpcd:-true}" \
     -Diwd="${eiwd:-true}" \
+    -Dhcpcd="${dhcpcd:-true}" \
     -Dresolvconf="${eiwd:-true}" \
     -Dsession_tracking="${logind:-elogind}" \
     . build
