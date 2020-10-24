@@ -55,6 +55,7 @@ kiss l linux-pam || auth=shadow
     --enable-libelogind="${libelogind:-yes}" \
     --with-backend=keyfile \
     --with-authfw="${auth:-pam}" \
+    --with-os-type=KISS
 
 make
 make DESTDIR="$1" install
