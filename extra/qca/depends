@@ -1,0 +1,5 @@
+cmake               make
+extra-cmake-modules make
+pkgconf             make
+qt5
+samurai             make
