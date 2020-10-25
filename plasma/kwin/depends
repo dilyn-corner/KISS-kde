@@ -1,6 +1,7 @@
 breeze
 cmake               make
 extra-cmake-modules make
+fontconfig
 kactivities
 kcmutils
 kcompletion
