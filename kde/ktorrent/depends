@@ -1,0 +1,24 @@
+boost
+cmake               make
+extra-cmake-modules make 
+kconfig
+kconfigwidgets
+kcoreaddons
+kcrash
+kdbusaddons
+ki18n
+kiconthemes
+kio
+knotifications
+knotifyconfig
+kcmutils
+kparts
+solid
+kwidgetsaddons
+kwindowsystem
+kxmlgui
+libktorrent
+qca
+qt5
+qt5-script
+samurai             make
