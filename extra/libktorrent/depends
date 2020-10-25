@@ -1,0 +1,12 @@
+boost
+cmake               make
+extra-cmake-modules make
+gmp
+karchive
+kcrash
+ki18n
+kio
+libgcrypt
+qt5
+samurai             make
+solid
