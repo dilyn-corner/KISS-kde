@@ -4,11 +4,14 @@ export DESTDIR="$1"
 
 rm -rf po
 
+kiss l linux-pam || pam=OFF
+
 cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_TESTING=NO \
+    -DPAM_REQUIRED=${pam:-ON} \
     -Wno-dev -G Ninja
 
 ninja -C build

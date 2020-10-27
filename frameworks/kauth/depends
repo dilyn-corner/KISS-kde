@@ -4,4 +4,3 @@ kcoreaddons
 #polkit-qt-1 -> only if you have polkit
 qt5
 samurai             make
-
