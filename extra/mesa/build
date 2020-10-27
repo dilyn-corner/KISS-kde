@@ -38,8 +38,8 @@ meson \
     --mandir=/usr/share/man \
     --localstatedir=/var \
     --buildtype=release \
-    -Dplatforms=x11,wayland,drm \
-    -Dzstd=false \
+    -Dplatforms=x11,wayland \
+    -Dzstd=disabled \
     . build
 
 ninja -C build
