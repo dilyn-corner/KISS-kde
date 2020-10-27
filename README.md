@@ -8,7 +8,8 @@ ________________________________________________________________________________
 
 # KISS-kde
 
-![Image](../blob/master/10-26%2522:22:22.png?raw=true)
+
+![Image](https://raw.githubusercontent.com/dilyn-corner/KISS-kde/master/10-26%2522%3A22%3A22.png)
 
 
 This is currently a work in progress. Feel free to help out!
@@ -449,4 +450,4 @@ importantly...
 
 ## Enjoy!
 
-![Image](../blob/master/06-23%4021:48:21.jpg?raw=true)
+![Image](https://raw.githubusercontent.com/dilyn-corner/KISS-kde/master/06-23%4021%3A48%3A21.jpg)
