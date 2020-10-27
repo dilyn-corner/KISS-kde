@@ -9,7 +9,7 @@ ________________________________________________________________________________
 # KISS-kde
 
 
-![Image](https://raw.githubusercontent.com/dilyn-corner/KISS-kde/master/10-26%2522%3A22%3A22.png)
+![Plasma 5.20.1 Clean](https://raw.githubusercontent.com/dilyn-corner/KISS-kde/master/10-26%2522%3A22%3A22.png)
 
 
 This is currently a work in progress. Feel free to help out!
@@ -52,29 +52,23 @@ Here are all of the things that can be worked on.
 
 - [x] Remove JS backend from polkit
     * This project will rely on forward-porting the work done [here](https://dev.getsol.us/T4824)
-    *  The goal is that we can drop `mozjs` - it's the only package which
-       requires `mozjs` and it means we can also drop `nspr`, which I have been
-       to lazy to make coincide 'cleanly' with `community/nss`. 
-    *  The currently milestone is now to fix one of the patches we're using in
-       `polkit` to  drop `mozjs`; we basically need to get rid of innetgr from
-        the code so we drop our `musl` patch (which Rich Felker does not approve of).
+    * This allows us to drop `mozjs`
+    * The currently milestone is to get rid of innetgr from our patches. 
+    * Once innetgr is no longer required, we can drop our `musl` fork.
 
-- [x] Enable a login-manager
+- [x] Enable a login-manager and greeter
+    - [x] `elogind`
+    - [x] `sddm`
+    - [ ] `seatd` to replace `elogind`
+    - [ ] `greetd` + greeter to replace `sddm`
     - [x] Bundle a default theme (breeze)
-    - [ ] Package an alternative
-        - [ ] `seatd` to replace `elogind`
-        - [ ] `greetd` + greeter to replace `sddm`
-        This change would mean that `rust` is a build-time requirement. Gross.
-        However, ideally this can be the default, and people can seek out the
-        `elogind` stack themselves. If they... want... that...
 
 - [ ] Expand `plasma-desktop` for a 'comprehensive' extension
-    - [x] login manager - `sddm` for now!
+    - [ ] `bluez`
+    - [x] `networkmanager`
+    - [ ] `pulseaudio`
     - [x] `udisks2`
     - [ ] `vaultcrypt`
-    - [x] `networkmanager`
-    - [ ] `bluez`
-    - [ ] `pulseaudio` - this exists external to this repo
 
 - [ ] Package some KDE apps
     - [ ] `ark`
@@ -104,7 +98,7 @@ Here are all of the things that can be worked on.
     - [ ] `yakuake`
 
 - [ ] Test `wayland` support
-    - [ ] `plasma 5.20.0` - IT WILL BE THE DEFAULT.
+    - [ ] `plasma 5.20.0` - does it work?
 
 - [ ] Ensure everything works!
     - [x] Sessions can start from `startx`
@@ -164,7 +158,7 @@ It's with launching it.
 
 If you attempt to `startx startplasma-x11`, you will probably be met with an
 error message about `dbus`. KDE tries *very* hard to have a running `dbus`
-session to latch onto. So much so that it shits itself it one isn't running.
+session to latch onto. So much so that it shits itself if one isn't running.
 It'll print an error if you try to just launch plasma, it'll hang at a black
 screen if you attempt to launch `kwin` via `xinit`, etc.
 
@@ -176,16 +170,16 @@ Unless we can find a way around this, `dbus` is required. I have no real
 problems with this. If you take umbridge with this hard fact, perhaps reflect 
 on why you want KDE in the first place?
 
-## polkit, PAM, logind
+### polkit, PAM, logind
 
 You'll notice in many distros that there are many versions of, for instance,
 polkit swimming around. I don't want to maintain a bunch of polkit versions for
 different login managers and greeters. In fact, I want as minimal maintenance as
 possible. But I also want to maximize choice. There's no *good* reason to assume
 a user wants `linux-pam` over `shadow`. There's no good reason to assume
-anything about what the user wants! But this minimalism should decrease function
+anything about what the user wants! But this minimalism should decrease friction
 as much as possible. I don't want to punish users for wanting to install these
-programs. I definitely don't to force anyone to do the reading I did either! 
+programs. I definitely don't want to force them to do the reading I did either!
 
 For the user who is disinterested or unconcerned with `linux-pam`, `polkit`,
 `elogind`, etc., they are required to do nothing. Not only is this in line with
@@ -213,7 +207,7 @@ satisfied the dependencies of *this* repository. Built with everyone's favorite
 GNU C compiler, with `CFLAGS=-march=x86-64 -mtune=generic -Os -pipe`. If you
 want a 'seamless' build, merely plop these archives in
 `${XDG_CACHE_DIR:-$HOME/.cache}/kiss/bin`, and make sure you change the . before
-the 5 to a \# (@ with `kiss` v 6).
+the 5 to a # (@ with `kiss` v 6).
 
 
 ### xorg vs wayland 
@@ -236,9 +230,8 @@ depends file and uncomment `kwinft`. then simply build `plasma-desktop`.
 If you have already installed `kwin` fear not! Do the comment switcheroo as before,
 force-uninstall `kwin`, reinstall `plasma-{desktop,workspace}` (which should 
 pull-in everything required for `kwinft`), and then simply kill your KDE session
-if you're in one, uninstall `kwin`, and restart the session! If you run into 
-bugs, please make sure they're not `kwinft` related - burn down the 
-[developer's door](https://gitlab.com/kwinft/kwinft) for those. 
+if you're in one, and restart the session! If you run into bugs, please make 
+sure they're not `kwinft` related - burn down the [developer's door](https://gitlab.com/kwinft/kwinft) for those. 
 
 
 ## Prerequisites
@@ -256,9 +249,9 @@ built against `dbus` or `eudev` merely run `kiss-revdepends eudev`.
 
 If you opt to use `elogind` (required for `sddm`), you will need the following:
 
-4. Choose between `shadow` or `polkit`, and install your choice.
+4. Choose between `shadow` or `linux-pam`, and install your choice.
 
-5. Install `linux-pam`.
+5. Install `polkit`.
 
 6. [cgroups](http://www.linuxfromscratch.org/blfs/view/svn/general/elogind.html). I leave it up to
    you to test your own kernel configs.
@@ -417,7 +410,8 @@ instructions](https://k1ss.org/install).
 To install from the first October 2020 release,
 
 ```
-ver=2020.10-1
+$ ver=2020.10-1
+$ wget https://github.com/dilyn-corner/KISS-kde/releases/download/$ver.tar.xz
 # Mount your relevant root partition to wherever. In this case, I choose /mnt
 $ tar xf kiss-kde-$ver.tar.xz -C /mnt
 $ ./mnt/bin/kiss-chroot /mnt
@@ -450,4 +444,4 @@ importantly...
 
 ## Enjoy!
 
-![Image](https://raw.githubusercontent.com/dilyn-corner/KISS-kde/master/06-23%4021%3A48%3A21.jpg)
+![Think Bigger](https://raw.githubusercontent.com/dilyn-corner/KISS-kde/master/06-23%4021%3A48%3A21.jpg)
