@@ -30,6 +30,7 @@ kwidgetsaddons
 kwindowsystem
 kxmlgui
 libXi
+libepoxy
 plasma-framework
 qt5
 qt5-declarative
