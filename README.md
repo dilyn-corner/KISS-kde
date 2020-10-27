@@ -9,23 +9,17 @@ ________________________________________________________________________________
 # KISS-kde
 
 
-![alt
-text](https://github.com/dilyn-corner/KISS-kde/blob/master/06-23%4021:48:21.jpg)
+![alttext](https://github.com/dilyn-corner/KISS-kde/blob/master/10-26%22:22:22.png)
 
 
 This is currently a work in progress. Feel free to help out!
 
-KDE is a full-featured desktop environment for Linux! It includes a framework
-to allow for integration with the system, utilizing `dbus` and `pam`, along with
-`plasma`, a beautiful and modern desktop.
+KDE is a full-featured desktop environment for Linux! It uses the Qt framework
+to generate a simple, featureful, and gorgeous desktop.
 
-This is very much in alpha. I will keep this repository up-to-date as best I
-can, testing and building things as frequently as possible - it's a big
-project that requires a fair amount of maintenance. Luckily, I have the hard
-drive space and the free time. But I'm only one person; if you have a
-contribution, feel free to share it. Requests like this should follow the
-KISS [style guide](https://k1ss.org/wiki/kiss/style-guide) as closely as 
-possible, but I'm not too much of a stickler.
+This is very much in alpha. If you have a contribution, feel free to share it. 
+Requests like this should follow the KISS [style guide](https://k1ss.org/wiki/kiss/style-guide) 
+as closely as possible, but I'm not too much of a stickler.
 
 ## Current Milestones
 
@@ -78,36 +72,36 @@ Here are all of the things that can be worked on.
     - [x] login manager - `sddm` for now!
     - [x] `udisks2`
     - [ ] `vaultcrypt`
-    - [ ] `networkmanager`
+    - [x] `networkmanager`
     - [ ] `bluez`
     - [ ] `pulseaudio` - this exists external to this repo
 
 - [ ] Package some KDE apps
-    - [ ] `krita`
-    - [ ] `kdenlive` - halts at splash
-    - [ ] `kwave`
-    - [ ] `dragon-player` - doesn't play tracks
-    - [ ] `kaffeine`
-    - [ ] `elisa` - immediately crashes
-    - [ ] `calligra`
-    - [ ] `kdevelop`
-    - [x] `konsole`
-    - [ ] `yakuake`
-    - [ ] `okular`
-    - [ ] `gwenview`
-    - [ ] `spectacle`
-    - [ ] `kate`
-    - [x] `dolphin`
-    - [ ] `filelight`
     - [ ] `ark`
+    - [ ] `calligra`
+    - [x] `dolphin`
+    - [ ] `dragon-player` - doesn't play tracks
+    - [ ] `elisa` - immediately crashes
     - [x] `falkon`
-    - [ ] `konqueror`
+    - [ ] `filelight`
+    - [ ] `gwenview`
+    - [ ] `kaffeine`
+    - [ ] `kate`
+    - [ ] `kdenlive` - halts at splash
+    - [ ] `kdevelop`
     - [ ] `kget`
-    - [ ] `kmail`
-    - [ ] `kwalletmanager`
     - [ ] `kgpg`
-    - [ ] `ktorrent`
+    - [ ] `kmail`
+    - [ ] `konqueror`
+    - [x] `konsole`
+    - [ ] `krita`
+    - [x] `ktorrent`
+    - [ ] `kwalletmanager`
+    - [ ] `kwave`
     - [x] `latte-dock`
+    - [ ] `okular`
+    - [ ] `spectacle`
+    - [ ] `yakuake`
 
 - [ ] Test `wayland` support
     - [ ] `plasma 5.20.0` - IT WILL BE THE DEFAULT.
@@ -117,12 +111,12 @@ Here are all of the things that can be worked on.
     - [x] Sessions can start from `sddm`
     - [x] Applications launch
     - [x] Menus work
-    - [x] Themes work - bugged in 5.19.2?
+    - [x] Themes work
     - [x] Settings work
-    - [ ] Users can log back in from a *lock* (super+l) (root can, but not users?)
-    - [ ] Bluetooth
-    - [ ] Power management
-    - [ ] Disk/hardware management 
+    - [~] Users can log back in from a *lock* (super+l) - works without `linux-pam`
+    - [ ] Bluetooth - can't test
+    - [ ] Power management -untested
+    - [ ] Disk/hardware management -untested
 
 - [x] Create tarball
 
@@ -164,26 +158,42 @@ Fix up the build files as required!
 
 The dreaded(?) question.
 
-Based on my current knowledge of KDE, `dbus` is required by
-a litany of programs. Many which don't explicitly require
-`dbus` will nontheless build against it if it is available.
-The hard part, however, is not the framework. Instead, it is
-for launching KDE itself. 
+The trouble with evading `dbus` is not with building KDE. 
 
-If you attempt to `startx startplasma-x11`, you will
-probably be met with an error message about `dbus`. You see,
-KDE requires something like `polkit`, `elogind`, etc. to
-start. Indeed even with `wayland` this is the case. Additionally, `dbus` is used
-by integral parts of the system to do... Most things. Which is why KDE tries so
-hard to ensure it is running before it is launched.
+It's with launching it.
+
+If you attempt to `startx startplasma-x11`, you will probably be met with an
+error message about `dbus`. KDE tries *very* hard to have a running `dbus`
+session to latch onto. So much so that it shits itself it one isn't running.
+It'll print an error if you try to just launch plasma, it'll hang at a black
+screen if you attempt to launch `kwin` via `xinit`, etc.
 
 Which would seem to make `dbus` a hard dependency for KDE.
 
-Unless we can find a way around this (and I am certainly not
-the one to do it!), `dbus` is required. I have no real
-problems with this. If you take umbridge with this hard
-fact, perhaps reflect on why you want KDE in the first
-place?
+KDE will probably build fine with a stub library. The hard part would probably
+be getting `dbus-launch` to execute meaningfully with a stub library. 
+Unless we can find a way around this, `dbus` is required. I have no real
+problems with this. If you take umbridge with this hard fact, perhaps reflect 
+on why you want KDE in the first place?
+
+## polkit, PAM, logind
+
+You'll notice in many distros that there are many versions of, for instance,
+polkit swimming around. I don't want to maintain a bunch of polkit versions for
+different login managers and greeters. In fact, I want as minimal maintenance as
+possible. But I also want to maximize choice. There's no *good* reason to assume
+a user wants `linux-pam` over `shadow`. There's no good reason to assume
+anything about what the user wants! But this minimalism should decrease function
+as much as possible. I don't want to punish users for wanting to install these
+programs. I definitely don't to force anyone to do the reading I did either! 
+
+For the user who is disinterested or unconcerned with `linux-pam`, `polkit`,
+`elogind`, etc., they are required to do nothing. Not only is this in line with
+KISS' goals as a project, but it also doesn't require users to do large amounts
+of research to do what should be routine maintenance or security management. If
+a user wants to install `polkit` or, maximally, `elogind`, only a few packages
+must be built prior to building `plasma-desktop`.
+
 
 ### qt
 
@@ -203,7 +213,7 @@ satisfied the dependencies of *this* repository. Built with everyone's favorite
 GNU C compiler, with `CFLAGS=-march=x86-64 -mtune=generic -Os -pipe`. If you
 want a 'seamless' build, merely plop these archives in
 `${XDG_CACHE_DIR:-$HOME/.cache}/kiss/bin`, and make sure you change the . before
-the 5 to a @ so `kiss` doesn't complain.
+the 5 to a \# (@ with `kiss` v 6).
 
 
 ### xorg vs wayland 
@@ -221,13 +231,14 @@ Additionally, `kwinft` is a fork of `kwin` which purports to better support
 wayland. It is a more bleading-edge, development focused 'branch' of `kwin`. 
 Bound to be bugs that crop up. Presumably, `kwinft` is strictly better than `kwin`. 
 Currently, it's your choice which you choose! If you opt to use `kwinft`, simply 
-comment `kwin` from `plasma-desktop/depends` and `plasma-workspace/depends` 
-and uncomment `kwinft`, and then simply install `plasma-desktop` or `plasma`. 
+fork `plasma-desktop` and `plasma-workspace`, and comment `kwin` from their
+depends file and uncomment `kwinft`. then simply build `plasma-desktop`.
 If you have already installed `kwin` fear not! Do the comment switcheroo as before,
-reinstall *those* packages (which should pull-in everything required for `kwinft`),
-and then simply kill your KDE session if you're in one, uninstall `kwin`, and 
-restart the session! If you run into bugs, please make sure they're not `kwinft` 
-related - burn down the [developer's door](https://gitlab.com/kwinft/kwinft) for those. 
+force-uninstall `kwin`, reinstall `plasma-{desktop,workspace}` (which should 
+pull-in everything required for `kwinft`), and then simply kill your KDE session
+if you're in one, uninstall `kwin`, and restart the session! If you run into 
+bugs, please make sure they're not `kwinft` related - burn down the 
+[developer's door](https://gitlab.com/kwinft/kwinft) for those. 
 
 
 ## Prerequisites
@@ -237,20 +248,22 @@ related - burn down the [developer's door](https://gitlab.com/kwinft/kwinft) for
 2. You will need `dbus`. Because of this, you'll have to rebuild `qt5`.
 
 3. You will need `eudev` or `libudev-zero`. Because of this, you'll need to
-   rebuild `xorg-server`, any input packages (`libinput`,
-   `xf86-input-libinput`, etc.), `dhcpcd`, perhaps others.
+   rebuild `xorg-server`, `{xf86-input-}libinput`, `dhcpcd`, maybe more.
 
-These rebuilds are obviously not required if you already had
-the relevant programs built against `dbus`, `eudev`, etc. To determine which
-packages are built against `dbus` or `eudev` merely run `kiss-revdepends eudev`.
-If you see `xorg-server`, you're probably fine.
+These rebuilds are obviously not required if you already had the relevant 
+programs built against `dbus`, `eudev`, etc. To determine which packages are 
+built against `dbus` or `eudev` merely run `kiss-revdepends eudev`.
 
 If you opt to use `elogind` (required for `sddm`), you will need the following:
 
-4. [cgroups](http://www.linuxfromscratch.org/blfs/view/svn/general/elogind.html). I leave it up to
+4. Choose between `shadow` or `polkit`, and install your choice.
+
+5. Install `linux-pam`.
+
+6. [cgroups](http://www.linuxfromscratch.org/blfs/view/svn/general/elogind.html). I leave it up to
    you to test your own kernel configs.
 
-5. You will require exactly `realpath` from `coreutils`.
+7. You will require exactly `realpath` from `coreutils`.
 
 `coreutils` is a build time requirement, so you are free to remove
 it with no ill-effects afterwards.
@@ -262,27 +275,21 @@ Now that we have all of that nonsense out of the way, let's
 get to it!
 
 We start with the assumption that you just installed KISS,
-following the [installation guide](https://k1ss.org/install)
-exactly, which means you have `libudev-zero` or `eudev`, a working `xorg` that
-knows about `eudev`, some input drivers, and fonts. Although
-this repo does include some nice fonts, so either way you're
-covered. 
+following the [installation guide](https://k1ss.org/install) exactly, which 
+means you have `libudev-zero` or `eudev`, a working `xorg` that knows about 
+`eudev`, some input drivers, and fonts. Although this repo does include some 
+nice fonts, so either way you're covered. 
 
-You might have a few extra programs, like `pcre2` and some
-`xcb` already installed. Great! It might save you time. Not
-really. You shouldn't have too many conflicts to deal with,
-if any. Just make sure you've uninstalled `qt5` and
-friends.
+Ensure you do not have `qt5*` installed. 
 
 __NOTE__: I have taken the liberty of uploading a KISS package for `qt5`,
 `qt5-webengine`, and `qt5-declarative`. Assuming your system is roughly similar
-to mine, and you've installed all of their dependencies, you can simply install
-these xz archives instead of wasting ten hours building them. Trust me.
+to mine (built from a blank KISS-chroot), you can simply install these xz 
+archives instead of wasting ten hours building them. Trust me.
 
-`plasma-desktop` includes basically every single item in the framework you would
-need in order to have a recognizable KDE experience. It has icons and some
-default things like an application launcher, a system monitor, a settings
-manager.
+`plasma-desktop` includes basically every package in the framework you need to 
+have a recognizable KDE experience. It has icons and some default things like 
+an application launcher, a system monitor, and a settings manager.
 
 If you want a more 'full-featured' KDE environment, you can install  useful
 extras. This list includes things such as `bluedevil` and `bluez`. `udisks2` is
@@ -323,14 +330,22 @@ $ kiss b dbus libudev-zero && kiss i dbus libudev-zero
 $ kiss b xorg-server libinput xf86-input-libinput 
 # Add others as necessary
 
+# If you've opted to use e.g. elogind, you'll need
+# to do the following!
+
+# Choose shadow or linux-pam to use with polkit
+$ kiss b shadow && kiss i shadow
+$ kiss b polkit && kiss b polkit
+
 # Thanks to the alternatives system, we can just pluck out
-# the few binaries we need from `coreutils`, along with the grep utility.
-# You only require coreutils if you opt to use `elogind`
+# the few binaries we need from `coreutils`.
 
 $ kiss b coreutils && kiss i coreutils
 $ kiss a coreutils /usr/bin/realpath
 $ kiss a coreutils /usr/bin/mktemp
 $ kiss a coreutils /usr/bin/ln
+
+$ kiss b elogind && kiss i elogind
 
 # We're finally ready!
 
@@ -353,6 +368,16 @@ $ sv up udevd
 # hack is in community. It's very small and good.
 # Any TTF font should work though.
 
+# You might want to make a runtime directory or KDE will 
+# make one for you. This is required for a wayland session.
+# Put these lines in somewhere like $HOME/.profile
+
+$ export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp/$(id -u)-runtime}"
+$ [ -d "$XDG_RUNTIME_DIR" ] || {
+      mkdir -p   "$XDG_RUNTIME_DIR"
+      chmod 0700 "$XDG_RUNTIME_DIR"
+  }
+
 # Two options: 
 # 1. Use 'startx' to launch KDE
 # 2. Use a login manager
@@ -367,13 +392,6 @@ $ startx
 
 # For sddm:
 
-# Ensure elogind is built and installed
-
-$kiss b elogind && kiss i elogind
-
-# Build linux-pam:
-
-$ kiss b linux-pam && kiss i linux-pam
 $ kiss b sddm && kiss i sddm
 
 # Enable the required services. FoR sEcUrItY
@@ -395,15 +413,16 @@ It's basically just a KISS tarball. It is built with musl and GCC using:
 The first release is built from a fresh KISS tarball. All future releases will
 merely be published after performing updates on this original tarball.
 Installing works almost identically to the [usual
-instructions](https://k1ss.org/install). Just download the `kiss-kde-$VER.tar.xz`
-from the releases tab and:
+instructions](https://k1ss.org/install).
+To install from the first October 2020 release,
 
 ```
+ver=2020.10-1
 # Mount your relevant root partition to wherever. In this case, I choose /mnt
-$ tar xf kiss-kde-$VER.tar.xz -C /mnt
+$ tar xf kiss-kde-$ver.tar.xz -C /mnt
 $ ./mnt/bin/kiss-chroot /mnt
 
-# Follow the KISS install guide - after the 'Rebuild KISS' section
+# Follow the KISS install guide.
 
 $ exit
 $ reboot
@@ -431,5 +450,4 @@ importantly...
 
 ## Enjoy!
 
-![alt
-text](https://github.com/dilyn-corner/KISS-kde/blob/master/06-23%4001:45:16.jpg)
+![alttext](https://github.com/dilyn-corner/KISS-kde/blob/master/06-23%21:48:21.jpg)
