@@ -1,22 +1,5 @@
 cmake               make
 extra-cmake-modules make
-kactivities
-kcmutils
-kconfig
-kdeclarative
-kdesu
-kdoctools
-ki18n
-kiconthemes
-kio
-kservice
-kwindowsystem
-plasma-workspace
-qt5
-qt5-svg
-qt5-x11extras
-samurai             make
-
 kconfig
 kdoctools
 kiconthemes
@@ -31,3 +14,4 @@ kdesu
 libxcb
 libX11
 qt5-x11extras
+samurai             make
