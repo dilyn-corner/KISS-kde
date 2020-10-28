@@ -1,13 +1,16 @@
 #!/bin/sh -e
 
-export DESTDIR="$1"
-
-rm -rf po
-
 pkg-config --exists libudev || {
     printf 'udev (or libudev-zero) is required\n'
     exit 1
 }
+
+export DESTDIR="$1"
+
+rm -rf po
+
+sed -i 's/DocTools//'             CMakeLists.txt
+sed -i '/add_subdirectory(doc)/d' CMakeLists.txt
 
 cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
