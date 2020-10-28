@@ -1,7 +1,7 @@
 cmake               make
 extra-cmake-modules make
 kconfig
-kdoctools
+#kdoctools
 kiconthemes
 ki18n
 kcmutils
