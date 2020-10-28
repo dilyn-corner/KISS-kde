@@ -4,6 +4,9 @@ export DESTDIR="$1"
 
 rm -rf po 
 
+sed -i 's/DocTools//'             CMakeLists.txt
+sed -i '/add_subdirectory(doc)/d' CMakeLists.txt
+
 cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \

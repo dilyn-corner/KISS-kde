@@ -9,7 +9,7 @@ kdeclarative
 kded
 kdelibs4support
 kdesu
-kdoctools
+#kdoctools
 kglobalaccel
 ki18n
 kiconthemes
@@ -31,6 +31,7 @@ kwin
 libXtst
 libxcb
 phonon
+pkgconf                  make
 plasma-framework
 plasma-integration
 plasma-wayland-protocols make
