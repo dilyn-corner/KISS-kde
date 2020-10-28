@@ -7,7 +7,7 @@ kcmutils
 kcrash
 kdbusaddons
 kdeclarative
-kdoctools
+#kdoctools
 kguiaddons
 ki18n
 kiconthemes
