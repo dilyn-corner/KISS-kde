@@ -4,6 +4,11 @@ export DESTDIR="$1"
 
 rm -rf po
 
+patch -p1 < remove-doctool.patch
+
+sed -i '/^find_package(KF5DocTools/d' CMakeLists.txt
+sed -i '/add_subdirectory(docs)/d'    CMakeLists.txt
+
 cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \

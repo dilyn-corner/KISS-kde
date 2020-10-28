@@ -11,7 +11,7 @@ kcrash
 kdbusaddons
 kded
 kdesignerplugin
-kdoctools
+#kdoctools
 kemoticons
 kglobalaccel
 kguiaddons
