@@ -1,4 +1,4 @@
-|/  
+|/                                                                              
 |\ISS                                                           https://k1ss.org
 ________________________________________________________________________________
 
@@ -33,8 +33,9 @@ Here are all of the things that can be worked on.
     - [ ] `udisks2 - /usr/bin/ln -r`
     - [x] `gnugrep - /usr/bin/grep --quiet`
 
-- [ ] Properly configure docbook generation
-    * Currently, `docbook-xsl` doesn't actually do anything, I don't think.
+- [x] ~~Properly configure docbook generation~~
+    * ~~Currently, `docbook-xsl` doesn't actually do anything, I don't think.~~
+    * This has been avoided because we just dropped the requirement.
 
 - [x] Get the core working
     - [x] Generate build files
@@ -44,9 +45,6 @@ Here are all of the things that can be worked on.
 - [x] Find a *sane* default collection, `plasma-desktop`
     - [x] KDE Framework
     - [x] Plasma
-    - [x] `systemsettings`
-    - [x] `breeze`
-    - [x] `breeze-icons`
 
 - [x] Configure `linux-pam` in a meaningful way
 
@@ -64,11 +62,15 @@ Here are all of the things that can be worked on.
     - [x] Bundle a default theme (breeze)
 
 - [ ] Expand `plasma-desktop` for a 'comprehensive' extension
-    - [ ] `bluez`
+    - [x] `bluez`
     - [x] `networkmanager`
     - [ ] `pulseaudio`
     - [x] `udisks2`
     - [ ] `vaultcrypt`
+    - [x] `breeze`
+    - [x] `breeze-icons`
+    - [x] ` systemsettings`
+    - [x] `kinfocenter`
 
 - [ ] Package some KDE apps
     - [ ] `ark`
@@ -81,7 +83,7 @@ Here are all of the things that can be worked on.
     - [ ] `gwenview`
     - [ ] `kaffeine`
     - [ ] `kate`
-    - [ ] `kdenlive` - halts at splash
+    - [x] `kdenlive`
     - [ ] `kdevelop`
     - [ ] `kget`
     - [ ] `kgpg`
@@ -98,7 +100,9 @@ Here are all of the things that can be worked on.
     - [ ] `yakuake`
 
 - [ ] Test `wayland` support
-    - [ ] `plasma 5.20.0` - does it work?
+    - [x] `plasma 5.20.0`
+    - [x] fork `xorg-server` to add `xwayland` support
+    - [ ] sucessfully launch a `kwin_wayland` session
 
 - [ ] Ensure everything works!
     - [x] Sessions can start from `startx`
@@ -128,24 +132,37 @@ assist.
 
 ## KISS-kde with respect to KISS
 
-### gettext
+### Documentation
 
-I have opted not to include internationalization. This was done in
-two parts:
+I have opted not to include internationalization or docs. This was done in
+three parts:
 
 1) Hobble `ki18n` by removing the `gettext` dependency
 
 2) Delete all translation files located in `po` from packages which 'require' them. 
 
-If you would like to have languages besides english available, it should be
-quite easy. First, package `gettext`. Second, remove the patch in the `ki18n`
-package. Finally, simply remove `rm -rf po` from each build script in which it
-appears. This is probably trivial (cough `sed` cough). 
+3) Remove the `kdoctools` dependency from packages which 'require' it.
+
+If you would like to have languages besides english available: 
+    * Package `gettext` 
+    * Remove the patch for `ki18n`
+    * Remove `rm -rf po` from each build script that has it
 
 Additionally, there are packages which I had to go further to remove `gettext`
 and `intltool` from. It shouldn't be too hard to find them on your own (the
 patches are sanely named, `remove-gettext.patch` and `remove-intltool.patch`).
 Fix up the build files as required!
+
+if you would like to have documentation:
+
+    * Package `docbook-xml`, `docbook-xsl`, and `kdoctools`
+    * Remove the `seds` removing DocTools (and the `seds` that acommpany them.
+
+Specifically, revert:
+
+    * c1b33ca4d668cb76edad6df6cb2e1617a1b33c07
+    * b0d7c17e2a1e38d3f532c9d7c901a0fc45f44391
+    * c1b33ca4d668cb76edad6df6cb2e1617a1b33c07
 
 
 ### dbus
