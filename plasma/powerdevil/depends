@@ -1,21 +1,18 @@
-bluez
 cmake               make
-eudev
 extra-cmake-modules make
 kactivities
 kauth
-kconfig
 kcrash
 kdbusaddons
-kdoctools
-kglobalaccel
-ki18n
 kidletime
+ki18n
+kglobalaccel
 kio
 knotifications
 knotifyconfig
+kscreen
 kwayland
-libkscreen
+libxcb
 plasma-workspace
 qt5
 qt5-x11extras
