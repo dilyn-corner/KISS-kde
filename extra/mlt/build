@@ -3,15 +3,6 @@
 sed -i 's/defined(__GLIBC__)/defined(__linux__)/' \
     src/framework/mlt_property.h
 
-# Because qt5.15 breaks builds
-# We can remove this in the next mlt release
-sed -i '/#include <math.h>/a #include <QPainterPath>' \
-    src/modules/qt/graph.cpp
-sed -i '/#include <QString>/a #include <QPainterPath>' \
-    src/modules/qt/filter_qtext.cpp
-sed -i '/#include <QString>/a #include <QPainterPath>' \
-    src/modules/qt/producer_qtext.cpp
-
 ./configure \
     --prefix=/usr \
     --enable-gpl \
