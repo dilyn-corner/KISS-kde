@@ -1,5 +1,6 @@
 dbus
-eudev
+glib
 libical
+pkgconf       make
 readline
 linux-headers make
