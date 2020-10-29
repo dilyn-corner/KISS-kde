@@ -1,7 +1,0 @@
-#!/bin/sh -e
-
-install -dm755 "$1/usr/share/xml/docbook/xml-dtd-$2"
-install -dm755 "$1/etc/xml"
-
-cp -af docbook.cat *.dtd ent *.mod \
-    "$1/usr/share/xml/docbook/xml-dtd-4.5"
