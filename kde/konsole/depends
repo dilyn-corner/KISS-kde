@@ -1,13 +1,10 @@
 cmake               make
 extra-cmake-modules make
-kbookmarks
 kcompletion
-kconfig
-kconfigwidgets
 kcoreaddons
+kconfigwidgets
 kcrash
 kdbusaddons
-kdoctools
 kglobalaccel
 kguiaddons
 ki18n
@@ -24,6 +21,4 @@ ktextwidgets
 kwidgetsaddons
 kwindowsystem
 kxmlgui
-ncurses
-qt5
 samurai             make
