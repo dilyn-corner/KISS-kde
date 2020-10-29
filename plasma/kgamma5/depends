@@ -2,7 +2,7 @@ cmake               make
 extra-cmake-modules make
 kconfig
 kconfigwidgets
-kdoctools
 ki18n
+libXxf86vm
 qt5
 samurai             make
