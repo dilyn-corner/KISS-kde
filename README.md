@@ -62,15 +62,15 @@ Here are all of the things that can be worked on.
     - [x] Bundle a default theme (breeze)
 
 - [ ] Expand `plasma-desktop` for a 'comprehensive' extension
+    - [x] `breeze`
+    - [x] `breeze-icons`
+    - [x] `systemsettings`
+    - [x] `kinfocenter`
     - [x] `bluez`
     - [x] `networkmanager`
     - [ ] `pulseaudio`
     - [x] `udisks2`
     - [ ] `vaultcrypt`
-    - [x] `breeze`
-    - [x] `breeze-icons`
-    - [x] ` systemsettings`
-    - [x] `kinfocenter`
 
 - [ ] Package some KDE apps
     - [ ] `ark`
