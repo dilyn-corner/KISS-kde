@@ -7,7 +7,6 @@ kconfig
 kcoreaddons
 kcrash
 kdbusaddons
-kdoctools
 ki18n
 kiconthemes
 kinit
@@ -19,4 +18,5 @@ ktextwidgets
 kwindowsystem
 phonon
 qt5
+samurai             make
 solid
