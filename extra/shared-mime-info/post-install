@@ -1,0 +1,3 @@
+#!/bin/sh -e
+
+ update-mime-database -V /usr/share/mime
