@@ -1,3 +1,7 @@
+cmake   make
 flac
 libogg
 libvorbis
+opus
+python  make
+samurai make
