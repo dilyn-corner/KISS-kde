@@ -1,9 +1,8 @@
 cmake               make
 extra-cmake-modules make
-kcoreaddons
-kdoctools
-ki18n
 kwallet
+kcoreaddons
+ki18n
 kwidgetsaddons
 qt5
 samurai             make
