@@ -6,8 +6,11 @@ cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
-    -DENABLE_GTK_DOC=false \
+    -DLIBICAL_BUILD_TESTING=false \
+    -DGOBJECT_INTROSPECTION=false \
+    -DICAL_BUILD_DOCS=false \
     -DSHARED_ONLY=true \
+    -DICAL_GLIB=false \
     -Wno-dev -G Ninja
 
 ninja -C build

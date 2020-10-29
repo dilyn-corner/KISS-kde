@@ -1,5 +1,3 @@
 cmake   make
-icu     make
-libxml2 make
 perl    make
 samurai make
