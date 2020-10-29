@@ -1,0 +1,4 @@
+gst-plugins-base
+gstreamer
+meson   make
+samurai make
