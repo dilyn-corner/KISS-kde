@@ -2,7 +2,6 @@ cmake               make
 extra-cmake-modules make
 kcoreaddons
 kdbusaddons
-#kdoctools
 ki18n
 kiconthemes
 kinit
