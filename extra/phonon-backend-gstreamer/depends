@@ -2,5 +2,7 @@ cmake               make
 extra-cmake-modules make
 gst-plugins-base
 gstreamer
+libxml2
 phonon
+pkgconf             make
 samurai             make
