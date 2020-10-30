@@ -20,11 +20,8 @@ ktextwidgets
 kwidgetsaddons
 kwindowsystem
 kxmlgui
-libXslt
-libxml2
 qt5
 qt5-tools
-qt5-tools           make
 qt5-x11extras
 samurai             make
 sonnet
