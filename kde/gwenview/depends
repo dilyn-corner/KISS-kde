@@ -1,0 +1,19 @@
+cmake               make
+extra-cmake-modules make
+kio
+kitemmodels
+ki18n
+kiconthemes
+knotifications
+kparts
+kwidgetsaddons
+kwindowsystem
+libjpeg-turbo
+libpng
+exiv2
+lcms
+phonon
+qt5
+qt5-svg
+qt5-x11extras
+samurai             make
