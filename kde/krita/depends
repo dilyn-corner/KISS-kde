@@ -5,14 +5,24 @@ exiv2
 extra-cmake-modules make
 fftw
 gsl
-lcms2
-libjpeg-turbo
-pyqt5
+kcompletion
+kconfig
+kcoreaddons
+kguiaddons
+ki18n
+kitemmodels
+kitemviews
+kwidgetsaddons
+kwindowsystem
+lcms
+libinput
+libpng
+python              make
 qt5
 qt5-multimedia
 qt5-svg
 qt5-tools
+qt5-x11extras
 quazip
-tiff
+samurai             make
 vc
-zlib
