@@ -73,24 +73,25 @@ Here are all of the things that can be worked on.
     - [ ] `vaultcrypt`
 
 - [ ] Package some KDE apps
-    - [ ] `ark`
-    - [ ] `calligra`
+    - [x] `ark`
+    - [x] `calligra`
     - [x] `dolphin`
-    - [ ] `dragon-player` - doesn't play tracks
+    - [x] `dragon`
     - [ ] `elisa` - immediately crashes
     - [x] `falkon`
-    - [ ] `filelight`
-    - [ ] `gwenview`
-    - [ ] `kaffeine`
-    - [ ] `kate`
+    - [ ] `filelight` - segfault on launch
+    - [x] `gwenview`
+    - [x] `kaffeine`
+    - [x] `kate`
     - [x] `kdenlive`
-    - [ ] `kdevelop`
-    - [ ] `kget`
+    - [x] `kdevelop`
+    - [x] `kget`
     - [ ] `kgpg`
     - [ ] `kmail`
     - [ ] `konqueror`
+    - [x] `konversation`
     - [x] `konsole`
-    - [ ] `krita`
+    - [x] `krita`
     - [x] `ktorrent`
     - [ ] `kwalletmanager`
     - [ ] `kwave`
@@ -297,14 +298,15 @@ __NOTE__: I have taken the liberty of uploading a KISS package for `qt5`,
 to mine (built from a blank KISS-chroot), you can simply install these xz 
 archives instead of wasting ten hours building them. Trust me.
 
-`plasma-desktop` includes basically every package in the framework you need to 
-have a recognizable KDE experience. It has icons and some default things like 
-an application launcher, a system monitor, and a settings manager.
+`plasma-desktop` includes the basic requirements to launch a KDE session and use
+plasma. In order to minimize the system footprint as much as possible, things
+like fonts or starting applications are not included. You may wish to install
+`hack` or `noto-fonts`, along with `systemsettings` and `kinfocenter`.
+Additionally, `breeze-icons` will give you a default set of icons.
 
 If you want a more 'full-featured' KDE environment, you can install  useful
 extras. This list includes things such as `bluedevil` and `bluez`. `udisks2` is
-also here! You can also install `noto-fonts` for the more *default* looking KDE
-look. Additionally, `plasma-workspace-wallpapers` includes many additional
+also here! Additionally, `plasma-workspace-wallpapers` includes many additional
 wallpapers for your pleasure.
 
 __NOTE__: `bluez` and other things are more are less untested; ymmv. If you
