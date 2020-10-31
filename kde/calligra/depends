@@ -1,0 +1,38 @@
+boost
+cmake               make
+extra-cmake-modules make
+gsl
+eigen
+fontconfig
+freetype-harfbuzz
+karchive
+kcodecs
+kcompletion
+kconfig
+kconfigwidgets
+kcoreaddons
+kdbusaddons
+kguiaddons
+ki18n
+kiconthemes
+kitemviews
+kjobwidgets
+kcmutils
+kdelibs4support
+kio
+kross
+knotifications
+knotifyconfig
+kparts
+ktextwidgets
+kwallet
+kwidgetsaddons
+kwindowsystem
+kxmlgui
+perl                make
+qt5
+qt5-svg
+qt5-x11extras
+samurai             make
+sonnet
+zlib
