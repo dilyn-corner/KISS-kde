@@ -1,0 +1,29 @@
+boost
+clang
+cmake               make
+extra-cmake-modules make
+grantlee
+karchive
+kcmutils
+kcrash
+kdeclarative
+kguiaddons
+ki18n
+kiconthemes
+kitemmodels
+kitemviews
+kjobwidgets
+knewstuff
+knotifications
+knotifyconfig
+kparts
+kservice
+ktexteditor
+kwindowsystem
+kxmlgui
+libkomparediff2
+qt5
+qt5-webengine
+samurai             make
+shared-mime-info
+threadweaver
