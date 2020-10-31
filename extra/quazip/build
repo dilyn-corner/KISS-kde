@@ -1,5 +1,10 @@
 #!/bin/sh -e
 
+# Because the developer intended for quazip 1.* to coexist with
+# quazip 0.*, there's no telling what shenanigans are going to happen.
+# Currently, quazip is only required by krita. So we're fine for now. 
+# But Krita expects 0.9.1, so we'll just stay there for now.
+
 export DESTDIR="$1"
 
 cmake -B build \
