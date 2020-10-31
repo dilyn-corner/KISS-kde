@@ -1,0 +1,22 @@
+cmake               make
+extra-cmake-modules make
+karchive
+kconfigwidgets
+kcoreaddons
+kcrash
+kdbusaddons
+kemoticons
+kglobalaccel
+ki18n
+kiconthemes
+kidletime
+kitemviews
+knotifications
+knotifyconfig
+kparts
+kwallet
+kwidgetsaddons
+kwindowsystem
+qt5
+samurai             make
+solid
