@@ -1,9 +1,5 @@
-attica
 cmake               make
-dbus
-eudev
 extra-cmake-modules make
-karchive
 kauth
 kbookmarks
 kcodecs
@@ -11,26 +7,17 @@ kcompletion
 kconfig
 kconfigwidgets
 kcoreaddons
-kcrash
-kdbusaddons
-kglobalaccel
-kguiaddons
 ki18n
 kiconthemes
-kio
 kitemviews
 kjobwidgets
 kparts
 kservice
 ktextwidgets
-kwidgetsaddons
 kwindowsystem
 kxmlgui
 qt5
 qt5-script
-qt5-svg
-qt5-x11extras
 samurai             make
 solid
 sonnet
-xcb-util-keysyms
