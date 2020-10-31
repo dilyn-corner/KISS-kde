@@ -1,0 +1,26 @@
+boost
+cmake               make
+extra-cmake-modules make
+kcmutils
+kcompletion
+kconfig
+kconfigwidgets
+kcoreaddons
+kcrash
+kdbusaddons
+kdelibs4support
+ki18n
+kiconthemes
+kio
+kitemviews
+knotifications
+knotifyconfig
+kparts
+kservice
+ktextwidgets
+kwallet
+kwidgetsaddons
+kwindowsystem
+kxmlgui
+qt5
+samura              make
