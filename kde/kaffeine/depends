@@ -1,0 +1,14 @@
+cmake               make
+extra-cmake-modules make
+kcoreaddons
+kdbusaddons
+ki18n
+kio
+kwidgetsaddons
+kwindowsystem
+kxmlgui
+qt5
+qt5-x11extras
+samurai             make
+solid
+vlc
