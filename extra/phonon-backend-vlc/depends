@@ -1,0 +1,6 @@
+cmake               make
+extra-cmake-modules make
+phonon
+qt5
+samurai             make
+vlc
