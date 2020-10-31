@@ -1,24 +1,34 @@
 #!/bin/sh -e
 
-patch -p1 < cycle.h.patch
-
-CFLAGS="$CFLAGS -O3 -fomit-frame-pointer -malign-double -fstrict-aliasing \
-    -ffast-math"
-
-./configure \
-    --prefix=/usr \
-    --enable-shared \
-    --enable-threads \
-    --enable-openmp \
-    --enable-sse \
-    --enable-avx \
-    --enable-single
-
-make
-make DESTDIR="$1" install
+export CFLAGS="$CFLAGS -O3 -fomit-frame-pointer -ffast-math"
+export CFLAGS="$CFLAGS -fstrict-aliasing -malign-double"
 
 (
-    cd "fftw-$2-double"
+    cd fftw-quad
+
+    ./configure \
+        --prefix=/usr \
+        --enable-shared \
+        --enable-threads \
+        --enable-openmp \
+        --enable-quad-precision
+)
+
+(
+    cd fftw-single
+
+    ./configure \
+        --prefix=/usr \
+        --enable-shared \
+        --enable-threads \
+        --enable-openmp \
+        --enable-sse2 \
+        --enable-avx \
+        --enable-single
+)
+    
+(
+    cd fftw-double
     
     ./configure \
         --prefix=/usr \
@@ -29,11 +39,8 @@ make DESTDIR="$1" install
         --enable-avx
 )
 
-make -C "fftw-$2-double"
-make DESTDIR="$1" install -C "fftw-$2-double"
-
 (
-    cd "fftw-$2-long-double"
+    cd fftw-long-double
     
     ./configure \
         --prefix=/usr \
@@ -43,19 +50,11 @@ make DESTDIR="$1" install -C "fftw-$2-double"
         --enable-long-double
 )
 
-make -C "fftw-$2-long-double"
-make DESTDIR="$1" install -C "fftw-$2-long-double"
-
-(
-    cd "fftw-$2-quad"
-
-    ./configure \
-        --prefix=/usr \
-        --enable-shared \
-        --enable-threads \
-        --enable-openmp \
-        --enable-quad-precision
-)
-
-make -C "fftw-$2-quad"
-make DESTDIR="$1" install -C "fftw-$2-quad"
+make -C fftw-quad
+make -C fftw-single
+make -C fftw-double
+make -C fftw-long-double
+make DESTDIR="$1" install -C fftw-quad
+make DESTDIR="$1" install -C fftw-single
+make DESTDIR="$1" install -C fftw-double
+make DESTDIR="$1" install -C fftw-long-double
