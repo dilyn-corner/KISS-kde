@@ -1,0 +1,7 @@
+cmake               make
+extra-cmake-modules make
+ki18n
+kio
+kxmlgui
+qt5
+samurai             make
