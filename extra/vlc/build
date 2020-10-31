@@ -1,0 +1,21 @@
+#!/bin/sh -e
+
+# Fix QtPainter includes
+sed -i '/#include <QPainter>/a #include <QPainterPath>' \
+    modules/gui/qt/components/playlist/views.cpp
+sed -i '/#include <QStackedWidget>/a #include <QPainterPath>' \
+    modules/gui/qt/dialogs/plugins.cpp
+sed -i '/#include <QWidget>/a #include <QPainterPath>' \
+    modules/gui/qt/util/timetooltip.hpp
+
+./configure \
+    --prefix=/usr \
+    --disable-nls \
+    --disable-a52 \
+    --disable-lua
+
+#sed -i 's/doc po//' Makefile
+# We don't ever end up generating this file.
+touch share/vlc.appdata.xml
+make
+make DESTDIR="$1" install
