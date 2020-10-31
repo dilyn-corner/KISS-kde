@@ -1,0 +1,16 @@
+cmake               make
+extra-cmake-modules make
+karchive
+kconfig
+kcrash
+kdbusaddons
+ki18n
+kitemmodels
+kio
+kparts
+kpty
+kservice
+kwidgetsaddons
+libarchive
+qt5
+samurai             make
