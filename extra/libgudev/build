@@ -2,6 +2,8 @@
 
 ./configure \
     --prefix=/usr \
+    --enable-gtk-doc-html=no \
+    --enable-introspection=no \
     --disable-umockdev
 
 make
