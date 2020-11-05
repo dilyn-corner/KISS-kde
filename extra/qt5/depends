@@ -2,7 +2,6 @@ bison             make
 flex              make
 freetype-harfbuzz
 gperf             make
-icu
 libICE
 libSM
 libX11
