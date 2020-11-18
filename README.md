@@ -1,4 +1,4 @@
-|/                                                                              
+|/
 |\ISS                                                           https://k1ss.org
 ________________________________________________________________________________
 
@@ -9,7 +9,8 @@ ________________________________________________________________________________
 # KISS-kde
 
 
-![Plasma 5.20.1 Clean](https://raw.githubusercontent.com/dilyn-corner/KISS-kde/master/10-26%2522%3A22%3A22.png)
+![Plasma 5.20.1
+Clean](https://raw.githubusercontent.com/dilyn-corner/KISS-kde/master/10-26%2522%3A22%3A22.png)
 
 
 This is currently a work in progress. Feel free to help out!
@@ -17,9 +18,10 @@ This is currently a work in progress. Feel free to help out!
 KDE is a full-featured desktop environment for Linux! It uses the Qt framework
 to generate a simple, featureful, and gorgeous desktop.
 
-This is very much in alpha. If you have a contribution, feel free to share it. 
-Requests like this should follow the KISS [style guide](https://k1ss.org/wiki/kiss/style-guide) 
-as closely as possible, but I'm not too much of a stickler.
+This is very much in alpha. If you have a contribution, feel free to share it.
+Requests like this should follow the KISS [style
+guide](https://k1ss.org/wiki/kiss/style-guide) as closely as possible, but I'm
+not too much of a stickler.
 
 ## Current Milestones
 
@@ -31,7 +33,7 @@ Here are all of the things that can be worked on.
     - [ ] `elogind - /usr/bin/realpath --relative-to`
     - [ ] `libblockdev - /usr/bin/mktemp --tmpdir`
     - [ ] `udisks2 - /usr/bin/ln -r`
-    - [x] `gnugrep - /usr/bin/grep --quiet`
+    - [x] `breeze-icons - /usr/bin/grep --quiet`
 
 - [x] ~~Properly configure docbook generation~~
     * ~~Currently, `docbook-xsl` doesn't actually do anything, I don't think.~~
@@ -49,7 +51,8 @@ Here are all of the things that can be worked on.
 - [x] Configure `linux-pam` in a meaningful way
 
 - [x] Remove JS backend from polkit
-    * This project will rely on forward-porting the work done [here](https://dev.getsol.us/T4824)
+    * This project will rely on forward-porting the work done
+      [here](https://dev.getsol.us/T4824)
     * This allows us to drop `mozjs`
     * The currently milestone is to get rid of innetgr from our patches. 
     * Once innetgr is no longer required, we can drop our `musl` fork.
@@ -112,7 +115,8 @@ Here are all of the things that can be worked on.
     - [x] Menus work
     - [x] Themes work
     - [x] Settings work
-    - [~] Users can log back in from a *lock* (super+l) - works without `linux-pam`
+    - [~] Users can log back in from a *lock* (super+l) - works without
+      `linux-pam`
     - [ ] Bluetooth - can't test
     - [ ] Power management -untested
     - [ ] Disk/hardware management -untested
@@ -135,18 +139,22 @@ assist.
 
 ### Documentation
 
-I have opted not to include internationalization or docs. This was done in
-three parts:
+I have opted not to include internationalization or docs. This was done in three
+parts:
 
 1) Hobble `ki18n` by removing the `gettext` dependency
+    * Without learning C, I will not be able to drop the `ki18n` dependency.
 
-2) Delete all translation files located in `po` from packages which 'require' them. 
+2) Delete all translation files located in `po` from packages which 'require'
+them. 
 
 3) Remove the `kdoctools` dependency from packages which 'require' it.
 
 If you would like to have languages besides english available: 
     * Package `gettext` 
+
     * Remove the patch for `ki18n`
+
     * Remove `rm -rf po` from each build script that has it
 
 Additionally, there are packages which I had to go further to remove `gettext`
@@ -157,6 +165,7 @@ Fix up the build files as required!
 if you would like to have documentation:
 
     * Package `docbook-xml`, `docbook-xsl`, and `kdoctools`
+
     * Remove the `seds` removing DocTools (and the `seds` that acommpany them.
 
 Specifically, revert:
@@ -182,11 +191,12 @@ screen if you attempt to launch `kwin` via `xinit`, etc.
 
 Which would seem to make `dbus` a hard dependency for KDE.
 
-KDE will probably build fine with a stub library. The hard part would probably
-be getting `dbus-launch` to execute meaningfully with a stub library. 
+`plasma-desktop` et al build fine with
+[libdbus-stub](https://github.com/dylanaraps/libdbus-stub). The hard part would
+probably be getting `dbus-launch` to execute meaningfully with a stub library.
 Unless we can find a way around this, `dbus` is required. I have no real
-problems with this. If you take umbridge with this hard fact, perhaps reflect 
-on why you want KDE in the first place?
+problems with this. If you take umbridge with this hard fact, perhaps reflect on
+why you want KDE in the first place?
 
 ### polkit, PAM, logind
 
@@ -213,9 +223,9 @@ The engine that make it go!
 
 The qt dependency includes packages which overlap with community, like `qt5`.
 Additionally, `qt5` requires packages from community at build time. If a package
-in community has been changed, it will be forked into this repository. As a
-result, you should place this repository in your `$KISS_PATH` __before__
-community. 
+has been changed, it will be forked into this repository. As a result, you
+should place this repository in your `$KISS_PATH` __before__ the official and
+the community repositories. 
 
 `qt5*`, specifically `qt5-webengine`, take a very long time to build (thanks,
 chromium). As a result, I have included along with this repository a KISS
@@ -224,8 +234,7 @@ take more than twenty minutes to build. These are compiled assuming you've
 satisfied the dependencies of *this* repository. Built with everyone's favorite
 GNU C compiler, with `CFLAGS=-march=x86-64 -mtune=generic -Os -pipe`. If you
 want a 'seamless' build, merely plop these archives in
-`${XDG_CACHE_DIR:-$HOME/.cache}/kiss/bin`, and make sure you change the . before
-the 5 to a # (@ with `kiss` v 6).
+`${XDG_CACHE_DIR:-$HOME/.cache}/kiss/bin`.
 
 
 ### xorg vs wayland 
@@ -234,22 +243,31 @@ The eternal debate.
 
 Starting with the release of `plasma 5.20.0`, `wayland` will be the presumptive
 default for KDE. I'm unsure to what extent they plan to leave `xorg` available,
-but as it stands many parts of KDE require xorg pieces to function. Wayland is
-an exciting project, and having been using it on my own personal KISS box, I can
-recommend it heartily over `xorg` in general - it seems to have matured as a
-protocol, there is still incredibly active development work (as opposed to
-critical-bug-fixing-only for `xorg`), and the performance is quite stellar.
-Additionally, `kwinft` is a fork of `kwin` which purports to better support
-wayland. It is a more bleading-edge, development focused 'branch' of `kwin`. 
-Bound to be bugs that crop up. Presumably, `kwinft` is strictly better than `kwin`. 
-Currently, it's your choice which you choose! If you opt to use `kwinft`, simply 
+As it stands, few parts *require* `xorg`. Indeed, you can build almost every
+package in this repository without any `xorg` libraries at all! Unfortunately,
+EGL is required. EGL is provided by `mesa`, and will only be built if the x11
+platform is built. This brings in the largest number of dependencies.  Next to
+this, `plasma-desktop` requires `xorg-server`, and there are a few `xorg`
+libraries required by a couple of packages. 
+
+Wayland is an exciting project, and having been using it on my own personal KISS
+box, I can recommend it heartily over `xorg` in general - it seems to have
+matured as a protocol, there is still incredibly active development work (as
+opposed to critical-bug-fixing-only for `xorg`), and the performance is quite
+stellar.  Additionally, `kwinft` is a fork of `kwin` which purports to better
+support wayland. It is a more bleading-edge, development focused 'branch' of
+`kwin`.  Bound to be bugs that crop up. Presumably, `kwinft` is strictly better
+than `kwin`. 
+
+Currently, it's your choice which you choose! If you opt to use `kwinft`, simply
 fork `plasma-desktop` and `plasma-workspace`, and comment `kwin` from their
-depends file and uncomment `kwinft`. then simply build `plasma-desktop`.
-If you have already installed `kwin` fear not! Do the comment switcheroo as before,
-force-uninstall `kwin`, reinstall `plasma-{desktop,workspace}` (which should 
+depends file and uncomment `kwinft`. then simply build `plasma-desktop`.  If you
+have already installed `kwin` fear not! Do the comment switcheroo as before,
+force-uninstall `kwin`, reinstall `plasma-{desktop,workspace}` (which should
 pull-in everything required for `kwinft`), and then simply kill your KDE session
-if you're in one, and restart the session! If you run into bugs, please make 
-sure they're not `kwinft` related - burn down the [developer's door](https://gitlab.com/kwinft/kwinft) for those. 
+if you're in one, and restart the session! If you run into bugs, please make
+sure they're not `kwinft` related - burn down the [developer's
+door](https://gitlab.com/kwinft/kwinft) for those. 
 
 
 ## Prerequisites
@@ -259,11 +277,11 @@ sure they're not `kwinft` related - burn down the [developer's door](https://git
 2. You will need `dbus`. Because of this, you'll have to rebuild `qt5`.
 
 3. You will need `eudev` or `libudev-zero`. Because of this, you'll need to
-   rebuild `xorg-server`, `{xf86-input-}libinput`, `dhcpcd`, maybe more.
+rebuild `xorg-server`, `{xf86-input-}libinput`, `dhcpcd`, maybe more.
 
-These rebuilds are obviously not required if you already had the relevant 
-programs built against `dbus`, `eudev`, etc. To determine which packages are 
-built against `dbus` or `eudev` merely run `kiss-revdepends eudev`.
+These rebuilds are obviously not required if you already had the relevant
+programs built against `dbus`, `eudev`, etc. To determine which packages are
+built against `dbus` or `eudev` merely run `kiss-revdepends {dbus,eudev}`.
 
 If you opt to use `elogind` (required for `sddm`), you will need the following:
 
@@ -271,32 +289,32 @@ If you opt to use `elogind` (required for `sddm`), you will need the following:
 
 5. Install `polkit`.
 
-6. [cgroups](http://www.linuxfromscratch.org/blfs/view/svn/general/elogind.html). I leave it up to
-   you to test your own kernel configs.
+6. [cgroups](http://www.linuxfromscratch.org/blfs/view/svn/general/elogind.html)
+    I leave it up to you to test your own kernel configs.
 
 7. You will require exactly `realpath` from `coreutils`.
 
-`coreutils` is a build time requirement, so you are free to remove
-it with no ill-effects afterwards.
+`coreutils` is a build time requirement, so you are free to remove it with no
+ill-effects afterwards.
 
 
 ## Getting Started
 
-Now that we have all of that nonsense out of the way, let's
-get to it!
+Now that we have all of that nonsense out of the way, let's get to it!
 
-We start with the assumption that you just installed KISS,
-following the [installation guide](https://k1ss.org/install) exactly, which 
-means you have `libudev-zero` or `eudev`, a working `xorg` that knows about 
-`eudev`, some input drivers, and fonts. Although this repo does include some 
-nice fonts, so either way you're covered. 
+We start with the assumption that you just installed KISS, following the
+[installation guide](https://k1ss.org/install) exactly, which means you have
+`libudev-zero` or `eudev`, a working `xorg` that knows about `eudev`, some input
+drivers, and fonts. Although this repo does include some nice fonts, so either
+way you're covered. 
 
 Ensure you do not have `qt5*` installed. 
 
 __NOTE__: I have taken the liberty of uploading a KISS package for `qt5`,
 `qt5-webengine`, and `qt5-declarative`. Assuming your system is roughly similar
-to mine (built from a blank KISS-chroot), you can simply install these xz 
-archives instead of wasting ten hours building them. Trust me.
+to mine (built from a blank KISS-chroot), you can simply install these xz
+archives instead of building them. `qt5-webengine` is NOT required, just
+convenient.
 
 `plasma-desktop` includes the basic requirements to launch a KDE session and use
 plasma. In order to minimize the system footprint as much as possible, things
@@ -312,23 +330,23 @@ wallpapers for your pleasure.
 __NOTE__: `bluez` and other things are more are less untested; ymmv. If you
 discover issues, please raise them! If you discover solutions, please PR them!
 
-To get a 'minimal' KDE (it's over a hundred packages),
-simply install `plasma-desktop`. How convenient! Here's how
-you do it:
+To get a 'minimal' KDE (final product on a fresh install will be just north of
+150 packages), simply install `plasma-desktop`. How convenient! Here's how you
+do it:
 
-__NOTE__: It doesn't matter where you keep these repos (or
-any KISS repos, for that matter). I keep mine in
-`$HOME/git`. For now, assume I've done `git clone` in `$HOME`.
+__NOTE__: It doesn't matter where you keep these repos (or any KISS repos, for
+that matter). I keep mine in `$HOME/git`. For now, assume I've done `git clone`
+in `$HOME`.
 
-```
+``` 
 $ git clone https://github.com/kisslinux/community   # Clone
 $ git clone https://github.com/dilyn-corner/KISS-kde # pls
 
 # Add relevant repository paths
 
-$ export KISS_PATH="$HOME/KISS-kde/extra:$KISS_PATH"
-$ export KISS_PATH="$HOME/KISS-kde/plasma:$KISS_PATH"
-$ export KISS_PATH="$HOME/KISS-kde/frameworks:$KISS_PATH"
+$ export KISS_PATH="$HOME/KISS-kde/frameworks" 
+$ export KISS_PATH="$KISS_PATH:$HOME/KISS-kde/plasma" 
+$ export KISS_PATH="$KISS_PATH:$HOME/KISS-kde/extra" 
 $ export KISS_PATH="$KISS_PATH:$HOME/community/community"
 
 # If you don't already have it,
@@ -342,18 +360,21 @@ $ kiss b dbus libudev-zero && kiss i dbus libudev-zero
 $ kiss b xorg-server libinput xf86-input-libinput 
 # Add others as necessary
 
-# If you've opted to use e.g. elogind, you'll need
+# If you've opted to use e.g. elogind, you'll need 
 # to do the following!
 
-# Choose shadow or linux-pam to use with polkit
+# Choose shadow or linux-pam to use with polkit 
 $ kiss b shadow && kiss i shadow
 $ kiss b polkit && kiss b polkit
 
-# Thanks to the alternatives system, we can just pluck out
+# Thanks to the alternatives system, we can just pluck out 
 # the few binaries we need from `coreutils`.
 
-$ kiss b coreutils && kiss i coreutils
-$ kiss a coreutils /usr/bin/realpath
+$ kiss b coreutils && kiss i coreutils 
+# For elogind 
+$ kiss a coreutils
+/usr/bin/realpath 
+# For libblockdev & udisks 
 $ kiss a coreutils /usr/bin/mktemp
 $ kiss a coreutils /usr/bin/ln
 
@@ -363,41 +384,40 @@ $ kiss b elogind && kiss i elogind
 
 $ kiss b plasma-desktop
 
-~~~ WAIT TWELVE HOURS ~~~
+~~~ SEVERAL HOURS LATER ~~~
 
 $ kiss i plasma-desktop
 
-# Start the eudev and dbus services for convenience
-# This is ultimately not necessary
-$ ln -sv /etc/sv/dbus  /var/service
+# Start the eudev and dbus services for convenience 
+# This is ultimately not necessary 
+$ ln -sv /etc/sv/dbus  /var/service 
 $ ln -sv /etc/sv/udevd /var/service
 
-$ sv up dbus
+$ sv up dbus 
 $ sv up udevd
 
-# Install a font of your choosing.
-# noto-fonts is in KISS-kde/extra. It's massive. 
-# hack is in community. It's very small and good.
+# Install a font of your choosing.  
+# noto-fonts is in KISS-kde/extra. It's massive.  
+# hack is in community. It's very small and good.  
 # Any TTF font should work though.
 
 # You might want to make a runtime directory or KDE will 
-# make one for you. This is required for a wayland session.
+# make one for you. This is required for a wayland session.  
 # Put these lines in somewhere like $HOME/.profile
 
-$ export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp/$(id -u)-runtime}"
-$ [ -d "$XDG_RUNTIME_DIR" ] || {
-      mkdir -p   "$XDG_RUNTIME_DIR"
-      chmod 0700 "$XDG_RUNTIME_DIR"
-  }
+$ export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp/$(id -u)-runtime}" 
+$ [ -d "$XDG_RUNTIME_DIR" ] || { 
+    mkdir -p   "$XDG_RUNTIME_DIR" 
+    chmod 0700 "$XDG_RUNTIME_DIR" }
 
 # Two options: 
-# 1. Use 'startx' to launch KDE
+# 1. Use 'startx' to launch KDE 
 # 2. Use a login manager
 
 # For startx:
 
-$ pkill X
-$ echo "exec dbus-launch --exit-with-session startplasma-x11" >> ~/.xinitrc
+$ pkill X 
+$ echo "exec dbus-launch --exit-with-session startplasma-x11" >> ~/.xinitrc 
 # Replace 'x11' with 'wayland' in the previous command to launch a wayland session
 
 $ startx
@@ -408,13 +428,13 @@ $ kiss b sddm && kiss i sddm
 
 # Enable the required services. FoR sEcUrItY
 
-$ ln -sv /etc/sv/polkitd /var/service
-$ ln -sv /etc/sv/elogind /var/service
+$ ln -sv /etc/sv/polkitd /var/service 
+$ ln -sv /etc/sv/elogind /var/service 
 $ ln -sv /etc/sv/sddm    /ver/service
 
-$ sv up polkitd
-$ sv up elogind
-$ sv up sddm    # should launch sddm
+$ sv up polkitd 
+$ sv up elogind 
+$ sv up sddm    # should launch sddm 
 ```
 
 __ALTERNATIVELY__ you can install KISS with KDE already built and ready to go!
@@ -425,26 +445,25 @@ It's basically just a KISS tarball. It is built with musl and GCC using:
 The first release is built from a fresh KISS tarball. All future releases will
 merely be published after performing updates on this original tarball.
 Installing works almost identically to the [usual
-instructions](https://k1ss.org/install).
-To install from the first October 2020 release,
+instructions](https://k1ss.org/install).  To install from the first October 2020
+release,
 
-```
-$ ver=2020.10-1
-$ wget https://github.com/dilyn-corner/KISS-kde/releases/download/$ver.tar.xz
-# Mount your relevant root partition to wherever. In this case, I choose /mnt
-$ tar xf kiss-kde-$ver.tar.xz -C /mnt
+``` 
+$ ver=2020.10-1 
+$ wget https://github.com/dilyn-corner/KISS-kde/releases/download/$ver.tar.xz 
+# Mount your relevant root partition to wherever. In this case, I choose /mnt 
+$ tar xf kiss-kde-$ver.tar.xz -C /mnt 
 $ ./mnt/bin/kiss-chroot /mnt
 
 # Follow the KISS install guide.
 
-$ exit
+$ exit 
 $ reboot
 
-# Boot into your freshly installed KISS
-# Login (user: root; pass: toor)
+# Boot into your freshly installed KISS # Login (user: root; pass: toor) 
 $ startx
 
-# You should be greeted with KDE.
+# You should be greeted with KDE.  
 ```
 
 --- 
@@ -463,4 +482,5 @@ importantly...
 
 ## Enjoy!
 
-![Think Bigger](https://raw.githubusercontent.com/dilyn-corner/KISS-kde/master/06-23%4021%3A48%3A21.jpg)
+![Think
+Bigger](https://raw.githubusercontent.com/dilyn-corner/KISS-kde/master/06-23%4021%3A48%3A21.jpg)
