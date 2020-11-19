@@ -151,6 +151,7 @@ them.
 3) Remove the `kdoctools` dependency from packages which 'require' it.
 
 If you would like to have languages besides english available: 
+
     * Package `gettext` 
 
     * Remove the patch for `ki18n`
@@ -168,11 +169,8 @@ if you would like to have documentation:
 
     * Remove the `seds` removing DocTools (and the `seds` that acommpany them.
 
-Specifically, revert:
+    * git revert --no-commit df2c33d^..e6f0a36
 
-    * c1b33ca4d668cb76edad6df6cb2e1617a1b33c07
-    * b0d7c17e2a1e38d3f532c9d7c901a0fc45f44391
-    * c1b33ca4d668cb76edad6df6cb2e1617a1b33c07
 
 
 ### dbus
@@ -344,10 +342,10 @@ $ git clone https://github.com/dilyn-corner/KISS-kde # pls
 
 # Add relevant repository paths
 
-$ export KISS_PATH="$HOME/KISS-kde/frameworks" 
-$ export KISS_PATH="$KISS_PATH:$HOME/KISS-kde/plasma" 
-$ export KISS_PATH="$KISS_PATH:$HOME/KISS-kde/extra" 
-$ export KISS_PATH="$KISS_PATH:$HOME/community/community"
+$ export KISS_PATH="$HOME/community/community:$KISS_PATH"
+$ export KISS_PATH="$HOME/KISS-kde/extra:$KISS_PATH" 
+$ export KISS_PATH="$HOME/KISS-kde/plasma:$KISS_PATH" 
+$ export KISS_PATH="$HOME/KISS-kde/frameworks:$KISS_PATH" 
 
 # If you don't already have it,
 
