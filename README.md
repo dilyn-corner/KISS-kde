@@ -1,4 +1,4 @@
-|/
+|/  
 |\ISS                                                           https://k1ss.org
 ________________________________________________________________________________
 
@@ -165,12 +165,7 @@ Fix up the build files as required!
 
 if you would like to have documentation:
 
-    * Package `docbook-xml`, `docbook-xsl`, and `kdoctools`
-
-    * Remove the `seds` removing DocTools (and the `seds` that acommpany them.
-
     * git revert --no-commit df2c33d^..e6f0a36
-
 
 
 ### dbus
