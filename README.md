@@ -23,6 +23,10 @@ Requests like this should follow the KISS [style
 guide](https://k1ss.org/wiki/kiss/style-guide) as closely as possible, but I'm
 not too much of a stickler.
 
+
+[The KISS wiki page has been completed](https://k1ss.org/wiki/desktops/kde)! 
+Refer to it for more fun stuff that might not be here.
+
 ## Current Milestones
 
 Here are all of the things that can be worked on. 
@@ -208,6 +212,27 @@ KISS' goals as a project, but it also doesn't require users to do large amounts
 of research to do what should be routine maintenance or security management. If
 a user wants to install `polkit` or, maximally, `elogind`, only a few packages
 must be built prior to building `plasma-desktop`.
+
+The process for first-time users and current ones should be the same:
+
+```
+# ensure shadow is not installed
+$ KISS_FORCE=1 kiss r shadow 
+
+# install the auth backend
+$ kiss b linux-pam && kiss i linux-pam
+
+# install polkit
+$ kiss b polkit polkit-qt-1 && kiss i polkit polkit-qt-1
+
+# install elogind
+$ kiss b elogind && kiss i elogind
+
+# rebuild polkit
+$ kiss b polkit && kiss i polkit
+```
+
+Rebuild `kauth` and `kscreenlocker` if you already had them installed.
 
 
 ### qt
