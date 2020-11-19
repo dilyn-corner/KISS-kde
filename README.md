@@ -225,6 +225,10 @@ $ kiss b linux-pam && kiss i linux-pam
 # install polkit
 $ kiss b polkit polkit-qt-1 && kiss i polkit polkit-qt-1
 
+# use coreutils realpath
+$ kiss b coreutils && kiss i coreutils
+$ kiss a coreutils /usr/bin/realpath
+
 # install elogind
 $ kiss b elogind && kiss i elogind
 
