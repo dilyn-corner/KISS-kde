@@ -1,4 +1,4 @@
-http://download.qt-project.org/official_releases/qt/5.15/5.15.1/submodules/qtbase-everywhere-src-5.15.1.tar.xz
+http://download.qt-project.org/official_releases/qt/5.15/5.15.2/submodules/qtbase-everywhere-src-5.15.2.tar.xz
 files/qt.conf
 patches/qsslsocket_openssl_cpp.patch
 patches/qsslcontext_openssl_cpp.patch
