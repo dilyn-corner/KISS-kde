@@ -1,28 +1,5 @@
 #!/bin/sh -e
 
-for patch in *.patch; do
-    patch -p1 < "$patch"
-done
-
-# Insecure module
-sed -i 's/pam_rhosts//g'   modules/Makefile.am
-
-# For some reason they are syntactically busted
-sed -i 's/pam_setquota//g' modules/Makefile.am
-sed -i 's/pam_usertype//g' modules/Makefile.am
-
-# Otherwise 'non required' enters our build system
-export ac_cv_search_crypt=no
-
-# Because we patch *.am, we have to regenerate stuff
-# autoreconf calls autopoint, which is a gettext thing.
-# So we just call the bits we need.
-
-aclocal --force -I m4
-autoconf -f
-autoheader -f
-automake -af
-
 ./configure \
     --prefix=/usr \
     --libdir=/usr/lib \
@@ -32,6 +9,9 @@ automake -af
 
 make
 make DESTDIR="$1" install
+
+# Delete a systemd service file
+rm -rf "$1/usr/lib/systemd"
 
 # Let's install our pam files to get us started with authenticating!
 install -Dm644 su.pamd                          "$1/etc/pam.d/su"
