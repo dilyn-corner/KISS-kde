@@ -15,10 +15,11 @@ libressl
 libxcb
 libxkbfile
 libxshmfence
-linux-headers make
+linux-headers     make
 mesa
 pixman
-pkgconf       make
+pkgconf           make
+wayland-protocols make
 xkeyboard-config
-xtrans        make
+xtrans            make
 zlib
