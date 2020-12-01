@@ -10,7 +10,7 @@ sed -i '/DENABLE_NLS/d' configure
 
 ./configure \
     --prefix=/usr \
-    --witk-gtk-doc=no
+    --with-gtk-doc=no
 
 make
 make DESTDIR="$1" install
