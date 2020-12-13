@@ -1,0 +1,37 @@
+#!/bin/sh -e
+
+export DESTDIR="$1"
+
+for patch in *.patch; do
+    patch -p1 < "$patch"
+done
+
+# Don't link against execinfo.h.
+sed -i 's/define QLOG/define N/g' \
+    ./src/corelib/global/qlogging.cpp
+
+./configure -- -B build \
+    -prefix /usr \
+    -docdir share/doc/qt \
+    -datadir share/qt \
+    -headerdir include/qt \
+    -sysconfdir /etc/xdg \
+    -archdatadir lib/qt \
+    -release \
+    -no-gtk \
+    -no-pch \
+    -no-dbus \
+    -no-glib \
+    -no-libudev \
+    -no-accessibility \
+    -system-sqlite \
+    -system-libpng \
+    -system-libjpeg \
+    -system-freetype \
+    -system-harfbuzz \
+
+cmake --build   build 
+cmake --install build
+
+install -Dm755 qt.conf "$1/usr/bin/qt.conf"
+
