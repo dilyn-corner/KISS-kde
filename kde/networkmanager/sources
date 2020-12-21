@@ -1,4 +1,4 @@
-https://download.gnome.org/sources/NetworkManager/1.27/NetworkManager-1.27.91.tar.xz
+https://download.gnome.org/sources/NetworkManager/1.28/NetworkManager-1.28.0.tar.xz
 files/networkmanager.conf
 files/networkmanager.run
 patches/musl-compar.patch
