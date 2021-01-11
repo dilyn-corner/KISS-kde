@@ -15,4 +15,3 @@ patches/polkitbackend-keyfile-h.patch
 patches/polkitbackend-policyfile-c.patch
 patches/polkitbackend-policyfile-h.patch
 patches/polkitbackend-types.patch
-patches/remove-intltool.oops

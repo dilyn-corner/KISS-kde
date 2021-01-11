@@ -6,7 +6,7 @@ kiss l linux-pam || kiss l shadow || {
 }
 
 for patch in *.patch; do
-    patch -p1 < $patch
+    patch -p1 < "$patch"
 done
 
 # The patches that we're using to add a keyfile backend to drop mozjs require
@@ -19,19 +19,20 @@ autoreconf -sfi
 
 # We still have to pass these even if we disable nls. So why make it a
 # configure-time option? ¯\_(!_!)_/¯
+sed -i '/INTLTOOL_APPLIED_VERSION=/d' configure
+sed -i "/version|grep '(GNU/d"        configure
+
 export MSGFMT=/usr/bin/true
 export MSGMERGE=/usr/bin/true
 export XGETTEXT=/usr/bin/true
+export mfversion=9.99.99
+export mmversion=9.99.99
+export xgversion=9.99.99
 export INTLTOOL_MERGE=/usr/bin/true
 export INTLTOOL_UPDATE=/usr/bin/true
 export INTLTOOL_EXTRACT=/usr/bin/true
-
-# Even WITH NLS disabled, AND skipping the aforementioned checks, configure
-# still will error if we do not have a perl XML::Parser & INTLTOOL > 0.40.0.
-# And because I find this very frustrating, I've decided to brutalize their
-# script instead of just using simple seds to change the checks. Maybe one day I
-# will no longer be so petty. Until then, oops.
-patch -p1 < remove-intltool.oops
+export INTLTOOL_PERL=/usr/bin/true
+export INTLTOOL_APPLIED_VERSION=9.99.99
 
 # sddm requires elogind. Instead of maintaining a separate polkit like so many
 # other distrubtions, we will simply imsert a pkgconf check to determine whether
