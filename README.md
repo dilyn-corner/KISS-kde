@@ -172,6 +172,16 @@ if you would like to have documentation:
     * git revert --no-commit df2c33d^..e6f0a36
 
 
+### Community
+
+The BDFL of KISS has gone on an extended hiatus. As a result, I have forked the
+packages from community which are required to build `plasma-desktop` into
+KISS-kde/extra in order to make sure they stay updated. Ensure this repository
+is ahead of community in your `$KISS_PATH`. Alternatively, you can clone [the
+community maintained version of
+community](https://github.com/kiss-community/community). 
+
+
 ### dbus
 
 The dreaded(?) question.
@@ -242,12 +252,6 @@ Rebuild `kauth` and `kscreenlocker` if you already had them installed.
 ### qt
 
 The engine that make it go!
-
-The qt dependency includes packages which overlap with community, like `qt5`.
-Additionally, `qt5` requires packages from community at build time. If a package
-has been changed, it will be forked into this repository. As a result, you
-should place this repository in your `$KISS_PATH` __before__ the official and
-the community repositories. 
 
 `qt5*`, specifically `qt5-webengine`, take a very long time to build (thanks,
 chromium). As a result, I have included along with this repository a KISS
@@ -361,12 +365,10 @@ that matter). I keep mine in `$HOME/git`. For now, assume I've done `git clone`
 in `$HOME`.
 
 ``` 
-$ git clone https://github.com/kisslinux/community   # Clone
 $ git clone https://github.com/dilyn-corner/KISS-kde # pls
 
 # Add relevant repository paths
 
-$ export KISS_PATH="$HOME/community/community:$KISS_PATH"
 $ export KISS_PATH="$HOME/KISS-kde/extra:$KISS_PATH" 
 $ export KISS_PATH="$HOME/KISS-kde/plasma:$KISS_PATH" 
 $ export KISS_PATH="$HOME/KISS-kde/frameworks:$KISS_PATH" 
@@ -419,8 +421,8 @@ $ sv up dbus
 $ sv up udevd
 
 # Install a font of your choosing.  
-# noto-fonts is in KISS-kde/extra. It's massive.  
-# hack is in community. It's very small and good.  
+# noto-fonts and hack are in KISS-kde/extra. noto is massive.
+# hack is very small and good.  
 # Any TTF font should work though.
 
 # You might want to make a runtime directory or KDE will 
