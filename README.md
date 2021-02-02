@@ -58,7 +58,7 @@ Here are all of the things that can be worked on.
     * This project will rely on forward-porting the work done
       [here](https://dev.getsol.us/T4824)
     * This allows us to drop `mozjs`
-    * The currently milestone is to get rid of innetgr from our patches. 
+    * The current milestone is to get rid of innetgr from our patches. 
     * Once innetgr is no longer required, we can drop our `musl` fork.
 
 - [x] Enable a login-manager and greeter
@@ -271,7 +271,7 @@ Starting with the release of `plasma 5.20.0`, `wayland` will be the presumptive
 default for KDE. I'm unsure to what extent they plan to leave `xorg` available,
 As it stands, few parts *require* `xorg`. Indeed, you can build almost every
 package in this repository without any `xorg` libraries at all! Unfortunately,
-EGL is required. EGL is provided by `mesa`, and will only be built if the x11
+GLX is required. GLX is provided by `mesa`, and will only be built if the x11
 platform is built. This brings in the largest number of dependencies.  Next to
 this, `plasma-desktop` requires `xorg-server`, and there are a few `xorg`
 libraries required by a couple of packages. 
