@@ -1,4 +1,4 @@
-https://github.com/linux-pam/linux-pam/releases/download/v1.5.0/linux-pam-1.5.0.tar.xz
+https://github.com/linux-pam/linux-pam/releases/download/v1.5.1/linux-pam-1.5.1.tar.xz
 files/base-account.pamd
 files/base-auth.pamd
 files/base-password.pamd
