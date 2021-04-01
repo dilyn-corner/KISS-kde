@@ -1,14 +1,14 @@
-curl
-dbus
-iptables
-jansson
-libgudev
-libndp
-libpsl
-linux-headers make
-#nss -> or gnutls; one for webengine, one for gnupg2
-perl          make
-pkgconf       make
-ppp
-readline
-util-linux
+#curl
+#dbus
+#iptables
+#jansson
+#libgudev
+#libndp
+#libpsl
+#linux-headers make
+##nss -> or gnutls; one for webengine, one for gnupg2
+#perl          make
+#pkgconf       make
+#ppp
+#readline
+#util-linux
