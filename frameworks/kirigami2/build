@@ -2,7 +2,8 @@
 
 export DESTDIR="$1"
 
-patch -p1 < include.patch
+sed -i '/#include <QJSValue>/a #include <QDebug>'   src/colorutils.h
+sed -i '/#include <QQuickItem>/a #include <QColor>' src/shadowedrectangle.h
 
 cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
