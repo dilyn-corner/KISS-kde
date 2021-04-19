@@ -1,8 +1,13 @@
 #!/bin/sh -e
 
 for patch in *.patch; do 
-    patch -p1 < $patch
+    patch -p1 < "$patch"
 done
+
+sed -i '/struct mesh_io;/i #include <sys/time.h>'   mesh/net.h
+sed -i 's/int to = 10/int to = 30/'                 tools/hciattach.c
+sed -i 's/etc\/firmware/etc\/firmware\/brcm/'       tools/hciattach_bcm43xx.c
+sed -i '/#include <string.h>/a #include <endian.h>' src/shared/util.h
 
 ./configure \
     --prefix=/usr \
