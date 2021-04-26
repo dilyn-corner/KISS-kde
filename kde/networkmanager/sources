@@ -1,4 +1,4 @@
-https://download.gnome.org/sources/NetworkManager/1.30/NetworkManager-1.30.2.tar.xz
+https://download.gnome.org/sources/NetworkManager/1.30/NetworkManager-1.30.4.tar.xz
 files/networkmanager.conf
 files/networkmanager.run
 patches/no-udev.patch
