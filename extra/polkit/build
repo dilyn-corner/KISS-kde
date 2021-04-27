@@ -15,7 +15,14 @@ done
 # though they're optional), we have to include their macros in buildutil/*.m4 so
 # that autotools do their job correctly. Otherwise, our configure script will
 # generate with syntax errors.
-autoreconf -sfi
+# autoreconf -sfi requires intltoolize. So we do it the long way.
+autoconf -f
+aclocal
+autoheader -f
+autoheader --force
+autoupdate -f
+libtoolize -fi
+automake -fa
 
 # We still have to pass these even if we disable nls. So why make it a
 # configure-time option? ¯\_(!_!)_/¯
