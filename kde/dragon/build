@@ -5,7 +5,7 @@ export DESTDIR="$1"
 rm -rf po
 
 sed -i 's/DocTools//'               CMakeLists.txt
-sed -i '/ kdoctools_install(po)/d'  CMakeLists.txt
+sed -i '/kdoctools_install(po)/d'   CMakeLists.txt
 sed -i '/add_subdirectory( doc )/d' CMakeLists.txt
 
 cmake -B build \
