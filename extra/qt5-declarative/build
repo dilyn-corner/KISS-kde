@@ -1,5 +1,11 @@
 #!/bin/sh -e
 
+sed -i '/<type_traits>/a #include <limits>' \
+    src/qmldebug/qqmlprofilerevent_p.h
+
+# Without this folder, Qt can't find its own header files.
+mkdir .git
+
 qmake
 
 make
