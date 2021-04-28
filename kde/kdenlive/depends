@@ -2,11 +2,11 @@ cmake               make
 extra-cmake-modules make
 karchive
 kbookmarks
-kcoreaddons
 kconfig
 kconfigwidgets
-kdeclarative
+kcoreaddons
 kdbusaddons
+kdeclarative
 kguiaddons
 kiconthemes
 kio
@@ -19,9 +19,9 @@ kxmlgui
 mlt
 qt5
 qt5-multimedia
+qt5-networkauth
 qt5-quickcontrols
 qt5-quickcontrols2
 qt5-svg
-rttr
 samurai             make
 solid
