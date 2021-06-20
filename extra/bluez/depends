@@ -1,6 +1,6 @@
 dbus
 glib
 libical
+linux-headers make
 pkgconf       make
 readline
-linux-headers make

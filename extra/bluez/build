@@ -12,6 +12,7 @@ sed -i '/#include <string.h>/a #include <endian.h>' src/shared/util.h
 ./configure \
     --prefix=/usr \
     --disable-systemd \
+    --disable-manpages \
     --with-udevdir=/usr/lib/udev \
     --enable-library
 
