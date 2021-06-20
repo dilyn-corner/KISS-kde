@@ -1,4 +1,4 @@
-https://freedesktop.org/software/polkit/releases/polkit-0.118.tar.gz
+https://freedesktop.org/software/polkit/releases/polkit-0.119.tar.gz
 files/intltool.m4 buildutil
 files/introspection.m4 buildutil
 files/nls.m4 buildutil

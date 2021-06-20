@@ -95,16 +95,3 @@ Thanks for this patch is due to Ikey Doherty, https://github.com/ikeydoherty
  
  # ----------------------------------------------------------------------------------------------------
  
-@@ -97,9 +134,9 @@
- CLEANFILES = $(BUILT_SOURCES)
- 
- EXTRA_DIST =								\
--	init.js								\
--	toarray.pl							\
--	$(rules_DATA)							\
-+	init.js		    						\
-+	toarray.pl	    						\
-+	$(backendrules)							\
- 	$(NULL)
- 
- dist-hook :
