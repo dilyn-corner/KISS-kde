@@ -1,10 +1,13 @@
 #!/bin/sh -e
 
-./configure \
-    --prefix=/usr \
-    --enable-gtk-doc-html=no \
-    --enable-introspection=no \
-    --disable-umockdev
+export DESTDIR="$1"
 
-make
-make DESTDIR="$1" install
+meson \
+    --prefix=/usr \
+    -Dbuildtype=release \
+    -Dtests=disabled \
+    -Dintrospection=disabled \
+    . build
+
+ninja -C build
+ninja -C build install
