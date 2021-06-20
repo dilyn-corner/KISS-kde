@@ -17,6 +17,7 @@ m4                make
 meson             make
 pkgconf           make
 python            make
-xorgproto
+wayland
 wayland-protocols make
+xorgproto
 zlib
