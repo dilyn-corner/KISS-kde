@@ -27,6 +27,7 @@ sed -i 's/define QLOG/define N/g' \
     -no-separate-debug-info \
     -no-pch \
     -no-gtk \
+    -no-dtls \
     -no-libudev \
     -system-libjpeg \
     -system-libpng \

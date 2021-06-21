@@ -1,5 +1,6 @@
 bison             make
 flex              make
+fontconfig
 freetype-harfbuzz
 gperf             make
 libICE
