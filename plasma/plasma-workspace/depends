@@ -1,5 +1,6 @@
 cmake                    make
 extra-cmake-modules      make
+fontconfig
 kactivities-stats
 kcmutils
 kcoreaddons
