@@ -1,6 +1,7 @@
 cmake                    make
 extra-cmake-modules      make
 kwayland
+pkgconf                  make
 plasma-wayland-protocols make
 qt5
 qt5-tools
