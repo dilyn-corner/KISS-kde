@@ -10,3 +10,7 @@ cmake -B build \
 
 ninja -C build
 ninja -C build install
+
+# Fix building with gcc 11.1.0
+# Fixed in next release!
+sed -i '/<array>/a <limits>' "$1/usr/include/Vc/common/simdarray.h"
