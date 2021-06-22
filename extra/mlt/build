@@ -1,15 +1,15 @@
 #!/bin/sh -e
 
-export DESTDIR="$1"
-
 sed -i 's/defined(__GLIBC__)/defined(__linux__)/' \
     src/framework/mlt_property.h
 
-cmake -B build \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DMOD_RTAUDIO=OFF \
-    -DMOD_OPENCV=ON
+./configure \
+    --prefix=/usr \
+    --enable-gpl \
+    --enable-gpl3 \
+    --enable-opengl \
+    --enable-opencv \
+    --disable-rtaudio
 
-cmake --build   build
-cmake --install build
+make
+make DESTDIR="$1" install

@@ -1,4 +1,3 @@
-cmake make
 ffmpeg
 fftw
 frei0r-plugins
