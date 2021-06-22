@@ -4,8 +4,9 @@ export DESTDIR="$1"
 
 rm -rf po
 
-sed -i '/^find_package(KF5DocTools/d' CMakeLists.txt
+sed -i '/^kdoctools_install/d'        CMakeLists.txt
 sed -i '/add_subdirectory(docs)/d'    CMakeLists.txt
+sed -i '/^find_package(KF5DocTools/d' CMakeLists.txt
 sed -i '/^find_package(DocBookXML/d'  src/CMakeLists.txt
 
 cmake -B build \
@@ -18,9 +19,9 @@ cmake -B build \
 ninja -C build
 ninja -C build install
 
-# These files are both made post build so we remove the 
-# DocTools reference here
-sed -i '/^find_dependency(KF5Doc/d' \
-    "$1/usr/lib/cmake/KF5KDELibs4Support/KF5KDELibs4SupportConfig.cmake"
+# These files are both made post build so we remove the DocTools reference here
+# shellcheck disable=2016
 sed -i '/^include("${KF5Doc/d' \
     "$1/usr/lib/cmake/KF5KDELibs4Support/KDE4Macros.cmake"
+sed -i '/^find_dependency(KF5Doc/d' \
+    "$1/usr/lib/cmake/KF5KDELibs4Support/KF5KDELibs4SupportConfig.cmake"
