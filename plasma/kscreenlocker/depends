@@ -12,6 +12,7 @@ ktextwidgets
 kwayland
 kwindowsystem
 kxmlgui
+layer-shell-qt
 libX11
 libxcb
 #linux-pam -> not technically required

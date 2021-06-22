@@ -1,0 +1,7 @@
+cmake               make
+extra-cmake-modules make
+libxkbcommon
+pkgconf             make
+qt5
+samurai             make
+wayland
