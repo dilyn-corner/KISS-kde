@@ -1,4 +1,4 @@
-https://kernel.org/pub/linux/bluetooth/bluez-5.59.tar.xz
+https://kernel.org/pub/linux/bluetooth/bluez-5.62.tar.xz
 patches/001-bcm43xx-add-bcm43xx-3wire-variant.patch
 patches/002-bcm43xx-reset-uart-speed.patch
 patches/disable-lock-test.patch
