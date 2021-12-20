@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
-kiss l linux-pam || kiss l shadow || {
-    printf 'linux-pam or shadow is required\n'
+kiss l pam || kiss l shadow || {
+    printf 'pam or shadow is required\n'
     exit 1
 }
 
@@ -46,7 +46,7 @@ export INTLTOOL_APPLIED_VERSION=9.99.99
 # or not to include libelogind support.
 
 pkg-config --exists libelogind || libelogind=no
-kiss l linux-pam || auth=shadow
+kiss l pam || auth=shadow
 
 ./configure \
     --prefix=/usr \

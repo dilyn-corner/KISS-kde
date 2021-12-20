@@ -3,7 +3,7 @@ automake make
 expat
 glib
 libtool  make
-#linux-pam -> auth
+#pam -> auth
 pkgconf  make
 python   make
 #shadow -> altnerative auth
