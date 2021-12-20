@@ -3,5 +3,5 @@ dbus
 eudev
 gperf     make
 libcap
-linux-pam
+pam
 meson     make
