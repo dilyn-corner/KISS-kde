@@ -5,8 +5,7 @@ export MSGCAT=/usr/bin/true
 export MSGMERGE=/usr/bin/true
 export XGETTEXT=/usr/bin/true
 
-sed -i 's/po src/po/g' Makefile.in
-sed -i '/DENABLE_NLS/d' configure
+sed -i 's/po src/src/g' Makefile.in
 
 ./configure \
     --prefix=/usr \
