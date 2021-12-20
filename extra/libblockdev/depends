@@ -1,12 +1,11 @@
 coreutils make
 cryptsetup
-dmraid
 eudev
 glib
 libbytesize
+libyaml
 lvm2
 ndctl
 parted
 util-linux
 volume_key
-yaml

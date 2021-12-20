@@ -5,6 +5,7 @@ patch -p1 < fix-glibc-glob-onlydir.patch
 ./configure \
     --prefix=/usr \
     --disable-tests \
+    --without-dmraid \
     --without-gtk-doc
 
 make
