@@ -2,9 +2,7 @@
 
 export DESTDIR="$1"
 
-for patch in *.patch; do
-    patch -p1 < "$patch"
-done
+patch -p1 < no-udev.patch
 
 pkg-config --exists nss || {
     printf 'nss (or gnutls) is required\n'
@@ -16,34 +14,6 @@ sed -i "s/intltool_xml_cmd/['cp', '@INPUT@', '@OUTPUT@']/g" \
     data/meson.build
 sed -i '/^intltool/d' \
     meson.build
-
-# Fix includes
-sed -i 's/printf.h/stdio.h/' \
-    shared/systemd/src/basic/stdio-util.h
-sed -i 's/ether.h/if_ether.h/' \
-   clients/cli/connections.c 
-sed -i 's/ether.h/if_ether.h/' \
-    libnm-core/nm-utils.c
-sed -i 's/ether.h/if_ether.h/' \
-    src/systemd/src/libsystemd-network/network-internal.c
-sed -i 's/if_arp.h/if.h/' \
-    src/devices/nm-device.c
-sed -i '/#include <limits.h>/a #include <asm/types.h>' \
-    src/nm-manager.c
-sed -i '/#include "nm-linux-platform.h"/a #include "wpan/nm-wpan-utils.h"' \
-    src/platform/nm-linux-platform.c
-sed -i 's/if_arp.h/if.h/' \
-    src/platform/nm-linux-platform.c
-sed -i 's/if_arp.h/if.h/' \
-    src/systemd/src/libsystemd-network/sd-dhcp6-client.c
-sed -i '/#include "nm-core-internal.h"/a #include <linux/if_ether.h>' \
-    src/devices/nm-device-bridge.c
-sed -i '/#include <linux\/pkt_sched.h>/a #include <netinet\/if_ether.h>' \
-    src/NetworkManagerUtils.c
-
-# musl doesn't support RTLD_DEEPBIND
-sed -i '/RTLD_DEEPBIND/d' \
-    shared/nm-glib-aux/nm-json-aux.c
 
 kiss l elogind || logind=no
 kiss l dhcpcd  || dhcpcd=false
@@ -64,9 +34,9 @@ meson \
     -Dnmtui=false \
     -Dtests=no \
     -Dqt=false \
-    -Dcrypot="${$crypto:-gnutls}" \
+    -Dcrypto="${crypto:-gnutls}" \
     -Diwd="${eiwd:-true}" \
-    -Dhcpcd="${dhcpcd:-true}" \
+    -Ddhcpcd="${dhcpcd:-true}" \
     -Dresolvconf="${eiwd:-true}" \
     -Dsession_tracking="${logind:-elogind}" \
     . build

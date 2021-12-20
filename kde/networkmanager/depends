@@ -1,7 +1,8 @@
+bash          make
 curl
 dbus
 iptables
-jansson
+jansson       make
 libgudev
 libndp
 libpsl
