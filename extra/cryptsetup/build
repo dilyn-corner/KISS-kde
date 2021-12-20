@@ -1,0 +1,16 @@
+#!/bin/sh -e
+
+patch -p1 < posix-generate.patch
+
+machine=$(cc -dumpmachine)
+
+./configure \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --build="$machine" \
+    --host="$machine" \
+    --disable-blkid \
+    --disable-ssh-token
+
+make
+make DESTDIR="$1" install
