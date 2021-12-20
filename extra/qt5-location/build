@@ -1,0 +1,8 @@
+#!/bin/sh -e
+
+sed -i 's/qnx/qnx|posix/' src/3rdparty/mapbox-gl-native/mapbox-gl-native.pro
+
+qmake "CONFIG+=posix"
+
+make
+make INSTALL_ROOT="$1" install
