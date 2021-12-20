@@ -3,7 +3,7 @@ dbus
 elogind
 extra-cmake-modules make
 libxcb              make
-linux-pam           make
+pam                 make
 qt5-declarative     make
 qt5-tools           make
 samurai             make
