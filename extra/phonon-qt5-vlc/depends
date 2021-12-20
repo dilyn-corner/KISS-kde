@@ -1,8 +1,6 @@
 cmake               make
 extra-cmake-modules make
-gst-plugins-base
-gstreamer
-libxml2
-phonon
-pkgconf             make
+phonon-qt5
+qt5
 samurai             make
+vlc
