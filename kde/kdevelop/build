@@ -6,9 +6,10 @@ rm -rf doc
 
 sed -i 's/DocTools//'              CMakeLists.txt
 sed -i '/add_subdirectory(doc)/d'  CMakeLists.txt
-sed -i 's/--mode=go=rX,u+rw,a-s//' kdevplatform/cmake/modules/KDevPlatformMacros.cmake
-sed -i 's/--owner=0//'             kdevplatform/cmake/modules/KDevPlatformMacros.cmake
-sed -i 's/--group=0//'             kdevplatform/cmake/modules/KDevPlatformMacros.cmake
+sed -i '/kdoctools_install(po)/d'  CMakeLists.txt
+#sed -i 's/--mode=go=rX,u+rw,a-s//' kdevplatform/cmake/modules/KDevPlatformMacros.cmake
+#sed -i 's/--owner=0//'             kdevplatform/cmake/modules/KDevPlatformMacros.cmake
+#sed -i 's/--group=0//'             kdevplatform/cmake/modules/KDevPlatformMacros.cmake
 
 cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \

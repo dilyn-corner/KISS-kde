@@ -22,6 +22,7 @@ ktexteditor
 kwindowsystem
 kxmlgui
 libkomparediff2
+meson
 qt5
 qt5-webengine
 samurai             make
