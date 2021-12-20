@@ -1,6 +1,8 @@
+cmake   make
 ffmpeg
 fftw
 frei0r-plugins
 libsamplerate
 libxml2
+samurai make
 sdl

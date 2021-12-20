@@ -3,13 +3,12 @@
 sed -i 's/defined(__GLIBC__)/defined(__linux__)/' \
     src/framework/mlt_property.h
 
-./configure \
-    --prefix=/usr \
-    --enable-gpl \
-    --enable-gpl3 \
-    --enable-opengl \
-    --enable-opencv \
-    --disable-rtaudio
+cmake -B build \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTING=Off \
+    -DMOD_RTAUDIO=Off \
+    -G Ninja
+    #-DMOD_OPENCV=On \
 
-make
-make DESTDIR="$1" install
+ninja -C build
+ninja -C build install
