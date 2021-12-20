@@ -1,0 +1,14 @@
+#!/bin/sh -e
+
+meson \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --mandir=/usr/share/man \
+    -Degl=yes \
+    -Dtests=false \
+    -Dglx=yes \
+    -Dx11=true \
+    . build
+
+ninja -C build
+ninja -C build install
