@@ -15,7 +15,7 @@ kxmlgui
 layer-shell-qt
 libX11
 libxcb
-#linux-pam -> not technically required
+#pam -> not technically required
 qt5
 qt5-quickcontrols2
 qt5-tools

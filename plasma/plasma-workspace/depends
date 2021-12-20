@@ -15,6 +15,7 @@ ki18n
 kiconthemes
 kidletime
 kio
+kitemmodels
 knewstuff
 knotifyconfig
 kpackage
@@ -24,14 +25,16 @@ krunner
 kscreen
 kscreenlocker
 ksysguard
+ktexteditor
 ktextwidgets
 kwallet
 kwayland
 kwin
 #kwinft
+libXft
 libXtst
 libxcb
-phonon
+phonon-qt5
 pkgconf                  make
 plasma-framework
 plasma-integration

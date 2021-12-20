@@ -1,6 +1,6 @@
 cmake               make
 extra-cmake-modules make
 kwallet
-libgcrypt 
-linux-pam
+libgcrypt
+pam
 samurai             make

@@ -2,6 +2,9 @@
 
 export DESTDIR="$1"
 
+sed -i 's/DocTools//'               CMakeLists.txt
+sed -i '/add_subdirectory( doc )/d' CMakeLists.txt
+
 rm -rf po 
 
 cmake -B build \

@@ -7,6 +7,6 @@ ki18n
 kiconthemes
 kwidgetsaddons
 kwindowsystem
-polkit-qt-1
+polkit-qt5
 qt5
 samurai             make

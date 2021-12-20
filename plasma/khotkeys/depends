@@ -31,7 +31,7 @@ kunitconversion
 kwidgetsaddons
 kwindowsystem
 kxmlgui
-phonon
+phonon-qt5
 plasma-framework
 plasma-workspace
 qt5

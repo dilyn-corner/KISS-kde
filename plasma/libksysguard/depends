@@ -15,6 +15,8 @@ kpackage
 kservice
 kwidgetsaddons
 kwindowsystem
+libnl
+lm-sensors
 qt5
 qt5-quickcontrols2
 qt5-x11extras

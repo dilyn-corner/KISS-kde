@@ -2,13 +2,17 @@
 
 export DESTDIR="$1"
 
+sed -i 's/DocTools//'               CMakeLists.txt
+sed -i '/add_subdirectory( doc )/d' CMakeLists.txt
+
 rm -rf po
 
 cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_TESTING=No
+    -DBUILD_TESTING=No \
+    -G Ninja
 
-cmake --build   build
-cmake --install build
+ninja -C build
+ninja -C build install
