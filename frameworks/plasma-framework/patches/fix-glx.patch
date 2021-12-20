@@ -1,67 +1,34 @@
+https://invent.kde.org/frameworks/plasma-framework/-/commit/a70957d96c29aa6059753cbfe23d0615ea688b36 and others broke compilation, as CMake's FindOpenGL is broken and assumes packages we do not have and shouldn't be needed either.
+Let's make sure OpenGL::EGL is only used if it's actually found.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7da172546..e4d616a66 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -121,11 +121,9 @@ add_feature_info(EGL OpenGL_EGL_FOUND
+                  "A platform-agnostic mechanism for creating rendering surfaces for use with other graphics libraries, such as OpenGL|ES and OpenVG.")
+ # OpenGL_EGL_FOUND is defined by FindOpenGL
+ if(TARGET OpenGL::EGL)
+-    set(HAVE_EGL ${OpenGL_EGL_FOUND})
+-    set(EGL_TARGET OpenGL::EGL)
++set(HAVE_EGL 1)
+ elseif(EGL_FOUND)
+-    set(HAVE_EGL ${EGL_FOUND})
+-    set(EGL_TARGET EGL::EGL)
++    set(HAVE_EGL 0)
+     message(STATUS "Switch to EGL compatibility target EGL::EGL because OpenGL::EGL is not available")
+ endif()
+ 
+diff --git a/src/declarativeimports/core/CMakeLists.txt b/src/declarativeimports/core/CMakeLists.txt
+index f35490ccb..7c58d1d47 100644
 --- a/src/declarativeimports/core/CMakeLists.txt
 +++ b/src/declarativeimports/core/CMakeLists.txt
-@@ -24,7 +24,7 @@
-     windowthumbnail.cpp
-     )
- 
--qt_add_resources(corebindings_SRCS shaders.qrc)
-+qt5_add_resources(corebindings_SRCS shaders.qrc)
- 
- add_library(corebindingsplugin SHARED ${corebindings_SRCS})
- target_link_libraries(corebindingsplugin
-@@ -53,12 +53,12 @@
-   endif()
- 
-   if(HAVE_GLX)
--    target_link_libraries(corebindingsplugin OpenGL::GLX)
-+    target_link_libraries(corebindingsplugin ${OPENGL_gl_LIBRARY})
-   endif()
+@@ -59,7 +59,7 @@ if(HAVE_X11)
  endif()
  
  if(HAVE_EGL)
--    target_link_libraries(corebindingsplugin OpenGL::EGL)
-+    target_link_libraries(corebindingsplugin EGL::EGL)
- endif()
- 
- if (${Qt5Gui_OPENGL_IMPLEMENTATION} STREQUAL "GLESv2")
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -94,8 +95,6 @@
-   find_package(Qt5 REQUIRED NO_MODULE COMPONENTS X11Extras)
-   #X11_Xrender discovery is done by FindX11
-   #add_feature_info("X Rendering Extension (libXrender)" X11_Xrender_FOUND "Support for compositing, rendering operations, and alpha-blending. STRONGLY RECOMMENDED")
--else()
--  set(HAVE_X11 0)
- endif()
- 
- find_package(OpenGL)
-@@ -104,19 +103,19 @@
-                        TYPE OPTIONAL
-                       )
- 
--add_feature_info(GLX ${OpenGL_GLX_FOUND} "OpenGL GLX libraries.")
--if(OpenGL_GLX_FOUND AND X11_FOUND AND (${Qt5Gui_OPENGL_IMPLEMENTATION} STREQUAL "GL"))
--    set(HAVE_GLX 1)
-+find_package(EGL)
-+set_package_properties(EGL PROPERTIES
-+                       PURPOSE "Support for Window Thumbnail on EGL platform"
-+                       TYPE OPTIONAL
-+                      )
-+set(HAVE_EGL ${EGL_FOUND})
-+
-+if(OPENGL_FOUND AND (${Qt5Gui_OPENGL_IMPLEMENTATION} STREQUAL "GL"))
-+    set(HAVE_GLX ${HAVE_X11})
+-    target_link_libraries(corebindingsplugin ${EGL_TARGET})
++target_link_libraries(corebindingsplugin OpenGL::EGL)
  else()
-     set(HAVE_GLX 0)
+ 
  endif()
- 
--add_feature_info(EGL ${OpenGL_EGL_FOUND}
--                 "A platform-agnostic mechanism for creating rendering surfaces for use with other graphics libraries, such as OpenGL|ES and OpenVG.")
--# OpenGL_EGL_FOUND is defined by FindOpenGL
--set(HAVE_EGL ${OpenGL_EGL_FOUND})
--
--
- #########################################################################
- 
- ecm_setup_qtplugin_macro_names(
-

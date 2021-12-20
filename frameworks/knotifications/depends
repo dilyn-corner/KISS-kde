@@ -3,7 +3,7 @@ extra-cmake-modules make
 kconfig
 kcoreaddons
 kwindowsystem
-phonon
+phonon-qt5
 qt5
 qt5-tools
 qt5-x11extras
