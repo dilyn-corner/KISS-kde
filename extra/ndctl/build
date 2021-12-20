@@ -1,6 +1,9 @@
 #!/bin/sh -e
 
-./autogen.sh
+# Just a poor system.
+sed -i "s/GIT_VERSION/[$2]/" configure.ac
+touch version.m4
+autoreconf -sfi
 
 ./configure \
     --prefix=/usr \

@@ -2,4 +2,6 @@ automake make
 eudev
 json-c   make
 keyutils make
-kmod     make
+kmod
+pkgconf  make
+util-linux
