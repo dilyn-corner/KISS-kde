@@ -1,0 +1,7 @@
+#!/bin/sh -e
+
+cd "$1"
+
+tar xf "$OLDPWD/xkeyboard-config-"*.apk
+
+rm -rf usr/lib .PKGINFO .*.pub
