@@ -16,7 +16,7 @@ knotifications
 kparts
 ktextwidgets
 kwindowsystem
-phonon
+phonon-qt5
 qt5
 samurai             make
 solid

@@ -11,7 +11,7 @@ kparts
 kwidgetsaddons
 kwindowsystem
 kxmlgui
-phonon
+phonon-qt5
 qt5
 samurai             make
 solid

@@ -12,7 +12,7 @@ libjpeg-turbo
 libpng
 exiv2
 lcms
-phonon
+phonon-qt5
 qt5
 qt5-svg
 qt5-x11extras

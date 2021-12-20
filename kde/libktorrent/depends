@@ -7,6 +7,7 @@ kcrash
 ki18n
 kio
 libgcrypt
+linux-headers       make
 qca
 qt5
 samurai             make
