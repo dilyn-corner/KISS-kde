@@ -1,0 +1,17 @@
+#!/bin/sh -e
+
+export DESTDIR="$1"
+
+for patch in *.patch; do
+    patch -p1 < "$patch"
+done
+
+cmake -B build \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DPORT=Qt \
+    -DENABLE_TOOLS=OFF \
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG" \
+    -G Ninja
+
+ninja -C build
+ninja -C build install

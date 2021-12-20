@@ -1,0 +1,57 @@
+--- a/Source/JavaScriptCore/inspector/JSGlobalObjectInspectorController.cpp
++++ b/Source/JavaScriptCore/inspector/JSGlobalObjectInspectorController.cpp
+@@ -51,7 +51,6 @@
+ #include <cxxabi.h>
+ #if OS(DARWIN) || (OS(LINUX) && !PLATFORM(GTK))
+ #include <dlfcn.h>
+-#include <execinfo.h>
+ #endif
+ 
+ #if ENABLE(REMOTE_INSPECTOR)
+@@ -185,37 +184,6 @@
+     m_debuggerAgent->pause(dummyError);
+ }
+ 
+-void JSGlobalObjectInspectorController::appendAPIBacktrace(ScriptCallStack* callStack)
+-{
+-#if OS(DARWIN) || (OS(LINUX) && !PLATFORM(GTK))
+-    static const int framesToShow = 31;
+-    static const int framesToSkip = 3; // WTFGetBacktrace, appendAPIBacktrace, reportAPIException.
+-
+-    void* samples[framesToShow + framesToSkip];
+-    int frames = framesToShow + framesToSkip;
+-    WTFGetBacktrace(samples, &frames);
+-
+-    void** stack = samples + framesToSkip;
+-    int size = frames - framesToSkip;
+-    for (int i = 0; i < size; ++i) {
+-        const char* mangledName = nullptr;
+-        char* cxaDemangled = nullptr;
+-        Dl_info info;
+-        if (dladdr(stack[i], &info) && info.dli_sname)
+-            mangledName = info.dli_sname;
+-        if (mangledName)
+-            cxaDemangled = abi::__cxa_demangle(mangledName, nullptr, nullptr, nullptr);
+-        if (mangledName || cxaDemangled)
+-            callStack->append(ScriptCallFrame(cxaDemangled ? cxaDemangled : mangledName, ASCIILiteral("[native code]"), 0, 0));
+-        else
+-            callStack->append(ScriptCallFrame(ASCIILiteral("?"), ASCIILiteral("[native code]"), 0, 0));
+-        free(cxaDemangled);
+-    }
+-#else
+-    UNUSED_PARAM(callStack);
+-#endif
+-}
+-
+ void JSGlobalObjectInspectorController::reportAPIException(ExecState* exec, Exception* exception)
+ {
+     if (isTerminatedExecutionException(exception))
+@@ -225,7 +193,7 @@
+ 
+     RefPtr<ScriptCallStack> callStack = createScriptCallStackFromException(exec, exception, ScriptCallStack::maxCallStackSizeToCapture);
+     if (includesNativeCallStackWhenReportingExceptions())
+-        appendAPIBacktrace(callStack.get());
++        return;
+ 
+     // FIXME: <http://webkit.org/b/115087> Web Inspector: Should not evaluate JavaScript handling exceptions
+     // If this is a custom exception object, call toString on it to try and get a nice string representation for the exception.

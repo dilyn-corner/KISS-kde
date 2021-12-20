@@ -1,0 +1,4 @@
+https://github.com/qtwebkit/qtwebkit/releases/download/qtwebkit-5.212.0-alpha4/qtwebkit-5.212.0-alpha4.tar.xz
+patches/python-3.patch
+patches/bison-3.7.patch
+patches/remove-execinfo.patch

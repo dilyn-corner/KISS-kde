@@ -1,0 +1,11 @@
+bison
+cmake   make
+gperf
+hyphen
+gst-plugins-base
+pkgconf make
+qt5-location
+qt5-sensors
+qt5-webchannel
+ruby    make
+samurai make
