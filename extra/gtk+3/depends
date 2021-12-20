@@ -1,0 +1,14 @@
+atk
+cairo
+fontconfig
+freetype-harfbuzz
+gdk-pixbuf
+glib
+libepoxy
+libxkbcommon
+mesa
+meson   make
+pango
+pkgconf make
+python  make
+wayland
