@@ -24,12 +24,9 @@ guide](https://k1ss.org/wiki/kiss/style-guide) as closely as possible, but I'm
 not too much of a stickler.
 
 
-[The KISS wiki page has been completed](https://k1ss.org/wiki/desktops/kde)! 
-Refer to it for more fun stuff that might not be here.
-
 ## Current Milestones
 
-Here are all of the things that can be worked on. 
+Here are all of the things that can be worked on.
 
 - [x] Cleanup repository structure
 
@@ -52,13 +49,13 @@ Here are all of the things that can be worked on.
     - [x] KDE Framework
     - [x] Plasma
 
-- [x] Configure `linux-pam` in a meaningful way
+- [x] Configure `pam` in a meaningful way
 
 - [x] Remove JS backend from polkit
     * This project will rely on forward-porting the work done
       [here](https://dev.getsol.us/T4824)
     * This allows us to drop `mozjs`
-    * The current milestone is to get rid of innetgr from our patches. 
+    * The current milestone is to get rid of innetgr from our patches.
     * Once innetgr is no longer required, we can drop our `musl` fork.
 
 - [x] Enable a login-manager and greeter
@@ -120,7 +117,7 @@ Here are all of the things that can be worked on.
     - [x] Themes work
     - [x] Settings work
     - [~] Users can log back in from a *lock* (super+l) - works without
-      `linux-pam`
+      `pam`
     - [ ] Bluetooth - can't test
     - [ ] Power management -untested
     - [ ] Disk/hardware management -untested
@@ -135,7 +132,7 @@ Here are all of the things that can be worked on.
     - [ ] `ncurses`-style installer?
 
 This list will be expanded, contracted, and refined as necessary. Feel free to
-assist. 
+assist.
 
 ---
 
@@ -150,13 +147,13 @@ parts:
     * Without learning C, I will not be able to drop the `ki18n` dependency.
 
 2) Delete all translation files located in `po` from packages which 'require'
-them. 
+them.
 
 3) Remove the `kdoctools` dependency from packages which 'require' it.
 
-If you would like to have languages besides english available: 
+If you would like to have languages besides english available:
 
-    * Package `gettext` 
+    * Package `gettext`
 
     * Remove the patch for `ki18n`
 
@@ -174,19 +171,21 @@ if you would like to have documentation:
 
 ### Community
 
-The BDFL of KISS has gone on an extended hiatus. As a result, I have forked the
-packages from community which are required to build `plasma-desktop` into
-KISS-kde/extra in order to make sure they stay updated. Ensure this repository
-is ahead of community in your `$KISS_PATH`. Alternatively, you can clone [the
-community maintained version of
-community](https://github.com/kiss-community/community). 
+Large portions of this repository are forked packages from the [official
+repository](https://github.com/kisslinux/repo) modified as needed. Many of the
+packages in `extra/` are from the [community
+repository](https://github.com/kiss-community/community), though not necessarily
+different (maintenance is volatile in `community`).
+
+Usage of this repository assumes that the official repository and the community
+repository are also in-use, but otherwise rely on no external packages.
 
 
 ### dbus
 
 The dreaded(?) question.
 
-The trouble with evading `dbus` is not with building KDE. 
+The trouble with evading `dbus` is not with building KDE.
 
 It's with launching it.
 
@@ -211,12 +210,12 @@ You'll notice in many distros that there are many versions of, for instance,
 polkit swimming around. I don't want to maintain a bunch of polkit versions for
 different login managers and greeters. In fact, I want as minimal maintenance as
 possible. But I also want to maximize choice. There's no *good* reason to assume
-a user wants `linux-pam` over `shadow`. There's no good reason to assume
-anything about what the user wants! But this minimalism should decrease friction
-as much as possible. I don't want to punish users for wanting to install these
-programs. I definitely don't want to force them to do the reading I did either!
+a user wants `pam` over `shadow`. There's no good reason to assume anything
+about what the user wants! But this minimalism should decrease friction as much
+as possible. I don't want to punish users for wanting to install these programs.
+I definitely don't want to force them to do the reading I did either!
 
-For the user who is disinterested or unconcerned with `linux-pam`, `polkit`,
+For the user who is disinterested or unconcerned with `pam`, `polkit`,
 `elogind`, etc., they are required to do nothing. Not only is this in line with
 KISS' goals as a project, but it also doesn't require users to do large amounts
 of research to do what should be routine maintenance or security management. If
@@ -227,13 +226,13 @@ The process for first-time users and current ones should be the same:
 
 ```
 # ensure shadow is not installed
-$ KISS_FORCE=1 kiss r shadow 
+$ KISS_FORCE=1 kiss r shadow
 
 # install the auth backend
-$ kiss b linux-pam && kiss i linux-pam
+$ kiss b pam && kiss i pam
 
 # install polkit
-$ kiss b polkit polkit-qt-1 && kiss i polkit polkit-qt-1
+$ kiss b polkit polkit-qt5 && kiss i polkit polkit-qt5
 
 # use coreutils realpath
 $ kiss b coreutils && kiss i coreutils
@@ -263,7 +262,7 @@ want a 'seamless' build, merely plop these archives in
 `${XDG_CACHE_DIR:-$HOME/.cache}/kiss/bin`.
 
 
-### xorg vs wayland 
+### xorg vs wayland
 
 The eternal debate.
 
@@ -271,10 +270,10 @@ Starting with the release of `plasma 5.20.0`, `wayland` will be the presumptive
 default for KDE. I'm unsure to what extent they plan to leave `xorg` available,
 As it stands, few parts *require* `xorg`. Indeed, you can build almost every
 package in this repository without any `xorg` libraries at all! Unfortunately,
-GLX is required. GLX is provided by `mesa`, and will only be built if the x11
+GLX is required. GLX is provided by `mesa`, and will only be built if the X11
 platform is built. This brings in the largest number of dependencies.  Next to
 this, `plasma-desktop` requires `xorg-server`, and there are a few `xorg`
-libraries required by a couple of packages. 
+libraries required by a couple of packages.
 
 Wayland is an exciting project, and having been using it on my own personal KISS
 box, I can recommend it heartily over `xorg` in general - it seems to have
@@ -283,7 +282,7 @@ opposed to critical-bug-fixing-only for `xorg`), and the performance is quite
 stellar.  Additionally, `kwinft` is a fork of `kwin` which purports to better
 support wayland. It is a more bleading-edge, development focused 'branch' of
 `kwin`.  Bound to be bugs that crop up. Presumably, `kwinft` is strictly better
-than `kwin`. 
+than `kwin`.
 
 Currently, it's your choice which you choose! If you opt to use `kwinft`, simply
 fork `plasma-desktop` and `plasma-workspace`, and comment `kwin` from their
@@ -293,7 +292,7 @@ force-uninstall `kwin`, reinstall `plasma-{desktop,workspace}` (which should
 pull-in everything required for `kwinft`), and then simply kill your KDE session
 if you're in one, and restart the session! If you run into bugs, please make
 sure they're not `kwinft` related - burn down the [developer's
-door](https://gitlab.com/kwinft/kwinft) for those. 
+door](https://gitlab.com/kwinft/kwinft) for those.
 
 
 ## Prerequisites
@@ -311,7 +310,7 @@ built against `dbus` or `eudev` merely run `kiss-revdepends {dbus,eudev}`.
 
 If you opt to use `elogind` (required for `sddm`), you will need the following:
 
-4. Choose between `shadow` or `linux-pam`, and install your choice.
+4. Choose between `shadow` or `pam`, and install your choice.
 
 5. Install `polkit`.
 
@@ -332,9 +331,9 @@ We start with the assumption that you just installed KISS, following the
 [installation guide](https://k1ss.org/install) exactly, which means you have
 `libudev-zero` or `eudev`, a working `xorg` that knows about `eudev`, some input
 drivers, and fonts. Although this repo does include some nice fonts, so either
-way you're covered. 
+way you're covered.
 
-Ensure you do not have `qt5*` installed. 
+Ensure you do not have `qt5*` installed.
 
 __NOTE__: I have taken the liberty of uploading a KISS package for `qt5`,
 `qt5-webengine`, and `qt5-declarative`. Assuming your system is roughly similar
@@ -369,9 +368,9 @@ $ git clone https://github.com/dilyn-corner/KISS-kde # pls
 
 # Add relevant repository paths
 
-$ export KISS_PATH="$HOME/KISS-kde/extra:$KISS_PATH" 
-$ export KISS_PATH="$HOME/KISS-kde/plasma:$KISS_PATH" 
-$ export KISS_PATH="$HOME/KISS-kde/frameworks:$KISS_PATH" 
+$ export KISS_PATH="$HOME/KISS-kde/extra:$KISS_PATH"
+$ export KISS_PATH="$HOME/KISS-kde/plasma:$KISS_PATH"
+$ export KISS_PATH="$HOME/KISS-kde/frameworks:$KISS_PATH"
 
 # If you don't already have it,
 
@@ -381,24 +380,24 @@ $ kiss b dbus libudev-zero && kiss i dbus libudev-zero
 
 # If you just did the previous or don't have xorg,
 
-$ kiss b xorg-server libinput xf86-input-libinput 
+$ kiss b xorg-server libinput xf86-input-libinput
 # Add others as necessary
 
-# If you've opted to use e.g. elogind, you'll need 
+# If you've opted to use e.g. elogind, you'll need
 # to do the following!
 
-# Choose shadow or linux-pam to use with polkit 
+# Choose shadow or pam to use with polkit
 $ kiss b shadow && kiss i shadow
 $ kiss b polkit && kiss b polkit
 
-# Thanks to the alternatives system, we can just pluck out 
+# Thanks to the alternatives system, we can just pluck out
 # the few binaries we need from `coreutils`.
 
-$ kiss b coreutils && kiss i coreutils 
-# For elogind 
+$ kiss b coreutils && kiss i coreutils
+# For elogind
 $ kiss a coreutils
-/usr/bin/realpath 
-# For libblockdev & udisks 
+/usr/bin/realpath
+# For libblockdev & udisks
 $ kiss a coreutils /usr/bin/mktemp
 $ kiss a coreutils /usr/bin/ln
 
@@ -412,36 +411,36 @@ $ kiss b plasma-desktop
 
 $ kiss i plasma-desktop
 
-# Start the eudev and dbus services for convenience 
-# This is ultimately not necessary 
-$ ln -sv /etc/sv/dbus  /var/service 
+# Start the eudev and dbus services for convenience
+# This is ultimately not necessary
+$ ln -sv /etc/sv/dbus  /var/service
 $ ln -sv /etc/sv/udevd /var/service
 
-$ sv up dbus 
+$ sv up dbus
 $ sv up udevd
 
-# Install a font of your choosing.  
+# Install a font of your choosing.
 # noto-fonts and hack are in KISS-kde/extra. noto is massive.
-# hack is very small and good.  
+# hack is very small and good.
 # Any TTF font should work though.
 
-# You might want to make a runtime directory or KDE will 
-# make one for you. This is required for a wayland session.  
+# You might want to make a runtime directory or KDE will
+# make one for you. This is required for a wayland session.
 # Put these lines in somewhere like $HOME/.profile
 
-$ export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp/$(id -u)-runtime}" 
-$ [ -d "$XDG_RUNTIME_DIR" ] || { 
-    mkdir -p   "$XDG_RUNTIME_DIR" 
+$ export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp/$(id -u)-runtime}"
+$ [ -d "$XDG_RUNTIME_DIR" ] || {
+    mkdir -p   "$XDG_RUNTIME_DIR"
     chmod 0700 "$XDG_RUNTIME_DIR" }
 
-# Two options: 
-# 1. Use 'startx' to launch KDE 
+# Two options:
+# 1. Use 'startx' to launch KDE
 # 2. Use a login manager
 
 # For startx:
 
-$ pkill X 
-$ echo "exec dbus-launch --exit-with-session startplasma-x11" >> ~/.xinitrc 
+$ pkill X
+$ echo "exec dbus-launch --exit-with-session startplasma-x11" >> ~/.xinitrc
 # Replace 'x11' with 'wayland' in the previous command to launch a wayland session
 
 $ startx
@@ -452,13 +451,13 @@ $ kiss b sddm && kiss i sddm
 
 # Enable the required services. FoR sEcUrItY
 
-$ ln -sv /etc/sv/polkitd /var/service 
-$ ln -sv /etc/sv/elogind /var/service 
+$ ln -sv /etc/sv/polkitd /var/service
+$ ln -sv /etc/sv/elogind /var/service
 $ ln -sv /etc/sv/sddm    /ver/service
 
-$ sv up polkitd 
-$ sv up elogind 
-$ sv up sddm    # should launch sddm 
+$ sv up polkitd
+$ sv up elogind
+$ sv up sddm    # should launch sddm
 ```
 
 __ALTERNATIVELY__ you can install KISS with KDE already built and ready to go!
@@ -472,25 +471,25 @@ Installing works almost identically to the [usual
 instructions](https://k1ss.org/install).  To install from the first October 2020
 release,
 
-``` 
-$ ver=2020.10-1 
-$ wget https://github.com/dilyn-corner/KISS-kde/releases/download/$ver.tar.xz 
-# Mount your relevant root partition to wherever. In this case, I choose /mnt 
-$ tar xf kiss-kde-$ver.tar.xz -C /mnt 
+```
+$ ver=2020.10-1
+$ wget https://github.com/dilyn-corner/KISS-kde/releases/download/$ver.tar.xz
+# Mount your relevant root partition to wherever. In this case, I choose /mnt
+$ tar xf kiss-kde-$ver.tar.xz -C /mnt
 $ ./mnt/bin/kiss-chroot /mnt
 
 # Follow the KISS install guide.
 
-$ exit 
+$ exit
 $ reboot
 
-# Boot into your freshly installed KISS # Login (user: root; pass: toor) 
+# Boot into your freshly installed KISS # Login (user: root; pass: toor)
 $ startx
 
-# You should be greeted with KDE.  
+# You should be greeted with KDE.
 ```
 
---- 
+---
 
 ## How you can help
 
